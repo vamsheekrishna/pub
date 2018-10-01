@@ -17,4 +17,58 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!--start network styles-->
+    <style name="yellow_button">
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">Roboto</item>
+        <item name="android:textColor">#fffefe</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">#febc10</item>
+    </style>
+    <style name="formlabel">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">Roboto</item>
+        <item name="android:textColor">#888888</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:left">1383.539px</item>
+        <item name="android:top">1120.3px</item>
+    </style>
+    <style name="logintitle">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">Roboto</item>
+        <item name="android:textColor">#505050</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:left">1671.642px</item>
+        <item name="android:top">999.9px</item>
+    </style>
+    <style name="forgotpassword">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">Roboto</item>
+        <item name="android:textColor">#3468b3</item>
+        <item name="android:gravity">center|left</item>
+    </style>
+
+    <!--end network styles-->
+    <!-- Start OTP verification-->
+    <style name="ThemeOverlay.MyTextDetail" parent="AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fadeScrollbars">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">5</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="ThemeOverlay.MyDarkButton" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <!-- End OTP verification-->
+
 </resources>

@@ -3,4 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--authentication-->
+
+    <color name="colorBackground">#FFE34C</color>
+    <color name="TextColor.White">#FFFFFF</color>
+    <color name="color_text_hint">#999999</color>
+
 </resources>

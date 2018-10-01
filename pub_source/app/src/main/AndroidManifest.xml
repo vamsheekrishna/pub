@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pub.com.mypub">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
-        android:name=".baseclasses.PubApplication"
+        android:name=".baseclasses.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".PubMainActivity"
+            android:name=".baseclasses.SplashScreen"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,6 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".baseclasses.BaseActivity" />
+        <activity android:name=".PubMainActivity"/>
+        <activity android:name=".authentication.AuthenticationActivity" />
+        <activity android:name=".authentication.NetworkBaseActivity"
+            android:label="@string/app_authentication_registration"/>
     </application>
 
 </manifest>
