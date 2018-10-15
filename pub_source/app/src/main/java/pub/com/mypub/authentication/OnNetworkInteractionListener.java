@@ -2,6 +2,7 @@ package pub.com.mypub.authentication;
 
 import com.android.volley.VolleyError;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Map;
@@ -16,6 +17,7 @@ interface OnNetworkInteractionListener extends OnBaseAppListener {
 
     void stringAPIRequest(Map<String, String> params, int method, String URL, String REQUEST_ID);
     void onSuccessResponse(JSONObject response, String REQUEST_ID);
+    void onSuccessResponse(JSONArray response, String REQUEST_ID);
     void onFailureResponse(VolleyError response, String exception, String REQUEST_ID);
     void onFailureResponse(String response, String exception, String REQUEST_ID);
 }

@@ -8,4 +8,5 @@ class MyProfile implements Serializable {
     public String mName;
     public String mEmail;
     public String mPassword;
+    public String mProfileID;
 }

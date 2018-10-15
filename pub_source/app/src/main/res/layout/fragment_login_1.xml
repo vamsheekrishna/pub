@@ -31,7 +31,7 @@
                 android:padding="16dp"
                 android:fontFamily="@android:string/emptyPhoneNumber"
                 android:hint="@string/email_or_mobile_number"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:text=""
                 tools:layout_editor_absoluteX="70dp"
                 tools:layout_editor_absoluteY="66dp" />

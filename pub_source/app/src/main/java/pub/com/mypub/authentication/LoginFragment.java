@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -85,18 +87,29 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
         Log.d("response: ","response: "+response);
         Toast.makeText(getActivity(), "login successful", Toast.LENGTH_LONG).show();
-        mListener.goToMyProfilePage(myProfile);
+        try {
+            myProfile.mProfileID = response.getString("id");
+            mListener.goToMyProfilePage(myProfile);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //mListener.goToMyProfilePage(myProfile);
+    }
+
+    @Override
+    public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
+
     }
 
     @Override
     public void onFailureResponse(VolleyError response, String exception, String REQUEST_ID) {
-        Toast.makeText(getActivity(), "login Fail", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "login Fail " + exception, Toast.LENGTH_LONG).show();
 
     }
 
     @Override
     public void onFailureResponse(String response, String exception, String REQUEST_ID) {
-        Toast.makeText(getActivity(), "login Fail", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "login Fail "+ exception, Toast.LENGTH_LONG).show();
 
     }
 
@@ -125,7 +138,7 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
                 myProfile= new MyProfile();
                 myProfile.mPhoneNumber = mETPhoneNo.getText().toString();
                 myProfile.mPassword= mETPassword.getText().toString();
-
+                //
                 HashMap<String, String> parems = new HashMap<>();
                 parems.put("password", myProfile.mPassword);
                 parems.put("mobile_number", myProfile.mPhoneNumber);

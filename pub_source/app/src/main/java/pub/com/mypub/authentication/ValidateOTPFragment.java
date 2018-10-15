@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.concurrent.TimeUnit;
@@ -106,6 +107,11 @@ public class ValidateOTPFragment extends NetworkBaseFragment implements View.OnC
     }
     @Override
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
+
+    }
+
+    @Override
+    public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
 
     }
 

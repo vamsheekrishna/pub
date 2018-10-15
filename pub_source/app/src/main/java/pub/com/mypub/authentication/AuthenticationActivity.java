@@ -12,7 +12,7 @@ public class AuthenticationActivity extends NetworkBaseActivity implements OnAut
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
         //goToLoginPage();
-        addFragment(LoginFragment.newInstance("", ""), false, true, LoginFragment.class.getName());
+        addFragment(LoginFragment.newInstance("", ""), false, false, LoginFragment.class.getName());
     }
 
     @Override

@@ -12,6 +12,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -53,6 +54,8 @@ public abstract class NetworkBaseFragment extends BaseFragment implements OnNetw
 
                     @Override
                     public void onResponse(String response) {
+
+                        hideProgressDialog();
                         try {
                             Log.i("resp1", "resp1: " + response);
                             JSONObject jsonObject = null;
@@ -61,23 +64,30 @@ public abstract class NetworkBaseFragment extends BaseFragment implements OnNetw
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            onSuccessResponse(jsonObject, REQUEST_ID);
+                            //{ status:'fail',data:'user not existed.'}
+                            if(!jsonObject.getString("status").equals("fail")) {
+                                if(jsonObject.getString("type").equals("object")) {
+                                    onSuccessResponse(new JSONObject(jsonObject.getString("data")), REQUEST_ID);
+                                } else {
+                                    onSuccessResponse(new JSONArray(jsonObject.getString("data")), REQUEST_ID);
+                                }
+                            } else {
+                                onFailureResponse(response,jsonObject.getString("data"), REQUEST_ID);
+                            }
                         } catch (Exception e) {
                             onFailureResponse(response, e.getMessage(), REQUEST_ID);
-                        } finally {
-                            hideProgressDialog();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+
+                        hideProgressDialog();
                         try {
                             onFailureResponse( error, "", REQUEST_ID);
                         } catch (Exception e){
                             onFailureResponse(error, error.getMessage(), REQUEST_ID);
-                        } finally {
-                            hideProgressDialog();
                         }
                         //You can handle error here if you want
                     }

@@ -22,7 +22,7 @@
 
     <string name="login">Login</string>
     <string name="hint_password">Password</string>
-    <string name="email_or_mobile_number">Email or Mobile Number</string>
+    <string name="email_or_mobile_number">Mobile Number</string>
     <string name="forgot_your_password">Forgot Your Password</string>
     <string name="enter_mobile_number">Enter Mobile Number</string>
     <string name="forgot_password">FORGOT PASSWORD</string>

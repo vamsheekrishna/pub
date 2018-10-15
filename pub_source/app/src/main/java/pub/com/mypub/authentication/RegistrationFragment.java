@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -88,6 +89,11 @@ public class RegistrationFragment extends NetworkBaseFragment implements View.On
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
         Log.d("REQUEST_ID",REQUEST_ID+": "+response.toString());
         mListener.goToMyProfilePage(myProfile);
+    }
+
+    @Override
+    public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
+
     }
 
     @Override
