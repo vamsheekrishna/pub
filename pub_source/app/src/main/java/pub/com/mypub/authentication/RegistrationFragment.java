@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
@@ -24,8 +26,12 @@ public class RegistrationFragment extends NetworkBaseFragment implements View.On
     private String mParam1;
     private String mParam2;
 
+    EditText mETPhoneNo;
+    EditText mETPassword;
+    EditText mETRePassword;
+    boolean isValidated=true;
     private OnAuthenticationInteractionListener mListener;
-
+    MyProfile myProfile;
     public RegistrationFragment() {
         // Required empty public constructor
     }
@@ -52,8 +58,12 @@ public class RegistrationFragment extends NetworkBaseFragment implements View.On
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_registration, container, false);
-        view.findViewById(R.id.ok_button).setOnClickListener(this);
+        View view = inflater.inflate(R.layout.fragment_registration_1, container,
+                false);
+        mETPhoneNo =view.findViewById(R.id.phone_no);
+        mETPassword=view.findViewById(R.id.password);
+        mETRePassword=view.findViewById(R.id.re_password);
+        view.findViewById(R.id.but).setOnClickListener(this);
         return view;
     }
 
@@ -77,6 +87,7 @@ public class RegistrationFragment extends NetworkBaseFragment implements View.On
     @Override
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
         Log.d("REQUEST_ID",REQUEST_ID+": "+response.toString());
+        mListener.goToMyProfilePage(myProfile);
     }
 
     @Override
@@ -102,22 +113,37 @@ public class RegistrationFragment extends NetworkBaseFragment implements View.On
 
     @Override
     public void onClick(View v) {
+
         switch (v.getId()) {
-            case R.id.ok_button:
-                MyProfile myProfile = new MyProfile();
-                myProfile.mPhoneNumber = "8919251921";
-                myProfile.mName = "Vamshee";
-                myProfile.mEmail = "vamshee@gmail.com";
-                mListener.gotoValidateOTP(myProfile);
-                /*HashMap<String, String> parems = new HashMap<>();
-                parems.put("password", "7416226233");
-                parems.put("firstName", "vamshee");
-                parems.put("lastName", "krishna");
-                parems.put("email", "vamshee@gmail.com");
-                parems.put("address", "");
-                parems.put("pin", "");
-                stringAPIRequest(parems, Request.Method.POST, "http://faithindia.org/API/registration.php", "registration");*/
-                break;
+            case R.id.but:
+                if(isValidated == true)
+            {
+
+                String _password = mETPassword.getText().toString();
+                String _rePassword;
+                if(_password.equals( mETRePassword.getText().toString())) {
+                    Toast.makeText(getActivity(), "Register successfully ", Toast.LENGTH_LONG).show();
+                    myProfile = new MyProfile();
+                    myProfile.mPhoneNumber = mETPhoneNo.getText().toString();
+                    //myProfile.mName = "Vamshee";
+                    //myProfile.mEmail = "vamshee@gmail.com";
+                    myProfile.mPassword = _password;
+
+                    //mListener.gotoValidateOTP(myProfile);
+                    HashMap<String, String> parems = new HashMap<>();
+                    parems.put("password", myProfile.mPassword);
+                    parems.put("mobile_number", myProfile.mPhoneNumber);
+
+                    stringAPIRequest(parems, Request.Method.POST, "http://faithindia.org/vAm/my_events/api/login.php/insertUserData", "registration");
+                }
+                else {
+                    Toast.makeText(getActivity(), "password not matching", Toast.LENGTH_LONG).show();
+                }
+                /*
+
+                */
+
         }
+                break;
     }
-}
+}}

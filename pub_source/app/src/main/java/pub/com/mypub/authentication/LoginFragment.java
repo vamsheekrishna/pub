@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
@@ -22,7 +24,9 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
 
     private String mParam1;
     private String mParam2;
-
+    MyProfile myProfile;
+    EditText mETPhoneNo;
+    EditText mETPassword;
     private OnAuthenticationInteractionListener mListener;
 
     public LoginFragment() {
@@ -51,9 +55,12 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_login, container, false);
-        view.findViewById(R.id.new_account).setOnClickListener(this);
-        view.findViewById(R.id.ok_button).setOnClickListener(this);
+        View view =  inflater.inflate(R.layout.fragment_login_1, container, false);
+        view.findViewById(R.id.register).setOnClickListener(this);
+        view.findViewById(R.id.submit).setOnClickListener(this);
+
+        mETPhoneNo =view.findViewById(R.id.phone_no);
+        mETPassword=view.findViewById(R.id.password);
         return view;
     }
 
@@ -77,15 +84,19 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
     @Override
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
         Log.d("response: ","response: "+response);
+        Toast.makeText(getActivity(), "login successful", Toast.LENGTH_LONG).show();
+        mListener.goToMyProfilePage(myProfile);
     }
 
     @Override
     public void onFailureResponse(VolleyError response, String exception, String REQUEST_ID) {
+        Toast.makeText(getActivity(), "login Fail", Toast.LENGTH_LONG).show();
 
     }
 
     @Override
     public void onFailureResponse(String response, String exception, String REQUEST_ID) {
+        Toast.makeText(getActivity(), "login Fail", Toast.LENGTH_LONG).show();
 
     }
 
@@ -102,20 +113,23 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.new_account:
+            case R.id.register:
                 mListener.goToRegistrationPage();
                 break;
 
-            case R.id.forgot_password:
+            case R.id.forgot:
                 mListener.goToForgotPasswordPage();
                 break;
 
-            case R.id.ok_button:
+            case R.id.submit:
+                myProfile= new MyProfile();
+                myProfile.mPhoneNumber = mETPhoneNo.getText().toString();
+                myProfile.mPassword= mETPassword.getText().toString();
+
                 HashMap<String, String> parems = new HashMap<>();
-                parems.put("mobileNo", "9177244295");
-                parems.put("password", "1234566");
-                stringAPIRequest(parems, Request.Method.POST,"http://faithindia.org/API/login.php", "login");
+                parems.put("password", myProfile.mPassword);
+                parems.put("mobile_number", myProfile.mPhoneNumber);
+                stringAPIRequest(parems, Request.Method.POST, "http://faithindia.org/vAm/my_events/api/login.php/getLoginDetails", "login");
                 break;
-        }
+        }}
     }
-}

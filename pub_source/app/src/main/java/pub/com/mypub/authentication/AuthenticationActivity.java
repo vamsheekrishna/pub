@@ -38,6 +38,7 @@ public class AuthenticationActivity extends NetworkBaseActivity implements OnAut
     @Override
     public void goToMyProfilePage(MyProfile myProfile) {
         Toast.makeText(this, "goToMyProfilePage", Toast.LENGTH_SHORT).show();
+        addFragment(ProfileFragment.newInstance("", ""), true, true, ProfileFragment.class.getName());
     }
 
     @Override

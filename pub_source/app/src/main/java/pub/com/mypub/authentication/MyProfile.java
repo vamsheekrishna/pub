@@ -7,4 +7,5 @@ class MyProfile implements Serializable {
     public String mPhoneNumber;
     public String mName;
     public String mEmail;
+    public String mPassword;
 }

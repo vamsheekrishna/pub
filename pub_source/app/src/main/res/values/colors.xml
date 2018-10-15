@@ -10,4 +10,5 @@
     <color name="TextColor.White">#FFFFFF</color>
     <color name="color_text_hint">#999999</color>
 
+    <color name="log_text_color">#f7f7f9</color>
 </resources>
