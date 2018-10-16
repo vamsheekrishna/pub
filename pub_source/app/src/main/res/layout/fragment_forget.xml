@@ -1,0 +1,73 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/kk"
+    tools:context="pub.com.mypub.authentication.ForgetFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99ffffff"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true" >
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true" />
+
+        <ScrollView
+            android:id="@+id/ScrollView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/view"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="#99ffffff"
+            android:padding="25dp" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/member_login_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
+                    android:text="Forgot Password"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:typeface="monospace" />
+
+                <EditText
+                    style="@style/authentication_edit_text"
+                    android:id="@+id/email_edtext"
+                    android:hint="Enter Email ID"
+                    android:inputType="textEmailAddress"
+                  />
+
+
+
+                <Button
+                    style="@style/authentication_button_submit"
+                    android:id="@+id/send"
+                    android:text="Verify"
+                     />
+
+
+            </RelativeLayout>
+        </ScrollView>
+
+
+
+    </RelativeLayout>
+
+</FrameLayout>

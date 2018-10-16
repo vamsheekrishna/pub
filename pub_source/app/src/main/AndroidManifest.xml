@@ -14,20 +14,20 @@
         <activity
             android:name=".baseclasses.SplashScreen"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".baseclasses.BaseActivity" />
-        <activity android:name=".PubMainActivity"/>
-        <activity android:name=".authentication.AuthenticationActivity" >
+        <activity android:name=".PubMainActivity" />
+        <activity android:name=".authentication.AuthenticationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".authentication.NetworkBaseActivity"
-            android:label="@string/app_authentication_registration"/>
-        <activity android:name=".home.AllEvents" >
-        </activity>
+        <activity
+            android:name=".authentication.NetworkBaseActivity"
+            android:label="@string/app_authentication_registration" />
+        <activity android:name=".home.Home"></activity>
     </application>
 
 </manifest>

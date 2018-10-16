@@ -58,7 +58,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                >
 
                 <TextView
                     android:id="@+id/n1"
@@ -88,7 +88,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                >
 
                 <TextView
                     android:id="@+id/n2"
@@ -118,7 +118,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                >
 
                 <TextView
                     android:id="@+id/n3"
@@ -149,7 +149,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                >
 
                 <TextView
                     android:id="@+id/n4"
@@ -179,7 +179,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                >
 
                 <TextView
                     android:id="@+id/n5"
@@ -209,7 +209,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                >
 
                 <TextView
                     android:id="@+id/n6"
@@ -239,7 +239,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+               >
 
                 <TextView
                     android:id="@+id/n7"
@@ -263,11 +263,30 @@
                     android:textSize="17dp"/>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="0dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
             <Button
-                android:layout_width="300dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Lat/Long"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:id="@+id/b1"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="SAVE"
+                android:layout_gravity="center"
+                android:id="@+id/b2"/>
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

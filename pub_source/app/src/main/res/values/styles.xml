@@ -71,4 +71,32 @@
     </style>
     <!-- End OTP verification-->
 
+    <style name="authentication_edit_text">
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/edit_text</item>
+        <item name="android:ems">10</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+    <style name="authentication_content_bg">
+        <item name="android:background">@drawable/gradient_bg</item>
+        <item name="android:paddingTop">80dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="authentication_button_submit">
+        <item name="android:layout_marginStart">40dp</item>
+        <item name="android:layout_marginEnd">40dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/button_color</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">@drawable/login_but_bg</item>
+    </style>
+
+    <color name="blue" />
 </resources>

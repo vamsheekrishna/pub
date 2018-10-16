@@ -1,9 +1,11 @@
 package pub.com.mypub.authentication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import pub.com.mypub.R;
+import pub.com.mypub.home.Home;
 
 public class AuthenticationActivity extends NetworkBaseActivity implements OnAuthenticationInteractionListener{
 
@@ -27,11 +29,21 @@ public class AuthenticationActivity extends NetworkBaseActivity implements OnAut
 
     @Override
     public void goToForgotPasswordPage() {
+        addFragment(ForgetFragment.newInstance("", ""), true, true, ForgetFragment.class.getName());
 
     }
 
     @Override
     public void goToChangePasswordPage() {
+
+    }
+
+    @Override
+    public void goToForgetTask() {
+
+    }
+
+    {
 
     }
 
@@ -42,7 +54,16 @@ public class AuthenticationActivity extends NetworkBaseActivity implements OnAut
     }
 
     @Override
+    public void goToHomePage(MyProfile myProfile) {
+        Intent intent = new Intent(this,Home.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
     public void gotoValidateOTP(MyProfile myProfile) {
         addFragment(ValidateOTPFragment.newInstance(myProfile, ""), true, true, ValidateOTPFragment.class.getName());
     }
+
+
 }

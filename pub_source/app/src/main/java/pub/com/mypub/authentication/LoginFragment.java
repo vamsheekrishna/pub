@@ -1,6 +1,8 @@
 package pub.com.mypub.authentication;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,6 +53,7 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        getActivity().setTitle("Login");
     }
 
     @Override
@@ -60,6 +63,7 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
         View view =  inflater.inflate(R.layout.fragment_login_1, container, false);
         view.findViewById(R.id.register).setOnClickListener(this);
         view.findViewById(R.id.submit).setOnClickListener(this);
+        view.findViewById(R.id.forgot).setOnClickListener(this);
 
         mETPhoneNo =view.findViewById(R.id.phone_no);
         mETPassword=view.findViewById(R.id.password);
@@ -89,7 +93,7 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
         Toast.makeText(getActivity(), "login successful", Toast.LENGTH_LONG).show();
         try {
             myProfile.mProfileID = response.getString("id");
-            mListener.goToMyProfilePage(myProfile);
+            mListener.goToHomePage(myProfile);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -103,14 +107,29 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
 
     @Override
     public void onFailureResponse(VolleyError response, String exception, String REQUEST_ID) {
+        showDaialog (exception);
         Toast.makeText(getActivity(), "login Fail " + exception, Toast.LENGTH_LONG).show();
 
     }
 
     @Override
     public void onFailureResponse(String response, String exception, String REQUEST_ID) {
+        showDaialog (exception);
         Toast.makeText(getActivity(), "login Fail "+ exception, Toast.LENGTH_LONG).show();
 
+    }
+    public void showDaialog(String exception)
+    {
+        new AlertDialog.Builder(getContext())
+                .setTitle("Error Alert")
+                .setMessage(exception)
+                .setCancelable(false)
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
     }
 
     @Override

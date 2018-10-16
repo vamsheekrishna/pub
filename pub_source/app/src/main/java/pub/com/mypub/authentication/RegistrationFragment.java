@@ -65,6 +65,7 @@ public class RegistrationFragment extends NetworkBaseFragment implements View.On
         mETPassword=view.findViewById(R.id.password);
         mETRePassword=view.findViewById(R.id.re_password);
         view.findViewById(R.id.but).setOnClickListener(this);
+        getActivity().setTitle("Registration");
         return view;
     }
 

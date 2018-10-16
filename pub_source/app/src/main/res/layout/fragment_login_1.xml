@@ -7,9 +7,7 @@
     android:id="@+id/body">
 
     <RelativeLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/authentication_content_bg"
         >
 
         <LinearLayout
@@ -18,38 +16,18 @@
             android:layout_gravity="center"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingTop="80dp"
             >
             <EditText
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:id="@+id/phone_no"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_text"
-                android:ems="10"
-                android:padding="16dp"
-                android:fontFamily="@android:string/emptyPhoneNumber"
-                android:hint="@string/email_or_mobile_number"
+                style="@style/authentication_edit_text"
                 android:inputType="number"
-                android:text=""
-                tools:layout_editor_absoluteX="70dp"
-                tools:layout_editor_absoluteY="66dp" />
+                android:id="@+id/phone_no"
+                android:hint="@string/email_or_mobile_number" />
 
             <EditText
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
+                style="@style/authentication_edit_text"
+                android:hint="@string/password"
                 android:id="@+id/password"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/edit_text"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPassword"
-                tools:layout_editor_absoluteX="70dp"
-                tools:layout_editor_absoluteY="139dp" />
+                android:inputType="textPassword"/>
 
 
 
@@ -64,16 +42,9 @@
             android:orientation="vertical">
 
             <Button
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
+                style="@style/authentication_button_submit"
+                android:text="@string/submit"
                 android:id="@+id/submit"
-                android:padding="1dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:textColor="@color/log_text_color"
-                android:text="submit"
-                android:textSize="20sp"
                 />
 
             <LinearLayout
