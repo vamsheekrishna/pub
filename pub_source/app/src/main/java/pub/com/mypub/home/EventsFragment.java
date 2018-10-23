@@ -13,10 +13,10 @@ import android.view.ViewGroup;
 import pub.com.mypub.R;
 
 
-public class EventsFragment extends Fragment implements View.OnClickListener{
+public class EventsFragment extends Fragment implements View.OnClickListener, RecycleItemClickListener{
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    RecycleItemClickListener recycleItemClickListener;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -52,14 +52,13 @@ public class EventsFragment extends Fragment implements View.OnClickListener{
         //view.findViewById(R.id.book).setOnClickListener(this);
         getActivity().setTitle("Events");
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.event_list);
-
-        EventListAdapter mAdapter = new EventListAdapter();
+        recycleItemClickListener = this;
+        EventListAdapter mAdapter = new EventListAdapter(recycleItemClickListener);
+        RecyclerView recyclerView = view.findViewById(R.id.event_list);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-
 
         return view;
     }
@@ -91,5 +90,10 @@ public class EventsFragment extends Fragment implements View.OnClickListener{
 
 
         }
+    }
+
+    @Override
+    public void onItemClick(View v) {
+        mListener.goToEventsDetailsFragment();
     }
 }

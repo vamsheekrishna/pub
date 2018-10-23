@@ -9,13 +9,17 @@ import android.view.ViewGroup;
 import pub.com.mypub.R;
 
 public class EventListAdapter extends RecyclerView.Adapter<EventObject> {
+    RecycleItemClickListener mListener;
+    EventListAdapter(RecycleItemClickListener listener) {
+        mListener = listener;
+    }
     @NonNull
     @Override
     public EventObject onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.event_list_row, viewGroup, false);
-
-        return new EventObject(itemView);
+        EventObject eventObject = new EventObject(itemView, mListener);
+        return eventObject;
     }
 
     @Override
