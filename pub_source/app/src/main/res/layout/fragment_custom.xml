@@ -4,16 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
+   android:layout_marginTop="50dp"
     tools:context=".authentication.CustomDialogFragment">
 
     <ImageView
+        android:src="@drawable/network"
+        android:scaleType="fitCenter"
+        android:layout_height="400dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerInside"
-        android:src="@drawable/pub_image"/>
+        android:id="@+id/frameImage"
+        android:layout_gravity="center"
+        android:clickable="true"
+        />
     <RelativeLayout
-        android:layout_gravity="bottom"
+        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="vertical">
@@ -21,31 +25,36 @@
             android:layout_alignParentTop="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/TextColor.White"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
             android:id="@+id/network_info_text"
-            android:text="@string/check_network_status" />
-        <android.support.v7.widget.AppCompatButton
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="@string/cancel"
-            android:textSize="20sp"
-            android:id="@+id/app_close_button"
-            android:textColor="@color/colorBackground"
-            android:background="@android:color/transparent"
-            android:layout_alignParentBottom="true"
-            android:textStyle="bold"/>
+            android:text="@string/check_network_status"
+            />
+
         <ProgressBar
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/network_progress_bar"
+
             />
 
     </RelativeLayout>
+    <android.support.v7.widget.AppCompatButton
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/cancel"
+        android:textSize="20sp"
+        android:id="@+id/app_close_button"
+        android:textColor="#5076CD "
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"/>
 </FrameLayout>

@@ -1,0 +1,76 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pub.com.mypub.home.AddEventFragment">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/card_margin"
+        android:elevation="3dp"
+        card_view:cardCornerRadius="@dimen/card_album_radius">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_bg"
+            >
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/title"
+                android:text="GA phase1"
+                android:textSize="25dp"
+                android:textColor= "#8655CB  "/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/price"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="3,000"
+                android:textSize="15dp"
+                android:layout_below="@+id/title"
+                android:padding="10dp"
+                android:textColor= "#AB3D24"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/add"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="ADD"
+                android:textSize="15dp"
+                android:layout_below="@+id/detail"
+                android:padding="10dp"
+                android:layout_marginLeft="300dp"
+                android:textColor= "#AB3D24"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail1"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory."
+                android:textColor="@android:color/black"
+                android:textSize="12dp"
+                android:layout_below="@+id/price"
+                android:padding="15dp"
+                />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</FrameLayout>

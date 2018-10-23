@@ -47,6 +47,7 @@
     <string name="firebase_user_management">Firebase User Management</string>
     <string name="password">Password</string>
     <string name="enter_phone_number">Enter phone number</string>
+    <string name="enter_current_password">Enter_Current_password</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="re_enter_your_password">Re enter your password</string>
     <string name="register">Register</string>

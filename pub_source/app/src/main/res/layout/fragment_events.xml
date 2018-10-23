@@ -5,11 +5,100 @@
     android:background="@android:color/transparent"
     tools:context="pub.com.mypub.home.EventsFragment">
 
-    <LinearLayout
-        android:background="@android:color/transparent"
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_margin="@dimen/card_margin"
+        android:elevation="3dp"
+        card_view:cardCornerRadius="@dimen/card_album_radius">
 
-    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_bg"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rr"
+            android:src="@drawable/event"
+            android:layout_marginTop="10dp"
+            />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/date"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    android:text="OCT"
+    android:textColor= "#3689CE  "
+    android:textSize="20dp"
+    android:layout_below="@+id/rr"
+    android:layout_marginLeft="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/date1"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="27"
+            android:textColor="@android:color/black"
+            android:textSize="20dp"
+            android:layout_below="@+id/date"
+            android:layout_marginLeft="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/date2"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="SAT"
+            android:textColor="@android:color/black"
+            android:textSize="20dp"
+            android:layout_below="@+id/date1"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/event"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="Dancing Event"
+            android:textSize="25dp"
+            android:layout_below="@+id/rr"
+            android:layout_toRightOf="@+id/date"
+            android:padding="10dp"
+            android:layout_marginLeft="40dp"
+            android:textColor= "#AB3D24"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="G.M.C Balayogi:Hydwrabad"
+            android:textColor="@android:color/black"
+            android:textSize="12dp"
+            android:layout_below="@+id/event"
+            android:layout_toRightOf="@+id/date"
+            android:padding="10dp"
+            android:layout_marginLeft="40dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rr"
+            android:layout_toRightOf="@+id/detail"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:text="Book"
+            android:textColor="#5076CD "
+            android:background="#CAF3F5  "
+            android:id="@+id/book"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 </FrameLayout>

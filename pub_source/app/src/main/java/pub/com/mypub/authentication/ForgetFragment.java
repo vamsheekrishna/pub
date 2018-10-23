@@ -1,6 +1,8 @@
 package pub.com.mypub.authentication;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,10 +14,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
 
 import pub.com.mypub.R;
 
@@ -26,8 +32,9 @@ public class ForgetFragment extends NetworkBaseFragment  implements View.OnClick
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-   EditText emailId;
+   EditText mPhoneNumber;
    Button send;
+    MyProfile myProfile;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -55,6 +62,8 @@ public class ForgetFragment extends NetworkBaseFragment  implements View.OnClick
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+            getActivity().setTitle("Forgot Password");
         }
     }
 
@@ -64,7 +73,7 @@ public class ForgetFragment extends NetworkBaseFragment  implements View.OnClick
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_forget, container,
                 false);
-        emailId= view.findViewById(R.id.email_edtext);
+        mPhoneNumber= view.findViewById(R.id.phone_edtext);
        view.findViewById(R.id.send).setOnClickListener(this);
         return view;
     }
@@ -91,23 +100,44 @@ public class ForgetFragment extends NetworkBaseFragment  implements View.OnClick
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
         Log.d("response: ", "response: " + response);
 
-        Toast.makeText(getActivity(), "send successful", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "save successful", Toast.LENGTH_LONG).show();
+        try {
+            myProfile.mProfileID = response.getString("id");
+            mListener.goToChangePasswordPage(myProfile);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
-        Toast.makeText(getActivity(), "send successful", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "save successful", Toast.LENGTH_LONG).show();
 
     }
 
     @Override
     public void onFailureResponse(VolleyError response, String exception, String REQUEST_ID) {
+        showDaialog (exception);
         Toast.makeText(getActivity(), "Re Try",
                 Toast.LENGTH_SHORT).show();
     }
 
+    private void showDaialog(String exception) {
+        new AlertDialog.Builder(getContext())
+                .setTitle("Error Alert")
+                .setMessage(exception)
+                .setCancelable(false)
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
+    }
+
     @Override
     public void onFailureResponse(String response, String exception, String REQUEST_ID) {
+        showDaialog (exception);
         Toast.makeText(getActivity(), "Re Try",
                 Toast.LENGTH_SHORT).show();
     }
@@ -117,16 +147,15 @@ public class ForgetFragment extends NetworkBaseFragment  implements View.OnClick
         switch (v.getId()) {
 
             case R.id.send:
-                String getEmailId = emailId.getText().toString();
+                String getphoneId = mPhoneNumber.getText().toString();
+                myProfile= new MyProfile();
+                myProfile.mPhoneNumber = getphoneId;
 
-                if (getEmailId.equals("") && getEmailId.length() > 0 && getEmailId.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"))
-                {
-                Toast.makeText(getActivity(), "send successful", Toast.LENGTH_LONG).show();
-            }
+                //
+                HashMap<String, String> parems = new HashMap<>();
+                parems.put("mobile_number", myProfile.mPhoneNumber);
+                stringAPIRequest(parems, Request.Method.POST, "http://faithindia.org/vAm/my_events/api/login.php/getLoginDetails", "login");
 
-                else
-                    Toast.makeText(getActivity(), "Re Try",
-                            Toast.LENGTH_SHORT).show();
                 break;
 
         }
@@ -144,3 +173,11 @@ public class ForgetFragment extends NetworkBaseFragment  implements View.OnClick
 
     }
 }
+ /* if (getEmailId.equals("") && getEmailId.length() > 0 && getEmailId.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"))
+                {
+                Toast.makeText(getActivity(), "send successful", Toast.LENGTH_LONG).show();
+            }
+
+                else
+                    Toast.makeText(getActivity(), "Re Try",
+                            Toast.LENGTH_SHORT).show();*/

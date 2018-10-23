@@ -89,8 +89,8 @@
     </style>
 
     <style name="authentication_button_submit">
-        <item name="android:layout_marginStart">40dp</item>
-        <item name="android:layout_marginEnd">40dp</item>
+        <item name="android:layout_marginStart">60dp</item>
+        <item name="android:layout_marginEnd">60dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/button_color</item>

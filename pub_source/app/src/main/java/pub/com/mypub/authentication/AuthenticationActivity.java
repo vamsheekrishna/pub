@@ -36,6 +36,7 @@ public class AuthenticationActivity extends NetworkBaseActivity implements OnAut
     @Override
     public void goToChangePasswordPage() {
 
+
     }
 
     @Override
@@ -63,6 +64,12 @@ public class AuthenticationActivity extends NetworkBaseActivity implements OnAut
     @Override
     public void gotoValidateOTP(MyProfile myProfile) {
         addFragment(ValidateOTPFragment.newInstance(myProfile, ""), true, true, ValidateOTPFragment.class.getName());
+    }
+
+    @Override
+    public void goToChangePasswordPage(MyProfile myProfile) {
+        addFragment(Fforgot_1Fragment.newInstance("", ""), true, true, Fforgot_1Fragment.class.getName());
+
     }
 
 

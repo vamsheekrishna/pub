@@ -4,4 +4,5 @@ interface OnHomeInteractionListener {
     void goToMyProfile();
     void goToEvent();
     void goToChangePassword();
+    void goToEventsDetailsFragment();
 }

@@ -6,65 +6,61 @@
     tools:context="pub.com.mypub.authentication.ForgetFragment">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#99ffffff"
-        android:descendantFocusability="beforeDescendants"
-        android:focusableInTouchMode="true" >
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentTop="true" />
-
-        <ScrollView
-            android:id="@+id/ScrollView"
+       android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_bg"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/nn1"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/rr"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:id="@+id/t1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/view"
+            android:text="Forgot Password"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:background="#99ffffff"
-            android:padding="25dp" >
+            android:layout_marginTop="110dp"/>
 
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/member_login_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="50dp"
-                    android:text="Forgot Password"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:typeface="monospace" />
-
-                <EditText
-                    style="@style/authentication_edit_text"
-                    android:id="@+id/email_edtext"
-                    android:hint="Enter Email ID"
-                    android:inputType="textEmailAddress"
-                  />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="180dp"
+            >
 
 
 
-                <Button
-                    style="@style/authentication_button_submit"
-                    android:id="@+id/send"
-                    android:text="Verify"
-                     />
+
+            <EditText
+                android:id="@+id/phone_edtext"
+                style="@style/authentication_edit_text"
+                android:hint="Enter phone No"
+                android:inputType="number"
+
+                />
 
 
-            </RelativeLayout>
-        </ScrollView>
+            <Button
+                android:id="@+id/send"
+                style="@style/authentication_button_submit"
+                android:text="Verify"
+                android:layout_marginTop="20dp"
+                />
+
+
+        </LinearLayout>
+
 
 
 

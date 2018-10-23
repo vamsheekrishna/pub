@@ -1,0 +1,88 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pub.com.mypub.home.ConfirmDateTimeFragment">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/card_margin"
+        android:elevation="3dp"
+        card_view:cardCornerRadius="@dimen/card_album_radius">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_bg"
+            >
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/event"
+                android:textAlignment="center"
+                android:text="Confirm Date and Time"
+                android:textSize="25dp"
+                android:textColor= "#8655CB  "
+                android:paddingBottom="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sat 27 Oct"
+                android:layout_below="@+id/event"
+                android:layout_toRightOf="@+id/detee"
+                android:layout_marginLeft="40dp"
+                android:textSize="30dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/k"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detee"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="Date"
+                android:textSize="30dp"
+                android:layout_below="@+id/event"
+                android:padding="10dp"
+                android:textColor= "#AB3D24"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/price"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="Time"
+                android:textSize="30dp"
+                android:layout_below="@+id/detee"
+                android:padding="10dp"
+                android:textColor= "#AB3D24"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6:00 PM"
+                android:layout_below="@+id/k"
+                android:layout_toRightOf="@+id/price"
+                android:layout_marginLeft="40dp"
+                android:textSize="30dp"
+                android:layout_marginTop="15dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/price"
+                android:text="Book"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</FrameLayout>

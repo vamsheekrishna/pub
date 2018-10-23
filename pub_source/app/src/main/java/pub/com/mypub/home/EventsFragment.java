@@ -8,9 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import pub.com.mypub.R;
+import com.android.volley.Request;
 
-public class EventsFragment extends Fragment {
+import java.util.HashMap;
+
+import pub.com.mypub.R;
+//import pub.com.mypub.authentication.MyProfile;
+
+public class EventsFragment extends Fragment implements View.OnClickListener{
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -46,7 +51,7 @@ public class EventsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
-
+        view.findViewById(R.id.book).setOnClickListener(this);
         getActivity().setTitle("Events");
         return view;
     }
@@ -69,4 +74,14 @@ public class EventsFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.book:
+                mListener.goToEventsDetailsFragment();
+                break;
+
+
+        }
+    }
 }

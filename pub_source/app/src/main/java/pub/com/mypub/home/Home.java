@@ -29,4 +29,9 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
     public void goToChangePassword() {
 
     }
+
+    @Override
+    public void goToEventsDetailsFragment() {
+        addFragment(EventsDetailsFragment.newInstance("",""),true,true,EventsDetailsFragment.class.getName());
+    }
 }
