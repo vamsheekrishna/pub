@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
 
 public class RegistrationFragment extends NetworkBaseFragment implements View.OnClickListener {
@@ -141,7 +142,7 @@ public class RegistrationFragment extends NetworkBaseFragment implements View.On
                     parems.put("password", myProfile.mPassword);
                     parems.put("mobile_number", myProfile.mPhoneNumber);
 
-                    stringAPIRequest(parems, Request.Method.POST, "http://faithindia.org/vAm/my_events/api/login.php/insertUserData", "registration");
+                    stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"login.php/insertUserData", "registration");
                 }
                 else {
                     Toast.makeText(getActivity(), "password not matching", Toast.LENGTH_LONG).show();

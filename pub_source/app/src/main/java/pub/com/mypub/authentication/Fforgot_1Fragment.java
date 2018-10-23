@@ -18,6 +18,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
 
 /**
@@ -123,7 +124,7 @@ public class Fforgot_1Fragment extends NetworkBaseFragment implements View.OnCli
                         HashMap<String, String> parems = new HashMap<>();
                         parems.put("password", myProfile.mPassword);
 
-                        stringAPIRequest(parems, Request.Method.POST, "http://faithindia.org/vAm/my_events/api/login.php/insertUserData", "registration");
+                        stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"login.php/insertUserData", "registration");
                     }
                     else {
                         Toast.makeText(getActivity(), "password not matching", Toast.LENGTH_LONG).show();

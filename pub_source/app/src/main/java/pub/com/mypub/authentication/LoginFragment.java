@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
 
 public class LoginFragment extends NetworkBaseFragment implements View.OnClickListener{
@@ -161,7 +162,7 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
                 HashMap<String, String> parems = new HashMap<>();
                 parems.put("password", myProfile.mPassword);
                 parems.put("mobile_number", myProfile.mPhoneNumber);
-                stringAPIRequest(parems, Request.Method.POST, "http://faithindia.org/vAm/my_events/api/login.php/getLoginDetails", "login");
+                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"login.php/getLoginDetails", "login");
                 break;
         }}
     }

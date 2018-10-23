@@ -1,19 +1,17 @@
 package pub.com.mypub.home;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.volley.Request;
-
-import java.util.HashMap;
-
 import pub.com.mypub.R;
-//import pub.com.mypub.authentication.MyProfile;
+
 
 public class EventsFragment extends Fragment implements View.OnClickListener{
     private static final String ARG_PARAM1 = "param1";
@@ -51,8 +49,18 @@ public class EventsFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
-        view.findViewById(R.id.book).setOnClickListener(this);
+        //view.findViewById(R.id.book).setOnClickListener(this);
         getActivity().setTitle("Events");
+
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.event_list);
+
+        EventListAdapter mAdapter = new EventListAdapter();
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+
+
         return view;
     }
 

@@ -23,6 +23,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
 
 
@@ -154,7 +155,7 @@ public class ForgetFragment extends NetworkBaseFragment  implements View.OnClick
                 //
                 HashMap<String, String> parems = new HashMap<>();
                 parems.put("mobile_number", myProfile.mPhoneNumber);
-                stringAPIRequest(parems, Request.Method.POST, "http://faithindia.org/vAm/my_events/api/login.php/getLoginDetails", "login");
+                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"login.php/getLoginDetails", "login");
 
                 break;
 
