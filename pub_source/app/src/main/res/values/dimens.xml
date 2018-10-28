@@ -20,4 +20,7 @@
     <dimen name="ic_album_overflow_width">20dp</dimen>
     <dimen name="ic_album_overflow_height">30dp</dimen>
     <dimen name="ic_album_overflow_margin_top">10dp</dimen>
+    <dimen name="pub_item_event_name_font">18sp</dimen>
+    <dimen name="pub_item_location_name_font">12sp</dimen>
+    <dimen name="pub_item_rs_font">10sp</dimen>
 </resources>

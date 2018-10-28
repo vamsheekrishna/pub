@@ -98,5 +98,4 @@
         <item name="android:background">@drawable/login_but_bg</item>
     </style>
 
-    <color name="blue" />
 </resources>

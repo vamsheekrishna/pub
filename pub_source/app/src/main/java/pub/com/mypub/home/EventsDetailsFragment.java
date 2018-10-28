@@ -4,9 +4,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.Objects;
 
 import pub.com.mypub.R;
 
@@ -47,7 +51,13 @@ public class EventsDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_events_details, container, false);
+        View view = inflater.inflate(R.layout.sample_collapse, container, false);
+        ViewPager viewPager = view.findViewById(R.id.pager_container);
+        NestedScrollView scrollView = view.findViewById (R.id.nest_scrollview);
+        scrollView.setFillViewport (true);
+        EventHeaderPageAdapter eventHeaderPageAdapter = new EventHeaderPageAdapter(getContext(),new int[]{R.drawable.bg_1, R.drawable.beer_image,R.drawable.test});
+        viewPager.setAdapter(eventHeaderPageAdapter);
+        return view;
     }
 
 
