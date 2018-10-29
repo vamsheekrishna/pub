@@ -3,14 +3,16 @@ package pub.com.mypub.authentication;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import android.widget.CheckBox;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 
@@ -23,6 +25,9 @@ import java.util.HashMap;
 import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
 
+import static android.content.Context.MODE_PRIVATE;
+
+
 public class LoginFragment extends NetworkBaseFragment implements View.OnClickListener{
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -32,7 +37,12 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
     MyProfile myProfile;
     EditText mETPhoneNo;
     EditText mETPassword;
-    private OnAuthenticationInteractionListener mListener;
+    CheckBox saveLoginCheckBox;
+    SharedPreferences loginPreferences;
+    SharedPreferences.Editor loginPrefsEditor;
+    boolean saveLogin;
+    OnAuthenticationInteractionListener mListener;
+    public boolean value;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -68,8 +78,21 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
 
         mETPhoneNo =view.findViewById(R.id.phone_no);
         mETPassword=view.findViewById(R.id.password);
+        saveLoginCheckBox = view.findViewById(R.id.saveLoginCheckBox);
+        loginPreferences = getActivity().getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginPrefsEditor = loginPreferences.edit();
+
+        saveLogin = loginPreferences.getBoolean("saveLogin",false);
+        if (saveLogin) {
+            mETPhoneNo.setText(loginPreferences.getString("phoneNo", ""));
+            mETPassword.setText(loginPreferences.getString("password", ""));
+            saveLoginCheckBox.setChecked(true);
+        }
         return view;
+
+
     }
+
 
     @Override
     public void onAttach(Context context) {
@@ -155,6 +178,19 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
                 break;
 
             case R.id.submit:
+                InputMethodManager imm = (InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(mETPhoneNo.getWindowToken(), 0);
+                if (saveLoginCheckBox.isChecked()) {
+                    loginPrefsEditor.putBoolean("saveLogin", true);
+                    loginPrefsEditor.putString("phoneNo", mETPhoneNo.getText().toString());
+                    loginPrefsEditor.putString("password",mETPassword.getText().toString());
+                    loginPrefsEditor.commit();
+                } else {
+                    loginPrefsEditor.clear();
+                    loginPrefsEditor.commit();
+                }
+
+
                 myProfile= new MyProfile();
                 myProfile.mPhoneNumber = mETPhoneNo.getText().toString();
                 myProfile.mPassword= mETPassword.getText().toString();

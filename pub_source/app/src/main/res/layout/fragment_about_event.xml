@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/TextColor.White"
+    android:layout_margin="8dp"
+    android:padding="8dp"
+    app:layout_constraintCircleRadius="@dimen/card_album_radius"
+    tools:ignore="MissingDefaultResource">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:padding="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+
+            <LinearLayout
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/date_layout"
+                android:layout_toStartOf="@+id/view_right"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/loginlayout"
+                android:id="@+id/l">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event"
+                    android:textSize="@dimen/pub_item_event_name_font"
+                    android:text="NOTE"
+                    android:textColor= "#AB3D24"
+                    android:layout_marginRight="150dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/detail"
+                    android:textSize="@dimen/pub_item_location_name_font"
+                    android:text="Sunburn Festival 2018 Early Bird phase 1tickets Sold Out: 'EARLY BIRD PHASE2 IS LIVE FOR A LIMITED PERIOD, HURRY!"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/amount"
+                    android:textSize="@dimen/pub_item_rs_font"
+                    android:text="Sunburn Festival 2018 is a 3ndays festival from the 29th till the 31st of December 2018."
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="20dp"/>
+
+            </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/l"
+                    android:layout_marginTop="10dp"
+                    android:text="The Sunburn festival is back with its 12th edition! Experience the best of dance music from across the globe at the Sunburn Festival 2018!"
+                    android:id="@+id/t1"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/t1"
+                android:text="Sunburn is amongst the world's biggest music festivals. In the past eleven years of its existence, Sunburn has brought together renowned Indian and international artists to entertain hundreds of thousands of dance music lovers through its various formats that reach out to fans across India &amp; Asia. Sunburn caters to a wide Indian and International audience and has positioned India as a prime dance festival destination to the world."
+android:layout_marginTop="10dp"
+                />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

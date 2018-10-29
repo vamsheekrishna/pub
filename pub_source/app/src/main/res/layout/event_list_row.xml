@@ -3,6 +3,7 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_gravity="center"
     android:layout_width="wrap_content"
@@ -10,7 +11,8 @@
     android:background="@color/TextColor.White"
     android:layout_margin="8dp"
     android:padding="8dp"
-    app:layout_constraintCircleRadius="@dimen/card_album_radius">
+    app:layout_constraintCircleRadius="@dimen/card_album_radius"
+    tools:ignore="MissingDefaultResource">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
