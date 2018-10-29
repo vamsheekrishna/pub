@@ -3,6 +3,7 @@ package pub.com.mypub.home;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,10 +14,11 @@ import android.view.ViewGroup;
 import pub.com.mypub.R;
 
 
-public class EventsFragment extends Fragment implements View.OnClickListener, RecycleItemClickListener{
+public class EventsFragment extends Fragment implements View.OnClickListener, RecycleItemClickListener, SwipeRefreshLayout.OnRefreshListener{
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     RecycleItemClickListener recycleItemClickListener;
+    SwipeRefreshLayout mSwipeRefreshLayout;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -51,6 +53,12 @@ public class EventsFragment extends Fragment implements View.OnClickListener, Re
         View view = inflater.inflate(R.layout.fragment_events, container, false);
         //view.findViewById(R.id.book).setOnClickListener(this);
         getActivity().setTitle("Events");
+        mSwipeRefreshLayout = view.findViewById(R.id.simpleSwipeRefreshLayout);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
+                android.R.color.holo_green_dark,
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_blue_dark);
 
         recycleItemClickListener = this;
         EventListAdapter mAdapter = new EventListAdapter(recycleItemClickListener);
@@ -95,5 +103,15 @@ public class EventsFragment extends Fragment implements View.OnClickListener, Re
     @Override
     public void onItemClick(View v) {
         mListener.goToEventsDetailsFragment();
+    }
+
+    @Override
+    public void onRefresh() {
+        loadRecyclerViewData();
+        mSwipeRefreshLayout.setRefreshing(false);
+    }
+
+    private void loadRecyclerViewData() {
+
     }
 }
