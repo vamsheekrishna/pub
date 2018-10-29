@@ -37,19 +37,45 @@
                 android:layout_gravity="center_horizontal" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
+
+        <!--<android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="?attr/colorPrimary" />-->
+
     </android.support.design.widget.AppBarLayout>
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/nest_scrollview"
+
+    <pub.com.mypub.customview.MyNestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
+        android:id="@+id/scroll_view"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/activity_main_viewpager"
+        <LinearLayout
+            android:id="@+id/lin"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+            <android.support.design.widget.TabLayout
+                android:id="@+id/sliding_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabMode="fixed" />
+            <pub.com.mypub.customview.WrapContentHeightViewPager
+                android:id="@+id/detail_fragment_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <!--<android.support.v4.view.PagerTabStrip
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"/>-->
+            </pub.com.mypub.customview.WrapContentHeightViewPager>
+        </LinearLayout>
 
 
-    </android.support.v4.widget.NestedScrollView>
+    </pub.com.mypub.customview.MyNestedScrollView>
+
+
 </android.support.design.widget.CoordinatorLayout>
