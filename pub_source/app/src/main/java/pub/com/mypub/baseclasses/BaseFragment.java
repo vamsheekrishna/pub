@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 public abstract class BaseFragment extends Fragment implements OnBaseAppListener{
 
-
+    public String fragmentName = "Default";
     public BaseFragment() {
         // Required empty public constructor
     }
@@ -21,4 +21,10 @@ public abstract class BaseFragment extends Fragment implements OnBaseAppListener
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+    public String getTitle() {
+        return fragmentName;
+    }
+    public void setTitle(String name) {
+        fragmentName = name;
+    }
 }

@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import pub.com.mypub.R;
 import pub.com.mypub.home.Home;
+import pub.com.mypub.home.VedioFragment;
 
 public class AuthenticationActivity extends NetworkBaseActivity implements OnAuthenticationInteractionListener{
 
@@ -71,6 +72,8 @@ public class AuthenticationActivity extends NetworkBaseActivity implements OnAut
         addFragment(Fforgot_1Fragment.newInstance("", ""), true, true, Fforgot_1Fragment.class.getName());
 
     }
+
+
 
 
 }

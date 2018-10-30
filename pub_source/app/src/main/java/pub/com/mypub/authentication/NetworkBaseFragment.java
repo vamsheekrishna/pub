@@ -25,7 +25,6 @@ import pub.com.mypub.baseclasses.BaseFragment;
 public abstract class NetworkBaseFragment extends BaseFragment implements OnNetworkInteractionListener {
 
     private CustomDialogFragment customFragment;
-
     @Override
     public void showProgressDialog(boolean isShowCancelButton, String string) {
         FragmentTransaction ft = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
@@ -108,4 +107,5 @@ public abstract class NetworkBaseFragment extends BaseFragment implements OnNetw
         requestQueue.add(stringRequest);
         Log.i("req", "req" + requestQueue);
     }
+
 }

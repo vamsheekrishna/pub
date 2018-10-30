@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/TextColor.White"
+    android:layout_margin="8dp"
+    android:padding="8dp"
+    app:layout_constraintCircleRadius="@dimen/card_album_radius"
+    tools:ignore="MissingDefaultResource">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarAlwaysDrawHorizontalTrack="true">
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/l">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event"
+                    android:text="T And C"
+                    android:textColor= "#AB3D24"
+                    android:textSize="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/detail"
+                    android:textSize="15dp"
+                    android:text="Age limit: 15+.
+Entry permitted for age 15 years and above only.
+The event is subject to government permissions. In case the permissions are not granted and event is cancelled, a full refund shall be immediately issued to all patrons.
+A physical ticket will be issued at the venue box office on the day of the event in exchange for your e-ticket purchase confirmation from bookmyshow.com. Please carry valid photo id for verification of the ticket holder name along with your e-ticket print out.
+A ticket shall not be a valid ticket if the barcode or hologram has been tampered with.
+No refund on a purchased ticket is possible, even in case of any rescheduling.
+Unlawful resale (or attempted unlawful resale) of a ticket would lead to seizure or cancellation of that ticket without refund or other compensation.
+Duplicate tickets will not be issued for lost or stolen tickets.
+Each ticket admits one person only.
+This is a wrist-band access festival. In case wrist-bands are taken off, a replacement wrist-band will not be issued.
+Wristbands removed or tampered with will be rendered invalid and WILL NOT be replaced.
+No re-entry is permitted for the entire period of the event. Wrist bands will be cut by the security team in case a customer wishes to exit the venue during the period of the event.
+Alcohol will be served to guests above the legal drinking age (LDA) and on display of valid age proof. LDA bands will be provided at the venue on proof of age.
+Artist line-up and billed attractions may be subject to change.
+Organizers reserve the right to perform security checks on invitees/members of the audience at the entry point for security reasons.
+Organizers or any of its agents, officers, employees shall not be responsible for any injury, damage, theft, losses or cost suffered at or as a result of the event of any part of it.
+Parking near or at the festival premises is at the risk of the vehicle owner. Organizer will not hold responsibility for any damage or theft of any vehicles within the stipulated parking premises of the festival.
+Consumption and sale of illegal substances is strictly prohibited.
+Professional cameras, any form of recording instruments, arms and ammunition, eatables, bottled water, beverages, alcohol are not allowed from outside the festival. Food and beverages will be available inside the festival.
+This ticket permits entry to the festival grounds only. Any Pre or After parties may have other ticketing requirements and may be sold separately.
+Rights of admission reserved, even to valid ticket holders.
+Organizers are not responsible for any negative effects of food items or drinks consumed in the venue by festival guests; Sunburn encourages guests to drink responsibly and in moderation.
+Persons suspected of carrying items that may be used in an offensive or dangerous manner, or carrying out illegal activities within the site may be searched.
+First aid/medical facilities will be provided, however, the organizers do not take any responsibility for any problems arising.
+Any disputes to be settled under Mumbai jurisdiction courts only.
+The holder of this ticket hereby grants organizers the right to use, in perpetuity, all or any part of the recording of any tape made of holder`s appearance on any channel for broadcast in any and all media globally and for advertising, publicity and promotion relating hereto.
+The organizers reserve the right without refund or other recourse, to refuse admission to anyone who is found to be in breach of these terms and conditions including, if necessary, ejecting the holder/s of the ticket from the venue after they have entered the ground.
+Internet handling fee per ticket may be levied. Please check your total amount before payment.
+Tickets once booked cannot be exchanged or refunded.
+Possession sale and dealing in Narcotics Drugs and Psychotropic substances attracts stringent punishments under the Narcotics Drugs and Psychotropic substances Act, 1985 which ranges from 6 months upto 20 years imprisonment and fine upto Rupees Two Lakhs.
+Consumption of the narcotic drug or psychotropic substance (cocaine, morphine, diacetyl morphine or any other narcotic drug) or any psychotropic substance is liable for rigorous imprisonment for a term which may extend to one year, or with fine which may extend to Twenty Thousand rupees; or with both under NDPS Act, 1985.
+"
+                    android:layout_marginTop="10dp"
+
+                    />
+
+            </LinearLayout>
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
+

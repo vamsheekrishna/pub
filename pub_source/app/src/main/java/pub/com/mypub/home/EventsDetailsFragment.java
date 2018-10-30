@@ -16,10 +16,12 @@ import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import pub.com.mypub.R;
 import pub.com.mypub.authentication.NetworkBaseFragment;
+import pub.com.mypub.baseclasses.BaseFragment;
 import pub.com.mypub.customview.WrapContentHeightViewPager;
 
 
@@ -32,7 +34,7 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
     private TabLayout tabLayout;
     private EventsDetailsTabAdapter mAdapter;
     private OnHomeInteractionListener mListener;
-
+    private EventsDetailsTabAdapter eventsDetailsTabAdapter;
     public EventsDetailsFragment() {
         // Required empty public constructor
     }
@@ -53,6 +55,7 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        setTagName();
     }
 
     @Override
@@ -61,20 +64,26 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.sample_collapse, container, false);
         ViewPager viewPager = view.findViewById(R.id.pager_container);
-        EventHeaderPageAdapter eventHeaderPageAdapter = new EventHeaderPageAdapter(getContext(),new int[]{R.drawable.bg_1, R.drawable.beer_image,R.drawable.test});
+        EventHeaderPageAdapter eventHeaderPageAdapter = new EventHeaderPageAdapter(getContext(),new int[]{R.drawable.s1, R.drawable.s2,R.drawable.s3,R.drawable.s4, R.drawable.s5,R.drawable.s6,R.drawable.s8, R.drawable.s88});
         viewPager.setAdapter(eventHeaderPageAdapter);
         NestedScrollView scrollView = view.findViewById (R.id.scroll_view);
         scrollView.setFillViewport (true);
-        WrapContentHeightViewPager eventBodyPageAdapter = view.findViewById(R.id.detail_fragment_list);
-        EventsDetailsTabAdapter eventsDetailsTabAdapter = new EventsDetailsTabAdapter(getActivity().getSupportFragmentManager());
+        ViewPager eventBodyPageAdapter = view.findViewById(R.id.detail_fragment_list);
+        eventsDetailsTabAdapter = new EventsDetailsTabAdapter(getActivity().getSupportFragmentManager());
+        ArrayList<BaseFragment> fragments = new ArrayList<>();
+        fragments.add(EventDetailTabFragment.newInstance("",""));
+        fragments.add(AboutEventFragment.newInstance("",""));
+        fragments.add(BulkBookingFragment.newInstance("",""));
+        fragments.add(VedioFragment.newInstance("",""));
+        eventsDetailsTabAdapter.setFragmentArray(fragments);
         eventBodyPageAdapter.setAdapter(eventsDetailsTabAdapter);
 
         /*tabLayout = view.findViewById (R.id.tab_layout);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setupWithViewPager(eventBodyPageAdapter);*/
 
-        TabLayout tabLayout = view.findViewById(R.id.sliding_tabs);
-        tabLayout.setupWithViewPager(eventBodyPageAdapter);
+        /*TabLayout tabLayout = view.findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(eventBodyPageAdapter);*/
 
         return view;
     }
@@ -119,7 +128,7 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
 
     @Override
     public void setTagName() {
-
+        super.setTitle("Event Details");
     }
 
     @Override

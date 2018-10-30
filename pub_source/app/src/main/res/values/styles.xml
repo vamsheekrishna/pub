@@ -97,5 +97,9 @@
         <item name="android:textSize">20sp</item>
         <item name="android:background">@drawable/login_but_bg</item>
     </style>
-
+    <style name="PagerTabStripText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#a4c639</item>
+    </style>
 </resources>

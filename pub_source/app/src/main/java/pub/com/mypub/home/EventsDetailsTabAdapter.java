@@ -4,25 +4,37 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-class EventsDetailsTabAdapter extends FragmentStatePagerAdapter {
-    private static final int NUM_ITEMS = 4;
-    private String tabTitles[] = new String[] { "Tab 1", "Tab 2", "Tab 3", "Tab 4" };
+import java.util.ArrayList;
 
+import pub.com.mypub.baseclasses.BaseFragment;
+
+class EventsDetailsTabAdapter extends FragmentStatePagerAdapter {
+
+    ArrayList<BaseFragment> fragments;
+    private static final int NUM_ITEMS = 4;
+    private ArrayList<String> tabTitles = new ArrayList<>();
+
+    public void setFragmentArray(ArrayList<BaseFragment> _fragments) {
+        fragments = _fragments;
+        for (BaseFragment fragment :fragments) {
+            tabTitles.add(fragment.getTitle());
+
+        }
+    }
     public EventsDetailsTabAdapter(FragmentManager fm) {
         super(fm);
     }
-
     @Override
     public CharSequence getPageTitle(int position) {
-        return tabTitles[position];
+        return tabTitles.get(position);
     }
     @Override
     public Fragment getItem(int i) {
-        return EventDetailTabFragment.newInstance("","");
+        return fragments.get(i);
     }
 
     @Override
     public int getCount() {
-        return NUM_ITEMS;
+        return fragments.size();
     }
 }

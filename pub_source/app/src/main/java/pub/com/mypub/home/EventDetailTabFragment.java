@@ -37,6 +37,7 @@ public class EventDetailTabFragment extends NetworkBaseFragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        setTagName();
     }
 
     @Override
@@ -68,7 +69,7 @@ public class EventDetailTabFragment extends NetworkBaseFragment {
 
     @Override
     public void setTagName() {
-
+        super.setTitle("Event details");
     }
 
     @Override

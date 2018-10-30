@@ -5,4 +5,5 @@ interface OnHomeInteractionListener {
     void goToEvent();
     void goToChangePassword();
     void goToEventsDetailsFragment();
+    void goTovedioFragment();
 }

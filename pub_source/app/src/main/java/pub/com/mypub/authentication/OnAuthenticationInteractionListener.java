@@ -12,4 +12,6 @@ public interface OnAuthenticationInteractionListener {
     void gotoValidateOTP(MyProfile myProfile);
 
     void goToChangePasswordPage(MyProfile myProfile);
+
+
 }

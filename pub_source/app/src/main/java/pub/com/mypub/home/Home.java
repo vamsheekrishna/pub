@@ -34,4 +34,10 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
     public void goToEventsDetailsFragment() {
         addFragment(EventsDetailsFragment.newInstance("",""),true,true,EventsDetailsFragment.class.getName());
     }
+
+    @Override
+    public void goTovedioFragment() {
+        addFragment(VedioFragment.newInstance("",""),true,true,VedioFragment.class.getName());
+
+    }
 }

@@ -1,13 +1,124 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="pub.com.mypub.home.BulkBookingFragment">
+    android:id="@+id/card_view"
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/TextColor.White"
+    android:layout_margin="8dp"
+    android:padding="8dp"
+    app:layout_constraintCircleRadius="@dimen/card_album_radius"
+    tools:ignore="MissingDefaultResource">
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:scrollbarAlwaysDrawHorizontalTrack="true">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <RelativeLayout
+            android:padding="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/l">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event"
+                    android:text="Sunburn Festival 2018"
+                    android:textColor= "#AB3D24"
+                    android:layout_marginRight="110dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/detail"
+                    android:textSize="@dimen/pub_item_location_name_font"
+                    android:text="Please enter details to proceed"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="40dp"
+                    />
+
+
+            </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_below="@+id/l"
+    android:layout_marginTop="20dp">
+
+    <EditText
+        android:id="@+id/e2"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:hint="First Name"/>
+
+    <EditText
+        android:id="@+id/e3"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:hint="Last Name"/>
+    <EditText
+        android:id="@+id/e4"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:hint="company Name"/>
+    <EditText
+        android:id="@+id/e5"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:hint="Mobile No"/>
+    <EditText
+        android:id="@+id/e6"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:hint="Email Id"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Proceed"
+        android:layout_gravity="center"
+        android:id="@+id/b2"/>
+</LinearLayout>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
