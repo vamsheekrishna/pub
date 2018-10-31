@@ -66,8 +66,8 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
         ViewPager viewPager = view.findViewById(R.id.pager_container);
         EventHeaderPageAdapter eventHeaderPageAdapter = new EventHeaderPageAdapter(getContext(),new int[]{R.drawable.s1, R.drawable.s2,R.drawable.s3,R.drawable.s4, R.drawable.s5,R.drawable.s6,R.drawable.s8, R.drawable.s88});
         viewPager.setAdapter(eventHeaderPageAdapter);
-        NestedScrollView scrollView = view.findViewById (R.id.scroll_view);
-        scrollView.setFillViewport (true);
+        /*NestedScrollView scrollView = view.findViewById (R.id.scroll_view);
+        scrollView.setFillViewport (true);*/
         ViewPager eventBodyPageAdapter = view.findViewById(R.id.detail_fragment_list);
         eventsDetailsTabAdapter = new EventsDetailsTabAdapter(getActivity().getSupportFragmentManager());
         ArrayList<BaseFragment> fragments = new ArrayList<>();
