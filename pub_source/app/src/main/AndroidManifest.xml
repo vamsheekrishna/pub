@@ -18,15 +18,15 @@
         <activity android:name=".baseclasses.BaseActivity" />
         <activity android:name=".PubMainActivity" />
         <activity android:name=".authentication.AuthenticationActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".authentication.NetworkBaseActivity"
             android:label="@string/app_authentication_registration" />
         <activity android:name=".home.Home">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
