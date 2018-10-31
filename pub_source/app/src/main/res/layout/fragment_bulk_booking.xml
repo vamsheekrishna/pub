@@ -5,12 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
-
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/TextColor.White"
-    android:layout_margin="8dp"
-    android:padding="8dp"
+
+    android:layout_margin="10dp"
+    android:padding="10dp"
     app:layout_constraintCircleRadius="@dimen/card_album_radius"
     tools:ignore="MissingDefaultResource">
 
@@ -24,6 +23,7 @@
             android:background="@drawable/bulk"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="10dp"
             >
 
 
