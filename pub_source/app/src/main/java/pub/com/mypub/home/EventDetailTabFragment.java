@@ -23,6 +23,7 @@ public class EventDetailTabFragment extends NetworkBaseFragment {
 
     public static EventDetailTabFragment newInstance(String param1, String param2) {
         EventDetailTabFragment fragment = new EventDetailTabFragment();
+        fragment.setTagName();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

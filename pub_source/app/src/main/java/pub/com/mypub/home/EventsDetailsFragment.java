@@ -62,6 +62,8 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        setTagName();
         View view = inflater.inflate(R.layout.sample_collapse, container, false);
         ViewPager viewPager = view.findViewById(R.id.pager_container);
         EventHeaderPageAdapter eventHeaderPageAdapter = new EventHeaderPageAdapter(getContext(),new int[]{R.drawable.s1, R.drawable.s2,R.drawable.s3,R.drawable.s4, R.drawable.s5,R.drawable.s6,R.drawable.s8, R.drawable.s88});

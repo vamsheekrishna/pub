@@ -16,17 +16,16 @@ class EventsDetailsTabAdapter extends FragmentStatePagerAdapter {
 
     public void setFragmentArray(ArrayList<BaseFragment> _fragments) {
         fragments = _fragments;
-        for (BaseFragment fragment :fragments) {
-            tabTitles.add(fragment.getTitle());
-
-        }
+        /*for (BaseFragment fragment :fragments) {
+            tabTitles.add();
+        }*/
     }
     public EventsDetailsTabAdapter(FragmentManager fm) {
         super(fm);
     }
     @Override
     public CharSequence getPageTitle(int position) {
-        return tabTitles.get(position);
+        return fragments.get(position).getTitle();
     }
     @Override
     public Fragment getItem(int i) {
