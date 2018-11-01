@@ -1,36 +1,33 @@
-
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp"
-    android:paddingBottom="8dp"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
 
 
     <android.support.v7.widget.CardView
+        android:background="@color/TextColor.White"
+        android:layout_margin="8dp"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:elevation="3dp"
         card_view:cardCornerRadius="@dimen/card_album_radius">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="top"
-        android:nestedScrollingEnabled="true"
-        android:orientation="vertical">
+        <LinearLayout
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:orientation="vertical">
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/gradient_bg"
                 >
-
-
 
                 <TextView
                     android:layout_width="match_parent"
@@ -42,11 +39,9 @@
                     android:textColor= "#8655CB  "
                     android:fontFamily="@font/kaushanscriptregular"/>
                 <TextView
+                    android:id="@+id/detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/detail"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
                     android:text="Electronic and Dance | English | 6hrs 30mins | Age 15+"
                     android:textColor="@android:color/black"
                     android:textSize="15dp"
@@ -59,8 +54,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/detee"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
                     android:text="sat 27 Oct"
                     android:textSize="15dp"
                     android:layout_below="@+id/detail"
@@ -71,8 +64,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/price"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
                     android:text="3,000 Onwards"
                     android:textSize="15dp"
                     android:layout_below="@+id/detee"
@@ -84,8 +75,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/detail1"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
                     android:text="G.M.C Balayogi Athletic Stadium:Hydwrabad"
                     android:textColor="@android:color/black"
                     android:textSize="12dp"

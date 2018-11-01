@@ -4,11 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:gravity="top"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:background="@color/TextColor.White"
-    android:padding="10dp">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/TextColor.White">
 
 
         <LinearLayout
@@ -17,7 +15,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/note"
             android:id="@+id/l"
-            android:layout_margin="20dp"
+            android:layout_margin="16dp"
             android:padding="8dp"
             >
             <TextView
@@ -36,7 +34,7 @@
                 android:textSize="@dimen/pub_item_location_name_font"
                 android:text="Sunburn Festival 2018 Early Bird phase 1tickets Sold Out: 'EARLY BIRD PHASE2 IS LIVE FOR A LIMITED PERIOD, HURRY!"
                 android:textColor="@android:color/black"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/kaushanscriptregular"
                 />
 
@@ -47,7 +45,7 @@
                 android:textSize="@dimen/pub_item_rs_font"
                 android:text="Sunburn Festival 2018 is a 3ndays festival from the 29th till the 31st of December 2018."
                 android:textColor="@android:color/black"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="16dp"/>
 
         </LinearLayout>
 
@@ -56,20 +54,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/l"
-            android:layout_marginTop="10dp"
-            android:text="The Sunburn festival is back with its 12th edition! Experience the best of dance music from across the globe at the Sunburn Festival 2018!"
+            android:text="The Sunburn festival is back with its 12th edition! Experience the best of dance music from across the globe at the Sunburn Festival 2018! \n\n Sunburn is amongst the world's biggest music festivals. In the past eleven years of its existence, Sunburn has brought together renowned Indian and international artists to entertain hundreds of thousands of dance music lovers through its various formats that reach out to fans across India &amp; Asia. Sunburn caters to a wide Indian and International audience and has positioned India as a prime dance festival destination to the world."
             android:id="@+id/t1"
+            android:textSize="20dp"
             android:fontFamily="@font/angelina"
             />
 
-        <TextView
+        <!--<TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/t1"
-            android:text="Sunburn is amongst the world's biggest music festivals. In the past eleven years of its existence, Sunburn has brought together renowned Indian and international artists to entertain hundreds of thousands of dance music lovers through its various formats that reach out to fans across India &amp; Asia. Sunburn caters to a wide Indian and International audience and has positioned India as a prime dance festival destination to the world."
+            android:text=""
             android:paddingTop="10dp"
             android:fontFamily="@font/angelina"
-            />
+            />-->
 
 
 </LinearLayout>

@@ -51,7 +51,7 @@
                 android:id="@+id/sliding_tabs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#EAE3CE"
+                android:background="#3F51B5"
                 android:paddingTop="-4dp"
                 android:paddingBottom="4dp"
                 android:layout_gravity="top"

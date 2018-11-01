@@ -104,7 +104,7 @@
     </style>
 
     <style name="viewPagerTitleStrip">
-        <item name="android:textColor">#B93624</item>
+        <item name="android:textColor">#ffffff</item>
         <item name="android:textSize">40dp</item>
         <item name="android:textStyle">italic</item>
         <item name="android:fontStyle">@font/kaushanscriptregular</item>
