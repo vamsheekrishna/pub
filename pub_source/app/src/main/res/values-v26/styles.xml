@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="viewPagerTitleStrip">
+        <item name="android:textColor">#B93624</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:fontFamily">@font/kaushanscriptregular</item>
+    </style>
+</resources>

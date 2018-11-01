@@ -34,6 +34,8 @@ public class VedioFragment extends NetworkBaseFragment implements View.OnClickLi
 
     public static VedioFragment newInstance(String param1, String param2) {
         VedioFragment fragment = new VedioFragment();
+        fragment.setTagName();
+
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -124,7 +126,7 @@ public class VedioFragment extends NetworkBaseFragment implements View.OnClickLi
 
     @Override
     public void setTagName() {
-        super.setTitle("Vedio ");
+        super.setTitle("Gallery ");
     }
 
     @Override

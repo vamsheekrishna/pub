@@ -18,7 +18,7 @@
             android:background="@drawable/note"
             android:id="@+id/l"
             android:layout_margin="20dp"
-            android:padding="10dp"
+            android:padding="8dp"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -27,7 +27,8 @@
                 android:textSize="@dimen/pub_item_event_name_font"
                 android:text="NOTE"
                 android:textColor= "#AB3D24"
-                android:layout_marginRight="150dp"/>
+                android:layout_marginRight="150dp"
+                android:fontFamily="@font/chunkfive"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,6 +37,7 @@
                 android:text="Sunburn Festival 2018 Early Bird phase 1tickets Sold Out: 'EARLY BIRD PHASE2 IS LIVE FOR A LIMITED PERIOD, HURRY!"
                 android:textColor="@android:color/black"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/kaushanscriptregular"
                 />
 
             <TextView
@@ -57,15 +59,16 @@
             android:layout_marginTop="10dp"
             android:text="The Sunburn festival is back with its 12th edition! Experience the best of dance music from across the globe at the Sunburn Festival 2018!"
             android:id="@+id/t1"
-            android:padding="10dp"/>
+            android:fontFamily="@font/angelina"
+            />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/t1"
             android:text="Sunburn is amongst the world's biggest music festivals. In the past eleven years of its existence, Sunburn has brought together renowned Indian and international artists to entertain hundreds of thousands of dance music lovers through its various formats that reach out to fans across India &amp; Asia. Sunburn caters to a wide Indian and International audience and has positioned India as a prime dance festival destination to the world."
-            android:layout_marginTop="10dp"
-android:padding="10dp"
+            android:paddingTop="10dp"
+            android:fontFamily="@font/angelina"
             />
 
 

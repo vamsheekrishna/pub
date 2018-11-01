@@ -3,11 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="3dp"
+        card_view:cardCornerRadius="@dimen/card_album_radius"
+        android:layout_margin="8dp">
 
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
 
 
         <LinearLayout
@@ -17,24 +23,26 @@
             android:background="@drawable/tc"
             android:nestedScrollingEnabled="true"
             android:id="@+id/l"
-            android:layout_margin="15dp"
-            android:padding="10dp"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/event"
                 android:text="T And C "
-                android:textColor= "#AB3D24"
+                android:textColor= "#8655CB  "
                 android:layout_marginLeft="130dp"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:fontFamily="@font/kaushanscriptregular"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/detail"
                 android:textAlignment="center"
-                android:textColor= "#F7F8F1  "
-                android:textSize="@dimen/pub_item_location_name_font"
+                android:textColor= "#040404   "
+                android:textSize="20dp"
                 android:text="Age limit: 15+.
 Entry permitted for age 15 years and above only.
 The event is subject to government permissions. In case the permissions are not granted and event is cancelled, a full refund shall be immediately issued to all patrons.
@@ -67,6 +75,7 @@ Tickets once booked cannot be exchanged or refunded.
 Possession sale and dealing in Narcotics Drugs and Psychotropic substances attracts stringent punishments under the Narcotics Drugs and Psychotropic substances Act, 1985 which ranges from 6 months upto 20 years imprisonment and fine upto Rupees Two Lakhs.
 Consumption of the narcotic drug or psychotropic substance (cocaine, morphine, diacetyl morphine or any other narcotic drug) or any psychotropic substance is liable for rigorous imprisonment for a term which may extend to one year, or with fine which may extend to Twenty Thousand rupees; or with both under NDPS Act, 1985."
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/angelina"
                 />
 
 
@@ -76,5 +85,5 @@ Consumption of the narcotic drug or psychotropic substance (cocaine, morphine, d
 
 
 
-    </ScrollView>
+    </android.support.v7.widget.CardView>
 </android.support.v4.widget.NestedScrollView>

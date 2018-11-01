@@ -23,8 +23,8 @@
                 android:id="@+id/plus_min"
                 android:layout_alignParentRight="true"
                 android:layout_margin="4dp"
-                android:layout_width="150dp"
-                android:layout_height="70dp"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
                 layout="@layout/fragment_plus_mins">
 
             </include>
@@ -35,8 +35,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/title"
                 android:text="GA phase1"
-                android:textSize="25dp"
-                android:textColor= "#8655CB  "/>
+                android:textSize="20dp"
+                android:textColor= "#8655CB  "
+                android:fontFamily="@font/kaushanscriptregular"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,7 +63,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="12dp"
                 android:layout_below="@+id/price"
-                android:padding="15dp"
+
                 />
 
         </RelativeLayout>

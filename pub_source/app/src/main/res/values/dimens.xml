@@ -23,4 +23,5 @@
     <dimen name="pub_item_event_name_font">18dp</dimen>
     <dimen name="pub_item_location_name_font">12dp</dimen>
     <dimen name="pub_item_rs_font">10dp</dimen>
+    <dimen name="pagerTitleTextSize">10sp</dimen>
 </resources>

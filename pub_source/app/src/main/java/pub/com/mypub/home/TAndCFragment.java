@@ -34,6 +34,8 @@ public class TAndCFragment extends NetworkBaseFragment {
 
     public static TAndCFragment newInstance(String param1, String param2) {
         TAndCFragment fragment = new TAndCFragment();
+        fragment.setTagName();
+
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

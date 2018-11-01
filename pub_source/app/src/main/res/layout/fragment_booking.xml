@@ -37,19 +37,21 @@
             <include layout="@layout/fragment_add_event">
 
             </include>
-    <include layout="@layout/fragment_order_preview">
+    <!--<include layout="@layout/fragment_order_preview">
 
-    </include>
+    </include>-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detail1"
+        android:text="PROCEED"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:textColor= "#FEFDFC  "
 
+        />
 </LinearLayout>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/detail1"
-                android:text="PROCEED"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                />
+
         </RelativeLayout>
         </ScrollView>
     </android.support.v7.widget.CardView>
