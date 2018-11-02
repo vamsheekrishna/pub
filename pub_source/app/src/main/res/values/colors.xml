@@ -12,4 +12,5 @@
 
     <color name="log_text_color">#f7f7f9</color>
     <color name="button_color">#ff0099cc</color>
+    <color name="white">#ffffff</color>
 </resources>

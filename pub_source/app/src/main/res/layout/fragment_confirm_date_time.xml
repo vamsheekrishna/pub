@@ -44,7 +44,7 @@
                android:layout_marginLeft="8dp"
                 android:fontFamily="@font/kaushanscriptregular"/>
             <Button
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
                 android:text="sat 27 Oct"
                 android:layout_below="@+id/event"
@@ -57,7 +57,7 @@
                 android:textColor= "#FEFDFC  "
                 />
             <Button
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
                 android:text="sat 29 Dec"
                 android:layout_below="@+id/event"
@@ -69,7 +69,7 @@
                 android:background="#F1DDA8"
                 android:textColor= "#FEFDFC  "/>
             <Button
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
                 android:text="Mon 31 Dec"
                 android:layout_below="@+id/event"
@@ -81,7 +81,7 @@
                 android:background="#F1DDA8"
                 android:textColor= "#FEFDFC  "/>
             <Button
-                android:layout_width="30dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
                 android:text="Wed 28 Nov"
                 android:layout_below="@+id/event"
@@ -94,29 +94,78 @@
                 android:textColor= "#FEFDFC  "/>
             <ImageView
                 android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:src="@drawable/select"
                 android:layout_below="@+id/event"
                 android:id="@+id/detee"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginLeft="10dp"/>
-
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Select Date"
+    android:fontFamily="@font/kaushanscriptregular"
+    android:layout_below="@+id/detee"
+    android:layout_marginLeft="20dp"
+    android:textSize="8dp"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:src="@drawable/select"
+                android:layout_below="@+id/detee"
+                android:id="@+id/clock"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Time"
+                android:fontFamily="@font/kaushanscriptregular"
+                android:layout_below="@+id/clock"
+                android:layout_marginLeft="20dp"
+                android:textSize="8dp"/>
 
             <Button
                 android:id="@+id/button3"
-                android:layout_width="match_parent"
+                android:layout_width="60dp"
                 android:layout_height="30dp"
                 android:drawableLeft="@drawable/t"
                 android:text="6:00 PM"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:textSize="14dp"
+                android:textSize="8dp"
                 android:layout_below="@+id/detee"
                 android:textColor= "#030303  "
-               android:layout_margin="10dp"
+               android:layout_marginTop="30dp"
+                android:layout_marginLeft="70dp"
+                android:background="@drawable/time"
+                android:layout_marginBottom="8dp"/>
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:drawableLeft="@drawable/t"
+                android:text="4:00 PM"
+                android:textSize="8dp"
+                android:layout_below="@+id/detee"
+               android:layout_toRightOf="@+id/button3"
+                android:textColor= "#030303  "
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/time"
+                android:layout_marginBottom="8dp"/>
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:drawableLeft="@drawable/t"
+                android:text="9:00 AM"
+                android:textSize="8dp"
+                android:layout_below="@+id/detee"
+                android:layout_toRightOf="@+id/button1"
+                android:textColor= "#030303  "
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/time"/>
-
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

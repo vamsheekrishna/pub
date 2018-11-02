@@ -6,11 +6,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 
@@ -76,10 +79,11 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
         eventsDetailsTabAdapter = new EventsDetailsTabAdapter(getActivity().getSupportFragmentManager());
         ArrayList<BaseFragment> fragments = new ArrayList<>();
         fragments.add(EventDetailTabFragment.newInstance("",""));
-
-        fragments.add(VedioFragment.newInstance("",""));
         fragments.add(TAndCFragment.newInstance("",""));
+        fragments.add(GalleryFragment.newInstance("",""));
+        fragments.add(PersonFragment.newInstance("",""));
         fragments.add(BookingFragment.newInstance("",""));
+
         eventsDetailsTabAdapter.setFragmentArray(fragments);
         eventBodyPageAdapter.setAdapter(eventsDetailsTabAdapter);
 
@@ -89,6 +93,20 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
 
         /*TabLayout tabLayout = view.findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(eventBodyPageAdapter);*/
+        PagerTabStrip tabStrip = view.findViewById(R.id.sliding_tabs);
+        Typeface fontTypeFace = Typeface.createFromAsset(getActivity().getAssets(),"fonts/thehistoriademo.ttf");
+        tabStrip.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        tabStrip.setTextColor(getResources().getColor(R.color.white));
+        tabStrip.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.textSizeTC3));
+        tabStrip.setTabIndicatorColor(getResources().getColor(R.color.white));
+        for (int i = 0; i < tabStrip.getChildCount(); i++) {
+            View nextChild = tabStrip.getChildAt(i);
+            if (nextChild instanceof TextView) {
+                TextView textViewToConvert = (TextView) nextChild;
+                textViewToConvert.setTypeface(fontTypeFace);
+            }
+        }
+
 
         return view;
     }
