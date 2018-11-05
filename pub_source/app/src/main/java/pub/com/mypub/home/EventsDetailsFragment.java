@@ -78,11 +78,12 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
         ViewPager eventBodyPageAdapter = view.findViewById(R.id.detail_fragment_list);
         eventsDetailsTabAdapter = new EventsDetailsTabAdapter(getActivity().getSupportFragmentManager());
         ArrayList<BaseFragment> fragments = new ArrayList<>();
+        fragments.add(BookingFragment.newInstance("",""));
         fragments.add(EventDetailTabFragment.newInstance("",""));
         fragments.add(TAndCFragment.newInstance("",""));
         fragments.add(GalleryFragment.newInstance("",""));
         fragments.add(PersonFragment.newInstance("",""));
-        fragments.add(BookingFragment.newInstance("",""));
+        fragments.add(OfflinePromotersFragment.newInstance("",""));
 
         eventsDetailsTabAdapter.setFragmentArray(fragments);
         eventBodyPageAdapter.setAdapter(eventsDetailsTabAdapter);

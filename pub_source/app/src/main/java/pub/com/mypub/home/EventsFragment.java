@@ -1,13 +1,19 @@
 package pub.com.mypub.home;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TypefaceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +61,7 @@ public class EventsFragment extends Fragment implements View.OnClickListener, Re
         View view = inflater.inflate(R.layout.fragment_events, container, false);
         //view.findViewById(R.id.book).setOnClickListener(this);
         getActivity().setTitle("Events");
-        Typeface fontTypeFace = Typeface.createFromAsset(getActivity().getAssets(),"fonts/thehistoriademo.ttf");
+
         mSwipeRefreshLayout = view.findViewById(R.id.simpleSwipeRefreshLayout);
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
@@ -71,9 +77,16 @@ public class EventsFragment extends Fragment implements View.OnClickListener, Re
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
+       // TextView mTitle = view.findViewById(R.id.toolbar_title);
+        //mTitle.setTypeface(Typeface.createFromFile("font/kaushanscriptregular.otf"));
 
+      //  Typeface fontTypeFace = Typeface.createFromAsset(getActivity().getAssets(),"fonts/thehistoriademo.ttf");
 
         return view;
+    }
+
+    private ActionBar getActionBar() {
+        return null;
     }
 
 

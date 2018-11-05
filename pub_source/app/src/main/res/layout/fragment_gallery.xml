@@ -21,18 +21,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
            >
-
-      <Gallery
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/gallery"
-          />
-          <ImageView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:id="@+id/img1"
-              android:src="@drawable/s3"
-              android:scaleType="centerCrop"/>
+              <Gallery
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/gallery"
+                  />
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/img1"
+                  android:src="@drawable/s3"
+                  android:scaleType="centerCrop"/>
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
