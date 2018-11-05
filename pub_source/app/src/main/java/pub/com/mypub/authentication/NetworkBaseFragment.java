@@ -71,7 +71,6 @@ public abstract class NetworkBaseFragment extends BaseFragment implements OnNetw
                                     onSuccessResponse(new JSONArray(jsonObject.getString("data")), REQUEST_ID);
                                 }
                             } else {
-                                Log.e("vvvvv", "network response failed.");
                                 onFailureResponse(response,jsonObject.getString("data"), REQUEST_ID);
                             }
                         } catch (Exception e) {

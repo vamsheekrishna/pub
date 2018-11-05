@@ -90,25 +90,38 @@ public class RegistrationFragment extends NetworkBaseFragment implements View.On
     @Override
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
         Log.d("REQUEST_ID",REQUEST_ID+": "+response.toString());
-        mListener.goToMyProfilePage(myProfile);
+        Toast.makeText(getContext(),"User already existed.", Toast.LENGTH_LONG).show();
+        //mListener.goToMyProfilePage(myProfile);
     }
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
 
+        Toast.makeText(getActivity(), "User already existed.", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onFailureResponse(VolleyError response, String exception, String REQUEST_ID) {
         Log.d("REQUEST_ID",REQUEST_ID+": "+response.toString());
+        if(REQUEST_ID.equals("check_user")) {
+            gotoValidate();
+        } else {
+
+        }
 
     }
 
     @Override
     public void onFailureResponse(String response, String exception, String REQUEST_ID) {
+        if(REQUEST_ID.equals("check_user")) {
+            gotoValidate();
+        } else {
 
+        }
     }
-
+    void gotoValidate() {
+        mListener.gotoValidateOTP(myProfile, true);
+    }
     @Override
     public void setTagName() {
 
@@ -130,7 +143,6 @@ public class RegistrationFragment extends NetworkBaseFragment implements View.On
                 String _password = mETPassword.getText().toString();
                 String _rePassword;
                 if(_password.equals( mETRePassword.getText().toString())) {
-                    Toast.makeText(getActivity(), "Register successfully ", Toast.LENGTH_LONG).show();
                     myProfile = new MyProfile();
                     myProfile.mPhoneNumber = mETPhoneNo.getText().toString();
                     //myProfile.mName = "Vamshee";

@@ -6,10 +6,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.android.volley.VolleyError;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import pub.com.mypub.R;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends NetworkBaseFragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -45,7 +51,10 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        Button submit = view.findViewById(R.id.b2);
+        submit.setOnClickListener(this);
+        return view;
     }
 
 
@@ -64,5 +73,40 @@ public class ProfileFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
+
+    }
+
+    @Override
+    public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
+
+    }
+
+    @Override
+    public void onFailureResponse(VolleyError response, String exception, String REQUEST_ID) {
+
+    }
+
+    @Override
+    public void onFailureResponse(String response, String exception, String REQUEST_ID) {
+
+    }
+
+    @Override
+    public void setTagName() {
+
+    }
+
+    @Override
+    public void CloseApp() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        mListener.goToHomePage(null);
     }
 }

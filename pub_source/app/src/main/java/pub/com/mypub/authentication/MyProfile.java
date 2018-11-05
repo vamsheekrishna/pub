@@ -9,4 +9,5 @@ class MyProfile implements Serializable {
     public String mEmail;
     public String mPassword;
     public String mProfileID;
+    public boolean isValidated = false;
 }

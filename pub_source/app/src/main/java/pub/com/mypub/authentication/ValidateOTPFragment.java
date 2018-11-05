@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +32,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import pub.com.mypub.BuildConfig;
@@ -108,12 +110,12 @@ public class ValidateOTPFragment extends NetworkBaseFragment implements View.OnC
     }
     @Override
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
-
+        mListener.goToMyProfilePage(myProfile);
     }
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
-
+        mListener.goToMyProfilePage(myProfile);
     }
 
     @Override
@@ -148,7 +150,6 @@ public class ValidateOTPFragment extends NetworkBaseFragment implements View.OnC
                         mVerificationField.setError("Cannot be empty.");
                         return;
                     }
-
                     verifyPhoneNumberWithCode(mVerificationId, code);
                 }
                 break;
@@ -441,7 +442,12 @@ public class ValidateOTPFragment extends NetworkBaseFragment implements View.OnC
             signOut();
 
             if(isRegistration) {
-                mListener.goToRegistrationPage();
+                HashMap<String, String> parems = new HashMap<>();
+                parems.put("mobile_number", myProfile.mPhoneNumber);
+                parems.put("password", myProfile.mPassword);
+                //stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"login.php/getUserDetails", "check_user");
+                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"login.php/insertUserData", "registration");
+                //mListener.goToRegistrationPage();
             } else {
                 boolean isForgotPassword  = true;
                 mListener.goToChangePasswordPage(myProfile, isForgotPassword);
