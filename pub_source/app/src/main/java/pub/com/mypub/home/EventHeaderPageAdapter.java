@@ -1,8 +1,6 @@
 package pub.com.mypub.home;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import pub.com.mypub.R;
-import pub.com.mypub.baseclasses.BaseActivity;
 
 class EventHeaderPageAdapter extends PagerAdapter {
     Context context;

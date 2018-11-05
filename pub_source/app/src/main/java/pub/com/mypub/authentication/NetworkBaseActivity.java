@@ -8,16 +8,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-
-import java.util.Map;
-
-import pub.com.mypub.R;
 import pub.com.mypub.baseclasses.BaseActivity;
 
 public class NetworkBaseActivity extends BaseActivity implements OnNetworkChangeListener{

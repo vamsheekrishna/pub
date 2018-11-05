@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_bg"
-    tools:context="pub.com.mypub.authentication.Fforgot_1Fragment">
+    tools:context="pub.com.mypub.authentication.ChangePassword">
 
     <RelativeLayout
         style="@style/authentication_content_bg"

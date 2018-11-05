@@ -3,8 +3,8 @@ package pub.com.mypub.baseclasses;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Handler;
 import android.os.Bundle;
+import android.os.Handler;
 
 import pub.com.mypub.PubMainActivity;
 import pub.com.mypub.R;

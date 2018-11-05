@@ -6,7 +6,6 @@ import android.widget.Toast;
 
 import pub.com.mypub.R;
 import pub.com.mypub.home.Home;
-import pub.com.mypub.home.VedioFragment;
 
 public class AuthenticationActivity extends NetworkBaseActivity implements OnAuthenticationInteractionListener{
 
@@ -20,7 +19,10 @@ public class AuthenticationActivity extends NetworkBaseActivity implements OnAut
 
     @Override
     public void goToLoginPage() {
-        addFragment(LoginFragment.newInstance("", ""), true, false, LoginFragment.class.getName());
+        Intent intent = new Intent(this, AuthenticationActivity.class);
+        startActivity(intent);
+        finish();
+        //addFragment(LoginFragment.newInstance("", ""), true, false, LoginFragment.class.getName());
     }
 
     @Override
@@ -63,13 +65,13 @@ public class AuthenticationActivity extends NetworkBaseActivity implements OnAut
     }
 
     @Override
-    public void gotoValidateOTP(MyProfile myProfile) {
-        addFragment(ValidateOTPFragment.newInstance(myProfile, ""), true, true, ValidateOTPFragment.class.getName());
+    public void gotoValidateOTP(MyProfile myProfile, boolean isRegistration) {
+        addFragment(ValidateOTPFragment.newInstance(myProfile, isRegistration), true, true, ValidateOTPFragment.class.getName());
     }
 
     @Override
-    public void goToChangePasswordPage(MyProfile myProfile) {
-        addFragment(Fforgot_1Fragment.newInstance("", ""), true, true, Fforgot_1Fragment.class.getName());
+    public void goToChangePasswordPage(MyProfile myProfile, boolean isForgot) {
+        addFragment(ChangePassword.newInstance(myProfile, isForgot), true, true, ChangePassword.class.getName());
 
     }
 

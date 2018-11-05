@@ -1,11 +1,9 @@
 package pub.com.mypub.home;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import pub.com.mypub.R;
 import pub.com.mypub.authentication.NetworkBaseActivity;
-import pub.com.mypub.authentication.NetworkBaseFragment;
 
 public class Home extends NetworkBaseActivity implements OnHomeInteractionListener{
 

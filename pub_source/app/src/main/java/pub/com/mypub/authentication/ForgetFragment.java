@@ -3,9 +3,7 @@ package pub.com.mypub.authentication;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +16,6 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -102,18 +99,24 @@ public class ForgetFragment extends NetworkBaseFragment  implements View.OnClick
         Log.d("response: ", "response: " + response);
 
         Toast.makeText(getActivity(), "save successful", Toast.LENGTH_LONG).show();
-        try {
+        /*try {
             myProfile.mProfileID = response.getString("id");
             mListener.goToChangePasswordPage(myProfile);
         } catch (JSONException e) {
             e.printStackTrace();
-        }
+        }*/
+        gotoValidate();
     }
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
         Toast.makeText(getActivity(), "save successful", Toast.LENGTH_LONG).show();
+        gotoValidate();
 
+    }
+    void gotoValidate() {
+        mListener.gotoValidateOTP(myProfile, false);
+        //mListener.goToChangePasswordPage(myProfile, true);
     }
 
     @Override
@@ -155,8 +158,7 @@ public class ForgetFragment extends NetworkBaseFragment  implements View.OnClick
                 //
                 HashMap<String, String> parems = new HashMap<>();
                 parems.put("mobile_number", myProfile.mPhoneNumber);
-                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"login.php/getLoginDetails", "login");
-
+                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"login.php/getUserDetails", "login");
                 break;
 
         }

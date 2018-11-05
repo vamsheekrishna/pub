@@ -82,17 +82,18 @@ public class ValidateOTPFragment extends NetworkBaseFragment implements View.OnC
 
     private OnAuthenticationInteractionListener mListener;
     private MyProfile myProfile = new MyProfile();
+    private boolean isRegistration = true;
 
 
     public ValidateOTPFragment() {
         // Required empty public constructor
     }
 
-    public static ValidateOTPFragment newInstance(MyProfile param1, String param2) {
+    public static ValidateOTPFragment newInstance(MyProfile param1, boolean param2) {
         ValidateOTPFragment fragment = new ValidateOTPFragment();
         Bundle args = new Bundle();
         args.putSerializable(MY_PROFILE, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putBoolean(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -102,7 +103,7 @@ public class ValidateOTPFragment extends NetworkBaseFragment implements View.OnC
         if (getArguments() != null) {
             myProfile = (MyProfile) getArguments().getSerializable(MY_PROFILE);
             //mPhoneNumber = getArguments().getString(MY_PROFILE);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            isRegistration = getArguments().getBoolean(ARG_PARAM2);
         }
     }
     @Override
@@ -423,20 +424,28 @@ public class ValidateOTPFragment extends NetworkBaseFragment implements View.OnC
             // Signed in
             mVerificationField.setVisibility(View.GONE);
             /*
-            mSignedInViews.setVisibility(View.VISIBLE);
+                mSignedInViews.setVisibility(View.VISIBLE);
 
-            enableViews(mPhoneNumberField, mVerificationField);
-            mPhoneNumberField.setText(null);
-            mVerificationField.setText(null);
+                enableViews(mPhoneNumberField, mVerificationField);
+                mPhoneNumberField.setText(null);
+                mVerificationField.setText(null);
 
-            mStatusText.setText(R.string.signed_in);
-            mDetailText.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+                mStatusText.setText(R.string.signed_in);
+                mDetailText.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+             */
+            /*
+                Intent intent = new Intent(this, Hallfinder.class);
+                startActivity(intent);
+                finish();
             */
-            /*Intent intent = new Intent(this, Hallfinder.class);
-            startActivity(intent);
-            finish();*/
             signOut();
-            mListener.goToRegistrationPage();
+
+            if(isRegistration) {
+                mListener.goToRegistrationPage();
+            } else {
+                boolean isForgotPassword  = true;
+                mListener.goToChangePasswordPage(myProfile, isForgotPassword);
+            }
         }
     }
 

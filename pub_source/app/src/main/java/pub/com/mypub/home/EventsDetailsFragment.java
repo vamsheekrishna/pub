@@ -2,13 +2,10 @@ package pub.com.mypub.home;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.NestedScrollView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,12 +18,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import pub.com.mypub.R;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 import pub.com.mypub.baseclasses.BaseFragment;
-import pub.com.mypub.customview.WrapContentHeightViewPager;
 
 
 public class EventsDetailsFragment extends NetworkBaseFragment {

@@ -12,7 +12,6 @@ import android.view.Window;
 import android.widget.ProgressBar;
 
 import pub.com.mypub.R;
-import pub.com.mypub.baseclasses.OnBaseAppListener;
 
 public class CustomDialogFragment extends DialogFragment {
     private static final String ARG_PARAM1 = "param1";

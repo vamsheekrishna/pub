@@ -139,10 +139,9 @@ public class RegistrationFragment extends NetworkBaseFragment implements View.On
 
                     //mListener.gotoValidateOTP(myProfile);
                     HashMap<String, String> parems = new HashMap<>();
-                    parems.put("password", myProfile.mPassword);
                     parems.put("mobile_number", myProfile.mPhoneNumber);
-
-                    stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"login.php/insertUserData", "registration");
+                    stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"login.php/getUserDetails", "check_user");
+                    //stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"login.php/insertUserData", "registration");
                 }
                 else {
                     Toast.makeText(getActivity(), "password not matching", Toast.LENGTH_LONG).show();

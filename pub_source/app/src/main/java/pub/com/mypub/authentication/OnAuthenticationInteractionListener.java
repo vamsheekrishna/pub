@@ -9,9 +9,9 @@ public interface OnAuthenticationInteractionListener {
     void goToMyProfilePage(MyProfile myProfile);
     void goToHomePage(MyProfile myProfile);
 
-    void gotoValidateOTP(MyProfile myProfile);
+    void gotoValidateOTP(MyProfile myProfile, boolean isRegistration);
 
-    void goToChangePasswordPage(MyProfile myProfile);
+    void goToChangePasswordPage(MyProfile myProfile, boolean isForgot);
 
 
 }

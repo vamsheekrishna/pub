@@ -6,10 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import pub.com.mypub.R;
-import pub.com.mypub.authentication.NetworkBaseFragment;
-
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -17,6 +13,9 @@ import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import pub.com.mypub.R;
+import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
 public class VedioFragment extends NetworkBaseFragment implements View.OnClickListener{
