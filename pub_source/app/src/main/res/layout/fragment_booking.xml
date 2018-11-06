@@ -103,6 +103,20 @@
                         />
                 </LinearLayout>
             </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Display selected time and date"
+                android:layout_below="@+id/date_time"
+                android:background="@drawable/dispaly"
+                android:drawableLeft="@drawable/t"
+                android:padding="8dp"
+                android:fontFamily="@font/kaushanscriptregular"
+                android:layout_margin="10dp"
+                android:textSize="16dp"
+                android:id="@+id/o"
+                android:textAlignment="center"
+               />
             <Button
                 android:id="@+id/submit"
                 android:layout_width="match_parent"
@@ -119,7 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/submit"
-                android:layout_below="@+id/date_time"
+                android:layout_below="@+id/o"
                 />
         </RelativeLayout>
     </android.support.v7.widget.CardView>

@@ -1,15 +1,13 @@
 package pub.com.mypub.home;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 
@@ -19,28 +17,34 @@ import org.json.JSONObject;
 import pub.com.mypub.R;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
-
-public class BookingFragment extends NetworkBaseFragment implements RecycleItemClickListener {
+public class TimeFragment extends NetworkBaseFragment implements View.OnClickListener, RecycleItemClickListener, SwipeRefreshLayout.OnRefreshListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    RecycleItemClickListener recycleItemClickListener;
+    SwipeRefreshLayout mSwipeRefreshLayout;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnHomeInteractionListener mListener;
 
-    public BookingFragment() {
+    public TimeFragment() {
         // Required empty public constructor
     }
 
-
-    public static BookingFragment newInstance(String param1, String param2) {
-        BookingFragment fragment = new BookingFragment();
-        fragment.setTagName();
-
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment TimeFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static TimeFragment newInstance(String param1, String param2) {
+        TimeFragment fragment = new TimeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -55,34 +59,30 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        setTagName();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_booking, container, false);
-        RecycleItemClickListener recycleItemClickListener = this;
-        TicketListAdapter mAdapter = new TicketListAdapter(recycleItemClickListener);
-        RecyclerView recyclerView = view.findViewById(R.id.ticket_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.getLayoutManager().setAutoMeasureEnabled(true);
-        recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setHasFixedSize(false);
-        recyclerView.setAdapter(mAdapter);
+        View view = inflater.inflate(R.layout.fragment_time, container, false);
+        //view.findViewById(R.id.book).setOnClickListener(this);
 
-        DateListAdapter mmAdapter = new DateListAdapter(recycleItemClickListener);
-        RecyclerView recyclerView1 = view.findViewById(R.id.date_list);
-        recyclerView1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-        recyclerView1.setItemAnimator(new DefaultItemAnimator());
-        recyclerView1.setAdapter(mmAdapter);
+        mSwipeRefreshLayout = view.findViewById(R.id.simpleSwipeRefreshLayout);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
+                android.R.color.holo_green_dark,
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_blue_dark);
 
-        TimeListAdapter tAdapter = new TimeListAdapter(recycleItemClickListener);
-        RecyclerView recyclerView2 = view.findViewById(R.id.time_list);
-        recyclerView2.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-        recyclerView2.setItemAnimator(new DefaultItemAnimator());
-        recyclerView2.setAdapter(tAdapter);
+        recycleItemClickListener = this;
+
+        DateListAdapter mAdapter = new DateListAdapter(recycleItemClickListener);
+
+
+
+
+
         return view;
     }
 
@@ -127,7 +127,7 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
 
     @Override
     public void setTagName() {
-        super.setTitle("Booking Event");
+
     }
 
     @Override
@@ -135,9 +135,33 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
 
     }
 
+    @Override
+    public void onRefresh() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
 
     @Override
     public void onItemClick(View v) {
-        Toast.makeText(getContext(),"event clicked:", Toast.LENGTH_LONG).show();
+
+    }
+
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
     }
 }
