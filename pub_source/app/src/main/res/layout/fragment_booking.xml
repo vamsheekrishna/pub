@@ -15,12 +15,94 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
-            <include
-                android:id="@+id/date_time"
-                layout="@layout/fragment_confirm_date_time"
+            <RelativeLayout
+                android:id="@+id/header"
+                android:layout_alignParentTop="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            </include>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/date_time"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/rr"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="8dp"/>
+                <TextView
+                    android:layout_width="230dp"
+                    android:layout_centerVertical="true"
+                    android:padding="8dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/event"
+                    android:textAlignment="center"
+                    android:text="Confirm Date and Time"
+                    android:textSize="20dp"
+                    android:textColor= "#8655CB  "
+                    android:paddingBottom="20dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/kaushanscriptregular"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/date_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header">
+                <LinearLayout
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    android:id="@+id/l"
+
+                    >
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/select"
+                        android:layout_below="@+id/event"
+                        android:id="@+id/detee"
+
+                        android:layout_marginLeft="10dp"/>
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="Select Date and Time"
+                        android:fontFamily="@font/kaushanscriptregular"
+                        android:layout_below="@+id/detee"
+                        android:layout_marginLeft="16dp"
+                        android:textSize="12dp"
+                        android:textAlignment="center"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/l2"
+                    android:layout_toRightOf="@+id/l"
+                    >
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/date_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/submit"
+                        />
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/time_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/submit"
+                        />
+                </LinearLayout>
+            </RelativeLayout>
             <Button
                 android:id="@+id/submit"
                 android:layout_width="match_parent"
@@ -30,9 +112,10 @@
                 android:layout_alignParentBottom="true"
                 android:textColor= "#FEFDFC  "
                 />
+
             <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="16dp"
                 android:id="@+id/ticket_list"
-                android:background="@color/colorAccent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/submit"
