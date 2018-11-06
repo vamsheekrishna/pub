@@ -40,23 +40,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginTop="26dp"
+
+
     >
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/name"
                 android:text="Name: Sander Van Doorn"
-                android:textSize="20dp"
+                android:textSize="16dp"
                 android:layout_below="@+id/rr"
                 android:textColor= "#637BDC"
-                android:fontFamily="@font/kaushanscriptregular"/>
+                android:fontFamily="@font/kaushanscriptregular"
+                />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/age"
         android:text="Age: 30 Years"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:layout_below="@+id/rr"
         android:textColor= "#637BDC"
         android:fontFamily="@font/kaushanscriptregular"/>
@@ -65,7 +67,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/spec"
         android:text="Spec: Mucian"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:layout_below="@+id/rr"
         android:textColor= "#637BDC "
         android:fontFamily="@font/kaushanscriptregular"/>

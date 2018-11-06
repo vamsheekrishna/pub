@@ -1,0 +1,349 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+
+    <android.support.v7.widget.CardView
+        android:background="@color/TextColor.White"
+        android:layout_margin="8dp"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="3dp"
+        card_view:cardCornerRadius="@dimen/card_album_radius">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+              >
+
+                <TextView
+                    android:id="@+id/n1"
+                    android:layout_width="109dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:text="Title"
+                    android:textColor="@android:color/black"
+                    android:textSize="16dp"
+                    />
+
+                <EditText
+                    android:id="@+id/e1"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="12dp"
+                   />
+
+            </LinearLayout>
+            <LinearLayout
+
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/n2"
+                    android:layout_width="109dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:text="Category"
+                    android:textColor="@android:color/black"
+                    android:textSize="16dp"
+                    />
+                <EditText
+                    android:id="@+id/e2"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="12dp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <Button
+                    android:id="@+id/btn_date"
+                    android:layout_width="109dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/in_date"
+                    android:layout_toEndOf="@+id/in_date"
+                    android:layout_toRightOf="@+id/in_date"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:text="START DATE" />
+
+                <EditText
+                    android:id="@+id/in_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textColor="@android:color/black"
+                    android:textSize="12dp" />
+
+
+</LinearLayout>
+            <LinearLayout
+
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <Button
+                    android:layout_width="109dp"
+                    android:layout_height="wrap_content"
+                    android:text="END DATE"
+                    android:id="@+id/btn_date1"
+                    android:layout_alignBottom="@+id/in_date"
+                    android:layout_toRightOf="@+id/in_date"
+                    android:layout_toEndOf="@+id/in_date"
+                    android:fontFamily="@font/kaushanscriptregular"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/in_date1"
+                    android:layout_weight="2"
+                    android:textColor="@android:color/black"
+                    android:textSize="12dp"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <Button
+                    android:layout_width="109dp"
+                    android:layout_height="wrap_content"
+                    android:text="START TIME"
+                    android:id="@+id/btn_time"
+                    android:layout_below="@+id/btn_date"
+                    android:layout_alignLeft="@+id/btn_date"
+                    android:layout_alignStart="@+id/btn_date"
+                    android:fontFamily="@font/kaushanscriptregular"/>
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/in_time"
+                        android:layout_weight="2"
+                        android:layout_below="@+id/in_date"
+                        />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <Button
+                    android:layout_width="109dp"
+                    android:layout_height="wrap_content"
+                    android:text="END TIME"
+                    android:id="@+id/btn_time1"
+                    android:layout_below="@+id/btn_date"
+                    android:layout_alignLeft="@+id/btn_date"
+                    android:layout_alignStart="@+id/btn_date"
+                    android:fontFamily="@font/kaushanscriptregular"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/in_time1"
+                    android:layout_weight="2"
+                    android:layout_below="@+id/in_date"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:layout_width="109dp"
+                    android:layout_height="wrap_content"
+                    android:text="click"
+                    android:id="@+id/button"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    />
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:prompt="@string/spinner_title"
+                    android:layout_weight="1"
+                    />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/nw"
+                    android:layout_width="109dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:text="Description"
+                    android:textColor="@android:color/black"
+                    android:textSize="16dp"
+                    />
+                <ScrollView
+                    android:id="@+id/ScrollView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/e11"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:textSize="12dp"
+                        android:layout_weight="2"
+                       />
+
+                </ScrollView>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/n19"
+                    android:layout_width="109dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:text="CoverPage"
+                    android:textColor="@android:color/black"
+                    android:textSize="16dp"
+                    />
+
+                <EditText
+                    android:id="@+id/e1f"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="12dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:id="@+id/nwtr"
+                    android:layout_width="109dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:text="Start Price"
+                    android:textColor="@android:color/black"
+                    android:textSize="16dp"
+                    />
+                <EditText
+                    android:id="@+id/e1h"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="12dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/nwt"
+                    android:layout_width="109dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:text="Note"
+                    android:textColor="@android:color/black"
+                    android:textSize="16dp"
+                    />
+                <ScrollView
+                    android:id="@+id/ScrollView011"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dip">
+
+                    <EditText
+                        android:id="@+id/e112"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:textSize="12dp"
+                        android:layout_weight="1"/>
+
+                </ScrollView>
+
+
+            </LinearLayout>
+            </LinearLayout>
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SUBMIT"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:textColor= "#FEFDFC  "
+                />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+</android.support.v4.widget.NestedScrollView>
