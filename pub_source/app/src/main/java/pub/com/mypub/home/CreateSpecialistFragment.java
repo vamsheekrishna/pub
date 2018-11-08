@@ -1,16 +1,14 @@
 package pub.com.mypub.home;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 
@@ -21,27 +19,32 @@ import pub.com.mypub.R;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
-public class BookingFragment extends NetworkBaseFragment implements RecycleItemClickListener {
+public class CreateSpecialistFragment extends NetworkBaseFragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    EditText name;
+    EditText dob;
+    EditText spec;
+    EditText des;
+    EditText image;
 
+    TextView txx;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnHomeInteractionListener mListener;
 
-    public BookingFragment() {
+    public CreateSpecialistFragment() {
         // Required empty public constructor
     }
 
 
-    public static BookingFragment newInstance(String param1, String param2) {
-        BookingFragment fragment = new BookingFragment();
-        fragment.setTagName();
-
+    // TODO: Rename and change types and number of parameters
+    public static CreateSpecialistFragment newInstance(String param1, String param2) {
+        CreateSpecialistFragment fragment = new CreateSpecialistFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,27 +66,18 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_booking, container, false);
-        RecycleItemClickListener recycleItemClickListener = this;
-        TicketListAdapter mAdapter = new TicketListAdapter(recycleItemClickListener);
-        RecyclerView recyclerView = view.findViewById(R.id.ticket_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
-//        recyclerView.getLayoutManager().setAutoMeasureEnabled(true);
-//        recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setHasFixedSize(false);
-        recyclerView.setAdapter(mAdapter);
+        View view = inflater.inflate(R.layout.fragment_create_specialist, container,
+                false);
+        name=view.findViewById(R.id.e1);
+        dob=view.findViewById(R.id.e2);
+        spec=view.findViewById(R.id.e11);
+        des=view.findViewById(R.id.e1f);
+        image=view.findViewById(R.id.e1h);
 
-        DateListAdapter mmAdapter = new DateListAdapter(recycleItemClickListener);
-        RecyclerView recyclerView1 = view.findViewById(R.id.date_list);
-        recyclerView1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-        recyclerView1.setItemAnimator(new DefaultItemAnimator());
-        recyclerView1.setAdapter(mmAdapter);
+        txx=view.findViewById(R.id.tx);
 
-        TimeListAdapter tAdapter = new TimeListAdapter(recycleItemClickListener);
-        RecyclerView recyclerView2 = view.findViewById(R.id.time_list);
-        recyclerView2.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-        recyclerView2.setItemAnimator(new DefaultItemAnimator());
-        recyclerView2.setAdapter(tAdapter);
+        view.findViewById(R.id.submit).setOnClickListener(this);
+
         return view;
     }
 
@@ -128,7 +122,7 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
 
     @Override
     public void setTagName() {
-        super.setTitle("Booking Event");
+        super.setTitle("Creat Specialist");
     }
 
     @Override
@@ -138,7 +132,22 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
 
 
     @Override
-    public void onItemClick(View v) {
-        Toast.makeText(getContext(),"event clicked:", Toast.LENGTH_LONG).show();
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.submit:
+
+
+                String _name = name.getText().toString();
+                String _dob =dob.getText().toString();
+                String _spes = spec.getText().toString();
+                String _des =des.getText().toString();
+                String _image = image.getText().toString();
+
+
+                txx.setText("Name:\t" + _name + "\nDOB:\t" + _dob + "\nSpecialization:\t" + _spes+ "\ndescreption:\t" + _des+ "\nimage:\t" + _image);
+
+
+                break;
+        }
     }
 }

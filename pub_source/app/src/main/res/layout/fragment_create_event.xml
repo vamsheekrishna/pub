@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/kaushanscriptregular"
                     android:text="Title"
-                    android:textColor="@android:color/black"
+                    android:textColor="#6C0D0D"
                     android:textSize="16dp"
                     />
 
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/kaushanscriptregular"
                     android:text="Category"
-                    android:textColor="@android:color/black"
+                    android:textColor="#6C0D0D"
                     android:textSize="16dp"
                     />
                 <EditText
@@ -99,7 +99,8 @@
                     android:layout_toEndOf="@+id/in_date"
                     android:layout_toRightOf="@+id/in_date"
                     android:fontFamily="@font/kaushanscriptregular"
-                    android:text="START DATE" />
+                    android:text="START DATE"
+                    android:textColor="#6C0D0D"/>
 
                 <EditText
                     android:id="@+id/in_date"
@@ -126,7 +127,8 @@
                     android:layout_alignBottom="@+id/in_date"
                     android:layout_toRightOf="@+id/in_date"
                     android:layout_toEndOf="@+id/in_date"
-                    android:fontFamily="@font/kaushanscriptregular"/>
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:textColor="#6C0D0D"/>
 
                 <EditText
                     android:layout_width="wrap_content"
@@ -155,7 +157,8 @@
                     android:layout_below="@+id/btn_date"
                     android:layout_alignLeft="@+id/btn_date"
                     android:layout_alignStart="@+id/btn_date"
-                    android:fontFamily="@font/kaushanscriptregular"/>
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:textColor="#6C0D0D"/>
 
                     <EditText
                         android:layout_width="wrap_content"
@@ -184,7 +187,8 @@
                     android:layout_below="@+id/btn_date"
                     android:layout_alignLeft="@+id/btn_date"
                     android:layout_alignStart="@+id/btn_date"
-                    android:fontFamily="@font/kaushanscriptregular"/>
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:textColor="#6C0D0D"/>
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -203,9 +207,10 @@
                 <Button
                     android:layout_width="109dp"
                     android:layout_height="wrap_content"
-                    android:text="click"
+                    android:text="Langauage"
                     android:id="@+id/button"
                     android:fontFamily="@font/kaushanscriptregular"
+                    android:textColor="#6C0D0D"
                     />
                 <Spinner
                     android:id="@+id/spinner"
@@ -229,13 +234,13 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/kaushanscriptregular"
                     android:text="Description"
-                    android:textColor="@android:color/black"
+                    android:textColor="#6C0D0D"
                     android:textSize="16dp"
                     />
                 <ScrollView
                     android:id="@+id/ScrollView01"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1">
 
                     <EditText
@@ -263,7 +268,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/kaushanscriptregular"
                     android:text="CoverPage"
-                    android:textColor="@android:color/black"
+                    android:textColor="#6C0D0D"
                     android:textSize="16dp"
                     />
 
@@ -287,7 +292,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/kaushanscriptregular"
                     android:text="Start Price"
-                    android:textColor="@android:color/black"
+                    android:textColor="#6C0D0D"
                     android:textSize="16dp"
                     />
                 <EditText
@@ -296,7 +301,8 @@
                     android:layout_weight="2"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
-                    android:textSize="12dp"/>
+                    android:textSize="12dp"
+                    android:inputType="number"/>
 
             </LinearLayout>
             <LinearLayout
@@ -311,13 +317,13 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/kaushanscriptregular"
                     android:text="Note"
-                    android:textColor="@android:color/black"
+                    android:textColor="#6C0D0D"
                     android:textSize="16dp"
                     />
                 <ScrollView
                     android:id="@+id/ScrollView011"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dip">
+                    android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/e112"
@@ -331,6 +337,18 @@
 
 
             </LinearLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="dispaly information"
+                    android:id="@+id/tx"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:padding="8dp"
+                    android:textAlignment="center"/>
+            </ScrollView>
             </LinearLayout>
             <Button
                 android:id="@+id/submit"

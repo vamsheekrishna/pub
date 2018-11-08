@@ -80,27 +80,27 @@
                         />
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_marginLeft="8dp"
-                    android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentRight="true"
+                android:id="@+id/l2"
+                android:layout_toRightOf="@+id/l"
+                >
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/date_list"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_alignParentRight="true"
-                    android:id="@+id/l2"
-                    android:layout_toRightOf="@+id/l"
-                    >
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/date_list"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_above="@+id/submit"
-                        />
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/time_list"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_above="@+id/submit"
-                        />
+                    android:layout_above="@+id/submit"
+                    />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/time_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/submit"
+                    />
                 </LinearLayout>
             </RelativeLayout>
             <TextView

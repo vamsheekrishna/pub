@@ -80,6 +80,10 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
         fragments.add(OfflinePromotersFragment.newInstance("",""));
         fragments.add(BookingFragment.newInstance("",""));
         fragments.add(CreateEventFragment.newInstance("",""));
+        fragments.add(CreateLocationFragment.newInstance("",""));
+        fragments.add(ContactFragment.newInstance("",""));
+        fragments.add(CreateTicketFragment.newInstance("",""));
+        fragments.add(CreateSpecialistFragment.newInstance("",""));
         eventsDetailsTabAdapter.setFragmentArray(fragments);
         eventBodyPageAdapter.setAdapter(eventsDetailsTabAdapter);
 

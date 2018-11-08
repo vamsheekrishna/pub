@@ -14,7 +14,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 
@@ -36,6 +38,19 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     EditText txtDate, txtTime,txtDate1, txtTime1;
     Spinner spinner;
     private int mYear, mMonth, mDay, mHour, mMinute;
+    String format = "";
+    EditText title;
+    EditText category;
+    EditText startdate;
+    EditText enddate;
+    EditText starttime;
+    EditText endtime;
+    EditText description;
+    EditText coverpage;
+    EditText startprice;
+    EditText note;
+    TextView txx;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -101,6 +116,21 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         spinner.setAdapter(adapter);
 
 
+
+        title=view.findViewById(R.id.e1);
+        category=view.findViewById(R.id.e2);
+        startdate=view.findViewById(R.id.in_date);
+        enddate=view.findViewById(R.id.in_date1);
+        starttime=view.findViewById(R.id.in_time);
+        endtime=view.findViewById(R.id.in_time1);
+
+        description=view.findViewById(R.id.e11);
+        coverpage=view.findViewById(R.id.e1f);
+        startprice=view.findViewById(R.id.e1h);
+        note=view.findViewById(R.id.e112);
+        txx=view.findViewById(R.id.tx);
+
+        view.findViewById(R.id.submit).setOnClickListener(this);
         return view;
     }
 
@@ -191,8 +221,18 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                         @Override
                         public void onTimeSet(TimePicker view, int hourOfDay,
                                               int minute) {
-
-                            txtTime.setText(hourOfDay + ":" + minute);
+                            if (mHour == 0) {
+                                mHour += 12;
+                                format = "AM";
+                            } else if (mHour == 12) {
+                                format = "PM";
+                            } else if (mHour > 12) {
+                                mHour -= 12;
+                                format = "PM";
+                            } else {
+                                format = "AM";
+                            }
+                            txtTime.setText(hourOfDay + ":" + minute + " "+ format);
                         }
                     }, mHour, mMinute, false);
             timePickerDialog.show();
@@ -234,11 +274,51 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                         @Override
                         public void onTimeSet(TimePicker view, int hourOfDay,
                                               int minute) {
-
-                            txtTime1.setText(hourOfDay + ":" + minute);
+                            if (mHour == 0) {
+                                mHour += 12;
+                                format = "AM";
+                            } else if (mHour == 12) {
+                                format = "PM";
+                            } else if (mHour > 12) {
+                                mHour -= 12;
+                                format = "PM";
+                            } else {
+                                format = "AM";
+                            }
+                            txtTime1.setText(hourOfDay + ":" + minute + " "+ format);
                         }
                     }, mHour, mMinute, false);
             timePickerDialog.show();
+        }
+
+        switch (v.getId()) {
+            case R.id.submit:
+
+
+                String _title = title.getText().toString();
+                String _category =category.getText().toString();
+                String _sdate = startdate.getText().toString();
+                String _edate =enddate.getText().toString();
+                String _stime = starttime.getText().toString();
+                String _etime =endtime.getText().toString();
+                String _language =spinner.getSelectedItem().toString();
+                String _des = description.getText().toString();
+                String _coverpage =coverpage.getText().toString();
+                String _sprice = startprice.getText().toString();
+                String _note =note.getText().toString();
+
+
+                if(_sdate.equals( _edate)) {
+
+
+                    txx.setText("Title:\t" + _title + "\ncategory:\t" + _category + "\nsart date:\t" + _sdate + "\nend date:\t" + _edate + "\nstart time:\t" + _stime + "\nend time:\t" + _etime + "\nlanguage:\t" + _language + "\ndescrwption:\t" + _des + "\ncoverpage:\t" + _coverpage + "\nstart price:\t" + _sprice + "\nnote:\t" + _note);
+                }
+                else
+                {
+                    Toast.makeText(getActivity(), "Start date and End date must be same", Toast.LENGTH_LONG).show();
+                }
+
+                break;
         }
     }
 }

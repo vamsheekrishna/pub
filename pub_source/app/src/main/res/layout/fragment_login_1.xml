@@ -20,13 +20,15 @@
                 style="@style/authentication_edit_text"
                 android:inputType="number"
                 android:id="@+id/phone_no"
-                android:hint="@string/email_or_mobile_number" />
+                android:hint="@string/email_or_mobile_number"
+                android:fontFamily="@font/kaushanscriptregular"/>
 
             <EditText
                 style="@style/authentication_edit_text"
                 android:hint="@string/password"
                 android:id="@+id/password"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:fontFamily="@font/kaushanscriptregular"/>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -44,6 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Remember Me"
+        android:fontFamily="@font/kaushanscriptregular"
         />
 </LinearLayout>
 
@@ -60,6 +63,7 @@
                 style="@style/authentication_button_submit"
                 android:text="@string/submit"
                 android:id="@+id/submit"
+                android:fontFamily="@font/kaushanscriptregular"
                 />
 
             <LinearLayout
@@ -81,7 +85,8 @@
                     android:layout_height="wrap_content"
                     android:text="Forgot password?"
                     android:textColor="@android:color/white"
-                    android:textSize="16dp"
+                    android:textSize="17dp"
+                    android:fontFamily="@font/chunkfive"
                     />
                 <TextView
                     android:id="@+id/register"
@@ -94,6 +99,7 @@
                     android:gravity="center|right"
                     android:textColor="@android:color/white"
                     android:textSize="17dp"
+                    android:fontFamily="@font/chunkfive"
                     />
             </LinearLayout>
 

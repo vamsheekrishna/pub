@@ -21,19 +21,22 @@
             android:id="@+id/phone_no"
             android:hint="@string/enter_phone_number"
             android:inputType="number"
+            android:fontFamily="@font/kaushanscriptregular"
             />
 
         <EditText
             style="@style/authentication_edit_text"
             android:id="@+id/password"
             android:hint="@string/enter_your_password"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:fontFamily="@font/kaushanscriptregular"/>
 
         <EditText
             style="@style/authentication_edit_text"
             android:id="@+id/re_password"
             android:hint="@string/re_enter_your_password"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:fontFamily="@font/kaushanscriptregular"/>
 
 
     </LinearLayout>
@@ -41,7 +44,7 @@
         style="@style/authentication_button_submit"
         android:id="@+id/but"
         android:text="@string/register"
-
+        android:fontFamily="@font/kaushanscriptregular"
         android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

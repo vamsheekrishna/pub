@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingLeft="32dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_bg"
@@ -10,20 +9,19 @@
 
     <RelativeLayout
         style="@style/authentication_content_bg"
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         >
-<RelativeLayout
 
-    android:paddingRight="32dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
     <LinearLayout
+
         android:id="@+id/view_button_body"
-        android:background="@drawable/loginlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:paddingBottom="70dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:orientation="vertical">
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -37,7 +35,8 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/color_text_hint"
                 android:textColor="@color/cardview_dark_background"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:fontFamily="@font/kaushanscriptregular"/>
         </android.support.design.widget.TextInputLayout>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -49,7 +48,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:textStyle="bold"
-                tools:text="Veriication Sucessfull" />
+                tools:text="Veriication Sucessfull"
+                android:fontFamily="@font/kaushanscriptregular"
+                android:textColor="#ffffff"/>
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -65,39 +66,34 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/footer_yellow_button_height"
-        android:layout_below="@+id/view_button_body"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-20dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:weightSum="2.0">
+        android:weightSum="2.0"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
 
         <Button
             android:layout_marginEnd="4dp"
-            android:theme="@style/ThemeOverlay.MyDarkButton"
-            android:background="@drawable/curved_button"
             android:id="@+id/button_verify_phone"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
-            android:text="@string/verify_phone_auth"/>
+            android:text="@string/verify_phone_auth"
+            android:fontFamily="@font/kaushanscriptregular"
+            style="@style/authentication_button_submit"/>
 
         <Button
             android:layout_marginStart="4dp"
-            android:theme="@style/ThemeOverlay.MyDarkButton"
             android:id="@+id/button_resend"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
-            android:background="@drawable/curved_button"
-            android:text="@string/resend_phone_auth"/>
+            android:text="@string/resend_phone_auth"
+            android:fontFamily="@font/kaushanscriptregular"
+            style="@style/authentication_button_submit"/>
     </LinearLayout>
 </RelativeLayout>
-    </RelativeLayout>
+
 </FrameLayout>
 <!--
 <?xml version="1.0" encoding="utf-8"?>
