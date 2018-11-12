@@ -1,9 +1,14 @@
 package pub.com.mypub.home;
 
-interface OnHomeInteractionListener {
+import android.view.MenuItem;
+
+public interface OnHomeInteractionListener {
     void goToMyProfile();
     void goToEvent();
     void goToChangePassword();
     void goToEventsDetailsFragment();
     void goTovedioFragment();
+    boolean onNavigationItemSelected(MenuItem menuItem);
+    void onDrawerSlide();
+
 }

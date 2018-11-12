@@ -3,20 +3,25 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
     android:layout_gravity="center">
+
     <ImageView
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@drawable/minus"
         android:id="@+id/minus"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:clickable="true"
+        android:onClick="imageClick" />
     <ImageView
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@drawable/plus"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:id="@+id/plus"/>
+        android:id="@+id/plus"
+        android:clickable="true"
+      />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

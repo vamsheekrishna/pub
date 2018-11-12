@@ -14,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import pub.com.mypub.R;
+import pub.com.mypub.home.OnHomeInteractionListener;
 
 public class ProfileFragment extends NetworkBaseFragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
@@ -23,7 +24,7 @@ public class ProfileFragment extends NetworkBaseFragment implements View.OnClick
     private String mParam1;
     private String mParam2;
 
-    private OnAuthenticationInteractionListener mListener;
+    private OnHomeInteractionListener mListener;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -37,6 +38,8 @@ public class ProfileFragment extends NetworkBaseFragment implements View.OnClick
         fragment.setArguments(args);
         return fragment;
     }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,11 +64,11 @@ public class ProfileFragment extends NetworkBaseFragment implements View.OnClick
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnAuthenticationInteractionListener) {
-            mListener = (OnAuthenticationInteractionListener) context;
+        if (context instanceof OnHomeInteractionListener) {
+            mListener = (OnHomeInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnAuthenticationInteractionListener");
+                    + " must implement OnHomeInteractionListener");
         }
     }
 
@@ -77,6 +80,7 @@ public class ProfileFragment extends NetworkBaseFragment implements View.OnClick
 
     @Override
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
+
 
     }
 
@@ -107,6 +111,6 @@ public class ProfileFragment extends NetworkBaseFragment implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        mListener.goToHomePage(null);
+
     }
 }

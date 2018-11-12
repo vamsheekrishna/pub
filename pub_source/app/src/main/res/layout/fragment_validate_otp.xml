@@ -70,7 +70,8 @@
         android:orientation="horizontal"
         android:weightSum="2.0"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp">
 
         <Button
             android:layout_marginEnd="4dp"

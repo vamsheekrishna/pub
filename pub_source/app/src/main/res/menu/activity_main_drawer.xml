@@ -5,18 +5,18 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/profile"
             android:icon="@drawable/ic_menu_camera"
             android:title="profile" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/event"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Events" />
 
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/changepassword"
             android:icon="@drawable/ic_menu_manage"
-            android:title="change Password" />
+            android:title="Change Password" />
     </group>
 
     <item android:title="Communicate">

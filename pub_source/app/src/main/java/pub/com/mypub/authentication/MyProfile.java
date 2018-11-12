@@ -2,7 +2,7 @@ package pub.com.mypub.authentication;
 
 import java.io.Serializable;
 
-class MyProfile implements Serializable {
+public class MyProfile implements Serializable {
 
     public String mPhoneNumber;
     public String mName;
