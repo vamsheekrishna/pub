@@ -31,8 +31,8 @@ public class PlusMinsFragment extends NetworkBaseFragment implements  ImageView.
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-ImageView plus;
-ImageView min;
+    ImageView plus;
+    ImageView min;
 TextView displayInteger;
     int minteger = 0;
     private OnHomeInteractionListener mListener;
@@ -70,6 +70,7 @@ TextView displayInteger;
 //        min=view.findViewById(R.id.minus);
         displayInteger=view.findViewById(R.id.t1);
         view.findViewById(R.id.plus).setOnClickListener(this);
+        view.findViewById(R.id.minus).setOnClickListener(this);
 
 
 
@@ -145,7 +146,8 @@ TextView displayInteger;
 
         displayInteger.setText("" + number);
     }
-    public void imageClick(View v){
 
-    }
+    /*public void imageClick(View v){
+
+    }*/
 }

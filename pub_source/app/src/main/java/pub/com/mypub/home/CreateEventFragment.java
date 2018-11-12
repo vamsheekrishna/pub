@@ -221,6 +221,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                         @Override
                         public void onTimeSet(TimePicker view, int hourOfDay,
                                               int minute) {
+                            mHour = hourOfDay;
                             if (mHour == 0) {
                                 mHour += 12;
                                 format = "AM";
