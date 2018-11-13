@@ -1,5 +1,8 @@
-package pub.com.mypub.home;
+package pub.com.mypub.admin;
 
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,24 +29,24 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import org.json.JSONException;
 
-public class Home extends NetworkBaseActivity implements OnHomeInteractionListener, NavigationView.OnNavigationItemSelectedListener{
+import pub.com.mypub.R;
+import pub.com.mypub.authentication.MyProfile;
+import pub.com.mypub.authentication.NetworkBaseActivity;
+import pub.com.mypub.home.CreateEventFragment;
+import pub.com.mypub.home.EventsDetailsFragment;
+import pub.com.mypub.home.EventsFragment;
+import pub.com.mypub.home.OnHomeInteractionListener;
+
+public class Admin extends NetworkBaseActivity implements OnAdminInteractionListener, NavigationView.OnNavigationItemSelectedListener,DrawableItemClickListener{
+
     MyProfile myProfile;
-    private OnHomeInteractionListener mListener;
+    private OnAdminInteractionListener mListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_admin);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -51,10 +54,12 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
-        navigationView.getMenu().setGroupVisible(R.id.erate_event, false);
+        NavigationView navigationView = findViewById(R.id.admin_nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //navigationView.getMenu().setGroupVisible(R.id.erate_event, true);
+        navigationView.getMenu().findItem(R.id.erate_event).setVisible(true);
+
     }
 
     @Override
@@ -73,7 +78,7 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
+    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -88,59 +93,30 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
 
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public void goToMyProfile() {
-
-    }
-
-    @Override
-    public void goToEvent() {
-
-
-    }
-
-    @Override
-    public void goToChangePassword() {
-
-    }
-
     @Override
     public void goToEventsDetailsFragment() {
         addFragment(EventsDetailsFragment.newInstance("", ""), true, true, EventsDetailsFragment.class.getName());
     }
 
     @Override
-    public void goTovedioFragment() {
-
+    public void goToLanguageFragment() {
+        addFragment(LanguageFragment.newInstance("", ""), true, true, LanguageFragment.class.getName());
     }
 
-
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-
-
+    public boolean onNavigationItemSelected( MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.profile) {
+        if (id == R.id.createvent) {
 
-
-                addFragment(ProfileFragment.newInstance("", ""), true, true, ProfileFragment.class.getName());
+            addFragment(CreateEventFragment.newInstance("", ""), true, true, CreateEventFragment.class.getName());
         }
+
+
+
         else if (id == R.id.event) {
-            addFragment(EventsFragment.newInstance("", ""), true, true, EventsFragment.class.getName());
-
-        }
-        else if (id == R.id.changepassword) {
-            addFragment(ChangePasswordFragment.newInstance("", ""), true, true, ChangePasswordFragment.class.getName());
-        }
-        else if (id == R.id.nav_share) {
-
-        }
-        else if (id == R.id.nav_send) {
-
+           // addFragment(EventsFragment.newInstance("", ""), true, true, EventsFragment.class.getName());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -149,43 +125,7 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
     }
 
     @Override
-    public void onDrawerSlide() {
+    public void onItemClick(View v) {
 
     }
 }
-
-//        MenuItem menuItem = null;
-//        selectDrawerItem(menuItem);
-//        return true;
-//    }
-//    public void selectDrawerItem(MenuItem menuItem) {
-//        // Create a new fragment and specify the fragment to show based on nav item clicked
-//        Fragment fragment = null;
-//        Class fragmentClass = null;
-//        switch(menuItem.getItemId()) {
-//            case R.id.profile:
-//                fragmentClass = ProfileFragment.class;
-//                break;
-//            case R.id.event:
-//                break;
-//        }
-//
-//        try {
-//            fragment = (Fragment) fragmentClass.newInstance();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        // Insert the fragment by replacing any existing fragment
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        fragmentManager.beginTransaction().replace(R.id.main_content, fragment).commit();
-//
-//        // Highlight the selected item has been done by NavigationView
-//        menuItem.setChecked(true);
-//        // Set action bar title
-//        setTitle(menuItem.getTitle());
-//        // Close the navigation drawer
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        drawer.closeDrawers();
-//    }
-

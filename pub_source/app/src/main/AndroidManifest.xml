@@ -10,30 +10,34 @@
         android:label="BookEvent"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        >
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".baseclasses.SplashScreen"
             android:label="Event"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".baseclasses.BaseActivity" />
         <activity android:name=".PubMainActivity" />
         <activity android:name=".authentication.AuthenticationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:name=".authentication.NetworkBaseActivity"
-            android:label="@string/app_authentication_registration" />
+            android:label="@string/app_authentication_registration"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".home.Home">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
+        <activity android:name=".admin.Admin"></activity>
     </application>
 
 </manifest>

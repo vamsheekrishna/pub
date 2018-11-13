@@ -1,0 +1,101 @@
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/TextColor.White"
+    android:layout_margin="8dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="3dp"
+    card_view:cardCornerRadius="@dimen/card_album_radius">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create New Language"
+                android:id="@+id/tx"
+                android:fontFamily="@font/kaushanscriptregular"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:textColor="#6C0D0D"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                >
+
+                <EditText
+                    android:id="@+id/n1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:hint="Enter Language Name"
+                    android:textColor="#6C0D0D"
+                    android:textSize="16dp"
+                    />
+
+                <Button
+                    android:id="@+id/e1"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="12dp"
+                    android:text="Submit"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    />
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Language"
+                android:id="@+id/tx1"
+                android:fontFamily="@font/kaushanscriptregular"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:textColor="#6C0D0D"
+                android:layout_marginTop="64dp"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <CheckBox android:id="@+id/ch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arabic"
+                    android:onClick="onCheckboxClicked"/>
+                <CheckBox android:id="@+id/ch2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="English"
+                    android:onClick="onCheckboxClicked"/>
+                <Button
+                    android:id="@+id/e11"
+                    android:layout_width="match_parent"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="12dp"
+                    android:text="Submit"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import pub.com.mypub.R;
+import pub.com.mypub.admin.Admin;
 import pub.com.mypub.home.Home;
 
 public class AuthenticationActivity extends NetworkBaseActivity implements OnAuthenticationInteractionListener{
@@ -59,8 +60,14 @@ public class AuthenticationActivity extends NetworkBaseActivity implements OnAut
 
     @Override
     public void goToHomePage(MyProfile myProfile) {
-        Intent intent = new Intent(this,Home.class);
-        startActivity(intent);
+        boolean isAdmin = false;
+        if(myProfile.isAdmin) {
+            Intent intent = new Intent(this, Admin.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, Home.class);
+            startActivity(intent);
+        }
         finish();
     }
 

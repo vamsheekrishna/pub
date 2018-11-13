@@ -26,6 +26,8 @@ import org.json.JSONObject;
 import java.util.Calendar;
 
 import pub.com.mypub.R;
+import pub.com.mypub.admin.LanguageFragment;
+import pub.com.mypub.admin.OnAdminInteractionListener;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
@@ -55,7 +57,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     private String mParam1;
     private String mParam2;
 
-    private OnHomeInteractionListener mListener;
+    private OnAdminInteractionListener mListener;
 
     public CreateEventFragment() {
         // Required empty public constructor
@@ -92,7 +94,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         b_date = view.findViewById(R.id.btn_date);
         b_time = view.findViewById(R.id.btn_time);
         txtDate = view.findViewById(R.id.in_date);
-        txtTime = view.findViewById(R.id.in_time);
+        //txtTime = view.findViewById(R.id.in_time);
 
         b_date.setOnClickListener(this);
         b_time.setOnClickListener(this);
@@ -101,7 +103,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         b_date1 = view.findViewById(R.id.btn_date1);
         b_time1 = view.findViewById(R.id.btn_time1);
         txtDate1 = view.findViewById(R.id.in_date1);
-        txtTime1 = view.findViewById(R.id.in_time1);
+       // txtTime1 = view.findViewById(R.id.in_time1);
 
         b_date1.setOnClickListener(this);
         b_time1.setOnClickListener(this);
@@ -109,7 +111,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
 
 
         String [] values =
-                {"Select Language","English","Arabic","Hindi","Kannada","Telugu","SPANISH","CHINESE",};
+                {"Select Language","Comedy","Music","Dance","cinima","Gaming","cultural","Workshop","Food And Drink","Adventure"};
         spinner= view.findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
@@ -121,8 +123,8 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         category=view.findViewById(R.id.e2);
         startdate=view.findViewById(R.id.in_date);
         enddate=view.findViewById(R.id.in_date1);
-        starttime=view.findViewById(R.id.in_time);
-        endtime=view.findViewById(R.id.in_time1);
+        //starttime=view.findViewById(R.id.in_time);
+       // endtime=view.findViewById(R.id.in_time1);
 
         description=view.findViewById(R.id.e11);
         coverpage=view.findViewById(R.id.e1f);
@@ -131,6 +133,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         txx=view.findViewById(R.id.tx);
 
         view.findViewById(R.id.submit).setOnClickListener(this);
+        view.findViewById(R.id.n2).setOnClickListener(this);
         return view;
     }
 
@@ -139,11 +142,11 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnHomeInteractionListener) {
-            mListener = (OnHomeInteractionListener) context;
+        if (context instanceof OnAdminInteractionListener) {
+            mListener = (OnAdminInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must OnHomeInteractionListener");
+                    + " must OnAdminInteractionListener");
         }
     }
 
@@ -201,7 +204,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
 
-                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            b_date.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
 
                         }
                     }, mYear, mMonth, mDay);
@@ -221,19 +224,19 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                         @Override
                         public void onTimeSet(TimePicker view, int hourOfDay,
                                               int minute) {
-                            mHour = hourOfDay;
-                            if (mHour == 0) {
-                                mHour += 12;
-                                format = "AM";
-                            } else if (mHour == 12) {
-                                format = "PM";
-                            } else if (mHour > 12) {
-                                mHour -= 12;
-                                format = "PM";
-                            } else {
-                                format = "AM";
-                            }
-                            txtTime.setText(hourOfDay + ":" + minute + " "+ format);
+//                            mHour = hourOfDay;
+//                            if (mHour == 0) {
+//                                mHour += 12;
+//                                format = "AM";
+//                            } else if (mHour == 12) {
+//                                format = "PM";
+//                            } else if (mHour > 12) {
+//                                mHour -= 12;
+//                                format = "PM";
+//                            } else {
+//                                format = "AM";
+//                            }
+                            b_time.setText(hourOfDay + ":" + minute );
                         }
                     }, mHour, mMinute, false);
             timePickerDialog.show();
@@ -255,7 +258,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
 
-                            txtDate1.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            b_date1.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
 
                         }
                     }, mYear, mMonth, mDay);
@@ -275,18 +278,18 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                         @Override
                         public void onTimeSet(TimePicker view, int hourOfDay,
                                               int minute) {
-                            if (mHour == 0) {
-                                mHour += 12;
-                                format = "AM";
-                            } else if (mHour == 12) {
-                                format = "PM";
-                            } else if (mHour > 12) {
-                                mHour -= 12;
-                                format = "PM";
-                            } else {
-                                format = "AM";
-                            }
-                            txtTime1.setText(hourOfDay + ":" + minute + " "+ format);
+//                            if (mHour == 0) {
+//                                mHour += 12;
+//                                format = "AM";
+//                            } else if (mHour == 12) {
+//                                format = "PM";
+//                            } else if (mHour > 12) {
+//                                mHour -= 12;
+//                                format = "PM";
+//                            } else {
+//                                format = "AM";
+//                            }
+                            b_time1.setText(hourOfDay + ":" + minute );
                         }
                     }, mHour, mMinute, false);
             timePickerDialog.show();
@@ -309,17 +312,22 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                 String _note =note.getText().toString();
 
 
-                if(_sdate.equals( _edate)) {
+//                if(_sdate.equals( _edate)) {
+//
+//
+//                    txx.setText("Title:\t" + _title + "\ncategory:\t" + _category + "\nsart date:\t" + _sdate + "\nend date:\t" + _edate + "\nstart time:\t" + _stime + "\nend time:\t" + _etime + "\nlanguage:\t" + _language + "\ndescrwption:\t" + _des + "\ncoverpage:\t" + _coverpage + "\nstart price:\t" + _sprice + "\nnote:\t" + _note);
+//                }
+//                else
+//                {
+//                    Toast.makeText(getActivity(), "Start date and End date must be same", Toast.LENGTH_LONG).show();
+//                }
 
-
-                    txx.setText("Title:\t" + _title + "\ncategory:\t" + _category + "\nsart date:\t" + _sdate + "\nend date:\t" + _edate + "\nstart time:\t" + _stime + "\nend time:\t" + _etime + "\nlanguage:\t" + _language + "\ndescrwption:\t" + _des + "\ncoverpage:\t" + _coverpage + "\nstart price:\t" + _sprice + "\nnote:\t" + _note);
-                }
-                else
-                {
-                    Toast.makeText(getActivity(), "Start date and End date must be same", Toast.LENGTH_LONG).show();
-                }
-
+                break;
+            case R.id.n2:
+                mListener.goToLanguageFragment();
                 break;
         }
     }
+
+
 }

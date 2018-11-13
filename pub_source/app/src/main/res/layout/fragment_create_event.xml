@@ -58,29 +58,21 @@
             </LinearLayout>
             <LinearLayout
 
-                android:weightSum="2"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
 
-                <TextView
+                <Button
                     android:id="@+id/n2"
-                    android:layout_width="109dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/kaushanscriptregular"
-                    android:text="Category"
+                    android:text="Select   Language"
                     android:textColor="#6C0D0D"
                     android:textSize="16dp"
                     />
-                <EditText
-                    android:id="@+id/e2"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/black"
-                    android:textSize="12dp"
-                    />
+
 
             </LinearLayout>
             <LinearLayout
@@ -93,7 +85,7 @@
 
                 <Button
                     android:id="@+id/btn_date"
-                    android:layout_width="109dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/in_date"
                     android:layout_toEndOf="@+id/in_date"
@@ -102,13 +94,20 @@
                     android:text="START DATE"
                     android:textColor="#6C0D0D"/>
 
-                <EditText
-                    android:id="@+id/in_date"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:textColor="@android:color/black"
-                    android:textSize="12dp" />
+                    android:text="END DATE"
+                    android:id="@+id/btn_date1"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:textColor="#6C0D0D"/>
+                <!--<EditText-->
+                    <!--android:id="@+id/in_date"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:textColor="@android:color/black"-->
+                    <!--android:textSize="12dp" />-->
 
 
 </LinearLayout>
@@ -119,24 +118,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
-                <Button
-                    android:layout_width="109dp"
-                    android:layout_height="wrap_content"
-                    android:text="END DATE"
-                    android:id="@+id/btn_date1"
-                    android:layout_alignBottom="@+id/in_date"
-                    android:layout_toRightOf="@+id/in_date"
-                    android:layout_toEndOf="@+id/in_date"
-                    android:fontFamily="@font/kaushanscriptregular"
-                    android:textColor="#6C0D0D"/>
+
 
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/in_date1"
                     android:layout_weight="2"
-                    android:textColor="@android:color/black"
+                    android:textColor="#6C0D0D"
                     android:textSize="12dp"
+                    android:hint="Event's Duration"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/kaushanscriptregular"
                     />
 
 
@@ -150,7 +143,7 @@
                 android:layout_height="wrap_content"
                 >
                 <Button
-                    android:layout_width="109dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:text="START TIME"
                     android:id="@+id/btn_time"
@@ -160,44 +153,43 @@
                     android:fontFamily="@font/kaushanscriptregular"
                     android:textColor="#6C0D0D"/>
 
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/in_time"
-                        android:layout_weight="2"
-                        android:layout_below="@+id/in_date"
-                        />
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-
-                android:weightSum="2"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
                 <Button
-                    android:layout_width="109dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:text="END TIME"
                     android:id="@+id/btn_time1"
-                    android:layout_below="@+id/btn_date"
-                    android:layout_alignLeft="@+id/btn_date"
-                    android:layout_alignStart="@+id/btn_date"
                     android:fontFamily="@font/kaushanscriptregular"
                     android:textColor="#6C0D0D"/>
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/in_time1"
-                    android:layout_weight="2"
-                    android:layout_below="@+id/in_date"
-                    />
+
+                    <!--<EditText-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:id="@+id/in_time"-->
+                        <!--android:layout_weight="2"-->
+                        <!--android:layout_below="@+id/in_date"-->
+                        <!--/>-->
 
             </LinearLayout>
+
+
+
+            <!--<LinearLayout-->
+
+                <!--android:weightSum="2"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--&gt;-->
+              <!---->
+                <!--<EditText-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/in_time1"-->
+                    <!--android:layout_weight="2"-->
+                    <!--android:layout_below="@+id/in_date"-->
+                    <!--/>-->
+
+            <!--</LinearLayout>-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -207,7 +199,7 @@
                 <Button
                     android:layout_width="109dp"
                     android:layout_height="wrap_content"
-                    android:text="Langauage"
+                    android:text="Category"
                     android:id="@+id/button"
                     android:fontFamily="@font/kaushanscriptregular"
                     android:textColor="#6C0D0D"
@@ -267,7 +259,7 @@
                     android:layout_width="109dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/kaushanscriptregular"
-                    android:text="CoverPage"
+                    android:text="location"
                     android:textColor="#6C0D0D"
                     android:textSize="16dp"
                     />
