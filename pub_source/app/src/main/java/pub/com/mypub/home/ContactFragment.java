@@ -1,26 +1,22 @@
 package pub.com.mypub.home;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-
-import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
 
+import pub.com.mypub.admin.MyEvent;
+import pub.com.mypub.admin.OnAdminInteractionListener;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
@@ -32,11 +28,13 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
     EditText location;
     EditText phoneno;
     TextView txx;
+    MyEvent mydata;
+    Button submit;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    private OnHomeInteractionListener mListener;
+    private OnAdminInteractionListener mListener;
 
     public ContactFragment() {
         // Required empty public constructor
@@ -82,11 +80,11 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnHomeInteractionListener) {
-            mListener = (OnHomeInteractionListener) context;
+        if (context instanceof OnAdminInteractionListener) {
+            mListener = (OnAdminInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnHomeInteractionListener");
+                    + " must implement OnAdminInteractionListener");
         }
     }
 
@@ -130,18 +128,29 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
-            case R.id.submit:
+
+        if (v == submit) {
+            mydata= new MyEvent();
+            mydata._contact = location.getText().toString();
+            mydata._contact = phoneno.getText().toString();
 
 
-                    String _location = location.getText().toString();
-                    String _phoneno =phoneno.getText().toString();
-
-                txx.setText("Location:\t" + _location + "\nPhone Number:\t" + _phoneno );
-
-
-                break;
+//
         }
+
+
+//        switch (v.getId()) {
+//            case R.id.submit:
+//
+//
+//                    String _location = location.getText().toString();
+//                    String _phoneno =phoneno.getText().toString();
+//
+//                txx.setText("Location:\t" + _location + "\nPhone Number:\t" + _phoneno );
+//
+//
+//                break;
+//        }
 
     }
 }

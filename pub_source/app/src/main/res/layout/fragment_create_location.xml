@@ -28,7 +28,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:orientation="vertical">
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Create New Location"
+                    android:id="@+id/tx"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:padding="8dp"
+                    android:textAlignment="center"
+                    android:textColor="#030303"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -181,29 +189,63 @@
                             android:textSize="12dp"
                             android:layout_weight="1"/>
                 </LinearLayout>
-                <ScrollView
+                <!--<ScrollView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="30dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="dispaly information"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/tx"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:fontFamily="@font/kaushanscriptregular"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:padding="8dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textAlignment="center"/>&ndash;&gt;-->
+                <!--</ScrollView>-->
+                <Button
+                    android:id="@+id/submit"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_marginTop="30dp"
+                    android:layout_height="wrap_content"
+                    android:text="ADD"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor= "#FEFDFC  "
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Location"
+                    android:id="@+id/tx1"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:padding="8dp"
+                    android:textAlignment="center"
+                    android:textColor="#6C0D0D"
+                    android:layout_marginTop="64dp"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
+                    <Spinner
+                        android:id="@+id/spinner"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="dispaly information"
-                        android:id="@+id/tx"
+                        android:layout_height="wrap_content"
+                        android:prompt="@string/spinner_title"
+                        android:layout_weight="1"
+                        />
+                    <Button
+                        android:id="@+id/ep"
+                        android:layout_width="match_parent"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FEFDFC"
+                        android:textSize="12dp"
+                        android:text="Submit"
                         android:fontFamily="@font/kaushanscriptregular"
-                        android:padding="8dp"
-                        android:textAlignment="center"/>
-                </ScrollView>
+                        />
+                </LinearLayout>
             </LinearLayout>
-            <Button
-                android:id="@+id/submit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="SUBMIT"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:textColor= "#FEFDFC  "
-                />
+
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

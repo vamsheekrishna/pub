@@ -1,12 +1,11 @@
 package pub.com.mypub.home;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,6 +15,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import pub.com.mypub.R;
+import pub.com.mypub.admin.MyEvent;
+import pub.com.mypub.admin.OnAdminInteractionListener;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
@@ -29,13 +30,14 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
     EditText spec;
     EditText des;
     EditText image;
-
+    MyEvent mydata;
     TextView txx;
+    Button submit;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    private OnHomeInteractionListener mListener;
+    private OnAdminInteractionListener mListener;
 
     public CreateSpecialistFragment() {
         // Required empty public constructor
@@ -86,11 +88,11 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnHomeInteractionListener) {
-            mListener = (OnHomeInteractionListener) context;
+        if (context instanceof OnAdminInteractionListener) {
+            mListener = (OnAdminInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnHomeInteractionListener");
+                    + " must implement OnAdminInteractionListener");
         }
     }
 
@@ -133,21 +135,33 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.submit:
 
 
-                String _name = name.getText().toString();
-                String _dob =dob.getText().toString();
-                String _spes = spec.getText().toString();
-                String _des =des.getText().toString();
-                String _image = image.getText().toString();
+        if (v == submit) {
+            mydata= new MyEvent();
+            mydata._specialist = name.getText().toString();
+            mydata._specialist = dob.getText().toString();
+            mydata._specialist = spec.getText().toString();
+            mydata._specialist = des.getText().toString();
+            mydata._specialist = image.getText().toString();
 
-
-                txx.setText("Name:\t" + _name + "\nDOB:\t" + _dob + "\nSpecialization:\t" + _spes+ "\ndescreption:\t" + _des+ "\nimage:\t" + _image);
-
-
-                break;
+//
         }
+//        switch (v.getId()) {
+//            case R.id.submit:
+//
+//
+//                String _name = name.getText().toString();
+//                String _dob =dob.getText().toString();
+//                String _spes = spec.getText().toString();
+//                String _des =des.getText().toString();
+//                String _image = image.getText().toString();
+//
+//
+//                txx.setText("Name:\t" + _name + "\nDOB:\t" + _dob + "\nSpecialization:\t" + _spes+ "\ndescreption:\t" + _des+ "\nimage:\t" + _image);
+//
+//
+//                break;
+//        }
     }
 }

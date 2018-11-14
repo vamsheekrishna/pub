@@ -1,9 +1,7 @@
 package pub.com.mypub.admin;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +27,8 @@ EditText language;
 Button create,select;
 CheckBox one;
 CheckBox two;
+MyEvent mydata;
+    View.OnClickListener checkBoxListener;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -70,9 +70,14 @@ CheckBox two;
        language = view.findViewById(R.id.n1);
        one = view.findViewById(R.id.ch1);
        two=view.findViewById(R.id.ch2);
+        create=view.findViewById(R.id.e1);
+        select=view.findViewById(R.id.e11);
 
        create.setOnClickListener(this);
         select.setOnClickListener(this);
+        one.setOnClickListener(this);
+       two.setOnClickListener(this);
+
         return view;
     }
 
@@ -128,11 +133,21 @@ CheckBox two;
     @Override
     public void onClick(View v) {
         if (v == create) {
-            String _language= language.getText().toString();
-//            n2.setText(_language);
+           mydata= new MyEvent();
+            mydata._language = language.getText().toString();
+
+//
         }
         else if (v== select){
+            if(one.isChecked()) {
+                mydata= new MyEvent();
+                mydata._ch1 = one.getText().toString();
+            }
 
+            if(two.isChecked()) {
+                mydata= new MyEvent();
+                mydata._ch2 = two.getText().toString();
+            }
 
         }
     }

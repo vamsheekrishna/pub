@@ -1,19 +1,22 @@
 package pub.com.mypub.home;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import pub.com.mypub.R;
+import pub.com.mypub.admin.MyEvent;
+import pub.com.mypub.admin.OnAdminInteractionListener;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
@@ -29,11 +32,14 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
     EditText latitude;
     EditText langetude;
     TextView txx;
+    Spinner spinner;
+    MyEvent mydata;
+    Button add,submit;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    private OnHomeInteractionListener mListener;
+    private OnAdminInteractionListener mListener;
 
     public CreateLocationFragment() {
         // Required empty public constructor
@@ -75,6 +81,15 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
         txx=view.findViewById(R.id.tx);
 
         view.findViewById(R.id.submit).setOnClickListener(this);
+        view.findViewById(R.id.ep).setOnClickListener(this);
+
+
+        String [] values =
+                {"Ticket1","Ticket2","Ticket3","Ticket4","Ticket5","Ticket6"};
+        spinner= view.findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner.setAdapter(adapter);
 
         return view;
     }
@@ -84,11 +99,11 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnHomeInteractionListener) {
-            mListener = (OnHomeInteractionListener) context;
+        if (context instanceof OnAdminInteractionListener) {
+            mListener = (OnAdminInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnHomeInteractionListener");
+                    + " must implement OnAdminInteractionListener");
         }
     }
 
@@ -131,21 +146,38 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.submit:
 
+        if (v == add) {
+            mydata= new MyEvent();
+            mydata._createLocation = city.getText().toString();
+            mydata._createLocation = county.getText().toString();
+            mydata._createLocation = state.getText().toString();
+            mydata._createLocation = landmark.getText().toString();
+            mydata._createLocation = latitude.getText().toString();
+            mydata._createLocation = langetude.getText().toString();
 
-                String _city = city.getText().toString();
-                String _country =county.getText().toString();
-                String _state = state.getText().toString();
-                String _landmark =landmark.getText().toString();
-                String _latitude = latitude.getText().toString();
-                String _langetude =langetude.getText().toString();
-
-                txx.setText("city:\t" + _city + "\ncounry:\t" + _country + "\nstate:\t" + _state+ "\nlandMark:\t" + _landmark+ "\nlatitude:\t" + _latitude+ "\nlangude:\t" + _langetude);
-
-
-                break;
+//
         }
+        else if (v== submit){
+            mydata= new MyEvent();
+            mydata._selectLocation = spinner.getSelectedItem().toString();
+
+        }
+//        switch (v.getId()) {
+//            case R.id.submit:
+//
+//
+//                String _city = city.getText().toString();
+//                String _country =county.getText().toString();
+//                String _state = state.getText().toString();
+//                String _landmark =landmark.getText().toString();
+//                String _latitude = latitude.getText().toString();
+//                String _langetude =langetude.getText().toString();
+//
+//                txx.setText("city:\t" + _city + "\ncounry:\t" + _country + "\nstate:\t" + _state+ "\nlandMark:\t" + _landmark+ "\nlatitude:\t" + _latitude+ "\nlangude:\t" + _langetude);
+//
+//
+//                break;
+//        }
     }
 }

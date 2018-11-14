@@ -38,25 +38,70 @@
                     android:textSize="22dp"
                     android:textColor= "#8655CB  "
                     android:fontFamily="@font/kaushanscriptregular"/>
-                <TextView
-                    android:id="@+id/detail"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Electronic and Dance | English | 6hrs 30mins | Age 15+"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/event"
+                    android:id="@+id/llw"
+                    >
+
+                <TextView
+                    android:id="@+id/detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Electronic and Dance "
                     android:textColor="@android:color/black"
                     android:textSize="15dp"
                     android:layout_below="@+id/event"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/chunkfive"
                     />
+                    <TextView
+                        android:id="@+id/detail2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" | English | "
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:layout_below="@+id/event"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/chunkfive"
 
+                        />
+                    <TextView
+                        android:id="@+id/detail3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 6hrs 30mins |"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:layout_below="@+id/event"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/chunkfive"
+
+                        />
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/detail4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  Age 15+"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp"
+                    android:layout_below="@+id/llw"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/chunkfive"
+
+                    />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/detee"
                     android:text="sat 27 Oct"
                     android:textSize="15dp"
-                    android:layout_below="@+id/detail"
+                    android:layout_below="@+id/detail4"
                     android:layout_marginTop="16dp"
                     android:textColor= "#AB3D24"
                     />

@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import pub.com.mypub.R;
+import pub.com.mypub.admin.models.Category;
 import pub.com.mypub.authentication.AuthenticationActivity;
 import pub.com.mypub.authentication.ChangePasswordFragment;
 import pub.com.mypub.authentication.ForgetFragment;
@@ -32,7 +33,11 @@ import org.json.JSONException;
 import pub.com.mypub.R;
 import pub.com.mypub.authentication.MyProfile;
 import pub.com.mypub.authentication.NetworkBaseActivity;
+import pub.com.mypub.home.ContactFragment;
 import pub.com.mypub.home.CreateEventFragment;
+import pub.com.mypub.home.CreateLocationFragment;
+import pub.com.mypub.home.CreateSpecialistFragment;
+import pub.com.mypub.home.CreateTicketFragment;
 import pub.com.mypub.home.EventsDetailsFragment;
 import pub.com.mypub.home.EventsFragment;
 import pub.com.mypub.home.OnHomeInteractionListener;
@@ -41,6 +46,7 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
 
     MyProfile myProfile;
     private OnAdminInteractionListener mListener;
+    CreateEventFragment createEventFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +65,7 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
 
         //navigationView.getMenu().setGroupVisible(R.id.erate_event, true);
         navigationView.getMenu().findItem(R.id.erate_event).setVisible(true);
+        createEventFragment = CreateEventFragment.newInstance("", "");
 
     }
 
@@ -85,7 +92,11 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+//switch (id)
+//        {
+//            case R.id.erate_event:
+//                break;
+//        }
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
@@ -104,13 +115,42 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
     }
 
     @Override
+    public void goToCategoryFragment() {
+        addFragment(CategoryFragment.newInstance("", ""), true, true, CategoryFragment.class.getName());
+    }
+
+    @Override
+    public void goToTickitFragment() {
+        addFragment(CreateTicketFragment.newInstance("", ""), true, true, CreateTicketFragment.class.getName());
+    }
+
+    @Override
+    public void goToLocationFragment() {
+        addFragment(CreateLocationFragment.newInstance("", ""), true, true, CreateLocationFragment.class.getName());
+    }
+
+    @Override
+    public void goToSpecialistFragment() {
+        addFragment(CreateSpecialistFragment.newInstance("", ""), true, true, CreateSpecialistFragment.class.getName());
+    }
+
+    @Override
+    public void goToContactFragment() {
+        addFragment(ContactFragment.newInstance("", ""), true, true, ContactFragment.class.getName());
+    }
+
+    @Override
+    public void setCategory(Category category) {
+        createEventFragment.setCategory(category);
+    }
+    @Override
     public boolean onNavigationItemSelected( MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.createvent) {
+        if (id == R.id.erate_event) {
 
-            addFragment(CreateEventFragment.newInstance("", ""), true, true, CreateEventFragment.class.getName());
+            addFragment(createEventFragment, true, true, CreateEventFragment.class.getName());
         }
 
 

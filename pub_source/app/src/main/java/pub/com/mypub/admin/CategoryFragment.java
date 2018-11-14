@@ -1,59 +1,65 @@
-package pub.com.mypub.home;
+package pub.com.mypub.admin;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import pub.com.mypub.R;
-import pub.com.mypub.admin.MyEvent;
-import pub.com.mypub.admin.OnAdminInteractionListener;
+import pub.com.mypub.admin.models.Category;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
-public class CreateTicketFragment extends NetworkBaseFragment implements View.OnClickListener {
+public class CategoryFragment extends NetworkBaseFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    EditText name;
-    EditText price;
-    EditText title;
-    EditText description;
-    TextView txx;
     Spinner spinner;
     MyEvent mydata;
-    Button add,submit;
-    // TODO: Rename and change types of parameters
+    EditText category;
+    Button create,select;
+    Category mSelectedCategory = null;
+    ArrayList<Category> mCategoryList = new ArrayList<>();
     private String mParam1;
     private String mParam2;
 
     private OnAdminInteractionListener mListener;
 
-    public CreateTicketFragment() {
+    public CategoryFragment() {
         // Required empty public constructor
     }
 
 
     // TODO: Rename and change types and number of parameters
-    public static CreateTicketFragment newInstance(String param1, String param2) {
-        CreateTicketFragment fragment = new CreateTicketFragment();
+    public static CategoryFragment newInstance(String param1, String param2) {
+        CategoryFragment fragment = new CategoryFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    private void getCategoryData() {
+        //"Select Language","Comedy","Music","Dance","cinima","Gaming","cultural","Workshop","Food And Drink","Adventure"
+        mCategoryList.add(new Category(-1, "Select Language"));
+        mCategoryList.add(new Category(-1, "Comedy"));
+        mCategoryList.add(new Category(-1, "Music"));
+        mCategoryList.add(new Category(-1, "Dance"));
     }
 
     @Override
@@ -63,32 +69,34 @@ public class CreateTicketFragment extends NetworkBaseFragment implements View.On
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        setTagName();
+        getCategoryData();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_create_ticket, container,
-                false);
-        name=view.findViewById(R.id.e1);
-        price=view.findViewById(R.id.e2);
-        title=view.findViewById(R.id.e11);
-        description=view.findViewById(R.id.e1f);
+        View view = inflater.inflate(R.layout.fragment_category, container, false);
 
-        txx=view.findViewById(R.id.tx);
+        category = view.findViewById(R.id.n1);
+        create=view.findViewById(R.id.add);
+        select=view.findViewById(R.id.submit);
 
-        view.findViewById(R.id.ADD).setOnClickListener(this);
-        view.findViewById(R.id.ep).setOnClickListener(this);
+        create.setOnClickListener(this);
+        select.setOnClickListener(this);
 
 
-        String [] values =
-                {"Ticket1","Ticket2","Ticket3","Ticket4","Ticket5","Ticket6"};
+        String [] values = {"Select Language","Comedy","Music","Dance","cinima","Gaming","cultural","Workshop","Food And Drink","Adventure"};
+        ArrayList<String> categoryNames = new ArrayList<>();
+        for (Category category:mCategoryList) {
+            categoryNames.add(category.name);
+        }
         spinner= view.findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, categoryNames);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(this);
         return view;
     }
 
@@ -112,8 +120,34 @@ public class CreateTicketFragment extends NetworkBaseFragment implements View.On
     }
 
     @Override
-    public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
+    public void onClick(View v) {
+        if(v.getId() == R.id.submit) {
+            onSubmit();
+        } else if(v.getId() == R.id.add) {
 
+        }
+        /*if (v == create) {
+            mydata= new MyEvent();
+            mydata._category = category.getText().toString();
+
+//
+        }
+        else if (v== select){
+            mydata= new MyEvent();
+            mydata._category = spinner.getSelectedItem().toString();
+
+        }*/
+
+    }
+
+    private void onSubmit() {
+        mListener.setCategory(mSelectedCategory);
+        getActivity().onBackPressed();
+    }
+
+    @Override
+    public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
+        //getCategoryData();
     }
 
     @Override
@@ -133,7 +167,7 @@ public class CreateTicketFragment extends NetworkBaseFragment implements View.On
 
     @Override
     public void setTagName() {
-        super.setTitle("Creat Ticket");
+
     }
 
     @Override
@@ -143,34 +177,14 @@ public class CreateTicketFragment extends NetworkBaseFragment implements View.On
 
 
     @Override
-    public void onClick(View v) {
-            if (v == add) {
-                mydata= new MyEvent();
-                mydata._creatTicket = name.getText().toString();
-                mydata._creatTicket = price.getText().toString();
-                mydata._creatTicket = title.getText().toString();
-                mydata._creatTicket = description.getText().toString();
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if(position != 0) {
+            mSelectedCategory = mCategoryList.get(position);
+        }
+    }
 
-//
-            }
-            else if (v== submit){
-                mydata= new MyEvent();
-                mydata._selectTicket = spinner.getSelectedItem().toString();
-
-            }
-//            case R.id.submit:
-//
-//
-//                String _name = name.getText().toString();
-//                String _price =price.getText().toString();
-//                String _title = title.getText().toString();
-//                String _des =description.getText().toString();
-//
-//
-//                txx.setText("Name:\t" + _name + "\nprice:\t" + _price + "\nTitle:\t" + _title+ "\nDescription:\t" + _des);
-
-
-
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }
