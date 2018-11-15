@@ -36,7 +36,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    Button b_date, b_time, b_date1, b_time1, n2,button,tickt,n19,spec,contact;
+    Button b_date, b_time, b_date1, b_time1, n2,button,tickt,n19,spec,contact,coverPage;
     EditText txtDate, txtTime,txtDate1, txtTime1,tick1,e1f,spec1,contact1,in;
     //Spinner spinner;
     private int mYear, mMonth, mDay, mHour, mMinute;
@@ -109,6 +109,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         button = view.findViewById(R.id.button);
         in_date1 = view.findViewById(R.id.in_date1);
        category = view.findViewById(R.id.category);
+        coverPage = view.findViewById(R.id.coverPage);
        // txtTime1 = view.findViewById(R.id.in_time1);
 
         b_date1.setOnClickListener(this);
@@ -118,6 +119,8 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         n19.setOnClickListener(this);
         spec.setOnClickListener(this);
         contact.setOnClickListener(this);
+        coverPage.setOnClickListener(this);
+
 
 
 
@@ -356,6 +359,9 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
 
             case R.id.contact:
                 mListener.goToContactFragment();
+                break;
+            case R.id.coverPage:
+                mListener.goToCoverPageFragment();
                 break;
         }
     }

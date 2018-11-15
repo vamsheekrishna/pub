@@ -5,22 +5,29 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import pub.com.mypub.R;
 
 import pub.com.mypub.admin.MyEvent;
 import pub.com.mypub.admin.OnAdminInteractionListener;
+import pub.com.mypub.admin.models.Contact;
+import pub.com.mypub.admin.models.Location;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
-public class ContactFragment extends NetworkBaseFragment implements View.OnClickListener {
+public class ContactFragment extends NetworkBaseFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +36,11 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
     EditText phoneno;
     TextView txx;
     MyEvent mydata;
-    Button submit;
+    Button submit,add;
+    Spinner spinner;
+
+    Contact mSelectedContact = null;
+    ArrayList<Contact> mContactList = new ArrayList<>();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -58,6 +69,15 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setTagName();
+        getContactData();
+    }
+
+    private void getContactData() {
+        mContactList.add(new Contact(0,"HayderAbad","9987263541"));
+        mContactList.add(new Contact(1,"Chenai","8765290987"));
+        mContactList.add(new Contact(2,"Delhi","5678920918"));
+        mContactList.add(new Contact(3,"Noida","9812670000"));
+
     }
 
     @Override
@@ -69,8 +89,20 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
         location=view.findViewById(R.id.e1);
         phoneno=view.findViewById(R.id.e2);
         txx=view.findViewById(R.id.tx);
+        submit=view.findViewById(R.id.submit);
+        add=view.findViewById(R.id.add);
 
         view.findViewById(R.id.submit).setOnClickListener(this);
+        view.findViewById(R.id.add).setOnClickListener(this);
+
+        String[] values =
+                {"HyderAbad", "", "Chenai", "Noida", "Delhi"};
+        spinner = view.findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(this);
 
         return view;
     }
@@ -127,12 +159,12 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
 
     @Override
     public void onClick(View v) {
+        if (v == add) {
+        }
 
 
         if (v == submit) {
-            mydata= new MyEvent();
-            mydata._contact = location.getText().toString();
-            mydata._contact = phoneno.getText().toString();
+            onSubmit();
 
 
 //
@@ -151,6 +183,21 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
 //
 //                break;
 //        }
+
+    }
+
+    private void onSubmit() {
+        mListener.setContact(mSelectedContact);
+        getActivity().onBackPressed();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }

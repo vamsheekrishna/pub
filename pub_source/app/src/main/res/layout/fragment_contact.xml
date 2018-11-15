@@ -91,7 +91,17 @@
                         android:inputType="number"
                         />
 
+
                 </LinearLayout>
+                <Button
+                    android:id="@+id/add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ADD"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor= "#FEFDFC  "
+                    />
 <!--<ScrollView-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="wrap_content">-->
@@ -105,6 +115,30 @@
     <!--android:padding="8dp"-->
     <!--android:textAlignment="center"/>-->
 <!--</ScrollView>-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Contact"
+                    android:id="@+id/tx1"
+                    android:fontFamily="@font/kaushanscriptregular"
+                    android:padding="8dp"
+                    android:textAlignment="center"
+                    android:textColor="#6C0D0D"
+                    android:layout_marginTop="150dp"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:prompt="@string/spinner_title"
+                        android:layout_weight="1"
+                        />
+
+                </LinearLayout>
             </LinearLayout>
             <Button
                 android:id="@+id/submit"

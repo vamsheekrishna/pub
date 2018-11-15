@@ -1,6 +1,8 @@
 package pub.com.mypub.admin;
 
 import pub.com.mypub.admin.models.Category;
+import pub.com.mypub.admin.models.Contact;
+import pub.com.mypub.admin.models.Location;
 
 public interface OnAdminInteractionListener {
 
@@ -17,4 +19,10 @@ public interface OnAdminInteractionListener {
 
     void goToContactFragment();
     void setCategory(Category category);
+
+    void setLocation(Location location);
+
+    void goToCoverPageFragment();
+
+    void setContact(Contact contact);
 }
