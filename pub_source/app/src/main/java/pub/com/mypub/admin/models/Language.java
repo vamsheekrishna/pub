@@ -1,8 +1,8 @@
 package pub.com.mypub.admin.models;
 
 public class Language {
-    public int id;
-    public String name;
+    public int id= Integer.parseInt(null);
+    public String name=null;
     boolean selected = false;
 
 
@@ -15,21 +15,33 @@ public class Language {
         this.selected = selected;
     }
 
-    public int getid() {
+    public int getId() {
         return id;
     }
-    public void setname(String name) {
-        this.name = name;
+
+    public void setId() {
+        this.id = id;
     }
-    public String getname() {
+
+
+    public String getName() {
+
         return name;
     }
 
 
+    public void setName(String name) {
+
+        this.name = name;
+    }
+
+
     public boolean isSelected() {
+
         return selected;
     }
     public void setSelected(boolean selected) {
+
         this.selected = selected;
     }
 }

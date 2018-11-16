@@ -16,7 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import pub.com.mypub.R;
 import pub.com.mypub.admin.models.Category;
+import pub.com.mypub.admin.models.Contact;
 import pub.com.mypub.admin.models.Location;
+import pub.com.mypub.admin.models.Specialist;
 import pub.com.mypub.authentication.AuthenticationActivity;
 import pub.com.mypub.authentication.ChangePasswordFragment;
 import pub.com.mypub.authentication.ForgetFragment;
@@ -147,12 +149,22 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
 
     @Override
     public void setLocation(Location location) {
-
+        createEventFragment.setLocation(location);
     }
 
     @Override
     public void goToCoverPageFragment() {
         addFragment(CoverPageFragment.newInstance("", ""), true, true, CoverPageFragment.class.getName());
+    }
+
+    @Override
+    public void setContact(Contact contact) {
+        createEventFragment.setContact(contact);
+    }
+
+    @Override
+    public void setSpecialist(Specialist specialist) {
+        createEventFragment.setSpecialist(specialist);
     }
 
     @Override

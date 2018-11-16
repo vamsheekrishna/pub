@@ -25,13 +25,15 @@
     <CheckBox android:id="@+id/ch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Arabic"
-        android:onClick="onCheckboxClicked"/>
-    <CheckBox android:id="@+id/ch2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="English"
-        android:onClick="onCheckboxClicked"/>
+        android:text="checkbox"
+        android:onClick="onCheckboxClicked"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
+    <!--<CheckBox android:id="@+id/ch2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="English"-->
+        <!--android:onClick="onCheckboxClicked"/>-->
 
     <TextView
         android:id="@+id/code"

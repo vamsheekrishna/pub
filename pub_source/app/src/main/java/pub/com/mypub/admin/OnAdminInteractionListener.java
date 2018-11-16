@@ -2,7 +2,9 @@ package pub.com.mypub.admin;
 
 import pub.com.mypub.admin.models.Category;
 import pub.com.mypub.admin.models.Contact;
+import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.admin.models.Location;
+import pub.com.mypub.admin.models.Specialist;
 
 public interface OnAdminInteractionListener {
 
@@ -25,4 +27,7 @@ public interface OnAdminInteractionListener {
     void goToCoverPageFragment();
 
     void setContact(Contact contact);
+    void setSpecialist(Specialist specialist);
+    void setLanguage(Language language);
+
 }

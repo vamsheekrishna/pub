@@ -28,6 +28,10 @@ import pub.com.mypub.R;
 import pub.com.mypub.admin.MyEvent;
 import pub.com.mypub.admin.OnAdminInteractionListener;
 import pub.com.mypub.admin.models.Category;
+import pub.com.mypub.admin.models.Contact;
+import pub.com.mypub.admin.models.Language;
+import pub.com.mypub.admin.models.Location;
+import pub.com.mypub.admin.models.Specialist;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
@@ -37,23 +41,27 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     Button b_date, b_time, b_date1, b_time1, n2,button,tickt,n19,spec,contact,coverPage;
-    EditText txtDate, txtTime,txtDate1, txtTime1,tick1,e1f,spec1,contact1,in;
+    EditText txtDate, txtTime,txtDate1, txtTime1,e1f,in;
     //Spinner spinner;
     private int mYear, mMonth, mDay, mHour, mMinute;
     MyEvent mydata;
     String format = "";
     EditText title;
-    TextView category;
+    TextView category,location,coverpage,contact1,spec1,tick1;
     EditText startdate;
     EditText enddate;
     EditText starttime;
     EditText endtime;
     EditText description;
-    EditText coverpage;
+
     EditText startprice;
     EditText note;
     TextView txx,in_date1;
     Category mCategory;
+    Contact mContact;
+    Location mLocation;
+    Specialist mSpecialist;
+    Language mLanguage;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -104,12 +112,14 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         b_time1 = view.findViewById(R.id.btn_time1);
         tickt = view.findViewById(R.id.tickt);
         n19 = view.findViewById(R.id.n19);
-        spec=view.findViewById(R.id.spec);
-        contact = view.findViewById(R.id.contact);
+        spec=view.findViewById(R.id.spec1);
+        contact = view.findViewById(R.id.contact1);
         button = view.findViewById(R.id.button);
         in_date1 = view.findViewById(R.id.in_date1);
        category = view.findViewById(R.id.category);
-        coverPage = view.findViewById(R.id.coverPage);
+       location=view.findViewById(R.id.e1f);
+       n2=view.findViewById(R.id.n2);
+        coverPage = view.findViewById(R.id.coverPage1);
        // txtTime1 = view.findViewById(R.id.in_time1);
 
         b_date1.setOnClickListener(this);
@@ -120,6 +130,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         spec.setOnClickListener(this);
         contact.setOnClickListener(this);
         coverPage.setOnClickListener(this);
+        n2.setOnClickListener(this);
 
 
 
@@ -176,6 +187,9 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         if(null != mCategory) {
             Toast.makeText(getActivity(), "Category: " + mCategory.name, Toast.LENGTH_LONG).show();
             category.setText(mCategory.name);
+
+            Toast.makeText(getActivity(), "language: " + mLanguage.name, Toast.LENGTH_LONG).show();
+           n2.setText(mLanguage.name);
         }
 
     }
@@ -398,5 +412,21 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     public void setCategory(Category _category) {
         mCategory = _category;
         //category.setText(mCategory.name);
+    }
+    public void setContact(Contact _contact) {
+        mContact = _contact;
+
+    }
+    public void setLocation(Location _location) {
+        mLocation = _location;
+
+    }
+    public void setSpecialist(Specialist _specialist) {
+        mSpecialist = _specialist;
+
+    }
+    public void setLanguage(Language _language) {
+        mLanguage = _language;
+
     }
 }

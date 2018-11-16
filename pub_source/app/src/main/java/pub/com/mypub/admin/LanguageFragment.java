@@ -15,21 +15,15 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.VolleyError;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import pub.com.mypub.R;
 import pub.com.mypub.admin.models.Contact;
 import pub.com.mypub.admin.models.Language;
-
 import pub.com.mypub.authentication.NetworkBaseFragment;
-
 import static android.support.v4.content.ContextCompat.getSystemService;
 
 
@@ -43,13 +37,12 @@ Button create,select;
 CheckBox one;
 CheckBox two;
 MyEvent mydata;
+ListView listView;
+Language mSelectedLanguage = null;
+ArrayList<Language> mLanguageList = new ArrayList<>();
+MyCustomAdapter dataAdapter = null;
 
-    ListView listView;
 
-    Language mSelectedLanguage = null;
-    ArrayList<Language> mLanguageList = new ArrayList<>();
-
-    View.OnClickListener checkBoxListener;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -60,8 +53,6 @@ MyEvent mydata;
         // Required empty public constructor
     }
 
-
-    // TODO: Rename and change types and number of parameters
     public static LanguageFragment newInstance(String param1, String param2) {
         LanguageFragment fragment = new LanguageFragment();
         Bundle args = new Bundle();
@@ -105,11 +96,13 @@ MyEvent mydata;
         View view = inflater.inflate(R.layout.fragment_language, container, false);
 
 
+        MyCustomAdapter dataAdapter = new MyCustomAdapter(this.getActivity(),
+                R.layout.language_info, mLanguageList);
+        listView= view.findViewById(R.id.listView1);
 
-//        dataAdapter  = new MyCustomAdapter(this,
-//                R.layout.language_info, mLanguageList);
-//        listView= (ListView) view.findViewById(R.id.listView1);
-//        listView.setAdapter(dataAdapter);
+        listView.setAdapter(dataAdapter);
+
+
 
 
 
@@ -124,11 +117,83 @@ MyEvent mydata;
         one.setOnClickListener(this);
        two.setOnClickListener(this);
         listView.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Language language = (Language) parent.getItemAtPosition(position);
+                Toast.makeText(getActivity(),
+                        "Clicked on Row: " + language.getName(),
+                        Toast.LENGTH_LONG).show();
+
+            }});
+
         return view;
     }
 
 
 
+    public class MyCustomAdapter extends ArrayAdapter<Language> {
+
+
+
+        ArrayList<Language> mLanguageList = new ArrayList<>();
+        public MyCustomAdapter(Context context, int code,  ArrayList<Language> mLanguageList) {
+            super(context, code, mLanguageList);
+            this.mLanguageList = new ArrayList<Language>();
+            this.mLanguageList.addAll(mLanguageList);
+        }
+
+
+        private class ViewHolder {
+            TextView id;
+            CheckBox name;
+        }
+
+
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            pub.com.mypub.admin.MyCustomAdapter.ViewHolder holder = null;
+            Log.v("ConvertView", String.valueOf(position));
+
+            if (convertView == null) {
+                LayoutInflater vi = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = vi.inflate(R.layout.language_info, null);
+
+                holder = new pub.com.mypub.admin.MyCustomAdapter.ViewHolder();
+                holder.id = (TextView) convertView.findViewById(R.id.code);
+                holder.name = (CheckBox) convertView.findViewById(R.id.ch1);
+                convertView.setTag(holder);
+
+                holder.name.setOnClickListener( new View.OnClickListener() {
+                    public void onClick(View v) {
+                        CheckBox cb = (CheckBox) v ;
+                        Language language = (Language) cb.getTag();
+                        language.setSelected(cb.isChecked());
+                    }
+                });
+            }
+            else {
+                holder = (pub.com.mypub.admin.MyCustomAdapter.ViewHolder) convertView.getTag();
+            }
+
+            Language language = mLanguageList.get(position);
+            holder.id.setText(" (" +  language.getId() + ")");
+            holder.name.setText(language.getName());
+            holder.name.setChecked(language.isSelected());
+            holder.name.setTag(language);
+
+            return convertView;
+
+        }
+
+
+
+
+    }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -185,18 +250,36 @@ MyEvent mydata;
 //
         }
         else if (v== select){
-            if(one.isChecked()) {
-                mydata= new MyEvent();
-                mydata._ch1 = one.getText().toString();
+
+            StringBuffer responseText = new StringBuffer();
+            responseText.append("The following were selected...\n");
+
+            ArrayList<Language> mLanguageList = dataAdapter.mLanguageList;
+            for(int i=0;i<mLanguageList.size();i++){
+                Language language = mLanguageList.get(i);
+                if(language.isSelected()){
+                    responseText.append("\n" + language.getName());
+                }
             }
 
-            if(two.isChecked()) {
-                mydata= new MyEvent();
-                mydata._ch2 = two.getText().toString();
-            }
+            Toast.makeText(getActivity(),
+                    responseText, Toast.LENGTH_LONG).show();
+            mListener.setLanguage(mSelectedLanguage);
+            getActivity().onBackPressed();
+
+//            if(one.isChecked()) {
+//                mydata= new MyEvent();
+//                mydata._ch1 = one.getText().toString();
+//            }
+//
+//            if(two.isChecked()) {
+//                mydata= new MyEvent();
+//                mydata._ch2 = two.getText().toString();
+//            }
 
         }
     }
+
 
 
     @Override
