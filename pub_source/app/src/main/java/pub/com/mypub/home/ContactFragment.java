@@ -60,6 +60,13 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
         fragment.setArguments(args);
         return fragment;
     }
+    private void getContactData() {
+        mContactList.add(new Contact(0,"HayderAbad","9987263541"));
+        mContactList.add(new Contact(1,"Chenai","8765290987"));
+        mContactList.add(new Contact(2,"Delhi","5678920918"));
+        mContactList.add(new Contact(3,"Noida","9812670000"));
+
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,17 +75,11 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        setTagName();
+
         getContactData();
+        setTagName();
     }
 
-    private void getContactData() {
-        mContactList.add(new Contact(0,"HayderAbad","9987263541"));
-        mContactList.add(new Contact(1,"Chenai","8765290987"));
-        mContactList.add(new Contact(2,"Delhi","5678920918"));
-        mContactList.add(new Contact(3,"Noida","9812670000"));
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -96,7 +97,7 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
         view.findViewById(R.id.add).setOnClickListener(this);
 
         String[] values =
-                {"HyderAbad", "", "Chenai", "Noida", "Delhi"};
+                {"HyderAbad  9987263541", "Chenai  8765290987", "Noida  9812670000", "Delhi  5678920918"};
         spinner = view.findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
@@ -193,7 +194,9 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        if(position != 0) {
+            mSelectedContact = mContactList.get(position);
+        }
     }
 
     @Override

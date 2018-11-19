@@ -19,11 +19,12 @@ import pub.com.mypub.R;
 import pub.com.mypub.admin.models.Language;
 
 
+
+
 public class MyCustomAdapter extends ArrayAdapter<Language> {
 
 
 
-    Language mSelectedLanguage = null;
     ArrayList<Language> mLanguageList = new ArrayList<>();
     public MyCustomAdapter(Context context, int code,  ArrayList<Language> mLanguageList) {
         super(context, code, mLanguageList);
@@ -32,40 +33,38 @@ public class MyCustomAdapter extends ArrayAdapter<Language> {
     }
 
 
-
-    static class ViewHolder {
-    TextView id;
-    CheckBox name;
-}
+    private class ViewHolder {
+        TextView id;
+        CheckBox name;
+    }
 
 
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        ViewHolder holder = null;
+        pub.com.mypub.admin.MyCustomAdapter.ViewHolder holder = null;
         Log.v("ConvertView", String.valueOf(position));
 
         if (convertView == null) {
-            LayoutInflater vi = (LayoutInflater)getSystemService(
-                    Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = vi.inflate(R.layout.language_info, null);
 
-            holder = new ViewHolder();
+            holder = new pub.com.mypub.admin.MyCustomAdapter.ViewHolder();
             holder.id = (TextView) convertView.findViewById(R.id.code);
             holder.name = (CheckBox) convertView.findViewById(R.id.ch1);
             convertView.setTag(holder);
 
             holder.name.setOnClickListener( new View.OnClickListener() {
                 public void onClick(View v) {
-                    CheckBox cb = (CheckBox) v ;
-                    Language language = (Language) cb.getTag();
-                    language.setSelected(cb.isChecked());
+                    CheckBox ch1 = (CheckBox) v ;
+                    Language language = (Language) ch1.getTag();
+                    language.setSelected(ch1.isChecked());
                 }
             });
         }
         else {
-            holder = (ViewHolder) convertView.getTag();
+            holder = (pub.com.mypub.admin.MyCustomAdapter.ViewHolder) convertView.getTag();
         }
 
         Language language = mLanguageList.get(position);
@@ -76,11 +75,8 @@ public class MyCustomAdapter extends ArrayAdapter<Language> {
 
         return convertView;
 
-    }
-
-    private Object getSystemService(Object layoutInflaterService) {
-        return null;
-    }
 
 
-}
+
+
+}}

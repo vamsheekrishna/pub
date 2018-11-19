@@ -17,6 +17,7 @@ import android.view.View;
 import pub.com.mypub.R;
 import pub.com.mypub.admin.models.Category;
 import pub.com.mypub.admin.models.Contact;
+import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.admin.models.Location;
 import pub.com.mypub.admin.models.Specialist;
 import pub.com.mypub.authentication.AuthenticationActivity;
@@ -32,6 +33,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import org.json.JSONException;
+
+import java.util.ArrayList;
 
 import pub.com.mypub.R;
 import pub.com.mypub.authentication.MyProfile;
@@ -159,6 +162,7 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
 
     @Override
     public void setContact(Contact contact) {
+
         createEventFragment.setContact(contact);
     }
 
@@ -166,6 +170,17 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
     public void setSpecialist(Specialist specialist) {
         createEventFragment.setSpecialist(specialist);
     }
+
+    @Override
+    public void setLanguage(Language language) {
+        createEventFragment.setLanguage(language);
+    }
+
+
+
+
+
+
 
     @Override
     public boolean onNavigationItemSelected( MenuItem item) {

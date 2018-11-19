@@ -203,7 +203,7 @@
                         <!--&lt;!&ndash;android:textAlignment="center"/>&ndash;&gt;-->
                 <!--</ScrollView>-->
                 <Button
-                    android:id="@+id/submit"
+                    android:id="@+id/add"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ADD"
@@ -234,7 +234,7 @@
                         android:layout_weight="1"
                         />
                     <Button
-                        android:id="@+id/ep"
+                        android:id="@+id/submit"
                         android:layout_width="match_parent"
                         android:layout_weight="2"
                         android:layout_height="wrap_content"

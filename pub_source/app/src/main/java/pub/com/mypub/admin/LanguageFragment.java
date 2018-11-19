@@ -38,10 +38,11 @@ CheckBox one;
 CheckBox two;
 MyEvent mydata;
 ListView listView;
-Language mSelectedLanguage = null;
+String mSelectedLanguage = null;
 ArrayList<Language> mLanguageList = new ArrayList<>();
+ArrayList<String> lang;
 MyCustomAdapter dataAdapter = null;
-
+Language mLanguage;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -61,6 +62,19 @@ MyCustomAdapter dataAdapter = null;
         fragment.setArguments(args);
         return fragment;
     }
+    private void displayListView() {
+
+        //Array list of countries
+        ArrayList<Language> countryList = new ArrayList<Language>();
+        Language language = new Language(1,"Arabic",false);
+        mLanguageList.add(language);
+        Language language1 = new Language(2,"English",false);
+        mLanguageList.add(language1);
+        Language language3 = new Language(3,"Franch",false);
+        mLanguageList.add(language3);
+
+
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,19 +86,7 @@ MyCustomAdapter dataAdapter = null;
         displayListView();
     }
 
-    private void displayListView() {
 
-        //Array list of countries
-        ArrayList<Language> countryList = new ArrayList<Language>();
-        Language language = new Language(1,"Arabic",false);
-        mLanguageList.add(language);
-        Language language1 = new Language(2,"English",false);
-        mLanguageList.add(language1);
-        Language language3 = new Language(1,"Franch",false);
-        mLanguageList.add(language3);
-
-
-    }
 
 
 
@@ -96,7 +98,7 @@ MyCustomAdapter dataAdapter = null;
         View view = inflater.inflate(R.layout.fragment_language, container, false);
 
 
-        MyCustomAdapter dataAdapter = new MyCustomAdapter(this.getActivity(),
+         dataAdapter = new MyCustomAdapter(this.getActivity(),
                 R.layout.language_info, mLanguageList);
         listView= view.findViewById(R.id.listView1);
 
@@ -108,15 +110,15 @@ MyCustomAdapter dataAdapter = null;
 
        language = view.findViewById(R.id.n1);
        one = view.findViewById(R.id.ch1);
-       two=view.findViewById(R.id.ch2);
+      // two=view.findViewById(R.id.ch2);
         create=view.findViewById(R.id.e1);
         select=view.findViewById(R.id.e11);
 
        create.setOnClickListener(this);
         select.setOnClickListener(this);
-        one.setOnClickListener(this);
-       two.setOnClickListener(this);
-        listView.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+       // one.setOnClickListener(this);
+       //two.setOnClickListener(this);
+//        listView.setOnItemClickListener((AdapterView.OnItemClickListener) this);
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -134,66 +136,10 @@ MyCustomAdapter dataAdapter = null;
 
 
 
-    public class MyCustomAdapter extends ArrayAdapter<Language> {
-
-
-
-        ArrayList<Language> mLanguageList = new ArrayList<>();
-        public MyCustomAdapter(Context context, int code,  ArrayList<Language> mLanguageList) {
-            super(context, code, mLanguageList);
-            this.mLanguageList = new ArrayList<Language>();
-            this.mLanguageList.addAll(mLanguageList);
-        }
-
-
-        private class ViewHolder {
-            TextView id;
-            CheckBox name;
-        }
-
-
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            pub.com.mypub.admin.MyCustomAdapter.ViewHolder holder = null;
-            Log.v("ConvertView", String.valueOf(position));
-
-            if (convertView == null) {
-                LayoutInflater vi = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = vi.inflate(R.layout.language_info, null);
-
-                holder = new pub.com.mypub.admin.MyCustomAdapter.ViewHolder();
-                holder.id = (TextView) convertView.findViewById(R.id.code);
-                holder.name = (CheckBox) convertView.findViewById(R.id.ch1);
-                convertView.setTag(holder);
-
-                holder.name.setOnClickListener( new View.OnClickListener() {
-                    public void onClick(View v) {
-                        CheckBox cb = (CheckBox) v ;
-                        Language language = (Language) cb.getTag();
-                        language.setSelected(cb.isChecked());
-                    }
-                });
-            }
-            else {
-                holder = (pub.com.mypub.admin.MyCustomAdapter.ViewHolder) convertView.getTag();
-            }
-
-            Language language = mLanguageList.get(position);
-            holder.id.setText(" (" +  language.getId() + ")");
-            holder.name.setText(language.getName());
-            holder.name.setChecked(language.isSelected());
-            holder.name.setTag(language);
-
-            return convertView;
-
-        }
 
 
 
 
-    }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -252,19 +198,27 @@ MyCustomAdapter dataAdapter = null;
         else if (v== select){
 
             StringBuffer responseText = new StringBuffer();
-            responseText.append("The following were selected...\n");
+//            responseText.append("The following were selected...\n");
 
             ArrayList<Language> mLanguageList = dataAdapter.mLanguageList;
             for(int i=0;i<mLanguageList.size();i++){
-                Language language = mLanguageList.get(i);
-                if(language.isSelected()){
-                    responseText.append("\n" + language.getName());
+
+                if(dataAdapter.mLanguageList.get(i).isSelected()) {
+                    mSelectedLanguage= String.valueOf(responseText.append( dataAdapter.mLanguageList.get(i).getName()));
+                   // mSelectedLanguage= mSelectedLanguage.add(language);
+//                    mSelectedLanguage.name= responseText.toString();
+
                 }
+
+//               mSelectedLanguage = mLanguageList.get(i);
+//                if(mSelectedLanguage.isSelected()){
+//                    responseText.append("\n" + mSelectedLanguage.getName());
+//                }
             }
 
             Toast.makeText(getActivity(),
                     responseText, Toast.LENGTH_LONG).show();
-            mListener.setLanguage(mSelectedLanguage);
+            mListener.setLanguage(mLanguage);
             getActivity().onBackPressed();
 
 //            if(one.isChecked()) {
@@ -286,7 +240,7 @@ MyCustomAdapter dataAdapter = null;
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Language language = (Language) parent.getItemAtPosition(position);
         if (position != 0) {
-            mSelectedLanguage = mLanguageList.get(position);
+//            mSelectedLanguage = mLanguageList.get(position);
         }
     }
 

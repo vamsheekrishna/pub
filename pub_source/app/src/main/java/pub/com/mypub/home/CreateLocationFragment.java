@@ -98,13 +98,14 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
         latitude = view.findViewById(R.id.e1h);
         langetude = view.findViewById(R.id.e112);
         txx = view.findViewById(R.id.tx);
-
+        submit=view.findViewById(R.id.submit);
+        add=view.findViewById(R.id.add);
+        view.findViewById(R.id.add).setOnClickListener(this);
         view.findViewById(R.id.submit).setOnClickListener(this);
-        view.findViewById(R.id.ep).setOnClickListener(this);
 
 
         String[] values =
-                {"HyderAbad", "", "Chenai", "Noida", "Delhi"};
+                {"India/HyderAbad/Hitch/MaxCure Hospital/eeee/hhh", "Chenai/India/Langana/rrr/eee/hhh", "Bannglour/India/vvv/ddd/sss", "Delhi/Inia/www/oo/aaa"};
         spinner = view.findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
@@ -167,38 +168,16 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
     public void onClick(View v) {
 
         if (v == add) {
-//            mydata= new MyEvent();
-//            mydata._createLocation = city.getText().toString();
-//            mydata._createLocation = county.getText().toString();
-//            mydata._createLocation = state.getText().toString();
-//            mydata._createLocation = landmark.getText().toString();
-//            mydata._createLocation = latitude.getText().toString();
-//            mydata._createLocation = langetude.getText().toString();
+        }
 
-//
-        } else if (v == submit) {
 
+        if (v == submit) {
             onSubmit();
-//            mydata= new MyEvent();
-//            mydata._selectLocation = spinner.getSelectedItem().toString();
+
+
 
         }
-//        switch (v.getId()) {
-//            case R.id.submit:
-//
-//
-//                String _city = city.getText().toString();
-//                String _country =county.getText().toString();
-//                String _state = state.getText().toString();
-//                String _landmark =landmark.getText().toString();
-//                String _latitude = latitude.getText().toString();
-//                String _langetude =langetude.getText().toString();
-//
-//                txx.setText("city:\t" + _city + "\ncounry:\t" + _country + "\nstate:\t" + _state+ "\nlandMark:\t" + _landmark+ "\nlatitude:\t" + _latitude+ "\nlangude:\t" + _langetude);
-//
-//
-//                break;
-//        }
+
     }
 
     private void onSubmit() {

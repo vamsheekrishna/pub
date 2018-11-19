@@ -1,18 +1,29 @@
 package pub.com.mypub.admin.models;
 
+import java.util.ArrayList;
+
 public class Language {
-    public int id= Integer.parseInt(null);
+    public int id= 0;
     public String name=null;
     boolean selected = false;
+    public ArrayList<String> langList;
 
 
 
     public Language (int _id, String _name, boolean selected) {
 
         super();
-        this.id = id;
-        this.name = name;
+        this.id = _id;
+        this.name = _name;
         this.selected = selected;
+    }
+
+    public void setLangList(ArrayList<String> langList) {
+        this.langList = langList;
+    }
+
+    public ArrayList<String> getLangList() {
+        return langList;
     }
 
     public int getId() {
@@ -30,9 +41,9 @@ public class Language {
     }
 
 
-    public void setName(String name) {
+    public void setName(String _name) {
 
-        this.name = name;
+        this.name = _name;
     }
 
 

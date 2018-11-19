@@ -21,6 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -47,7 +48,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     MyEvent mydata;
     String format = "";
     EditText title;
-    TextView category,location,coverpage,contact1,spec1,tick1;
+    TextView category,location,coverpage1,contact1,spec1,tick1;
     EditText startdate;
     EditText enddate;
     EditText starttime;
@@ -62,6 +63,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     Location mLocation;
     Specialist mSpecialist;
     Language mLanguage;
+    String mSelectedLanguage;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -112,14 +114,17 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         b_time1 = view.findViewById(R.id.btn_time1);
         tickt = view.findViewById(R.id.tickt);
         n19 = view.findViewById(R.id.n19);
-        spec=view.findViewById(R.id.spec1);
-        contact = view.findViewById(R.id.contact1);
+        spec=view.findViewById(R.id.spec);
+        spec1=view.findViewById(R.id.spec1);
+        contact = view.findViewById(R.id.contact);
+        contact1 = view.findViewById(R.id.contact1);
         button = view.findViewById(R.id.button);
         in_date1 = view.findViewById(R.id.in_date1);
        category = view.findViewById(R.id.category);
        location=view.findViewById(R.id.e1f);
        n2=view.findViewById(R.id.n2);
-        coverPage = view.findViewById(R.id.coverPage1);
+        coverPage = view.findViewById(R.id.coverPage);
+        coverpage1 = view.findViewById(R.id.coverPage1);
        // txtTime1 = view.findViewById(R.id.in_time1);
 
         b_date1.setOnClickListener(this);
@@ -152,7 +157,6 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
        // endtime=view.findViewById(R.id.in_time1);
 
         description=view.findViewById(R.id.e11);
-        coverpage=view.findViewById(R.id.e1f);
         startprice=view.findViewById(R.id.e1h);
         note=view.findViewById(R.id.e112);
         txx=view.findViewById(R.id.tx);
@@ -187,9 +191,21 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         if(null != mCategory) {
             Toast.makeText(getActivity(), "Category: " + mCategory.name, Toast.LENGTH_LONG).show();
             category.setText(mCategory.name);
-
+        }
+        else if (null != mLanguage)
+        {
             Toast.makeText(getActivity(), "language: " + mLanguage.name, Toast.LENGTH_LONG).show();
            n2.setText(mLanguage.name);
+        }
+        else if (null != mContact)
+        {
+            Toast.makeText(getActivity(), "contact: " + mContact.location +mContact.phoneNo, Toast.LENGTH_LONG).show();
+            contact1.setText(mContact.location+" "+mContact.phoneNo);
+        }
+        else if (null != mLocation)
+        {
+            Toast.makeText(getActivity(), "location: " + mLocation.city+mLocation.country+mLocation.state+mLocation.landmark+mLocation.latitude+mLocation.langetude, Toast.LENGTH_LONG).show();
+            e1f.setText(mLocation.city+" "+mLocation.country+" "+mLocation.state+" "+mLocation.landmark+" "+mLocation.latitude+" "+mLocation.langetude);
         }
 
     }
