@@ -1,12 +1,9 @@
 package pub.com.mypub.admin.models;
 
-import java.util.ArrayList;
-
 public class Language {
     public int id= 0;
     public String name=null;
-    boolean selected = false;
-    public ArrayList<String> langList;
+    boolean isSelected = false;
 
 
 
@@ -15,16 +12,10 @@ public class Language {
         super();
         this.id = _id;
         this.name = _name;
-        this.selected = selected;
+        this.isSelected = selected;
     }
 
-    public void setLangList(ArrayList<String> langList) {
-        this.langList = langList;
-    }
 
-    public ArrayList<String> getLangList() {
-        return langList;
-    }
 
     public int getId() {
         return id;
@@ -49,10 +40,10 @@ public class Language {
 
     public boolean isSelected() {
 
-        return selected;
+        return isSelected;
     }
     public void setSelected(boolean selected) {
 
-        this.selected = selected;
+        this.isSelected = selected;
     }
 }

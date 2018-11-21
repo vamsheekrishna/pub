@@ -1,0 +1,44 @@
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/TextColor.White"
+    android:layout_margin="8dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="3dp"
+    card_view:cardCornerRadius="@dimen/card_album_radius">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:orientation="vertical">
+
+            <CheckBox android:id="@+id/ch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="checkbox"
+                android:onClick="onCheckboxClicked"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+
+
+            <TextView
+                android:id="@+id/code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/checkBox1"
+                android:layout_alignBottom="@+id/checkBox1"
+                android:layout_toRightOf="@+id/checkBox1"
+                android:text="TextView" />
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

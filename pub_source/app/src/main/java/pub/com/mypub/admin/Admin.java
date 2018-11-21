@@ -1,14 +1,7 @@
 package pub.com.mypub.admin;
 
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
@@ -20,33 +13,21 @@ import pub.com.mypub.admin.models.Contact;
 import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.admin.models.Location;
 import pub.com.mypub.admin.models.Specialist;
-import pub.com.mypub.authentication.AuthenticationActivity;
-import pub.com.mypub.authentication.ChangePasswordFragment;
-import pub.com.mypub.authentication.ForgetFragment;
-import pub.com.mypub.authentication.LoginFragment;
+import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.MyProfile;
 import pub.com.mypub.authentication.NetworkBaseActivity;
-import pub.com.mypub.authentication.ProfileFragment;
-import pub.com.mypub.authentication.RegistrationFragment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
-import org.json.JSONException;
 
 import java.util.ArrayList;
 
-import pub.com.mypub.R;
-import pub.com.mypub.authentication.MyProfile;
-import pub.com.mypub.authentication.NetworkBaseActivity;
 import pub.com.mypub.home.ContactFragment;
 import pub.com.mypub.home.CreateEventFragment;
 import pub.com.mypub.home.CreateLocationFragment;
 import pub.com.mypub.home.CreateSpecialistFragment;
 import pub.com.mypub.home.CreateTicketFragment;
 import pub.com.mypub.home.EventsDetailsFragment;
-import pub.com.mypub.home.EventsFragment;
-import pub.com.mypub.home.OnHomeInteractionListener;
 
 public class Admin extends NetworkBaseActivity implements OnAdminInteractionListener, NavigationView.OnNavigationItemSelectedListener,DrawableItemClickListener{
 
@@ -166,20 +147,22 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
         createEventFragment.setContact(contact);
     }
 
-    @Override
-    public void setSpecialist(Specialist specialist) {
-        createEventFragment.setSpecialist(specialist);
-    }
+
 
     @Override
-    public void setLanguage(Language language) {
+    public void setSelectedLanguage(ArrayList<Language> language) {
         createEventFragment.setLanguage(language);
     }
 
+    @Override
+    public void setSelectedTicket(ArrayList<Ticket> ticket) {
+        createEventFragment.setTicket(ticket);
+    }
 
-
-
-
+    @Override
+    public void setSelectedSpecialist(ArrayList<Specialist> specialist) {
+        createEventFragment.setSpecialist(specialist);
+    }
 
 
     @Override

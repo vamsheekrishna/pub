@@ -5,22 +5,31 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import pub.com.mypub.R;
 import pub.com.mypub.admin.MyEvent;
 import pub.com.mypub.admin.OnAdminInteractionListener;
+import pub.com.mypub.admin.SpesialistCustomAdapter;
+import pub.com.mypub.admin.TicketCustomAdapter;
+import pub.com.mypub.admin.models.Specialist;
+import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
-public class CreateSpecialistFragment extends NetworkBaseFragment implements View.OnClickListener {
+public class CreateSpecialistFragment extends NetworkBaseFragment implements View.OnClickListener,AdapterView.OnItemSelectedListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,7 +41,11 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
     EditText image;
     MyEvent mydata;
     TextView txx;
-    Button submit;
+    Button add,submit;
+    ListView listView;
+    ArrayList<Specialist> mSelectedSpecialist = new ArrayList<>();
+    ArrayList<Specialist> mSpecialistList= new ArrayList<>();
+    SpesialistCustomAdapter dataAdapter = null;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -61,7 +74,19 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        displayListView();
         setTagName();
+    }
+
+    private void displayListView() {
+        ArrayList<Specialist> SpecialistList = new ArrayList<Specialist>();
+        Specialist specialist = new Specialist(1,"Shekspeer","12/8/1770","Music","uhsfu","upload",false);
+        mSpecialistList.add(specialist);
+        Specialist specialist1 = new Specialist(2,"Vender","18/8/1990","Dance","uhsfu","upload",false);
+        mSpecialistList.add(specialist1);
+        Specialist specialist2 = new Specialist(3,"Thomas","20/11/2000","Art","uhsfu","upload",false);
+        mSpecialistList.add(specialist2);
+
     }
 
     @Override
@@ -70,6 +95,13 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_create_specialist, container,
                 false);
+
+        dataAdapter = new SpesialistCustomAdapter(this.getActivity(), R.layout.specialist_info, mSpecialistList);
+        listView= view.findViewById(R.id.listView1);
+
+        listView.setAdapter(dataAdapter);
+
+
         name=view.findViewById(R.id.e1);
         dob=view.findViewById(R.id.e2);
         spec=view.findViewById(R.id.e11);
@@ -80,6 +112,15 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
 
         view.findViewById(R.id.submit).setOnClickListener(this);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Specialist specialist = (Specialist) parent.getItemAtPosition(position);
+                Toast.makeText(getActivity(),
+                        "Clicked on Row: " + specialist.getName(),
+                        Toast.LENGTH_LONG).show();
+
+            }});
         return view;
     }
 
@@ -135,33 +176,37 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
 
     @Override
     public void onClick(View v) {
+        switch(v.getId()) {
+            case R.id.add:
+                break;
+            case R.id.submit:
+                StringBuffer responseText = new StringBuffer();
+                ArrayList<Specialist> mSpecialistList = dataAdapter.mSpecialistList;
+                for (Specialist specialist : mSpecialistList) {
+                    if (specialist.isSelected()) {
+                        mSelectedSpecialist.add(specialist);
+                    }
+                }
+                mListener.setSelectedSpecialist(mSelectedSpecialist);
+                getActivity().onBackPressed();
+                break;
 
 
-        if (v == submit) {
-            mydata= new MyEvent();
-            mydata._specialist = name.getText().toString();
-            mydata._specialist = dob.getText().toString();
-            mydata._specialist = spec.getText().toString();
-            mydata._specialist = des.getText().toString();
-            mydata._specialist = image.getText().toString();
-
-//
         }
-//        switch (v.getId()) {
-//            case R.id.submit:
-//
-//
-//                String _name = name.getText().toString();
-//                String _dob =dob.getText().toString();
-//                String _spes = spec.getText().toString();
-//                String _des =des.getText().toString();
-//                String _image = image.getText().toString();
-//
-//
-//                txx.setText("Name:\t" + _name + "\nDOB:\t" + _dob + "\nSpecialization:\t" + _spes+ "\ndescreption:\t" + _des+ "\nimage:\t" + _image);
-//
-//
-//                break;
-//        }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+       Specialist specialist = (Specialist) parent.getItemAtPosition(position);
+        if(specialist.isSelected()) {
+           specialist.setSelected(false);
+        } else {
+            specialist.setSelected(true);
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

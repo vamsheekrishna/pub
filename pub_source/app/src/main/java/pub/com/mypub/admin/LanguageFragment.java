@@ -2,29 +2,24 @@ package pub.com.mypub.admin;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Switch;
 import android.widget.Toast;
 import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
-import java.util.List;
+
 import pub.com.mypub.R;
-import pub.com.mypub.admin.models.Contact;
 import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.authentication.NetworkBaseFragment;
-import static android.support.v4.content.ContextCompat.getSystemService;
 
 
 public class LanguageFragment extends NetworkBaseFragment implements View.OnClickListener,AdapterView.OnItemSelectedListener {
@@ -38,7 +33,7 @@ CheckBox one;
 CheckBox two;
 MyEvent mydata;
 ListView listView;
-String mSelectedLanguage = null;
+ArrayList<Language> mSelectedLanguage = new ArrayList<>();
 ArrayList<Language> mLanguageList = new ArrayList<>();
 ArrayList<String> lang;
 MyCustomAdapter dataAdapter = null;
@@ -189,58 +184,30 @@ Language mLanguage;
 
     @Override
     public void onClick(View v) {
-        if (v == create) {
-//           mydata= new MyEvent();
-//            mydata._language = language.getText().toString();
-
-//
-        }
-        else if (v== select){
-
-            StringBuffer responseText = new StringBuffer();
-//            responseText.append("The following were selected...\n");
-
-            ArrayList<Language> mLanguageList = dataAdapter.mLanguageList;
-            for(int i=0;i<mLanguageList.size();i++){
-
-                if(dataAdapter.mLanguageList.get(i).isSelected()) {
-                    mSelectedLanguage= String.valueOf(responseText.append( dataAdapter.mLanguageList.get(i).getName()));
-                   // mSelectedLanguage= mSelectedLanguage.add(language);
-//                    mSelectedLanguage.name= responseText.toString();
-
+        switch(v.getId()) {
+            case R.id.e1:
+                break;
+            case R.id.e11:
+                StringBuffer responseText = new StringBuffer();
+                ArrayList<Language> mLanguageList = dataAdapter.mLanguageList;
+                for ( Language language:mLanguageList ) {
+                    if( language.isSelected() ){
+                        mSelectedLanguage.add(language);
+                    }
                 }
 
-//               mSelectedLanguage = mLanguageList.get(i);
-//                if(mSelectedLanguage.isSelected()){
-//                    responseText.append("\n" + mSelectedLanguage.getName());
-//                }
-            }
-
-            Toast.makeText(getActivity(),
-                    responseText, Toast.LENGTH_LONG).show();
-            mListener.setLanguage(mLanguage);
-            getActivity().onBackPressed();
-
-//            if(one.isChecked()) {
-//                mydata= new MyEvent();
-//                mydata._ch1 = one.getText().toString();
-//            }
-//
-//            if(two.isChecked()) {
-//                mydata= new MyEvent();
-//                mydata._ch2 = two.getText().toString();
-//            }
-
+                mListener.setSelectedLanguage(mSelectedLanguage);
+                getActivity().onBackPressed();
+                break;
         }
     }
-
-
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Language language = (Language) parent.getItemAtPosition(position);
-        if (position != 0) {
-//            mSelectedLanguage = mLanguageList.get(position);
+        if(language.isSelected()) {
+            language.setSelected(false);
+        } else {
+            language.setSelected(true);
         }
     }
 

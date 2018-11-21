@@ -5,24 +5,33 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import pub.com.mypub.R;
+import pub.com.mypub.admin.MyCustomAdapter;
 import pub.com.mypub.admin.MyEvent;
 import pub.com.mypub.admin.OnAdminInteractionListener;
+import pub.com.mypub.admin.TicketCustomAdapter;
+import pub.com.mypub.admin.models.Language;
+import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
-public class CreateTicketFragment extends NetworkBaseFragment implements View.OnClickListener {
+public class CreateTicketFragment extends NetworkBaseFragment implements View.OnClickListener,AdapterView.OnItemSelectedListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,6 +44,12 @@ public class CreateTicketFragment extends NetworkBaseFragment implements View.On
     Spinner spinner;
     MyEvent mydata;
     Button add,submit;
+    ListView listView;
+    ArrayList<Ticket> mSelectedTicket = new ArrayList<>();
+    ArrayList<Ticket> mTicketList = new ArrayList<>();
+    TicketCustomAdapter dataAdapter = null;
+
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -63,7 +78,18 @@ public class CreateTicketFragment extends NetworkBaseFragment implements View.On
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        displayListView();
         setTagName();
+    }
+
+    private void displayListView() {
+        ArrayList<Ticket> TicketList = new ArrayList<Ticket>();
+        Ticket ticket = new Ticket(0,"Ticket 1",50,"single","llll",false);
+        mTicketList.add(ticket);
+    Ticket ticket1 = new Ticket(1,"Ticket 2",80,"double","hhhh",false);
+    mTicketList.add(ticket1);
+        Ticket ticket2 = new Ticket(2,"Ticket 3",110,"single","bbb",false);
+        mTicketList.add(ticket2);
     }
 
     @Override
@@ -72,23 +98,38 @@ public class CreateTicketFragment extends NetworkBaseFragment implements View.On
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_create_ticket, container,
                 false);
+
+
+        dataAdapter = new TicketCustomAdapter(this.getActivity(),
+                R.layout.ticket_info, mTicketList);
+        listView= view.findViewById(R.id.listView1);
+
+        listView.setAdapter(dataAdapter);
+
+
         name=view.findViewById(R.id.e1);
         price=view.findViewById(R.id.e2);
         title=view.findViewById(R.id.e11);
         description=view.findViewById(R.id.e1f);
-
+        add=view.findViewById(R.id.add);
+        submit=view.findViewById(R.id.submit);
         txx=view.findViewById(R.id.tx);
 
-        view.findViewById(R.id.ADD).setOnClickListener(this);
-        view.findViewById(R.id.ep).setOnClickListener(this);
+        view.findViewById(R.id.add).setOnClickListener(this);
+        view.findViewById(R.id.submit).setOnClickListener(this);
 
 
-        String [] values =
-                {"Ticket1","Ticket2","Ticket3","Ticket4","Ticket5","Ticket6"};
-        spinner= view.findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Ticket ticket = (Ticket) parent.getItemAtPosition(position);
+                Toast.makeText(getActivity(),
+                        "Clicked on Row: " + ticket.getName(),
+                        Toast.LENGTH_LONG).show();
+
+            }});
+
         return view;
     }
 
@@ -144,33 +185,36 @@ public class CreateTicketFragment extends NetworkBaseFragment implements View.On
 
     @Override
     public void onClick(View v) {
-            if (v == add) {
-                mydata= new MyEvent();
-                mydata._creatTicket = name.getText().toString();
-                mydata._creatTicket = price.getText().toString();
-                mydata._creatTicket = title.getText().toString();
-                mydata._creatTicket = description.getText().toString();
-
-//
-            }
-            else if (v== submit){
-                mydata= new MyEvent();
-                mydata._selectTicket = spinner.getSelectedItem().toString();
-
-            }
-//            case R.id.submit:
-//
-//
-//                String _name = name.getText().toString();
-//                String _price =price.getText().toString();
-//                String _title = title.getText().toString();
-//                String _des =description.getText().toString();
-//
-//
-//                txx.setText("Name:\t" + _name + "\nprice:\t" + _price + "\nTitle:\t" + _title+ "\nDescription:\t" + _des);
+        switch(v.getId()) {
+            case R.id.add:
+                break;
+            case R.id.submit:
+                StringBuffer responseText = new StringBuffer();
+                ArrayList<Ticket> mTicketList = dataAdapter.mTicketList;
+                for (Ticket ticket : mTicketList) {
+                    if (ticket.isSelected()) {
+                        mSelectedTicket.add(ticket);
+                    }
+                }
+                mListener.setSelectedTicket(mSelectedTicket);
+                getActivity().onBackPressed();
+                break;
 
 
+        }}
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+       Ticket ticket = (Ticket) parent.getItemAtPosition(position);
+        if(ticket.isSelected()) {
+            ticket.setSelected(false);
+        } else {
+            ticket.setSelected(true);
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }

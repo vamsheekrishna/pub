@@ -33,6 +33,7 @@ import pub.com.mypub.admin.models.Contact;
 import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.admin.models.Location;
 import pub.com.mypub.admin.models.Specialist;
+import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
@@ -57,13 +58,16 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
 
     EditText startprice;
     EditText note;
-    TextView txx,in_date1;
+    TextView txx,in_date1 ;
+    TextView mTVSelectedLanguages;
     Category mCategory;
     Contact mContact;
     Location mLocation;
     Specialist mSpecialist;
     Language mLanguage;
-    String mSelectedLanguage;
+    ArrayList<Language> mSelectedLanguage;
+    ArrayList<Ticket> mSelectedTicket;
+    ArrayList<Specialist> mSelectedSpecialist;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -103,12 +107,13 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
 
         b_date = view.findViewById(R.id.btn_date);
         b_time = view.findViewById(R.id.btn_time);
-//        txtDate = view.findViewById(R.id.in_date);
+       // mTVSelectedLanguages = view.findViewById(R.id.selected_languages);
+
         //txtTime = view.findViewById(R.id.in_time);
 
         b_date.setOnClickListener(this);
         b_time.setOnClickListener(this);
-
+//        mTVSelectedLanguages.setText("Please select the language");
 
         b_date1 = view.findViewById(R.id.btn_date1);
         b_time1 = view.findViewById(R.id.btn_time1);
@@ -126,7 +131,8 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         coverPage = view.findViewById(R.id.coverPage);
         coverpage1 = view.findViewById(R.id.coverPage1);
        // txtTime1 = view.findViewById(R.id.in_time1);
-
+        tick1=view.findViewById(R.id.tick1);
+        spec =view.findViewById(R.id.spec);
         b_date1.setOnClickListener(this);
         b_time1.setOnClickListener(this);
        button.setOnClickListener(this);
@@ -192,22 +198,47 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
             Toast.makeText(getActivity(), "Category: " + mCategory.name, Toast.LENGTH_LONG).show();
             category.setText(mCategory.name);
         }
-        else if (null != mLanguage)
-        {
-            Toast.makeText(getActivity(), "language: " + mLanguage.name, Toast.LENGTH_LONG).show();
-           n2.setText(mLanguage.name);
+        if (null != mSelectedLanguage) {
+            String temp = "";
+            for (Language language:mSelectedLanguage ) {
+                temp += language.name + " , ";
+            }
+
+            if(temp.length()>0) {
+                n2.setText(temp);
+            }
         }
-        else if (null != mContact)
+        if (null != mContact)
         {
-            Toast.makeText(getActivity(), "contact: " + mContact.location +mContact.phoneNo, Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), "contact: " + mContact.location +mContact.phoneNo, Toast.LENGTH_LONG).show();
             contact1.setText(mContact.location+" "+mContact.phoneNo);
         }
-        else if (null != mLocation)
+        if (null != mLocation)
         {
-            Toast.makeText(getActivity(), "location: " + mLocation.city+mLocation.country+mLocation.state+mLocation.landmark+mLocation.latitude+mLocation.langetude, Toast.LENGTH_LONG).show();
-            e1f.setText(mLocation.city+" "+mLocation.country+" "+mLocation.state+" "+mLocation.landmark+" "+mLocation.latitude+" "+mLocation.langetude);
+            location.setText(mLocation.city+" "+mLocation.country);
+            //Toast.makeText(getActivity(), "location: " + mLocation.city+mLocation.country+mLocation.state+mLocation.landmark+mLocation.latitude+mLocation.langetude, Toast.LENGTH_LONG).show();
+            location.setText(mLocation.city+" "+mLocation.country+" "+mLocation.state+" "+mLocation.landmark+" "+mLocation.latitude+" "+mLocation.langetude);
         }
+        if (null != mSelectedTicket) {
+            String str = "";
+            for (Ticket ticket:mSelectedTicket ) {
+                str += ticket.name + " , ";
+            }
 
+            if(str.length()>0) {
+                tick1.setText(str);
+            }
+        }
+        if (null != mSelectedSpecialist) {
+            String str1 = "";
+            for (Specialist specialist:mSelectedSpecialist ) {
+                str1 += specialist.name + " , ";
+            }
+
+            if(str1.length()>0) {
+                spec1.setText(str1);
+            }
+        }
     }
 
     @Override
@@ -342,29 +373,6 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                 spec1.setText(mydata._specialist);
                 contact1.setText(mydata._contact);
 
-//                String _title = title.getText().toString();
-//                String _category =category.getText().toString();
-//                String _sdate = startdate.getText().toString();
-//                String _edate =enddate.getText().toString();
-//                String _stime = starttime.getText().toString();
-//                String _etime =endtime.getText().toString();
-//              //  String _language =spinner.getSelectedItem().toString();
-//                String _des = description.getText().toString();
-//                String _coverpage =coverpage.getText().toString();
-//                String _sprice = startprice.getText().toString();
-//                String _note =note.getText().toString();
-
-
-//                if(_sdate.equals( _edate)) {
-//
-//
-//                    txx.setText("Title:\t" + _title + "\ncategory:\t" + _category + "\nsart date:\t" + _sdate + "\nend date:\t" + _edate + "\nstart time:\t" + _stime + "\nend time:\t" + _etime + "\nlanguage:\t" + _language + "\ndescrwption:\t" + _des + "\ncoverpage:\t" + _coverpage + "\nstart price:\t" + _sprice + "\nnote:\t" + _note);
-//                }
-//                else
-//                {
-//                    Toast.makeText(getActivity(), "Start date and End date must be same", Toast.LENGTH_LONG).show();
-//                }
-
                 break;
             case R.id.n2:
                 mListener.goToLanguageFragment();
@@ -437,12 +445,16 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         mLocation = _location;
 
     }
-    public void setSpecialist(Specialist _specialist) {
-        mSpecialist = _specialist;
+    public void setSpecialist(ArrayList<Specialist> _specialist) {
+        mSelectedSpecialist = _specialist;
 
     }
-    public void setLanguage(Language _language) {
-        mLanguage = _language;
+    public void setLanguage(ArrayList<Language> _language) {
+        mSelectedLanguage = _language;
+
+    }
+    public void setTicket(ArrayList<Ticket> _ticket) {
+        mSelectedTicket = _ticket;
 
     }
 }

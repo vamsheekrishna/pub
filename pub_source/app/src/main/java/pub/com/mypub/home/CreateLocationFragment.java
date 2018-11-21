@@ -78,7 +78,7 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
     }
 
     private void getLocationData() {
-        mLocationList.add(new Location(-0, "select city", "select country", "select state", "select landmark", "select latitude", "select langetude"));
+
         mLocationList.add(new Location(-4, "Banglour", "India", "hh", "rre", "eeee", "hhhh"));
         mLocationList.add(new Location(-3, "Chenai", "India", "lll", "rrr ", "eeee", "hhhh"));
         mLocationList.add(new Location(-2, "Delhi", "India", "kkk", "Mmm", "eeee", "hhhh"));
@@ -105,7 +105,7 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
 
 
         String[] values =
-                {"India/HyderAbad/Hitch/MaxCure Hospital/eeee/hhh", "Chenai/India/Langana/rrr/eee/hhh", "Bannglour/India/vvv/ddd/sss", "Delhi/Inia/www/oo/aaa"};
+                {"1India/HyderAbad/Hitch/MaxCure Hospital/eeee/hhh", "Chenai/India/Langana/rrr/eee/hhh", "Bannglour/India/vvv/ddd/sss/kk", "Delhi/Inia/www/oo/aaa/ii"};
         spinner = view.findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
