@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.android.volley.VolleyError;
 
@@ -28,6 +29,7 @@ public class DateFragment extends NetworkBaseFragment implements View.OnClickLis
     private static final String ARG_PARAM2 = "param2";
     RecycleItemClickListener recycleItemClickListener;
     SwipeRefreshLayout mSwipeRefreshLayout;
+    Button date;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -76,7 +78,9 @@ public class DateFragment extends NetworkBaseFragment implements View.OnClickLis
 
         DateListAdapter mAdapter = new DateListAdapter(recycleItemClickListener);
 
+      date=view.findViewById(R.id.k);
 
+      view.findViewById(R.id.k).setOnClickListener(this);
 
 
 
@@ -145,6 +149,11 @@ public class DateFragment extends NetworkBaseFragment implements View.OnClickLis
 
     @Override
     public void onItemClick(View v) {
+
+    }
+
+    @Override
+    public void onItemClick(View v, View v1) {
 
     }
 }

@@ -6,12 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import pub.com.mypub.R;
+import pub.com.mypub.admin.models.Specialist;
+import pub.com.mypub.admin.models.Ticket;
 
 public class PersonListAdapter extends RecyclerView.Adapter<PersonOpject> {
     RecycleItemClickListener mListener;
-    PersonListAdapter(RecycleItemClickListener listener) {
+    ArrayList<Specialist> specialists;
+    PersonListAdapter(RecycleItemClickListener listener, ArrayList<Specialist> _specialists) {
         mListener = listener;
+        specialists=_specialists;
     }
     @NonNull
     @Override
@@ -23,7 +29,9 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonOpject> {
 
     @Override
     public void onBindViewHolder(@NonNull PersonOpject personOpject, int i) {
-
+        personOpject.namee.setText(specialists.get(i).name);
+        personOpject.age.setText(String.valueOf(specialists.get(i).specialization));
+        personOpject.spec.setText(specialists.get(i).dob);
     }
 
 
@@ -31,7 +39,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonOpject> {
 
     @Override
     public int getItemCount() {
-        return 6;
+        return specialists.size();
     }
 }
 

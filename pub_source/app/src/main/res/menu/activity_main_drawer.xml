@@ -14,7 +14,7 @@
             android:id="@+id/event"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Events"
-            android:visible="false"/>
+            android:visible="true"/>
 
         <item
             android:id="@+id/erate_event"

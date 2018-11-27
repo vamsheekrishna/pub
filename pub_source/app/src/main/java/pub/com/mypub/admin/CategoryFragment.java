@@ -10,14 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import com.android.volley.VolleyError;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-
 import pub.com.mypub.R;
 import pub.com.mypub.admin.models.Category;
 import pub.com.mypub.authentication.NetworkBaseFragment;
@@ -126,17 +122,6 @@ public class CategoryFragment extends NetworkBaseFragment implements View.OnClic
         } else if(v.getId() == R.id.add) {
 
         }
-        /*if (v == create) {
-            mydata= new MyEvent();
-            mydata._category = category.getText().toString();
-
-//
-        }
-        else if (v== select){
-            mydata= new MyEvent();
-            mydata._category = spinner.getSelectedItem().toString();
-
-        }*/
 
     }
 

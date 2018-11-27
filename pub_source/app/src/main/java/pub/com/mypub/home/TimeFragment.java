@@ -150,6 +150,11 @@ public class TimeFragment extends NetworkBaseFragment implements View.OnClickLis
 
     }
 
+    @Override
+    public void onItemClick(View v, View v1) {
+
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

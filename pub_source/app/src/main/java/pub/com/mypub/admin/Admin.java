@@ -16,18 +16,16 @@ import pub.com.mypub.admin.models.Specialist;
 import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.MyProfile;
 import pub.com.mypub.authentication.NetworkBaseActivity;
-
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
-
 import java.util.ArrayList;
-
 import pub.com.mypub.home.ContactFragment;
 import pub.com.mypub.home.CreateEventFragment;
 import pub.com.mypub.home.CreateLocationFragment;
 import pub.com.mypub.home.CreateSpecialistFragment;
 import pub.com.mypub.home.CreateTicketFragment;
 import pub.com.mypub.home.EventsDetailsFragment;
+import pub.com.mypub.home.EventsFragment;
 
 public class Admin extends NetworkBaseActivity implements OnAdminInteractionListener, NavigationView.OnNavigationItemSelectedListener,DrawableItemClickListener{
 
@@ -75,16 +73,8 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
-//switch (id)
-//        {
-//            case R.id.erate_event:
-//                break;
-//        }
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -131,10 +121,7 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
         createEventFragment.setCategory(category);
     }
 
-    @Override
-    public void setLocation(Location location) {
-        createEventFragment.setLocation(location);
-    }
+
 
     @Override
     public void goToCoverPageFragment() {
@@ -162,6 +149,11 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
     @Override
     public void setSelectedSpecialist(ArrayList<Specialist> specialist) {
         createEventFragment.setSpecialist(specialist);
+    }
+
+    @Override
+    public void setSelectedLocation(ArrayList<Location> location) {
+        createEventFragment.setLocation(location);
     }
 
 

@@ -7,6 +7,7 @@ public class Ticket {
     public String title=null;
     public String description=null;
     boolean isSelected = false;
+    public int mTicketCount;
 
 
 

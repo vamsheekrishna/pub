@@ -1,28 +1,30 @@
 package pub.com.mypub.admin;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.Gallery;
+import android.widget.ImageView;
 
 import com.android.volley.VolleyError;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import pub.com.mypub.R;
 import pub.com.mypub.authentication.NetworkBaseFragment;
+import pub.com.mypub.home.GalleryImageAdapter;
 
 
-public class CoverPageFragment extends NetworkBaseFragment {
+public class CoverPageFragment extends NetworkBaseFragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    ImageView selectedImage;
+    Button create,select;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -56,7 +58,31 @@ public class CoverPageFragment extends NetworkBaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cover_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_cover_page, container, false);
+
+        Gallery gallery = view.findViewById(R.id.gallery);
+        selectedImage=view.findViewById(R.id.img1);
+        gallery.setSpacing(1);
+
+
+        final GalleryImageAdapter galleryImageAdapter= new GalleryImageAdapter(this.getActivity());
+        gallery.setAdapter(galleryImageAdapter);
+
+        gallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                // show the selected Image
+                selectedImage.setImageResource(galleryImageAdapter.mImageIds[position]);
+            }
+        });
+
+        create=view.findViewById(R.id.add);
+        select=view.findViewById(R.id.submit);
+
+        create.setOnClickListener(this);
+        select.setOnClickListener(this);
+
+return view;
+
     }
 
 
@@ -108,4 +134,14 @@ public class CoverPageFragment extends NetworkBaseFragment {
 
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.add:
+                break;
+            case R.id.submit:
+             
+                break;
+        }
+    }
 }

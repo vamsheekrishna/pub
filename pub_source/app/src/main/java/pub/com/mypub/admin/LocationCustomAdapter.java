@@ -10,20 +10,20 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import java.util.ArrayList;
 import pub.com.mypub.R;
-import pub.com.mypub.admin.models.Language;
+import pub.com.mypub.admin.models.Location;
+
+
+public class LocationCustomAdapter extends  ArrayAdapter<Location> {
 
 
 
 
-public class MyCustomAdapter extends ArrayAdapter<Language> {
 
-
-
-    ArrayList<Language> mLanguageList = new ArrayList<>();
-    public MyCustomAdapter(Context context, int code,  ArrayList<Language> mLanguageList) {
-        super(context, code, mLanguageList);
-        this.mLanguageList = new ArrayList<Language>();
-        this.mLanguageList.addAll(mLanguageList);
+    public ArrayList<Location> mLocationList = new ArrayList<>();
+    public LocationCustomAdapter(Context context, int code, ArrayList<Location> mLocationList) {
+        super(context, code, mLocationList);
+        this.mLocationList = new ArrayList<Location>();
+        this.mLocationList.addAll(mLocationList);
     }
 
 
@@ -37,14 +37,14 @@ public class MyCustomAdapter extends ArrayAdapter<Language> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        pub.com.mypub.admin.MyCustomAdapter.ViewHolder holder = null;
+        pub.com.mypub.admin.LocationCustomAdapter .ViewHolder holder = null;
         Log.v("ConvertView", String.valueOf(position));
 
         if (convertView == null) {
             LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = vi.inflate(R.layout.language_info, null);
+            convertView = vi.inflate(R.layout.ticket_info, null);
 
-            holder = new pub.com.mypub.admin.MyCustomAdapter.ViewHolder();
+            holder = new pub.com.mypub.admin.LocationCustomAdapter .ViewHolder();
             holder.id = (TextView) convertView.findViewById(R.id.code);
             holder.name = (CheckBox) convertView.findViewById(R.id.ch1);
             convertView.setTag(holder);
@@ -52,20 +52,20 @@ public class MyCustomAdapter extends ArrayAdapter<Language> {
             holder.name.setOnClickListener( new View.OnClickListener() {
                 public void onClick(View v) {
                     CheckBox ch1 = (CheckBox) v ;
-                    Language language = (Language) ch1.getTag();
-                    language.setSelected(ch1.isChecked());
+                    Location location = (Location) ch1.getTag();
+                    location.setSelected(ch1.isChecked());
                 }
             });
         }
         else {
-            holder = (pub.com.mypub.admin.MyCustomAdapter.ViewHolder) convertView.getTag();
+            holder = (pub.com.mypub.admin.LocationCustomAdapter .ViewHolder) convertView.getTag();
         }
 
-        Language language = mLanguageList.get(position);
-        holder.id.setText(" (" +  language.getId() + ")");
-        holder.name.setText(language.getName());
-        holder.name.setChecked(language.isSelected());
-        holder.name.setTag(language);
+       Location location = mLocationList.get(position);
+        holder.id.setText(" (" +  location.getId() + ")");
+        holder.name.setText(location.getCity());
+        holder.name.setChecked(location.isSelected());
+        holder.name.setTag(location);
 
         return convertView;
 
@@ -73,4 +73,4 @@ public class MyCustomAdapter extends ArrayAdapter<Language> {
 
 
 
-}}
+    }}

@@ -13,20 +13,14 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.VolleyError;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-
 import pub.com.mypub.R;
-import pub.com.mypub.admin.MyCustomAdapter;
 import pub.com.mypub.admin.MyEvent;
 import pub.com.mypub.admin.OnAdminInteractionListener;
 import pub.com.mypub.admin.TicketCustomAdapter;
-import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
@@ -41,8 +35,6 @@ public class CreateTicketFragment extends NetworkBaseFragment implements View.On
     EditText title;
     EditText description;
     TextView txx;
-    Spinner spinner;
-    MyEvent mydata;
     Button add,submit;
     ListView listView;
     ArrayList<Ticket> mSelectedTicket = new ArrayList<>();

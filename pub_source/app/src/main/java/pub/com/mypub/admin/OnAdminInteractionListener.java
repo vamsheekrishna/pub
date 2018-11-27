@@ -25,7 +25,7 @@ public interface OnAdminInteractionListener {
     void goToContactFragment();
     void setCategory(Category category);
 
-    void setLocation(Location location);
+
 
     void goToCoverPageFragment();
 
@@ -37,4 +37,6 @@ public interface OnAdminInteractionListener {
     void setSelectedTicket(ArrayList<Ticket> ticket);
 
     void setSelectedSpecialist(ArrayList<Specialist> specialist);
+
+    void setSelectedLocation(ArrayList<Location> location);
 }

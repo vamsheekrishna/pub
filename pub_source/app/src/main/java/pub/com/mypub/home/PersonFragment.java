@@ -15,7 +15,11 @@ import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import pub.com.mypub.R;
+import pub.com.mypub.admin.models.Specialist;
+import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 public class PersonFragment extends NetworkBaseFragment implements View.OnClickListener, RecycleItemClickListener, SwipeRefreshLayout.OnRefreshListener{
@@ -28,7 +32,7 @@ public class PersonFragment extends NetworkBaseFragment implements View.OnClickL
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    ArrayList<Specialist> mSpecialistList=new ArrayList<>();
     private OnHomeInteractionListener mListener;
 
     public PersonFragment() {
@@ -70,7 +74,7 @@ public class PersonFragment extends NetworkBaseFragment implements View.OnClickL
                 android.R.color.holo_blue_dark);
 
         recycleItemClickListener = this;
-        PersonListAdapter mAdapter = new PersonListAdapter(recycleItemClickListener);
+        PersonListAdapter mAdapter = new PersonListAdapter(recycleItemClickListener, setPersonDataList());
         RecyclerView recyclerView = view.findViewById(R.id.musician_list);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -80,6 +84,16 @@ public class PersonFragment extends NetworkBaseFragment implements View.OnClickL
         return view;
     }
 
+    private ArrayList<Specialist> setPersonDataList() {
+        ArrayList<Specialist> mSpecialistList=new ArrayList<>();
+        Specialist specialist = new Specialist(1,"Shekspeer","12/8/1770","Music","uhsfu","upload",false);
+        mSpecialistList.add(specialist);
+        Specialist specialist1 = new Specialist(2,"Vender","18/8/1990","Dance","uhsfu","upload",false);
+        mSpecialistList.add(specialist1);
+        Specialist specialist2 = new Specialist(3,"Thomas","20/11/2000","Art","uhsfu","upload",false);
+        mSpecialistList.add(specialist2);
+        return mSpecialistList;
+    }
 
 
     @Override
@@ -145,6 +159,12 @@ public class PersonFragment extends NetworkBaseFragment implements View.OnClickL
         loadRecyclerViewData();
         mSwipeRefreshLayout.setRefreshing(false);
     }
+
+    @Override
+    public void onItemClick(View v, View v1) {
+
+    }
+
     private void loadRecyclerViewData() {
 
     }

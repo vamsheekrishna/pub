@@ -10,13 +10,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.Toast;
 import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
-
 import pub.com.mypub.R;
 import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.authentication.NetworkBaseFragment;
@@ -30,14 +28,11 @@ public class LanguageFragment extends NetworkBaseFragment implements View.OnClic
 EditText language;
 Button create,select;
 CheckBox one;
-CheckBox two;
-MyEvent mydata;
 ListView listView;
 ArrayList<Language> mSelectedLanguage = new ArrayList<>();
 ArrayList<Language> mLanguageList = new ArrayList<>();
-ArrayList<String> lang;
 MyCustomAdapter dataAdapter = null;
-Language mLanguage;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -105,15 +100,12 @@ Language mLanguage;
 
        language = view.findViewById(R.id.n1);
        one = view.findViewById(R.id.ch1);
-      // two=view.findViewById(R.id.ch2);
         create=view.findViewById(R.id.e1);
         select=view.findViewById(R.id.e11);
 
        create.setOnClickListener(this);
         select.setOnClickListener(this);
-       // one.setOnClickListener(this);
-       //two.setOnClickListener(this);
-//        listView.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

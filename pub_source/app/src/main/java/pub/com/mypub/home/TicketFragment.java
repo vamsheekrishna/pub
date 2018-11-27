@@ -12,7 +12,10 @@ import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import pub.com.mypub.R;
+import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 public class TicketFragment extends NetworkBaseFragment implements View.OnClickListener, RecycleItemClickListener, SwipeRefreshLayout.OnRefreshListener {
@@ -22,7 +25,7 @@ public class TicketFragment extends NetworkBaseFragment implements View.OnClickL
     private static final String ARG_PARAM2 = "param2";
     RecycleItemClickListener recycleItemClickListener;
     SwipeRefreshLayout mSwipeRefreshLayout;
-
+    ArrayList<Ticket> mTicketList=new ArrayList<>();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -70,7 +73,7 @@ public class TicketFragment extends NetworkBaseFragment implements View.OnClickL
 
         recycleItemClickListener = this;
 
-        TicketListAdapter mAdapter = new TicketListAdapter(recycleItemClickListener);
+//        TicketListAdapter mAdapter = new TicketListAdapter(recycleItemClickListener, setTicketDataList());
         /*RecyclerView recyclerView = view.findViewById(R.id.ticket_list);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -83,6 +86,7 @@ public class TicketFragment extends NetworkBaseFragment implements View.OnClickL
 
         return view;
     }
+
 
 
 
@@ -147,6 +151,11 @@ public class TicketFragment extends NetworkBaseFragment implements View.OnClickL
     public void onItemClick(View v) {
         loadRecyclerViewData();
         mSwipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void onItemClick(View v, View v1) {
+
     }
 
     private void loadRecyclerViewData() {

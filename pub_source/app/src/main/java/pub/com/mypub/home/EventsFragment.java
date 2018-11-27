@@ -117,6 +117,11 @@ public class EventsFragment extends Fragment implements View.OnClickListener, Re
     }
 
     @Override
+    public void onItemClick(View v, View v1) {
+
+    }
+
+    @Override
     public void onRefresh() {
         loadRecyclerViewData();
         mSwipeRefreshLayout.setRefreshing(false);

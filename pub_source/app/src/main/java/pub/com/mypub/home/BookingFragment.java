@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -17,18 +18,22 @@ import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import pub.com.mypub.R;
+import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
 public class BookingFragment extends NetworkBaseFragment implements RecycleItemClickListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    TextView displayInteger;
+    int minteger = 0;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    ArrayList<Ticket> mTicketList=new ArrayList<>();
     private OnHomeInteractionListener mListener;
 
     public BookingFragment() {
@@ -63,9 +68,10 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_booking, container, false);
         RecycleItemClickListener recycleItemClickListener = this;
-        TicketListAdapter mAdapter = new TicketListAdapter(recycleItemClickListener);
+        TicketListAdapter mAdapter = new TicketListAdapter(recycleItemClickListener, setTicketDataList() );
         RecyclerView recyclerView = view.findViewById(R.id.ticket_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
+
 //        recyclerView.getLayoutManager().setAutoMeasureEnabled(true);
 //        recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setHasFixedSize(false);
@@ -85,6 +91,16 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
         return view;
     }
 
+    private ArrayList<Ticket> setTicketDataList() {
+        ArrayList<Ticket> mTicketList=new ArrayList<>();
+        Ticket ticket = new Ticket(0,"Ticket 1",50,"single","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false);
+        mTicketList.add(ticket);
+        Ticket ticket1 = new Ticket(1,"Ticket 2",80,"double","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false);
+        mTicketList.add(ticket1);
+        Ticket ticket2 = new Ticket(2,"Ticket 3",110,"single","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false);
+        mTicketList.add(ticket2);
+        return mTicketList;
+    }
 
 
     @Override
@@ -139,10 +155,32 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
     public void onItemClick(View v) {
         switch (v.getId()) {
             case R.id.plus:
+
                 break;
             case R.id.minus:
+
                 break;
+        }}
+
+        public void onItemClick(View v, View v1) {
+            /*switch (v.getId()) {
+                case R.id.plus:
+                    minteger = minteger + 1;
+
+                    ((TextView)v1).setText(minteger);
+                    break;
+                case R.id.minus:
+                    minteger = minteger - 1;
+
+                    ((TextView)v1).setText(minteger);
+                    break;
+            }*/
+
+
+            Toast.makeText(getContext(),"event clicked:", Toast.LENGTH_LONG).show();
         }
-        Toast.makeText(getContext(),"event clicked:", Toast.LENGTH_LONG).show();
-    }
+
+
 }
+
+
