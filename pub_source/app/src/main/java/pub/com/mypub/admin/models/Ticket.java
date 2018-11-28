@@ -3,7 +3,7 @@ package pub.com.mypub.admin.models;
 public class Ticket {
     public int id=0;
     public String name=null;
-    public double price=0;
+    public String price=null;
     public String title=null;
     public String description=null;
     boolean isSelected = false;
@@ -11,7 +11,10 @@ public class Ticket {
 
 
 
-    public Ticket (int _id, String _name, double _price, String _title, String _description,  boolean selected) {
+    public Ticket () {
+
+    }
+    public Ticket (int _id, String _name, String _price, String _title, String _description,  boolean selected) {
         super();
         this.id = _id;
         this.name = _name;
@@ -31,8 +34,8 @@ public class Ticket {
     public String getName() { return name; }
     public void setName(String _name) { this.name = _name; }
 
-    public double getPrice(){return price;}
-    public void setPrice(double _price){this.price=_price;}
+    public String getPrice(){return price;}
+    public void setPrice(String _price){this.price=_price;}
 
     public String getTitle() {return title;}
     public  void setTitle(String _title) {this.title=_title;}

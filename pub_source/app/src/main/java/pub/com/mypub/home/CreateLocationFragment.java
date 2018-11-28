@@ -42,8 +42,8 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
     EditText state;
     EditText landmark;
     EditText latitude;
-    EditText langetude;
-    TextView txx;
+    EditText langetude,phone1;
+    TextView txx,phone;
     Spinner spinner;
     MyEvent mydata;
     Button add,submit;
@@ -85,9 +85,9 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
     }
 
     private void displayListView() {
-        mLocationList.add(new Location(1,"Banglour","India","hh","rre","eee","jjj",false));
-        mLocationList.add(new Location(2,"Chenai","India","lll","rrne","aaa","mmmm",false));
-        mLocationList.add(new Location(3,"Delhi","India","mnb","www","bgt","jio",false));
+        mLocationList.add(new Location(1,"Banglour","India","hh","rre","eee","jjj", "9934762891",false));
+        mLocationList.add(new Location(2,"Chenai","India","lll","rrne","aaa","mmmm", "9876234600",false));
+        mLocationList.add(new Location(3,"Delhi","India","mnb","www","bgt","jio","7844590322",false));
     }
 
     @Override
@@ -108,6 +108,8 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
         landmark = view.findViewById(R.id.e1f);
         latitude = view.findViewById(R.id.e1h);
         langetude = view.findViewById(R.id.e112);
+        phone=view.findViewById(R.id.phone);
+        phone1=view.findViewById(R.id.phone1);
         txx = view.findViewById(R.id.tx);
         submit=view.findViewById(R.id.submit);
         add=view.findViewById(R.id.add);

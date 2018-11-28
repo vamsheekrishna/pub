@@ -31,9 +31,9 @@ public class EventObject {
 
     public void setTickets(ArrayList<Ticket> tickets) {
         //this.tickets = tickets;
-        tickets.add(new Ticket(2,"Ticket 3",110,"single 1","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false));
-        tickets.add(new Ticket(3,"Ticket 3",100,"single 2","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false));
-        tickets.add(new Ticket(4,"Ticket 3",510,"single 3","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false));
+        tickets.add(new Ticket(2,"Ticket 3","110","single 1","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false));
+        tickets.add(new Ticket(3,"Ticket 3","100","single 2","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false));
+        tickets.add(new Ticket(4,"Ticket 3","510","single 3","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false));
     }
 
     public ArrayList<Ticket> getTickets() {
@@ -42,9 +42,9 @@ public class EventObject {
 
     public void setLocation(ArrayList<Location> locations) {
         //this.locations = locations;
-        locations.add(new Location(1,"Banglour","India","hh","rre","eee","jjj",false));
-        locations.add(new Location(2,"Chenai","India","hh","rre","eee","jjj",false));
-        locations.add(new Location(3,"Delhy","India","hh","rre","eee","jjj",false));
+        locations.add(new Location(1,"Banglour","India","hh","rre","eee","jjj","59585877483",false));
+        locations.add(new Location(2,"Chenai","India","hh","rre","eee","jjj","87567567",false));
+        locations.add(new Location(3,"Delhy","India","hh","rre","eee","jjj","57565",false));
     }
 
     public ArrayList<Location> getLocations() {

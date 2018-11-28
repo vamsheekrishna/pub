@@ -26,7 +26,7 @@ public class TicketCustomAdapter extends ArrayAdapter<Ticket> {
 
 
     private class ViewHolder {
-        TextView id;
+        //TextView id;
         CheckBox name;
     }
 
@@ -43,7 +43,7 @@ public class TicketCustomAdapter extends ArrayAdapter<Ticket> {
             convertView = vi.inflate(R.layout.ticket_info, null);
 
             holder = new pub.com.mypub.admin.TicketCustomAdapter.ViewHolder();
-            holder.id = (TextView) convertView.findViewById(R.id.code);
+           // holder.id = (TextView) convertView.findViewById(R.id.code);
             holder.name = (CheckBox) convertView.findViewById(R.id.ch1);
             convertView.setTag(holder);
 
@@ -60,7 +60,7 @@ public class TicketCustomAdapter extends ArrayAdapter<Ticket> {
         }
 
        Ticket ticket = mTicketList.get(position);
-        holder.id.setText(" (" +  ticket.getId() + ")");
+        //holder.id.setText(" (" +  ticket.getId() + ")");
         holder.name.setText(ticket.getName());
         holder.name.setChecked(ticket.isSelected());
         holder.name.setTag(ticket);

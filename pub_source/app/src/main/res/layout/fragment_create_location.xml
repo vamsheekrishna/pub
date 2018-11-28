@@ -187,6 +187,32 @@
                             android:textColor="@android:color/black"
                             android:textSize="12dp"
                             android:layout_weight="1"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/phone"
+                        android:layout_width="109dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/kaushanscriptregular"
+                        android:text="PhoneNo"
+                        android:textColor="#6C0D0D"
+                        android:textSize="16dp"
+                        />
+
+                    <EditText
+                        android:id="@+id/phone1"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:textSize="12dp"
+                        android:layout_weight="1"/>
+
                 </LinearLayout>
                 <!--<ScrollView-->
                     <!--android:layout_width="match_parent"-->
@@ -221,14 +247,21 @@
                     android:textAlignment="center"
                     android:textColor="#6C0D0D"
                   />
+                <!--<ScrollView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
                 <ListView
                     android:id="@+id/listView1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:dividerHeight="1dp"></ListView>
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:dividerHeight="1dp">
+                </ListView>
+
+                    </RelativeLayout>
+                <!--</ScrollView>-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -247,7 +280,7 @@
                         android:textColor="#FEFDFC"
                         android:textSize="12dp" />
                 </LinearLayout>
-</ScrollView>
+
             </LinearLayout>
 
 

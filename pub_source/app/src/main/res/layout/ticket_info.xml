@@ -31,14 +31,14 @@
                 android:focusableInTouchMode="false" />
 
 
-            <TextView
-                android:id="@+id/code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/checkBox1"
-                android:layout_alignBottom="@+id/checkBox1"
-                android:layout_toRightOf="@+id/checkBox1"
-                android:text="TextView" />
+            <!--<TextView-->
+                <!--android:id="@+id/code"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignBaseline="@+id/checkBox1"-->
+                <!--android:layout_alignBottom="@+id/checkBox1"-->
+                <!--android:layout_toRightOf="@+id/checkBox1"-->
+                <!--android:text="TextView" />-->
         </LinearLayout>
     </RelativeLayout>
 </android.support.v7.widget.CardView>

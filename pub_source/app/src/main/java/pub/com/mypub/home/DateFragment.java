@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 
@@ -144,6 +145,11 @@ public class DateFragment extends NetworkBaseFragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.k:
+                Toast.makeText(getActivity(), "Date: ", Toast.LENGTH_LONG).show();
+                break;
+        }
 
     }
 

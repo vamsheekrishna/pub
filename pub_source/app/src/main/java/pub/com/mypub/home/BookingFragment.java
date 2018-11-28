@@ -93,11 +93,11 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
 
     private ArrayList<Ticket> setTicketDataList() {
         ArrayList<Ticket> mTicketList=new ArrayList<>();
-        Ticket ticket = new Ticket(0,"Ticket 1",50,"single","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false);
+        Ticket ticket = new Ticket(0,"Ticket 1","50","single","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false);
         mTicketList.add(ticket);
-        Ticket ticket1 = new Ticket(1,"Ticket 2",80,"double","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false);
+        Ticket ticket1 = new Ticket(1,"Ticket 2","80","double","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false);
         mTicketList.add(ticket1);
-        Ticket ticket2 = new Ticket(2,"Ticket 3",110,"single","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false);
+        Ticket ticket2 = new Ticket(2,"Ticket 3","110","single","GA tickets give access to the GA zone/main dance floor at sensation Rise. Dress code:All white mandatory",false);
         mTicketList.add(ticket2);
         return mTicketList;
     }

@@ -161,7 +161,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     public void onResume() {
         super.onResume();
         if(null != mCategory) {
-            Toast.makeText(getActivity(), "Category: " + mCategory.name, Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), "Category: " + mCategory.name, Toast.LENGTH_LONG).show();
             category.setText(mCategory.name);
         }
         if (null != mSelectedLanguage) {

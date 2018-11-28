@@ -11,7 +11,10 @@ import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import pub.com.mypub.R;
+import pub.com.mypub.admin.models.Specialist;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 public class OfflinePromotersFragment extends NetworkBaseFragment {
@@ -19,12 +22,12 @@ public class OfflinePromotersFragment extends NetworkBaseFragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    ArrayList<Specialist> mOfflineList=new ArrayList<>();
+    private OnHomeInteractionListener mListener;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    private OnHomeInteractionListener mListener;
 
     public OfflinePromotersFragment() {
         // Required empty public constructor

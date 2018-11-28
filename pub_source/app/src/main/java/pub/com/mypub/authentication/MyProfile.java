@@ -10,5 +10,5 @@ public class MyProfile implements Serializable {
     public String mPassword;
     public String mProfileID;
     public boolean isValidated = false;
-    public boolean isAdmin = false;
+    public boolean isAdmin = true;
 }
