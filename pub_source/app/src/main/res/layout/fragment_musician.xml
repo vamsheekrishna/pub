@@ -28,7 +28,7 @@
 
                 >
             <ImageView
-                android:layout_width="200dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/rr"
                 android:src="@drawable/m1"
@@ -40,37 +40,99 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:paddingLeft="30dp"
+
 
 
     >
+    <LinearLayout
+        android:layout_marginTop="0dp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name1"
+            android:text="Name:"
+            android:textSize="16dp"
+            android:layout_below="@+id/rr"
+            android:textColor= "#637BDC"
+            android:fontFamily="@font/kaushanscriptregular"
+            />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/name"
-                android:text="Name: Sander Van Doorn"
+                android:text="Sander Van Doorn"
                 android:textSize="16dp"
                 android:layout_below="@+id/rr"
                 android:textColor= "#637BDC"
                 android:fontFamily="@font/kaushanscriptregular"
                 />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="0dp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/age1"
+            android:text="Age:"
+            android:textSize="16dp"
+            android:layout_below="@+id/rr"
+            android:textColor= "#637BDC"
+            android:fontFamily="@font/kaushanscriptregular"
+            />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/age"
-        android:text="Age: 30 Years"
+        android:text=" 30 Years"
         android:textSize="16dp"
         android:layout_below="@+id/rr"
         android:textColor= "#637BDC"
         android:fontFamily="@font/kaushanscriptregular"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="0dp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spec1"
+            android:text="Specialaization:"
+            android:textSize="16dp"
+            android:layout_below="@+id/rr"
+            android:textColor= "#637BDC"
+            android:fontFamily="@font/kaushanscriptregular"
+            />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spec"
-        android:text="Spec: Mucian"
+        android:text="Mucian"
         android:textSize="16dp"
         android:layout_below="@+id/rr"
         android:textColor= "#637BDC "
         android:fontFamily="@font/kaushanscriptregular"/>
+    </LinearLayout>
 
 </LinearLayout>
             </LinearLayout>

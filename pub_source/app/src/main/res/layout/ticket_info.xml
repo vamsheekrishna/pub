@@ -7,7 +7,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:elevation="3dp"
     card_view:cardCornerRadius="@dimen/card_album_radius">
 
@@ -18,7 +18,7 @@
         <LinearLayout
             android:padding="8dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:orientation="vertical">
 
@@ -26,7 +26,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="checkbox"
-                android:onClick="onCheckboxClicked"
                 android:focusable="false"
                 android:focusableInTouchMode="false" />
 

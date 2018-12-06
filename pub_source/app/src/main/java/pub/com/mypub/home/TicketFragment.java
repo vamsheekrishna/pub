@@ -36,8 +36,6 @@ public class TicketFragment extends NetworkBaseFragment implements View.OnClickL
         // Required empty public constructor
     }
 
-
-    // TODO: Rename and change types and number of parameters
     public static TicketFragment newInstance(String param1, String param2) {
         TicketFragment fragment = new TicketFragment();
         Bundle args = new Bundle();

@@ -14,20 +14,27 @@
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:elevation="3dp"
         card_view:cardCornerRadius="@dimen/card_album_radius">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:padding="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/top">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:id="@+id/create_location">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -189,99 +196,54 @@
                             android:layout_weight="1"/>
 
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
 
-                    <TextView
-                        android:id="@+id/phone"
-                        android:layout_width="109dp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/kaushanscriptregular"
-                        android:text="PhoneNo"
-                        android:textColor="#6C0D0D"
-                        android:textSize="16dp"
-                        />
+<Button
+    android:id="@+id/add"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Create"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:textColor= "#FEFDFC  " />
 
-                    <EditText
-                        android:id="@+id/phone1"
-                        android:layout_width="220dp"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
-                        android:textSize="12dp"
-                        android:layout_weight="1"/>
-
-                </LinearLayout>
-                <!--<ScrollView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content">-->
-                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
-                        <!--&lt;!&ndash;android:layout_marginTop="30dp"&ndash;&gt;-->
-                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-                        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
-                        <!--&lt;!&ndash;android:text="dispaly information"&ndash;&gt;-->
-                        <!--&lt;!&ndash;android:id="@+id/tx"&ndash;&gt;-->
-                        <!--&lt;!&ndash;android:fontFamily="@font/kaushanscriptregular"&ndash;&gt;-->
-                        <!--&lt;!&ndash;android:padding="8dp"&ndash;&gt;-->
-                        <!--&lt;!&ndash;android:textAlignment="center"/>&ndash;&gt;-->
-                <!--</ScrollView>-->
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/bt_add_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
                 <Button
-                    android:id="@+id/add"
+                    android:id="@+id/create"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ADD"
+                    android:text="ADD NEW"
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
                     android:textColor= "#FEFDFC  "
                     />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Select Location"
-                    android:id="@+id/tx1"
-                    android:fontFamily="@font/kaushanscriptregular"
-                    android:padding="8dp"
-                    android:textAlignment="center"
-                    android:textColor="#6C0D0D"
-                  />
-                <!--<ScrollView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content">-->
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                <ListView
-                    android:id="@+id/listView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:dividerHeight="1dp">
-                </ListView>
-
-                    </RelativeLayout>
-                <!--</ScrollView>-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-
-
-                    <Button
-                        android:id="@+id/submit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:fontFamily="@font/kaushanscriptregular"
-                        android:text="Submit"
-                        android:textColor="#FEFDFC"
-                        android:textSize="12dp" />
-                </LinearLayout>
-
             </LinearLayout>
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top"
+            android:layout_above="@+id/submit"
+            />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:textColor="#FEFDFC"
+            android:textSize="12dp"
+            android:text="Submit"
+            android:fontFamily="@font/kaushanscriptregular"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_alignParentBottom="true"
+            />
 
 
         </RelativeLayout>

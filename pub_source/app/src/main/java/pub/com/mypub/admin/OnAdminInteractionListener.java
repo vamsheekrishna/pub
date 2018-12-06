@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import pub.com.mypub.admin.models.Category;
 import pub.com.mypub.admin.models.Contact;
+import pub.com.mypub.admin.models.Event;
 import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.admin.models.Location;
 import pub.com.mypub.admin.models.Specialist;
@@ -23,13 +24,13 @@ public interface OnAdminInteractionListener {
     void goToSpecialistFragment();
 
     void goToContactFragment();
-    void setCategory(Category category);
+
 
 
 
     void goToCoverPageFragment();
 
-    void setContact(Contact contact);
+
 
     void setSelectedLanguage(ArrayList<Language> language);
 
@@ -38,5 +39,10 @@ public interface OnAdminInteractionListener {
 
     void setSelectedSpecialist(ArrayList<Specialist> specialist);
 
+
     void setSelectedLocation(ArrayList<Location> location);
+
+    void setSelectedContact(ArrayList<Contact> contact);
+
+    void setSelectedCategory(ArrayList<Category> category);
 }

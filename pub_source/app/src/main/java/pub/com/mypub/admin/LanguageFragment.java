@@ -2,6 +2,8 @@ package pub.com.mypub.admin;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,31 +11,44 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
+import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
 import pub.com.mypub.admin.models.Language;
+import pub.com.mypub.admin.models.Specialist;
 import pub.com.mypub.authentication.NetworkBaseFragment;
+import pub.com.mypub.home.RecycleItemClickListener;
 
 
-public class LanguageFragment extends NetworkBaseFragment implements View.OnClickListener,AdapterView.OnItemSelectedListener {
+public class LanguageFragment extends NetworkBaseFragment implements View.OnClickListener,AdapterView.OnItemSelectedListener, RecycleItemClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-EditText language;
-Button create,select;
+EditText language1;
+Button create1,select,New;
 CheckBox one;
-ListView listView;
+Language language;
 ArrayList<Language> mSelectedLanguage = new ArrayList<>();
 ArrayList<Language> mLanguageList = new ArrayList<>();
-MyCustomAdapter dataAdapter = null;
-
-
+CheckBox ch1;
+RecyclerView recyclerView;
+LinearLayout btAddLanguage, createLanguage;
+LanguageCustomAdapter dataAdapter = null;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -52,17 +67,18 @@ MyCustomAdapter dataAdapter = null;
         fragment.setArguments(args);
         return fragment;
     }
-    private void displayListView() {
+    private ArrayList<Language> displayListView() {
 
         //Array list of countries
-        ArrayList<Language> countryList = new ArrayList<Language>();
-        Language language = new Language(1,"Arabic",false);
-        mLanguageList.add(language);
-        Language language1 = new Language(2,"English",false);
-        mLanguageList.add(language1);
-        Language language3 = new Language(3,"Franch",false);
-        mLanguageList.add(language3);
-
+//        ArrayList<Language> countryList = new ArrayList<Language>();
+//        Language language = new Language(1,"Arabic",false);
+//        mLanguageList.add(language);
+//        Language language1 = new Language(2,"English",false);
+//        mLanguageList.add(language1);
+//        Language language3 = new Language(3,"Franch",false);
+//        mLanguageList.add(language3);
+        stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL+"language.php/getAllRecords", "get_all_language");
+        return mLanguageList;
 
     }
 
@@ -73,7 +89,7 @@ MyCustomAdapter dataAdapter = null;
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        displayListView();
+
     }
 
 
@@ -87,36 +103,22 @@ MyCustomAdapter dataAdapter = null;
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_language, container, false);
 
-
-         dataAdapter = new MyCustomAdapter(this.getActivity(),
-                R.layout.language_info, mLanguageList);
-        listView= view.findViewById(R.id.listView1);
-
-        listView.setAdapter(dataAdapter);
-
-
-
-
-
-       language = view.findViewById(R.id.n1);
+        displayListView();
+        recyclerView= view.findViewById(R.id.listView1);
+        New=view.findViewById(R.id.create);
+        btAddLanguage = view.findViewById(R.id.bt_add_language);
+        createLanguage = view.findViewById(R.id.create_language);
+       language1= view.findViewById(R.id.n1);
        one = view.findViewById(R.id.ch1);
-        create=view.findViewById(R.id.e1);
-        select=view.findViewById(R.id.e11);
+        create1=view.findViewById(R.id.e1);
+        select=view.findViewById(R.id.submit);
 
-       create.setOnClickListener(this);
+       create1.setOnClickListener(this);
         select.setOnClickListener(this);
+        New.setOnClickListener(this);
 
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Language language = (Language) parent.getItemAtPosition(position);
-                Toast.makeText(getActivity(),
-                        "Clicked on Row: " + language.getName(),
-                        Toast.LENGTH_LONG).show();
-
-            }});
 
         return view;
     }
@@ -146,12 +148,28 @@ MyCustomAdapter dataAdapter = null;
 
     @Override
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
-
-    }
+        if(REQUEST_ID.equals("create_language")) {
+            btAddLanguage.setVisibility(View.VISIBLE);
+            createLanguage.setVisibility(View.GONE);
+            Toast.makeText(getActivity(), "JSONObject Sucsesfully", Toast.LENGTH_LONG).show();
+    }}
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
+        if(REQUEST_ID.equals("create_specialist")) {
+            btAddLanguage.setVisibility(View.VISIBLE);
+            createLanguage.setVisibility(View.GONE);
+            Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
+        }
+        Gson gson;
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gson = gsonBuilder.create();
+        List<Language> languages = Arrays.asList(gson.fromJson(response.toString(), Language[].class));
+        dataAdapter = new LanguageCustomAdapter( new ArrayList<>(languages));
 
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
+        recyclerView.setHasFixedSize(false);
+        recyclerView.setAdapter(dataAdapter);
     }
 
     @Override
@@ -177,9 +195,25 @@ MyCustomAdapter dataAdapter = null;
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
-            case R.id.e1:
+            case R.id.create:
+                createLanguage.setVisibility(View.VISIBLE);
+                btAddLanguage.setVisibility(View.GONE);
                 break;
-            case R.id.e11:
+            case R.id.e1:
+                String _name = language1.getText().toString();
+
+
+                language = new Language();
+                language.name=_name;
+
+
+                HashMap<String, String> parems = new HashMap<>();
+                parems.put("name", language.name);
+
+
+                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"language.php/createRecord", "create_language");
+                break;
+            case R.id.submit:
                 StringBuffer responseText = new StringBuffer();
                 ArrayList<Language> mLanguageList = dataAdapter.mLanguageList;
                 for ( Language language:mLanguageList ) {
@@ -205,6 +239,16 @@ MyCustomAdapter dataAdapter = null;
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public void onItemClick(View v) {
+
+    }
+
+    @Override
+    public void onItemClick(View v, View v1) {
 
     }
 }

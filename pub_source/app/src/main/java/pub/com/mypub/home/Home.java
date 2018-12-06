@@ -1,33 +1,31 @@
 package pub.com.mypub.home;
 
-import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
+
 import pub.com.mypub.R;
-import pub.com.mypub.authentication.AuthenticationActivity;
+import pub.com.mypub.admin.models.Contact;
+import pub.com.mypub.admin.models.Event;
+import pub.com.mypub.admin.models.Specialist;
+import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.ChangePasswordFragment;
-import pub.com.mypub.authentication.ForgetFragment;
-import pub.com.mypub.authentication.LoginFragment;
 import pub.com.mypub.authentication.MyProfile;
 import pub.com.mypub.authentication.NetworkBaseActivity;
 import pub.com.mypub.authentication.ProfileFragment;
-import pub.com.mypub.authentication.RegistrationFragment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
-import org.json.JSONException;
+
+import java.util.ArrayList;
 
 public class Home extends NetworkBaseActivity implements OnHomeInteractionListener, NavigationView.OnNavigationItemSelectedListener{
     MyProfile myProfile;
+    Event mCurrentEvent;
+   BookingFragment BookingFragment;
     private OnHomeInteractionListener mListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +33,6 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -52,7 +40,7 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
+        BookingFragment = BookingFragment.newInstance("", "");
         navigationView.getMenu().setGroupVisible(R.id.erate_event, false);
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -107,7 +95,8 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
 
     @Override
     public void goToEventsDetailsFragment() {
-        addFragment(EventsDetailsFragment.newInstance("", ""), true, true, EventsDetailsFragment.class.getName());
+
+        addFragment(EventsDetailsFragment.newInstance(getSelectedEvent(), ""), true, true, EventsDetailsFragment.class.getName());
     }
 
     @Override
@@ -143,7 +132,7 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -152,40 +141,55 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
     public void onDrawerSlide() {
 
     }
-}
 
-//        MenuItem menuItem = null;
-//        selectDrawerItem(menuItem);
-//        return true;
-//    }
-//    public void selectDrawerItem(MenuItem menuItem) {
-//        // Create a new fragment and specify the fragment to show based on nav item clicked
-//        Fragment fragment = null;
-//        Class fragmentClass = null;
-//        switch(menuItem.getItemId()) {
-//            case R.id.profile:
-//                fragmentClass = ProfileFragment.class;
-//                break;
-//            case R.id.event:
-//                break;
-//        }
-//
-//        try {
-//            fragment = (Fragment) fragmentClass.newInstance();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        // Insert the fragment by replacing any existing fragment
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        fragmentManager.beginTransaction().replace(R.id.main_content, fragment).commit();
-//
-//        // Highlight the selected item has been done by NavigationView
-//        menuItem.setChecked(true);
-//        // Set action bar title
-//        setTitle(menuItem.getTitle());
-//        // Close the navigation drawer
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        drawer.closeDrawers();
-//    }
+    @Override
+    public void setSelectedEvent(Event selectedEvent) {
+        mCurrentEvent = selectedEvent;
+    }
+
+    @Override
+    public Event getSelectedEvent() {
+        return mCurrentEvent;
+    }
+
+    @Override
+    public void setSpecialistList(ArrayList<Specialist> specialist) {
+        mCurrentEvent.mSpecialist = specialist;
+    }
+
+    @Override
+    public ArrayList<Specialist> getSpecialistList() {
+        return mCurrentEvent.mSpecialist;
+    }
+
+    @Override
+    public void setEventList(ArrayList<Event> event) {
+        mCurrentEvent.mEvent = event;
+    }
+
+    @Override
+    public ArrayList<Event> getEventList() {
+        return mCurrentEvent.mEvent;
+    }
+
+    @Override
+    public void setContactList(ArrayList<Contact> contact) {
+        mCurrentEvent.mContact = contact;
+    }
+
+    @Override
+    public ArrayList<Contact> getContactList() {
+        return mCurrentEvent.mContact;
+    }
+
+    @Override
+    public void setSelectedEventt(ArrayList<Event> evenrt) {
+        BookingFragment.setEvent(evenrt);
+    }
+
+    @Override
+    public void setSelectedTickett(ArrayList<Ticket> tickets) {
+        mCurrentEvent.mTicketlist = tickets;
+    }
+}
 

@@ -10,6 +10,7 @@ import android.view.View;
 import pub.com.mypub.R;
 import pub.com.mypub.admin.models.Category;
 import pub.com.mypub.admin.models.Contact;
+import pub.com.mypub.admin.models.Event;
 import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.admin.models.Location;
 import pub.com.mypub.admin.models.Specialist;
@@ -83,7 +84,7 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
     }
     @Override
     public void goToEventsDetailsFragment() {
-        addFragment(EventsDetailsFragment.newInstance("", ""), true, true, EventsDetailsFragment.class.getName());
+        addFragment(EventsDetailsFragment.newInstance(new Event(), ""), true, true, EventsDetailsFragment.class.getName());
     }
 
     @Override
@@ -116,10 +117,7 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
         addFragment(ContactFragment.newInstance("", ""), true, true, ContactFragment.class.getName());
     }
 
-    @Override
-    public void setCategory(Category category) {
-        createEventFragment.setCategory(category);
-    }
+
 
 
 
@@ -128,11 +126,7 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
         addFragment(CoverPageFragment.newInstance("", ""), true, true, CoverPageFragment.class.getName());
     }
 
-    @Override
-    public void setContact(Contact contact) {
 
-        createEventFragment.setContact(contact);
-    }
 
 
 
@@ -151,9 +145,20 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
         createEventFragment.setSpecialist(specialist);
     }
 
+
     @Override
     public void setSelectedLocation(ArrayList<Location> location) {
         createEventFragment.setLocation(location);
+    }
+
+    @Override
+    public void setSelectedContact(ArrayList<Contact> contact) {
+        createEventFragment.setContact(contact);
+    }
+
+    @Override
+    public void setSelectedCategory(ArrayList<Category> category) {
+        createEventFragment.setCategory(category);
     }
 
 
@@ -170,7 +175,7 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
 
 
         else if (id == R.id.event) {
-           // addFragment(EventsFragment.newInstance("", ""), true, true, EventsFragment.class.getName());
+           // addFragment(EventsFragment.newInstance("", ""), true, true, EventsFragment.class.getTicket_name());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

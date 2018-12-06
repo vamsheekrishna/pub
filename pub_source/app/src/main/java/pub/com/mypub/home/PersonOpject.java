@@ -8,13 +8,13 @@ import pub.com.mypub.R;
 
 public class PersonOpject extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    TextView mDisplay, namee, age, spec;
+    TextView mDisplay, name, dob, specialization;
     RecycleItemClickListener mListener;
     public PersonOpject(View view, RecycleItemClickListener listener) {
         super(view);
-        namee = view.findViewById(R.id.name);
-        age= view.findViewById(R.id.age);
-       spec=view.findViewById(R.id.spec);
+        name = view.findViewById(R.id.name);
+        dob = view.findViewById(R.id.age);
+       specialization =view.findViewById(R.id.spec);
         mListener = listener;
 
     }

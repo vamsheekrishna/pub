@@ -8,10 +8,13 @@ public class Location {
     public String landmark=null;
     public String latitude=null;
     public String langetude=null;
-    public String phone=null;
     boolean isSelected = false;
 
-    public Location (int _id, String _city, String _country, String _state, String _landmark, String _latitude, String _langetude, String _phone, boolean selected) {
+    public Location(){
+
+    }
+
+    public Location (int _id, String _city, String _country, String _state, String _landmark, String _latitude, String _langetude,  boolean selected) {
         this.id = _id;
         this.city = _city;
         this.country = _country;
@@ -47,10 +50,6 @@ public class Location {
     public  String getLangetude(){return  langetude;}
     public  void setLangetude(String _langetude){this.langetude=_langetude;}
 
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String _phone) { this.phone = _phone; }
 
     public boolean isSelected() { return isSelected; }
     public void setSelected(boolean selected) { this.isSelected = selected; }

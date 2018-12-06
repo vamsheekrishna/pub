@@ -17,9 +17,11 @@ import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import pub.com.mypub.R;
+import pub.com.mypub.admin.models.Event;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 import pub.com.mypub.baseclasses.BaseFragment;
 
@@ -27,7 +29,7 @@ import pub.com.mypub.baseclasses.BaseFragment;
 public class EventsDetailsFragment extends NetworkBaseFragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private String mParam1;
+    private Event mEvent;
     private String mParam2;
 
     private TabLayout tabLayout;
@@ -38,10 +40,10 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
         // Required empty public constructor
     }
 
-    public static EventsDetailsFragment newInstance(String param1, String param2) {
+    public static EventsDetailsFragment newInstance(Event param1, String param2) {
         EventsDetailsFragment fragment = new EventsDetailsFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
+        args.putSerializable(ARG_PARAM1,  param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
@@ -51,7 +53,7 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            mEvent = (Event) getArguments().getSerializable(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setTagName();
@@ -79,20 +81,9 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
         fragments.add(PersonFragment.newInstance("",""));
         fragments.add(OfflinePromotersFragment.newInstance("",""));
         fragments.add(BookingFragment.newInstance("",""));
-       // fragments.add(CreateEventFragment.newInstance("",""));
-       // fragments.add(CreateLocationFragment.newInstance("",""));
-       // fragments.add(ContactFragment.newInstance("",""));
-        //fragments.add(CreateTicketFragment.newInstance("",""));
-       // fragments.add(CreateSpecialistFragment.newInstance("",""));
         eventsDetailsTabAdapter.setFragmentArray(fragments);
         eventBodyPageAdapter.setAdapter(eventsDetailsTabAdapter);
 
-        /*tabLayout = view.findViewById (R.id.tab_layout);
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        tabLayout.setupWithViewPager(eventBodyPageAdapter);*/
-
-        /*TabLayout tabLayout = view.findViewById(R.id.sliding_tabs);
-        tabLayout.setupWithViewPager(eventBodyPageAdapter);*/
         PagerTabStrip tabStrip = view.findViewById(R.id.sliding_tabs);
         Typeface fontTypeFace = Typeface.createFromAsset(getActivity().getAssets(),"fonts/thehistoriademo.ttf");
         tabStrip.setBackgroundColor(getResources().getColor(R.color.colorPrimary));

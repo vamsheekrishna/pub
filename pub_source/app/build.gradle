@@ -2,13 +2,56 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+    flavorDimensions "tier"
     defaultConfig {
+        dimension 'tier'
         applicationId "peelabus.com"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+
+    productFlavors {
+
+//    free {
+//        dimension 'tier'
+//        applicationId 'pub.com.mypub.free'
+//        minSdkVersion 19
+//        targetSdkVersion 28
+//        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+//    }
+//
+//    paid {
+//        dimension 'tier'
+//        applicationId 'com.example.myapp.paid'
+//        minSdkVersion 19
+//        targetSdkVersion 28
+//        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+//    }
+
+
+        admin {
+            buildConfigField("boolean", "IS_ADMIN", "false")
+            applicationId 'peelabus.com'
+            versionCode 1
+            versionName "1.0"
+            minSdkVersion 19
+            targetSdkVersion 28
+            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        }
+
+        user {
+            buildConfigField("boolean", "IS_ADMIN", "false")
+            applicationId 'peelabus.com'
+            versionCode 1
+            versionName "1.0"
+            minSdkVersion 19
+            targetSdkVersion 28
+            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        }
     }
     buildTypes {
         release {
@@ -22,20 +65,16 @@ android {
             //buildConfigField "String", "LOGIN_URL", "http://admin.peelabus.com/webservices/parentlogin.asmx/ParentLogin"
         }
     }
-    /*buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }*/
 }
+
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:design:28.+'
+    implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:support-v4:28.0.0-rc02'
+    implementation 'com.android.support:support-v4:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -43,15 +82,30 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:28.0.0'
 
     //sms autothentication start
-    implementation 'com.google.firebase:firebase-messaging:17.1.0'
-    implementation 'com.google.firebase:firebase-auth:16.0.2'
-    implementation 'com.google.gms:google-services:3.1.1'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation 'com.google.firebase:firebase-auth:16.0.5'
+    implementation 'com.google.gms:google-services:4.0.0'
     implementation 'com.google.code.gson:gson:2.8.2'
 
-    implementation 'com.google.firebase:firebase-core:16.0.0'
-    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.google.firebase:firebase-core:16.0.5'
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
     implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
 
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:28.0.0'
+    compile 'com.android.support:design:28.0.0'
+    compile 'com.android.support:support-v4:28.0.0'
+
+    // RecyclerView
+    compile 'com.android.support:recyclerview-v7:28.0.0'
+
+    // volley
+    implementation 'com.android.volley:volley:1.1.0'
+
+    // Glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
     //sms autothentication end
 }
 apply plugin: 'com.google.gms.google-services'

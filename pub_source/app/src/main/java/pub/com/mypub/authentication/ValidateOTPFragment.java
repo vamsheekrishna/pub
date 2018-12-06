@@ -177,7 +177,7 @@ public class ValidateOTPFragment extends NetworkBaseFragment implements View.OnC
         //mSignedInViews = (ViewGroup) body.findViewById(R.id.signed_in_buttons);
 
         //mStatusText = body.findViewById(R.id.status);
-        mDetailText = body.findViewById(R.id.detail);
+        mDetailText = body.findViewById(R.id.note);
 
         //mPhoneNumberField = (EditText) body.findViewById(R.id.field_phone_number);
         mVerificationField = body.findViewById(R.id.field_verification_code);

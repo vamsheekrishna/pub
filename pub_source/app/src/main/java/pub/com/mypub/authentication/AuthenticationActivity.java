@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
 import pub.com.mypub.admin.Admin;
 import pub.com.mypub.home.Home;
@@ -23,7 +24,7 @@ public class AuthenticationActivity extends NetworkBaseActivity implements OnAut
         Intent intent = new Intent(this, AuthenticationActivity.class);
         startActivity(intent);
         finish();
-        //addFragment(LoginFragment.newInstance("", ""), true, false, LoginFragment.class.getName());
+        //addFragment(LoginFragment.newInstance("", ""), true, false, LoginFragment.class.getTicket_name());
     }
 
     @Override
@@ -60,8 +61,7 @@ public class AuthenticationActivity extends NetworkBaseActivity implements OnAut
 
     @Override
     public void goToHomePage(MyProfile myProfile) {
-        boolean isAdmin = false;
-        if(myProfile.isAdmin) {
+        if(BuildConfig.IS_ADMIN) {
             Intent intent = new Intent(this, Admin.class);
             startActivity(intent);
         } else {

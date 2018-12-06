@@ -14,12 +14,24 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
+import pub.com.mypub.admin.SpesialistCustomAdapter;
+import pub.com.mypub.admin.models.Event;
+import pub.com.mypub.admin.models.Specialist;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
@@ -30,7 +42,11 @@ public class DateFragment extends NetworkBaseFragment implements View.OnClickLis
     private static final String ARG_PARAM2 = "param2";
     RecycleItemClickListener recycleItemClickListener;
     SwipeRefreshLayout mSwipeRefreshLayout;
-    Button date;
+    Button date, date1;
+    RecyclerView recyclerView;
+   DateListAdapter dataAdapter = null;
+    public ArrayList<Event> mEventList ;
+    ArrayList<Event> mSelectedEvent = new ArrayList<>();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -76,18 +92,28 @@ public class DateFragment extends NetworkBaseFragment implements View.OnClickLis
                 android.R.color.holo_blue_dark);
 
         recycleItemClickListener = this;
+        recyclerView = view.findViewById(R.id.date_list);
+        setDateList();
 
-        DateListAdapter mAdapter = new DateListAdapter(recycleItemClickListener);
 
       date=view.findViewById(R.id.k);
-
-      view.findViewById(R.id.k).setOnClickListener(this);
+        view.findViewById(R.id.k).setOnClickListener(this);
+       /*date1=view.findViewById(R.id.k2);
+        view.findViewById(R.id.k2).setOnClickListener(this);*/
 
 
 
         return view;
     }
 
+    private void setDateList() {
+        ArrayList<Date> dateList = new ArrayList<>();
+        dataAdapter = new DateListAdapter(this, new ArrayList<Date>());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(dataAdapter);
+    }
 
 
     @Override
@@ -114,8 +140,17 @@ public class DateFragment extends NetworkBaseFragment implements View.OnClickLis
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
-
+        Gson gson;
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gson = gsonBuilder.create();
+        List<Event> event = Arrays.asList(gson.fromJson(response.toString(), Event[].class));
+        mListener.setEventList(new ArrayList<>(event ));
+       // setDateListAdapter(mListener.getEventList());
     }
+//    private void setDateListAdapter() {
+//        ArrayList<Date> dateList = new ArrayList<>();
+//
+//    }
 
     @Override
     public void onFailureResponse(VolleyError response, String exception, String REQUEST_ID) {
@@ -147,7 +182,15 @@ public class DateFragment extends NetworkBaseFragment implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.k:
-                Toast.makeText(getActivity(), "Date: ", Toast.LENGTH_LONG).show();
+                StringBuffer responseText = new StringBuffer();
+                ArrayList<Event> mEventList = dataAdapter.mEventList;
+               for (Event event : mEventList) {
+
+                   mSelectedEvent.add(event);
+
+               }
+                mListener.setSelectedEventt(mSelectedEvent);
+                getActivity().onBackPressed();
                 break;
         }
 
@@ -155,7 +198,8 @@ public class DateFragment extends NetworkBaseFragment implements View.OnClickLis
 
     @Override
     public void onItemClick(View v) {
-
+        Date date = (Date) v.getTag();
+        Toast.makeText(getActivity(), "date: "+date.toString(), Toast.LENGTH_LONG).show();
     }
 
     @Override

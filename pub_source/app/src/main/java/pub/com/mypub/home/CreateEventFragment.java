@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,11 +23,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+
+import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
 import pub.com.mypub.admin.MyEvent;
 import pub.com.mypub.admin.OnAdminInteractionListener;
 import pub.com.mypub.admin.models.Category;
 import pub.com.mypub.admin.models.Contact;
+import pub.com.mypub.admin.models.Event;
 import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.admin.models.Location;
 import pub.com.mypub.admin.models.Specialist;
@@ -49,7 +55,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     EditText description;
     EditText startprice;
     EditText note;
-    TextView txx,in_date1 ;
+    TextView txx,in_date1, age;
     Category mCategory;
     Contact mContact;
     Location mLocation;
@@ -57,6 +63,9 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     ArrayList<Ticket> mSelectedTicket;
     ArrayList<Specialist> mSelectedSpecialist;
     ArrayList<Location> mSelectedLocation;
+    ArrayList<Contact> mSelectedContact;
+    ArrayList<Category> mSelectedCategory;
+    Event event;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -119,6 +128,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         note=view.findViewById(R.id.e112);
         txx=view.findViewById(R.id.tx);
         e1f=view.findViewById(R.id.e1f);
+        age=view.findViewById(R.id.e1k);
 
 
         view.findViewById(R.id.submit).setOnClickListener(this);
@@ -160,9 +170,15 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     @Override
     public void onResume() {
         super.onResume();
-        if(null != mCategory) {
-            //Toast.makeText(getActivity(), "Category: " + mCategory.name, Toast.LENGTH_LONG).show();
-            category.setText(mCategory.name);
+        if (null != mSelectedCategory) {
+            String temp = "";
+            for (Category category:mSelectedCategory ) {
+                temp += category.name + "  ";
+            }
+
+            if(temp.length()>0) {
+                category.setText(temp);
+            }
         }
         if (null != mSelectedLanguage) {
             String temp = "";
@@ -174,11 +190,14 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                 n2.setText(temp);
             }
         }
-        if (null != mContact)
-        {
-            //Toast.makeText(getActivity(), "contact: " + mContact.location +mContact.phoneNo, Toast.LENGTH_LONG).show();
-            contact1.setText(mContact.location+" "+mContact.phoneNo);
-        }
+        if (null != mSelectedContact) {
+            String str6 = "";
+            for (Contact contact:mSelectedContact ) {
+                str6 += contact.name + "  " + contact.phoneNo1+" "+contact.phoneNo2+" "+contact.emailId+" ";
+            }
+            if(str6.length()>0) {
+                contact1.setText(str6);
+            }}
 
         if (null != mSelectedLocation) {
             String str2 = "";
@@ -194,7 +213,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         if (null != mSelectedTicket) {
             String str = "";
             for (Ticket ticket:mSelectedTicket ) {
-                str += ticket.name + "  ";
+                str += ticket.ticket_name + " ,   "+ticket.title+" ";
             }
 
             if(str.length()>0) {
@@ -215,12 +234,16 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
 
     @Override
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
-
+        if(REQUEST_ID.equals("create_event")) {
+            Toast.makeText(getActivity(), "JSONObject Sucsesfully", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
-
+        if(REQUEST_ID.equals("create_event")) {
+            Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -337,6 +360,63 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
 
         switch (v.getId()) {
             case R.id.submit:
+
+                String _title = title.getText().toString();
+                String _category_id = category.getText().toString();
+                String _start_date = b_date.getText().toString();
+                String _end_date = b_date1.getText().toString();
+                String _start_time = b_time.getText().toString();
+                String _end_time = b_time1.getText().toString();
+                String _duration = in_date1.getText().toString();
+                String _location_id = e1f.getText().toString();
+                String _language_id = n2.getText().toString();
+                String _description = description.getText().toString();
+                String _note = note.getText().toString();
+                String _start_price = startprice.getText().toString();
+                String _contact_id = contact1.getText().toString();
+                String _specialist_id = spec1.getText().toString();
+                String _ticket_id = tick1.getText().toString();
+                String _age_limit = age.getText().toString();
+
+
+                event = new Event();
+                event.title =_title;
+                event.category_id=_category_id;
+                event.start_date=_start_date;
+                event.end_date=_end_date;
+                event.start_time=_start_time;
+                event.end_time =_end_time;
+                event.duration =_duration;
+                event.location_id=_location_id;
+                event.language_id=_language_id;
+                event.description=_description;
+                event.note=_note;
+                event.start_price=_start_price;
+                event.contact_id =_contact_id;
+                event.specialist_id=_specialist_id;
+                event.ticket_id=_ticket_id;
+                event.age_limit=_age_limit;
+
+
+                HashMap<String, String> parems = new HashMap<>();
+                parems.put("title", event.title);
+                parems.put("category_id", event.category_id);
+                parems.put("start_date",event.start_date);
+                parems.put("end_date", event.end_date);
+                parems.put("start_time", event.start_time);
+                parems.put("end_time", event.end_time);
+                parems.put("duration", event.duration);
+                parems.put("location_id", event.location_id);
+                parems.put("language_id",event.language_id);
+                parems.put("description", event.description);
+                parems.put("note", event.note);
+                parems.put("start_price",event.start_price);
+                parems.put("contact_id", event.contact_id);
+                parems.put("specialist_id", event.specialist_id);
+                parems.put("ticket_id", event.ticket_id);
+                parems.put("age_limit", event.age_limit);
+
+                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"events.php/createRecord", "create_event");
                 break;
             case R.id.n2:
                 mListener.goToLanguageFragment();
@@ -386,7 +466,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                 long diff = d2.getTime() - d1.getTime();
                 long diffHours = diff / (60 * 60 * 1000) % 24;
                 Log.e("test",diffHours + " hours, ");
-                in_date1.setText("Event's Duration:"+diffHours + " hours, ");
+                in_date1.setText(diffHours + " hours, ");
             }
             catch (Exception e)
             {
@@ -397,11 +477,11 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     }
 
 
-    public void setCategory(Category _category) {
-        mCategory = _category;
+    public void setCategory(ArrayList<Category> _category) {
+        mSelectedCategory = _category;
     }
-    public void setContact(Contact _contact) {
-        mContact = _contact;
+    public void setContact(ArrayList<Contact> _contact) {
+        mSelectedContact = _contact;
 
     }
     public void setLocation(ArrayList<Location> _location) {

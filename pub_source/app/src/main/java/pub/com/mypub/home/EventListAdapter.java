@@ -6,13 +6,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import pub.com.mypub.R;
+import pub.com.mypub.admin.models.Event;
 
 public class EventListAdapter extends RecyclerView.Adapter<EventObject> {
     RecycleItemClickListener mListener;
-    EventListAdapter(RecycleItemClickListener listener) {
+    ArrayList<Event> event;
+    EventListAdapter(RecycleItemClickListener listener,  ArrayList<Event> _event) {
         mListener = listener;
+        event=_event;
     }
+
+
     @NonNull
     @Override
     public EventObject onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -23,12 +30,17 @@ public class EventListAdapter extends RecyclerView.Adapter<EventObject> {
 
     @Override
     public void onBindViewHolder(@NonNull EventObject eventObject, int i) {
-
+        eventObject.title.setText(event.get(i).title);
+        eventObject.location_id.setText(event.get(i).location_id);
+        eventObject.start_price.setText(event.get(i).start_price);
+        eventObject.start_date.setText(event.get(i).start_date);
+        eventObject.end_date.setText(event.get(i).end_date);
+        eventObject.mBook.setTag(i);
     }
 
 
     @Override
     public int getItemCount() {
-        return 6;
+        return event.size();
     }
 }

@@ -2,7 +2,6 @@ package pub.com.mypub.home;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -11,21 +10,37 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
+import pub.com.mypub.admin.models.Event;
+import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
-public class EventsFragment extends Fragment implements View.OnClickListener, RecycleItemClickListener, SwipeRefreshLayout.OnRefreshListener{
+public class EventsFragment extends NetworkBaseFragment implements View.OnClickListener, RecycleItemClickListener, SwipeRefreshLayout.OnRefreshListener{
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     RecycleItemClickListener recycleItemClickListener;
     SwipeRefreshLayout mSwipeRefreshLayout;
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    ArrayList<Event> mEventList=new ArrayList<>();
     private OnHomeInteractionListener mListener;
-
+    RecyclerView recyclerView;
+    EventListAdapter mAdapter;
     public EventsFragment() {
         // Required empty public constructor
     }
@@ -62,20 +77,17 @@ public class EventsFragment extends Fragment implements View.OnClickListener, Re
                 android.R.color.holo_orange_dark,
                 android.R.color.holo_blue_dark);
 
+
+        setEventDataList();
+        recyclerView = view.findViewById(R.id.event_list);
         recycleItemClickListener = this;
-        EventListAdapter mAdapter = new EventListAdapter(recycleItemClickListener);
-        RecyclerView recyclerView = view.findViewById(R.id.event_list);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
 
-       // TextView mTitle = view.findViewById(R.id.toolbar_title);
-        //mTitle.setTypeface(Typeface.createFromFile("font/kaushanscriptregular.otf"));
-
-      //  Typeface fontTypeFace = Typeface.createFromAsset(getActivity().getAssets(),"fonts/thehistoriademo.ttf");
 
         return view;
+    }
+
+    private void setEventDataList() {
+        stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL+"events.php/getAllRecords", "get_all_event");
     }
 
     private ActionBar getActionBar() {
@@ -104,6 +116,7 @@ public class EventsFragment extends Fragment implements View.OnClickListener, Re
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.book:
+                mListener.setSelectedEvent(mEventList.get((Integer) v.getTag()));
                 mListener.goToEventsDetailsFragment();
                 break;
 
@@ -113,6 +126,7 @@ public class EventsFragment extends Fragment implements View.OnClickListener, Re
 
     @Override
     public void onItemClick(View v) {
+        mListener.setSelectedEvent(mEventList.get((Integer) v.getTag()));
         mListener.goToEventsDetailsFragment();
     }
 
@@ -128,6 +142,46 @@ public class EventsFragment extends Fragment implements View.OnClickListener, Re
     }
 
     private void loadRecyclerViewData() {
+
+    }
+
+    @Override
+    public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
+        //Toast.makeText(getContext(),"JSONObject: "+response.toString(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
+      //  Toast.makeText(getContext(),"JSONArray: "+response.toString(), Toast.LENGTH_LONG).show();
+        Gson gson;
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gson = gsonBuilder.create();
+        List<Event> event = Arrays.asList(gson.fromJson(response.toString(), Event[].class));
+        mEventList = new ArrayList<>(event );
+        mAdapter = new EventListAdapter(this, mEventList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onFailureResponse(VolleyError response, String exception, String REQUEST_ID) {
+        Toast.makeText(getContext(),"onFailureResponse: "+response.toString(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onFailureResponse(String response, String exception, String REQUEST_ID) {
+        Toast.makeText(getContext(),"onFailureResponse: "+response.toString(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void setTagName() {
+
+    }
+
+    @Override
+    public void CloseApp() {
 
     }
 }

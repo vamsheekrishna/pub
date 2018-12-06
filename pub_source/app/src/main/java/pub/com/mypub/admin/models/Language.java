@@ -6,6 +6,9 @@ public class Language {
     boolean isSelected = false;
 
 
+    public Language () {
+
+    }
 
     public Language (int _id, String _name, boolean selected) {
 

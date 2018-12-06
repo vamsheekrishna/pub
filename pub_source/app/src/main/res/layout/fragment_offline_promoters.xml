@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -9,7 +9,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/card_margin"
         android:elevation="3dp"
         app:cardCornerRadius="@dimen/card_album_radius">
@@ -52,17 +52,17 @@
                 <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/c0"
+                android:id="@+id/name"
                 android:text="Mumbai :-"
                 android:textSize="15dp"
-                android:layout_below="@+id/detail"
+                android:layout_below="@+id/note"
                 android:textColor= "#AB3D24"
                     android:fontFamily="@font/kaushanscriptregular"
                 />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/n0"
+                    android:id="@+id/phone1"
                     android:text="+91 8879809587"
                     android:textSize="15dp"
                     android:textColor= "#050504  "
@@ -70,271 +70,265 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/n1"
+                    android:id="@+id/phone2"
                     android:text="+91 8104222377"
                     android:textSize="15dp"
                     android:textColor= "#050504 "
                     android:paddingBottom="15dp"
                     />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/emailid"
+        android:text="Mumbai2002@gmail.com"
+        android:textSize="15dp"
+        android:textColor= "#050504 "
+        android:paddingBottom="15dp"
+        />
 </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                       android:paddingLeft="60dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/c4"
-                        android:text="Sangli :-"
-                        android:textSize="15dp"
-                        android:layout_below="@+id/detail"
-                        android:textColor= "#AB3D24"
-                        android:fontFamily="@font/kaushanscriptregular"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/n10"
-                        android:text="+91 8879809587"
-                        android:textSize="15dp"
-                        android:textColor= "#050504  "
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/n12"
-                        android:text="+91 9769699595"
-                        android:textSize="15dp"
-                        android:textColor= "#050504  "
-                        />
-                    </LinearLayout>
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:orientation="vertical"-->
+                       <!--android:paddingLeft="60dp">-->
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:id="@+id/c4"-->
+                        <!--android:text="Sangli :-"-->
+                        <!--android:textSize="15dp"-->
+                        <!--android:layout_below="@+id/detail"-->
+                        <!--android:textColor= "#AB3D24"-->
+                        <!--android:fontFamily="@font/kaushanscriptregular"-->
+                        <!--/>-->
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:id="@+id/n10"-->
+                        <!--android:text="+91 8879809587"-->
+                        <!--android:textSize="15dp"-->
+                        <!--android:textColor= "#050504  "-->
+                        <!--/>-->
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:id="@+id/n12"-->
+                        <!--android:text="+91 9769699595"-->
+                        <!--android:textSize="15dp"-->
+                        <!--android:textColor= "#050504  "-->
+                        <!--/>-->
+                    <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
+
+
+
+
+                <!--<LinearLayout-->
+                    <!--android:weightSum="2"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="30dp"-->
+                    <!--android:layout_marginRight="30dp"-->
+                    <!--&gt;-->
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:paddingLeft="10dp">-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/c6"-->
+                            <!--android:text="Ahmadabad :-"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:layout_below="@+id/detail"-->
+                            <!--android:textColor= "#AB3D24"-->
+                            <!--android:fontFamily="@font/kaushanscriptregular"-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n14"-->
+                            <!--android:text="+91 8879809587"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n15"-->
+                            <!--android:text="+91 9768349299"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n16"-->
+                            <!--android:text="+91 9601910864"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n178"-->
+                            <!--android:text="+91 8764460193"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--/>-->
+                    <!--</LinearLayout>-->
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:paddingLeft="60dp">-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/c1"-->
+                            <!--android:text="Pune :-"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:layout_below="@+id/detail"-->
+                            <!--android:textColor= "#AB3D24"-->
+                            <!--android:fontFamily="@font/kaushanscriptregular"-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n2"-->
+                            <!--android:text="+91 8879809587"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n3"-->
+                            <!--android:text="+91 8104222377"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n4"-->
+                            <!--android:text="+91 9769699595"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n5"-->
+                            <!--android:text="+91 9502888298"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--/>-->
+                    <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
+
+
+
+
+
+                <!--<LinearLayout-->
+                    <!--android:weightSum="2"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="30dp"-->
+                    <!--android:layout_marginRight="30dp"-->
+                    <!--android:paddingTop="16dp"-->
+                    <!--&gt;-->
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:paddingLeft="10dp">-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/c2"-->
+                            <!--android:text="Kolhapur :-"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:layout_below="@+id/detail"-->
+                            <!--android:textColor= "#AB3D24"-->
+                            <!--android:paddingTop="15dp"-->
+                            <!--android:fontFamily="@font/kaushanscriptregular"-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n6"-->
+                            <!--android:text="+91 8879809587"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n7"-->
+                            <!--android:text="+91 9769699595"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n8"-->
+                            <!--android:text="+91 8197838373"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--/>-->
+                    <!--</LinearLayout>-->
+
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:paddingLeft="60dp">-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/c7"-->
+                            <!--android:text="Hyderabad :-"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:layout_below="@+id/detail"-->
+                            <!--android:textColor= "#AB3D24"-->
+                            <!--android:paddingTop="15dp"-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n19"-->
+                            <!--android:text="+91 9100730073"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--android:fontFamily="@font/kaushanscriptregular"-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n20"-->
+                            <!--android:text="+91 9502888298"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/n21"-->
+                            <!--android:text="+91 7416827123"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:textColor= "#050504  "-->
+                            <!--/>-->
+                    <!--</LinearLayout>-->
                 </LinearLayout>
 
 
-
-
-                <LinearLayout
-                    android:weightSum="2"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    >
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:paddingLeft="10dp">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/c6"
-                            android:text="Ahmadabad :-"
-                            android:textSize="15dp"
-                            android:layout_below="@+id/detail"
-                            android:textColor= "#AB3D24"
-                            android:fontFamily="@font/kaushanscriptregular"
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n14"
-                            android:text="+91 8879809587"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n15"
-                            android:text="+91 9768349299"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n16"
-                            android:text="+91 9601910864"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n178"
-                            android:text="+91 8764460193"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:paddingLeft="60dp">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/c1"
-                            android:text="Pune :-"
-                            android:textSize="15dp"
-                            android:layout_below="@+id/detail"
-                            android:textColor= "#AB3D24"
-                            android:fontFamily="@font/kaushanscriptregular"
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n2"
-                            android:text="+91 8879809587"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n3"
-                            android:text="+91 8104222377"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n4"
-                            android:text="+91 9769699595"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n5"
-                            android:text="+91 9502888298"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            />
-                    </LinearLayout>
-                </LinearLayout>
-
-
-
-
-
-                <LinearLayout
-                    android:weightSum="2"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:paddingTop="16dp"
-                    >
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:paddingLeft="10dp">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/c2"
-                            android:text="Kolhapur :-"
-                            android:textSize="15dp"
-                            android:layout_below="@+id/detail"
-                            android:textColor= "#AB3D24"
-                            android:paddingTop="15dp"
-                            android:fontFamily="@font/kaushanscriptregular"
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n6"
-                            android:text="+91 8879809587"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n7"
-                            android:text="+91 9769699595"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n8"
-                            android:text="+91 8197838373"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:paddingLeft="60dp">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/c7"
-                            android:text="Hyderabad :-"
-                            android:textSize="15dp"
-                            android:layout_below="@+id/detail"
-                            android:textColor= "#AB3D24"
-                            android:paddingTop="15dp"
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n19"
-                            android:text="+91 9100730073"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            android:fontFamily="@font/kaushanscriptregular"
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n20"
-                            android:text="+91 9502888298"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/n21"
-                            android:text="+91 7416827123"
-                            android:textSize="15dp"
-                            android:textColor= "#050504  "
-                            />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/location"
-                    android:text="Location"
-                    android:textColor= "#157134  "
-                    android:textSize="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:paddingTop="20dp"
-                    android:fontFamily="@font/angelina"
-                    android:textAlignment="center"
-                    />
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/map"/>
             </LinearLayout>
 
 

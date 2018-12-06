@@ -11,11 +11,11 @@ public class EventObject {
     int StartTime;
     int EndTime;
     int Duration;
-    Category category = new Category(1,"English");
+    Category category = new Category(1,"English",false);
     ArrayList<Ticket> tickets = new ArrayList<>();
     ArrayList<Location> locations = new ArrayList<>();
     ArrayList<Specialist> specialists = new ArrayList<>();
-   Contact contact = new Contact(1,"Hyderabad","99999932312");
+   Contact contact = new Contact(1,"hhh","kkk","ajdd","kk",false);
 
 
     public void setLanguages(ArrayList<Language> languages) {
@@ -42,9 +42,9 @@ public class EventObject {
 
     public void setLocation(ArrayList<Location> locations) {
         //this.locations = locations;
-        locations.add(new Location(1,"Banglour","India","hh","rre","eee","jjj","59585877483",false));
-        locations.add(new Location(2,"Chenai","India","hh","rre","eee","jjj","87567567",false));
-        locations.add(new Location(3,"Delhy","India","hh","rre","eee","jjj","57565",false));
+        locations.add(new Location(1,"Banglour","India","hh","rre","eee","jjj",false));
+        locations.add(new Location(2,"Chenai","India","hh","rre","eee","jjj",false));
+        locations.add(new Location(3,"Delhy","India","hh","rre","eee","jjj",false));
     }
 
     public ArrayList<Location> getLocations() {

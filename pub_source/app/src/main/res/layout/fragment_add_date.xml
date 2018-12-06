@@ -16,6 +16,10 @@
     android:layout_height="wrap_content"
     android:elevation="3dp"
     card_view:cardCornerRadius="@dimen/card_album_radius">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <Button
         android:layout_margin="@dimen/card_margin"
         android:layout_width="40dp"
@@ -26,6 +30,17 @@
         android:background="@drawable/time"
         android:textColor= "#E89A31"
         />
+    <!--<Button
+        android:layout_margin="@dimen/card_margin"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:text="sat 27 Oct"
+        android:textSize="10dp"
+        android:id="@+id/k2"
+        android:background="@drawable/time"
+        android:textColor= "#E89A31"
+        />-->
+    </LinearLayout>
     <!--<RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

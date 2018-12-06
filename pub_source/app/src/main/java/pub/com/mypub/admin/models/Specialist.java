@@ -9,6 +9,9 @@ public class Specialist {
     public String image=null;
     boolean isSelected = false;
 
+    public Specialist () {
+
+    }
 
     public Specialist (int _id, String _name, String _dob, String _specialization, String _description, String _image, boolean selected ){
         super();

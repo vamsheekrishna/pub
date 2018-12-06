@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/detail"
+                android:id="@+id/note"
                 android:textSize="@dimen/pub_item_location_name_font"
                 android:text="Sunburn Festival 2018 Early Bird phase 1tickets Sold Out: 'EARLY BIRD PHASE2 IS LIVE FOR A LIMITED PERIOD, HURRY!"
                 android:textColor="@android:color/black"

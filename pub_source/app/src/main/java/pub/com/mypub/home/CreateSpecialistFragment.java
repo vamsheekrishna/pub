@@ -2,23 +2,34 @@ package pub.com.mypub.home;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
+import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
 import pub.com.mypub.admin.MyEvent;
 import pub.com.mypub.admin.OnAdminInteractionListener;
@@ -29,7 +40,7 @@ import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
-public class CreateSpecialistFragment extends NetworkBaseFragment implements View.OnClickListener,AdapterView.OnItemSelectedListener {
+public class CreateSpecialistFragment extends NetworkBaseFragment implements View.OnClickListener,AdapterView.OnItemSelectedListener, RecycleItemClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -41,11 +52,15 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
     EditText image;
     MyEvent mydata;
     TextView txx;
-    Button add,submit;
+    Button add,submit,New;
     ListView listView;
     ArrayList<Specialist> mSelectedSpecialist = new ArrayList<>();
     ArrayList<Specialist> mSpecialistList= new ArrayList<>();
     SpesialistCustomAdapter dataAdapter = null;
+    Specialist specialist;
+    LinearLayout btAddSpecialist, createSpecialist;
+    CheckBox ch1;
+    RecyclerView recyclerView;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -74,19 +89,19 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        displayListView();
         setTagName();
     }
 
-    private void displayListView() {
-        ArrayList<Specialist> SpecialistList = new ArrayList<Specialist>();
-        Specialist specialist = new Specialist(1,"Shekspeer","12/8/1770","Music","uhsfu","upload",false);
-        mSpecialistList.add(specialist);
-        Specialist specialist1 = new Specialist(2,"Vender","18/8/1990","Dance","uhsfu","upload",false);
-        mSpecialistList.add(specialist1);
-        Specialist specialist2 = new Specialist(3,"Thomas","20/11/2000","Art","uhsfu","upload",false);
-        mSpecialistList.add(specialist2);
-
+    private  ArrayList<Specialist> displayListView() {
+//        ArrayList<Specialist> SpecialistList = new ArrayList<Specialist>();
+//        Specialist specialist = new Specialist(1,"Shekspeer","12/8/1770","Music","uhsfu","upload",false);
+//        mSpecialistList.add(specialist);
+//        Specialist specialist1 = new Specialist(2,"Vender","18/8/1990","Dance","uhsfu","upload",false);
+//        mSpecialistList.add(specialist1);
+//        Specialist specialist2 = new Specialist(3,"Thomas","20/11/2000","Art","uhsfu","upload",false);
+//        mSpecialistList.add(specialist2);
+        stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL+"Specialist.php/getAllRecords", "get_all_specialist");
+        return mSpecialistList;
     }
 
     @Override
@@ -95,32 +110,34 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_create_specialist, container,
                 false);
-
-        dataAdapter = new SpesialistCustomAdapter(this.getActivity(), R.layout.specialist_info, mSpecialistList);
-        listView= view.findViewById(R.id.listView1);
-
-        listView.setAdapter(dataAdapter);
+        displayListView();
 
 
+        recyclerView= view.findViewById(R.id.listView1);
         name=view.findViewById(R.id.e1);
         dob=view.findViewById(R.id.e2);
         spec=view.findViewById(R.id.e11);
         des=view.findViewById(R.id.e1f);
         image=view.findViewById(R.id.e1h);
-
+        btAddSpecialist = view.findViewById(R.id.bt_add_specialist);
+        createSpecialist = view.findViewById(R.id.create_specialist);
+        New=view.findViewById(R.id.create);
         txx=view.findViewById(R.id.tx);
-
+        add=view.findViewById(R.id.add);
+        ch1=view.findViewById(R.id.ch1);
         view.findViewById(R.id.submit).setOnClickListener(this);
+        view.findViewById(R.id.add).setOnClickListener(this);
+        view.findViewById(R.id.create).setOnClickListener(this);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Specialist specialist = (Specialist) parent.getItemAtPosition(position);
-                Toast.makeText(getActivity(),
-                        "Clicked on Row: " + specialist.getName(),
-                        Toast.LENGTH_LONG).show();
-
-            }});
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            public void onItemClick(AdapterView<?> parent, View view,
+//                                    int position, long id) {
+//                Specialist specialist = (Specialist) parent.getItemAtPosition(position);
+//                Toast.makeText(getActivity(),
+//                        "Clicked on Row: " + specialist.getName(),
+//                        Toast.LENGTH_LONG).show();
+//
+//            }});
         return view;
     }
 
@@ -145,12 +162,28 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
 
     @Override
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
-
-    }
+        if(REQUEST_ID.equals("create_specialist")) {
+            btAddSpecialist.setVisibility(View.VISIBLE);
+            createSpecialist.setVisibility(View.GONE);
+        Toast.makeText(getActivity(), "JSONObject Sucsesfully", Toast.LENGTH_LONG).show();
+    }}
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
+        if(REQUEST_ID.equals("create_specialist")) {
+            btAddSpecialist.setVisibility(View.VISIBLE);
+            createSpecialist.setVisibility(View.GONE);
+        Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
+    }
+        Gson gson;
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gson = gsonBuilder.create();
+        List<Specialist> specialistlist = Arrays.asList(gson.fromJson(response.toString(), Specialist[].class));
+        dataAdapter = new SpesialistCustomAdapter( new ArrayList<>(specialistlist));
 
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
+        recyclerView.setHasFixedSize(false);
+        recyclerView.setAdapter(dataAdapter);
     }
 
     @Override
@@ -177,7 +210,34 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
+            case R.id.create:
+                createSpecialist.setVisibility(View.VISIBLE);
+                btAddSpecialist.setVisibility(View.GONE);
+                break;
             case R.id.add:
+
+                String _name = name.getText().toString();
+                String _dob = dob.getText().toString();
+                String _specialization = spec.getText().toString();
+                String _description = des.getText().toString();
+                String _image = image.getText().toString();
+
+                specialist = new Specialist();
+                specialist.name =_name;
+                specialist.dob=_dob;
+                specialist.specialization=_specialization;
+                specialist.description=_description;
+                specialist.image=_image;
+
+                HashMap<String, String> parems = new HashMap<>();
+                parems.put("name", specialist.name);
+                parems.put("dob", specialist.dob);
+                parems.put("specialization",specialist.specialization);
+                parems.put("description", specialist.description);
+                parems.put("image", specialist.image);
+
+                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"Specialist.php/createRecord", "create_specialist");
+
                 break;
             case R.id.submit:
                 StringBuffer responseText = new StringBuffer();
@@ -207,6 +267,16 @@ public class CreateSpecialistFragment extends NetworkBaseFragment implements Vie
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public void onItemClick(View v) {
+
+    }
+
+    @Override
+    public void onItemClick(View v, View v1) {
 
     }
 }

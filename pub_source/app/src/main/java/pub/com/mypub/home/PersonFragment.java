@@ -9,14 +9,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
 import pub.com.mypub.admin.models.Specialist;
 import pub.com.mypub.admin.models.Ticket;
@@ -32,9 +40,9 @@ public class PersonFragment extends NetworkBaseFragment implements View.OnClickL
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    ArrayList<Specialist> mSpecialistList=new ArrayList<>();
+    //ArrayList<Specialist> mSpecialistList=new ArrayList<>();
     private OnHomeInteractionListener mListener;
-
+    RecyclerView recyclerView;
     public PersonFragment() {
         // Required empty public constructor
     }
@@ -72,27 +80,27 @@ public class PersonFragment extends NetworkBaseFragment implements View.OnClickL
                 android.R.color.holo_green_dark,
                 android.R.color.holo_orange_dark,
                 android.R.color.holo_blue_dark);
-
+        recyclerView = view.findViewById(R.id.musician_list);
         recycleItemClickListener = this;
-        PersonListAdapter mAdapter = new PersonListAdapter(recycleItemClickListener, setPersonDataList());
-        RecyclerView recyclerView = view.findViewById(R.id.musician_list);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+        setPersonDataList();
+
 
         return view;
     }
 
-    private ArrayList<Specialist> setPersonDataList() {
-        ArrayList<Specialist> mSpecialistList=new ArrayList<>();
-        Specialist specialist = new Specialist(1,"Shekspeer","12/8/1770","Music","uhsfu","upload",false);
-        mSpecialistList.add(specialist);
-        Specialist specialist1 = new Specialist(2,"Vender","18/8/1990","Dance","uhsfu","upload",false);
-        mSpecialistList.add(specialist1);
-        Specialist specialist2 = new Specialist(3,"Thomas","20/11/2000","Art","uhsfu","upload",false);
-        mSpecialistList.add(specialist2);
-        return mSpecialistList;
+    private void setPersonDataList() {
+//        ArrayList<Specialist> mSpecialistList=new ArrayList<>();
+//        Specialist specialist = new Specialist(1,"Shekspeer","12/8/1770","Music","uhsfu","upload",false);
+//        mSpecialistList.add(specialist);
+//        Specialist specialist1 = new Specialist(2,"Vender","18/8/1990","Dance","uhsfu","upload",false);
+//        mSpecialistList.add(specialist1);
+//        Specialist specialist2 = new Specialist(3,"Thomas","20/11/2000","Art","uhsfu","upload",false);
+//        mSpecialistList.add(specialist2);
+        if(null == mListener.getSelectedEvent().mSpecialist) {
+            stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL+"Specialist.php/getAllRecords", "get_all_specialist");
+        } else {
+            setDataAdapter(mListener.getSelectedEvent().mSpecialist);
+        }
     }
 
 
@@ -115,22 +123,36 @@ public class PersonFragment extends NetworkBaseFragment implements View.OnClickL
 
     @Override
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
-
+       // Toast.makeText(getContext(),"JSONObject: "+response.toString(), Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
+       // Toast.makeText(getContext(),"JSONArray: "+response.toString(), Toast.LENGTH_LONG).show();
+        Gson gson;
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gson = gsonBuilder.create();
+        List<Specialist> specialist = Arrays.asList(gson.fromJson(response.toString(), Specialist[].class));
+        mListener.setSpecialistList(new ArrayList<>(specialist ));
+        setDataAdapter(mListener.getSpecialistList());
+    }
 
+    private void setDataAdapter(ArrayList<Specialist> specialist) {
+        PersonListAdapter mAdapter = new PersonListAdapter(this, specialist);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
     }
 
     @Override
     public void onFailureResponse(VolleyError response, String exception, String REQUEST_ID) {
-
+        Toast.makeText(getContext(),"onFailureResponse: "+response.toString(), Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onFailureResponse(String response, String exception, String REQUEST_ID) {
-
+        Toast.makeText(getContext(),"onFailureResponse: "+response.toString(), Toast.LENGTH_LONG).show();
     }
 
     @Override

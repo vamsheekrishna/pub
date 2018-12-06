@@ -47,7 +47,7 @@
                     >
 
                 <TextView
-                    android:id="@+id/detail"
+                    android:id="@+id/details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Electronic and Dance "
@@ -56,6 +56,7 @@
                     android:layout_below="@+id/event"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/chunkfive"
+                    android:paddingLeft="8dp"
                     />
                     <TextView
                         android:id="@+id/detail2"
@@ -119,7 +120,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/detail1"
+                    android:id="@+id/description"
                     android:text="G.M.C Balayogi Athletic Stadium:Hydwrabad"
                     android:textColor="@android:color/black"
                     android:textSize="12dp"

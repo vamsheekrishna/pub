@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import pub.com.mypub.R;
 import pub.com.mypub.admin.models.Specialist;
-import pub.com.mypub.admin.models.Ticket;
 
 public class PersonListAdapter extends RecyclerView.Adapter<PersonOpject> {
     RecycleItemClickListener mListener;
@@ -29,9 +28,9 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonOpject> {
 
     @Override
     public void onBindViewHolder(@NonNull PersonOpject personOpject, int i) {
-        personOpject.namee.setText(specialists.get(i).name);
-        personOpject.age.setText(String.valueOf(specialists.get(i).specialization));
-        personOpject.spec.setText(specialists.get(i).dob);
+        personOpject.name.setText(specialists.get(i).name);
+        personOpject.dob.setText(specialists.get(i).dob      );
+        personOpject.specialization.setText(specialists.get(i).specialization);
     }
 
 

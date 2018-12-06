@@ -135,7 +135,7 @@ public class VedioFragment extends NetworkBaseFragment implements View.OnClickLi
 
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+        // TODO: Update argument type and ticket_name
         void onFragmentInteraction(Uri uri);
     }
 }

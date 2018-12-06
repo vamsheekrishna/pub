@@ -196,7 +196,7 @@
                     android:layout_weight="2"
                     android:textColor="#6C0D0D"
                     android:textSize="16dp"
-                    android:text="Display Duration"
+                    android:text="Duration"
                     android:textAlignment="center"
                     android:paddingTop="12dp"
                     android:fontFamily="@font/kaushanscriptregular"
