@@ -47,7 +47,6 @@ public class CreateTicketFragment extends NetworkBaseFragment implements View.On
     EditText description;
     Button add,submit,New;
     Ticket ticket;
-    ArrayList<Ticket> mSelectedTicket = new ArrayList<>();
     ArrayList<Ticket> mTicketList = new ArrayList<>();
     TicketCustomAdapter dataAdapter = null;
     RecyclerView recyclerView;
@@ -239,6 +238,8 @@ CheckBox ch1;
 
 
             case R.id.submit:
+
+                ArrayList<Ticket> mSelectedTicket = new ArrayList<>();
                 StringBuffer responseText = new StringBuffer();
                 ArrayList<Ticket> mTicketList = dataAdapter.mTicketList;
                 for (Ticket ticket : mTicketList) {

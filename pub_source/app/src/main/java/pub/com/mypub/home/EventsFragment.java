@@ -152,7 +152,7 @@ public class EventsFragment extends NetworkBaseFragment implements View.OnClickL
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
-      //  Toast.makeText(getContext(),"JSONArray: "+response.toString(), Toast.LENGTH_LONG).show();
+      // Toast.makeText(getContext(),"JSONArray: "+response.toString(), Toast.LENGTH_LONG).show();
         Gson gson;
         GsonBuilder gsonBuilder = new GsonBuilder();
         gson = gsonBuilder.create();
@@ -172,7 +172,7 @@ public class EventsFragment extends NetworkBaseFragment implements View.OnClickL
 
     @Override
     public void onFailureResponse(String response, String exception, String REQUEST_ID) {
-        Toast.makeText(getContext(),"onFailureResponse: "+response.toString(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(),"onFailureResponse: "+response, Toast.LENGTH_LONG).show();
     }
 
     @Override

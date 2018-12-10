@@ -18,22 +18,23 @@ public class Event implements Serializable {
     public String language_id=null;
     public String description =null;
     public String note=null;
+    public String tandc=null;
     public String start_price=null;
     public String contact_id=null;
     public String specialist_id=null;
     public String ticket_id=null;
     public String age_limit=null;
-    public ArrayList<Ticket> mTickets;
     boolean isSelected = false;
     public ArrayList<Specialist> mSpecialist = null;
     public ArrayList<Ticket> mTicketlist = null;
     public ArrayList<Event> mEvent = null;
     public ArrayList<Contact> mContact = null;
+    public ArrayList<Ticket> mTickets;
 
     public Event () { }
 
     public Event (int _id, String _title, String _category_id, String _start_date, String _end_date, String _start_time,  String _end_time, String _duration, String _location_id,
-                  String _language_id, String _description, String _note, String _start_price, String _contact_id, String _specialist_id,
+                  String _language_id, String _description, String _note, String _tandc, String _start_price, String _contact_id, String _specialist_id,
                   String _ticket_id, String _age_limit,  boolean selected) {
         super();
         this.id = _id;
@@ -48,6 +49,7 @@ public class Event implements Serializable {
         this.language_id = _language_id;
         this.description = _description;
         this.note = _note;
+        this.tandc = _tandc;
         this.start_price = _start_price;
         this.contact_id = _contact_id;
         this.specialist_id = _specialist_id;
@@ -95,6 +97,9 @@ public class Event implements Serializable {
 
     public  String getNote(){return  note;}
     public  void setNote(String _note){this.note=_note;}
+
+    public  String getTandc(){return  tandc;}
+    public  void setTandc(String _tandc){this.tandc=_tandc;}
 
     public  String getStart_price(){return  start_price;}
     public  void setStart_price(String _start_price){this.start_price=_start_price;}

@@ -34,7 +34,7 @@ android {
 
 
         admin {
-            buildConfigField("boolean", "IS_ADMIN", "false")
+            buildConfigField("boolean", "IS_ADMIN", "true")
             applicationId 'peelabus.com'
             versionCode 1
             versionName "1.0"

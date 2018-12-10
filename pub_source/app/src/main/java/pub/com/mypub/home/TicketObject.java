@@ -16,7 +16,7 @@ public class TicketObject extends RecyclerView.ViewHolder implements View.OnClic
     int mTicketCount = 0;
     ImageView mPlus, mMinus;
 
-    int total,type,price;
+    Float total,type,price;
     public TicketObject(View view, TicketListAdapter listener) {
         super(view);
 
@@ -54,11 +54,17 @@ public class TicketObject extends RecyclerView.ViewHolder implements View.OnClic
 
     private void updateAmount(View v, int value) {
         display (mListener.getTicketObject(value, (Integer) v.getTag()));
-        price=Integer.parseInt(mTVPrice.getText().toString());
+        //price=Integer.parseInt(mTVPrice.getText().toString());
         String temp = mDisplay.getText().toString();
         temp = temp.replace(" ", "");
+        String temp1 = mTVPrice.getText().toString();
+        temp1 = temp1.replace(" ", "");
         if(temp.length() > 0) {
-            type= Integer.parseInt(temp);
+            type= Float.parseFloat(temp);
+        }
+
+        if(temp1.length() > 0) {
+            price= Float.parseFloat(temp1);
         }
         total=price*type;
         totalamount.setText(total+"");

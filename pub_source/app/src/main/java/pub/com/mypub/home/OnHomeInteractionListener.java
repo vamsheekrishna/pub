@@ -20,8 +20,15 @@ public interface OnHomeInteractionListener {
     void setSelectedEvent(Event selectedEvent);
     Event getSelectedEvent();
 
+    void setSelectedSpecialist(Specialist SelectedSpecialist);
+    Specialist getSelectedSpecialist();
+
+
     void setSpecialistList(ArrayList<Specialist> selectedEvent);
     ArrayList<Specialist> getSpecialistList();
+
+    void setTicktList(ArrayList<Ticket> selectedEvent);
+    ArrayList<Ticket> getTicketList();
 
     void setEventList(ArrayList<Event> selectedEvent);
     ArrayList<Event> getEventList();
@@ -32,4 +39,6 @@ public interface OnHomeInteractionListener {
     void setSelectedEventt(ArrayList<Event> evenrt);
 
     void setSelectedTickett(ArrayList<Ticket> tickets);
+
+
 }

@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -26,13 +25,11 @@ import java.util.List;
 
 import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
+import pub.com.mypub.admin.models.Event;
 import pub.com.mypub.admin.models.Specialist;
-import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
-public class PersonFragment extends NetworkBaseFragment implements View.OnClickListener, RecycleItemClickListener, SwipeRefreshLayout.OnRefreshListener{
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+public class PersonFragment extends NetworkBaseFragment implements View.OnClickListener, RecycleItemClickListener, SwipeRefreshLayout.OnRefreshListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     RecycleItemClickListener recycleItemClickListener;
@@ -43,6 +40,8 @@ public class PersonFragment extends NetworkBaseFragment implements View.OnClickL
     //ArrayList<Specialist> mSpecialistList=new ArrayList<>();
     private OnHomeInteractionListener mListener;
     RecyclerView recyclerView;
+    ArrayList<String> mSelectedSpecialist = new ArrayList<String>();
+    ArrayList<Specialist> mSpecialistList= new ArrayList<>();
     public PersonFragment() {
         // Required empty public constructor
     }
@@ -96,13 +95,19 @@ public class PersonFragment extends NetworkBaseFragment implements View.OnClickL
 //        mSpecialistList.add(specialist1);
 //        Specialist specialist2 = new Specialist(3,"Thomas","20/11/2000","Art","uhsfu","upload",false);
 //        mSpecialistList.add(specialist2);
-        if(null == mListener.getSelectedEvent().mSpecialist) {
-            stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL+"Specialist.php/getAllRecords", "get_all_specialist");
-        } else {
-            setDataAdapter(mListener.getSelectedEvent().mSpecialist);
-        }
-    }
 
+//        String ids = mListener.getSelectedEvent().specialist_id;
+//        List<String> myList= new ArrayList<String>(Arrays.asList(ids.split(",")));
+//        for (String string : myList) {
+//            mSelectedSpecialist.add(string);
+
+            if (null == mListener.getSelectedEvent().mSpecialist) {
+                stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL + "Specialist.php/getSelectedRecords", "get_specialist");
+            } else {
+                setDataAdapter(mListener.getSelectedEvent().mSpecialist);
+            }
+
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -133,8 +138,11 @@ public class PersonFragment extends NetworkBaseFragment implements View.OnClickL
         GsonBuilder gsonBuilder = new GsonBuilder();
         gson = gsonBuilder.create();
         List<Specialist> specialist = Arrays.asList(gson.fromJson(response.toString(), Specialist[].class));
+        Event event = mListener.getSelectedEvent();
         mListener.setSpecialistList(new ArrayList<>(specialist ));
         setDataAdapter(mListener.getSpecialistList());
+
+
     }
 
     private void setDataAdapter(ArrayList<Specialist> specialist) {

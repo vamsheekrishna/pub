@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import pub.com.mypub.R;
+import pub.com.mypub.admin.models.Event;
 import pub.com.mypub.admin.models.Specialist;
 
 public class PersonListAdapter extends RecyclerView.Adapter<PersonOpject> {

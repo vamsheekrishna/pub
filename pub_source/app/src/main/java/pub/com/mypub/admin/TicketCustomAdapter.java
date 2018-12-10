@@ -44,7 +44,7 @@ public class TicketCustomAdapter extends RecyclerView.Adapter<TicketViewHolder> 
     public void onBindViewHolder(@NonNull TicketViewHolder ticketViewHolder, int i) {
         Ticket ticket = mTicketList.get(i);
         ticketViewHolder.ch1.setText(ticket.ticket_name);
-        ticketViewHolder.ch1.setText(ticket.title);
+//        ticketViewHolder.ch1.setText(ticket.title);
         ticketViewHolder.ch1.setChecked(ticket.isSelected());
         ticketViewHolder.ch1.setTag(ticket);
     }

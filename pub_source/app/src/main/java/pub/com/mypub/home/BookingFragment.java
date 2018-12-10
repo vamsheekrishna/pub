@@ -56,6 +56,7 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
     ArrayList<Event> mSelectedEvent;
     TextView display;
     Button time, proceed;
+    RecycleItemClickListener recycleItemClickListener;
     TicketListAdapter mTicketListAdapterAdapter;
     public BookingFragment() {
         // Required empty public constructor
@@ -91,13 +92,14 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
         //RecycleItemClickListener recycleItemClickListener = this;
         recyclerView = view.findViewById(R.id.ticket_list);
         recyclerView1 = view.findViewById(R.id.date_list);
+        recycleItemClickListener = this;
         setTicketDataList();
         setDateList();
         setTicketAmount();
         display = view.findViewById(R.id.display);
         time = view.findViewById(R.id.time);
-        time.setOnClickListener(this);
         proceed = view.findViewById(R.id.proceed);
+        time.setOnClickListener(this);
         proceed.setOnClickListener(this);
         /*TimeListAdapter tAdapter = new TimeListAdapter(this);
         RecyclerView recyclerView2 = view.findViewById(R.id.time_list);
@@ -139,22 +141,14 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
         return mEventList;*/
     }
 
-    private ArrayList<Ticket> setTicketDataList() {
-        /*ArrayList<Ticket> mTicketList=new ArrayList<>();
-        Ticket ticket = new Ticket();
-        mTicketList.add(ticket);
-        Ticket ticket1 = new Ticket();
-        mTicketList.add(ticket1);
-        Ticket ticket2 = new Ticket();
-        mTicketList.add(ticket2);
+    private void setTicketDataList() {
 
-        HashMap<String, String> parems = new HashMap<>();
-        parems.put("title", ticket.title);
-        parems.put("price", ticket.price);
-        parems.put("description", ticket.description);*/
+        if(null == mListener.getSelectedEvent().mTickets) {
+            stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL+"ticket.php/getAllRecords", "get_all_ticket");
+        } else {
+            setDataAdapter(mListener.getSelectedEvent().mTicketlist);
+        }
 
-        stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL+"ticket.php/getAllRecords", "get_all_ticket");
-        return mTicketList;
     }
 
 
@@ -187,14 +181,19 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
         GsonBuilder gsonBuilder = new GsonBuilder();
         gson = gsonBuilder.create();
         List<Ticket> ticketlist = Arrays.asList(gson.fromJson(response.toString(), Ticket[].class));
-        List<Event> eventlist = Arrays.asList(gson.fromJson(response.toString(), Event[].class));
+       // List<Event> eventlist = Arrays.asList(gson.fromJson(response.toString(), Event[].class));
+        mListener.setTicktList(new ArrayList<>(ticketlist ));
+        setDataAdapter(mListener.getTicketList());
 
-        mTicketListAdapterAdapter = new TicketListAdapter(this, new ArrayList<>(ticketlist));
+        }
+
+    private void setDataAdapter(ArrayList<Ticket> ticketList) {
+        TicketListAdapter mTicketListAdapterAdapter = new TicketListAdapter(this, new ArrayList<>(ticketList));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
         recyclerView.setHasFixedSize(false);
         recyclerView.setAdapter(mTicketListAdapterAdapter);
+    }
 
-        }
     @Override
     public void onResume() {
         super.onResume();

@@ -25,7 +25,8 @@ import java.util.ArrayList;
 public class Home extends NetworkBaseActivity implements OnHomeInteractionListener, NavigationView.OnNavigationItemSelectedListener{
     MyProfile myProfile;
     Event mCurrentEvent;
-   BookingFragment BookingFragment;
+    Specialist mCurrentSpecialist;
+    BookingFragment BookingFragment;
     private OnHomeInteractionListener mListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +154,16 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
     }
 
     @Override
+    public void setSelectedSpecialist(Specialist SelectedSpecialist) {
+        mCurrentSpecialist = SelectedSpecialist;
+    }
+
+    @Override
+    public Specialist getSelectedSpecialist() {
+        return mCurrentSpecialist;
+    }
+
+    @Override
     public void setSpecialistList(ArrayList<Specialist> specialist) {
         mCurrentEvent.mSpecialist = specialist;
     }
@@ -160,6 +171,18 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
     @Override
     public ArrayList<Specialist> getSpecialistList() {
         return mCurrentEvent.mSpecialist;
+    }
+
+    @Override
+    public void setTicktList(ArrayList<Ticket> ticketlist) {
+        mCurrentEvent.mTickets = ticketlist;
+    }
+
+
+
+    @Override
+    public ArrayList<Ticket> getTicketList() {
+        return mCurrentEvent.mTickets;
     }
 
     @Override

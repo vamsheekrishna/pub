@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 
@@ -12,6 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import pub.com.mypub.R;
+import pub.com.mypub.admin.models.Event;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
@@ -19,6 +21,7 @@ public class TAndCFragment extends NetworkBaseFragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    TextView tandc;
 
     private String mParam1;
     private String mParam2;
@@ -55,7 +58,15 @@ public class TAndCFragment extends NetworkBaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tand_c, container, false);
+        View view = inflater.inflate(R.layout.fragment_tand_c, container, false);
+
+        tandc = view.findViewById(R.id.note);
+
+        Event event = mListener.getSelectedEvent();
+        tandc.setText(event.tandc);
+        return  view;
+
+
     }
 
 

@@ -45,12 +45,12 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     Button b_date, b_time, b_date1, b_time1, n2,button,tickt,n19,spec,contact,coverPage;
-    EditText txtDate, txtTime,txtDate1, txtTime1,in;
+    EditText txtDate, txtTime,txtDate1, txtTime1,in,tc;
     //Spinner spinner;
     private int mYear, mMonth, mDay, mHour, mMinute;
     MyEvent mydata;
     EditText title;
-    TextView category,coverpage1,contact1,spec1,tick1,e1f;
+    TextView category,coverpage1,contact1,spec1,tick1,e1f,tandc;
     EditText startdate;
     EditText description;
     EditText startprice;
@@ -66,6 +66,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
     ArrayList<Contact> mSelectedContact;
     ArrayList<Category> mSelectedCategory;
     Event event;
+   String Specialist_id,contact_id,ticket_id;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -126,6 +127,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
         description=view.findViewById(R.id.e11);
         startprice=view.findViewById(R.id.e1h);
         note=view.findViewById(R.id.e112);
+        tc=view.findViewById(R.id.tc);
         txx=view.findViewById(R.id.tx);
         e1f=view.findViewById(R.id.e1f);
         age=view.findViewById(R.id.e1k);
@@ -191,12 +193,14 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
             }
         }
         if (null != mSelectedContact) {
-            String str6 = "";
+            String name = "";
+            contact_id = "";
             for (Contact contact:mSelectedContact ) {
-                str6 += contact.name + "  " + contact.phoneNo1+" "+contact.phoneNo2+" "+contact.emailId+" ";
+                contact_id += contact.id + "  " ;
+                name += contact.name + "  ";
             }
-            if(str6.length()>0) {
-                contact1.setText(str6);
+            if(contact_id.length()>0) {
+                contact1.setText(name);
             }}
 
         if (null != mSelectedLocation) {
@@ -211,23 +215,27 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
 //            location.setText(mLocation.city+" "+mLocation.country+" "+mLocation.state+" "+mLocation.landmark+" "+mLocation.latitude+" "+mLocation.langetude);
 
         if (null != mSelectedTicket) {
-            String str = "";
+            String name = "";
+            ticket_id="";
             for (Ticket ticket:mSelectedTicket ) {
-                str += ticket.ticket_name + " ,   "+ticket.title+" ";
+                ticket_id += ticket.id + " "  ;
+                name += ticket.ticket_name + "  ";
             }
 
-            if(str.length()>0) {
-                tick1.setText(str);
+            if(ticket_id.length()>0) {
+                tick1.setText(name);
             }
         }
         if (null != mSelectedSpecialist) {
-            String str1 = "";
+            String name = "";
+            Specialist_id="";
             for (Specialist specialist:mSelectedSpecialist ) {
-                str1 += specialist.name + "  ";
+                Specialist_id += specialist.id + "  ";
+                name += specialist.name + "  ";
             }
 
-            if(str1.length()>0) {
-                spec1.setText(str1);
+            if(Specialist_id.length()>0) {
+                spec1.setText(name);
             }
         }
     }
@@ -372,10 +380,11 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                 String _language_id = n2.getText().toString();
                 String _description = description.getText().toString();
                 String _note = note.getText().toString();
+                String _tandc = tc.getText().toString();
                 String _start_price = startprice.getText().toString();
-                String _contact_id = contact1.getText().toString();
-                String _specialist_id = spec1.getText().toString();
-                String _ticket_id = tick1.getText().toString();
+                String _contact_id = contact_id;
+                String _specialist_id = Specialist_id;//spec1.getText().toString();
+                String _ticket_id = ticket_id;
                 String _age_limit = age.getText().toString();
 
 
@@ -391,6 +400,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                 event.language_id=_language_id;
                 event.description=_description;
                 event.note=_note;
+                event.tandc=_tandc;
                 event.start_price=_start_price;
                 event.contact_id =_contact_id;
                 event.specialist_id=_specialist_id;
@@ -410,6 +420,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                 parems.put("language_id",event.language_id);
                 parems.put("description", event.description);
                 parems.put("note", event.note);
+                parems.put("tandc", event.tandc);
                 parems.put("start_price",event.start_price);
                 parems.put("contact_id", event.contact_id);
                 parems.put("specialist_id", event.specialist_id);
