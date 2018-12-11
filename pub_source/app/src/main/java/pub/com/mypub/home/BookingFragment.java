@@ -49,7 +49,7 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    ArrayList<Ticket> mTicketList=new ArrayList<>();
+    //ArrayList<Ticket> mTicketList=new ArrayList<>();
     ArrayList<Event> mEventList=new ArrayList<>();
     private OnHomeInteractionListener mListener;
     RecyclerView recyclerView,recyclerView1;
@@ -58,6 +58,7 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
     Button time, proceed;
     RecycleItemClickListener recycleItemClickListener;
     TicketListAdapter mTicketListAdapterAdapter;
+    ArrayList<Location> mSelectedLocation = new ArrayList<>();
     public BookingFragment() {
         // Required empty public constructor
     }
@@ -131,8 +132,8 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-        DateListAdapter mmAdapter = new DateListAdapter(this, dateList);
+        mListener.getSelectedEvent().mDateList = dateList;
+        DateListAdapter mmAdapter = new DateListAdapter(this, mListener.getSelectedEvent().mDateList);
         recyclerView1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
         recyclerView1.setItemAnimator(new DefaultItemAnimator());
         recyclerView1.setAdapter(mmAdapter);
@@ -144,9 +145,11 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
     private void setTicketDataList() {
 
         if(null == mListener.getSelectedEvent().mTickets) {
-            stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL+"ticket.php/getAllRecords", "get_all_ticket");
+            HashMap<String, String > parems =new HashMap<>();
+            parems.put("id",mListener.getSelectedEvent().ticket_id);
+            stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"ticket.php/getSelectedRecords", "get_selected_ticket");
         } else {
-            setDataAdapter(mListener.getSelectedEvent().mTicketlist);
+            setDataAdapter(mListener.getSelectedEvent().mTickets);
         }
 
     }
@@ -188,7 +191,7 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
         }
 
     private void setDataAdapter(ArrayList<Ticket> ticketList) {
-        TicketListAdapter mTicketListAdapterAdapter = new TicketListAdapter(this, new ArrayList<>(ticketList));
+        mTicketListAdapterAdapter = new TicketListAdapter(this, ticketList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
         recyclerView.setHasFixedSize(false);
         recyclerView.setAdapter(mTicketListAdapterAdapter);
@@ -276,8 +279,13 @@ public class BookingFragment extends NetworkBaseFragment implements RecycleItemC
         switch (v.getId()){
             case R.id.proceed:
                 ArrayList<Ticket> tickets = mTicketListAdapterAdapter.tickets;
-                mListener.getSelectedEvent().mTickets = tickets;
-               // mListener.setSelectedTickett(tickets);
+                for (Ticket ticket: tickets) {
+                         if(ticket.mTicketCount>0)
+                         {
+                             mListener.getSelectedEvent().setmSelectedTickets( ticket);
+                         }
+                }
+                mListener.goToTicketAmountFragment();
                 break;
         }
     }

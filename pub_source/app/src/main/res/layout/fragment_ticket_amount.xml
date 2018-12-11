@@ -1,129 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    tools:context="pub.com.mypub.home.PersonFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="3dp"
-        card_view:cardCornerRadius="@dimen/card_album_radius"
-        android:layout_margin="8dp">
+        android:background="@color/white"
+        android:nestedScrollingEnabled="true"
+        android:id="@+id/l"
+        android:layout_margin="8dp"
+        android:padding="8dp"
 
-
-
-
-
-        <LinearLayout
-            android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ticket"
+            android:text="Ticket Summary"
+            android:textColor= "#8655CB  "
+            android:layout_marginLeft="130dp"
+            android:textSize="20dp"
+            android:fontFamily="@font/kaushanscriptregular"/>
+        <TextView
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:nestedScrollingEnabled="true"
-            android:id="@+id/l"
-            android:layout_margin="8dp"
-            android:padding="8dp"
-
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ticket"
-                android:text="Ticket Summary"
-                android:textColor= "#8655CB  "
-                android:layout_marginLeft="130dp"
-                android:textSize="20dp"
-                android:fontFamily="@font/kaushanscriptregular"/>
-            <TextView
-                android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@+id/plus_min"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/event_name"
-                android:text="Event Name"
-                android:textSize="20dp"
-                android:textColor= "#000"
-                android:fontFamily="@font/kaushanscriptregular"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/date_time"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:text="Event Date/Time"
-                android:textSize="15dp"
-                android:layout_below="@+id/ticket_name"
-                android:padding="10dp"
-                android:textColor= "#AB3D24"
-                />
-
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:weightSum="4">
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/total"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:text="Total Amount"
-                android:textColor="#3A771C"
-                android:textSize="12dp"
-                android:layout_below="@+id/price"
-                />
-    <TextView
-        android:layout_width="wrap_content"
+            android:id="@+id/event_name"
+            android:text="Event Name"
+            android:textSize="20dp"
+            android:textColor= "#000"
+            android:fontFamily="@font/kaushanscriptregular"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/date_time"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="Event Date/Time"
+            android:textSize="15dp"
+            android:layout_below="@+id/ticket_name"
+            android:padding="10dp"
+            android:textColor= "#AB3D24"
+            />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:background="@color/white"
+        android:layout_below="@+id/l"
+        android:layout_above="@+id/submit"
+        android:id="@+id/ticket_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_alignParentEnd="true"
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/price"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:text="Ticket Price"
-        android:textColor="@android:color/black"
-        android:textSize="12dp"
-        android:layout_below="@+id/price"
+        android:text="Buy"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="8dp"
+        android:textColor= "#FEFDFC  "
         />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/multiply"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:text="X"
-        android:textColor="@android:color/black"
-        android:textSize="12dp"
-        android:layout_below="@+id/price"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/type"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:text="Ticket type"
-        android:textColor="@android:color/black"
-        android:textSize="12dp"
-        android:layout_below="@+id/price"
-        />
-</LinearLayout>
-
-            <Button
-                android:id="@+id/submit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Buy"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="8dp"
-                android:textColor= "#FEFDFC  "
-                />
-        </LinearLayout>
-
-
-
-
-    </android.support.v7.widget.CardView>
-</android.support.v4.widget.NestedScrollView>
+</RelativeLayout>

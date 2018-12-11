@@ -21,6 +21,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import pub.com.mypub.BuildConfig;
@@ -37,11 +38,10 @@ public class PersonFragment extends NetworkBaseFragment implements View.OnClickL
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    //ArrayList<Specialist> mSpecialistList=new ArrayList<>();
+    ArrayList<Specialist> mSpecialistList=new ArrayList<>();
     private OnHomeInteractionListener mListener;
     RecyclerView recyclerView;
-    ArrayList<String> mSelectedSpecialist = new ArrayList<String>();
-    ArrayList<Specialist> mSpecialistList= new ArrayList<>();
+
     public PersonFragment() {
         // Required empty public constructor
     }
@@ -97,17 +97,20 @@ public class PersonFragment extends NetworkBaseFragment implements View.OnClickL
 //        mSpecialistList.add(specialist2);
 
 //        String ids = mListener.getSelectedEvent().specialist_id;
-//        List<String> myList= new ArrayList<String>(Arrays.asList(ids.split(",")));
+//        List<String> myList = new ArrayList<String>(Arrays.asList(ids.split(",")));
 //        for (String string : myList) {
-//            mSelectedSpecialist.add(string);
-
+//        mSelectedSpecialist.add(string);
+//
             if (null == mListener.getSelectedEvent().mSpecialist) {
-                stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL + "Specialist.php/getSelectedRecords", "get_specialist");
-            } else {
-                setDataAdapter(mListener.getSelectedEvent().mSpecialist);
-            }
+                HashMap<String, String > parems =new HashMap<>();
+                parems.put("id",mListener.getSelectedEvent().specialist_id);
+                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL + "Specialist.php/getSelectedRecords", "get_selected_specialist");
 
-    }
+           } else {
+              setDataAdapter(mListener.getSelectedEvent().mSpecialist);
+          }
+
+        }
 
     @Override
     public void onAttach(Context context) {

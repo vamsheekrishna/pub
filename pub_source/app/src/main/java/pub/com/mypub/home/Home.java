@@ -212,7 +212,12 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
 
     @Override
     public void setSelectedTickett(ArrayList<Ticket> tickets) {
-        mCurrentEvent.mTicketlist = tickets;
+        mCurrentEvent.mSelectedTickets = tickets;
+    }
+
+    @Override
+    public void goToTicketAmountFragment() {
+        addFragment(TicketAmountFragment.newInstance( "", ""), true, true, TicketAmountFragment.class.getName());
     }
 }
 

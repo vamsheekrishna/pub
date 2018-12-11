@@ -136,7 +136,7 @@
                 android:id="@+id/ticket_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/submit"
+                android:layout_above="@+id/proceed"
                 android:layout_below="@+id/display"
                 />
         </RelativeLayout>

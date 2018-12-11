@@ -20,7 +20,7 @@ public class TicketObject extends RecyclerView.ViewHolder implements View.OnClic
     public TicketObject(View view, TicketListAdapter listener) {
         super(view);
 
-        RelativeLayout mViewPlusMin = view.findViewById(R.id.plus_min);
+        RelativeLayout mViewPlusMin = view.findViewById(R.id.event);
         mPlus = mViewPlusMin.findViewById(R.id.plus);
         mPlus.setOnClickListener(this);
         mMinus = mViewPlusMin.findViewById(R.id.minus);

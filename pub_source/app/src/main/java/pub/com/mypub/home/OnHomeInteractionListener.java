@@ -41,4 +41,6 @@ public interface OnHomeInteractionListener {
     void setSelectedTickett(ArrayList<Ticket> tickets);
 
 
+    void goToTicketAmountFragment();
+
 }

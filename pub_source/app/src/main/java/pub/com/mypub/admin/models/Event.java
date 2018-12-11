@@ -26,10 +26,13 @@ public class Event implements Serializable {
     public String age_limit=null;
     boolean isSelected = false;
     public ArrayList<Specialist> mSpecialist = null;
-    public ArrayList<Ticket> mTicketlist = null;
+    //public ArrayList<Ticket> mTicketlist = null;
+    public ArrayList<Date> mDateList = null;
     public ArrayList<Event> mEvent = null;
     public ArrayList<Contact> mContact = null;
     public ArrayList<Ticket> mTickets;
+    public ArrayList<Ticket> mSelectedTickets = new ArrayList<>();
+
 
     public Event () { }
 
@@ -115,6 +118,16 @@ public class Event implements Serializable {
 
     public  String getAge_limit(){return  age_limit;}
     public  void setAge_limit(String _age_limit){this.age_limit=_age_limit;}
+
+
+
+    public  ArrayList<Ticket> getmSelectedTickets(){
+        return  mSelectedTickets;
+    }
+    public  void setmSelectedTickets(Ticket s){
+        mSelectedTickets.add(s);
+    }
+
 
     public boolean isSelected() { return isSelected; }
     public void setSelected(boolean selected) { this.isSelected = selected; }

@@ -21,6 +21,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import pub.com.mypub.BuildConfig;
@@ -86,8 +87,10 @@ public class OfflinePromotersFragment extends NetworkBaseFragment implements Vie
     }
 
     private void  setPersonDataList() {
-        if (null == mListener.getSelectedEvent().mContact) {
-            stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL + "contact.php/getAllRecords", "get_all_contact");
+        if (null == mListener.getSelectedEvent().mContact || mListener.getSelectedEvent().mContact.size()<1) {
+            HashMap<String, String > parems =new HashMap<>();
+            parems.put("id",mListener.getSelectedEvent().contact_id);
+            stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL + "contact.php/getSelectedRecords", "get_selected_contact");
         } else {
             setDataAdapter(mListener.getSelectedEvent().mContact);
         }
