@@ -7,19 +7,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
+import com.android.volley.Request;
 import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
+import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
+import pub.com.mypub.admin.models.Contact;
+import pub.com.mypub.admin.models.Profile;
 import pub.com.mypub.home.OnHomeInteractionListener;
 
 public class ProfileFragment extends NetworkBaseFragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+     Button save;
+    EditText first_name, last_name,house_no, city, state, country, pin_code;
+    Profile profile;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -55,8 +64,16 @@ public class ProfileFragment extends NetworkBaseFragment implements View.OnClick
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        Button submit = view.findViewById(R.id.b2);
-        submit.setOnClickListener(this);
+        save= view.findViewById(R.id.save);
+        save.setOnClickListener(this);
+
+        first_name=view.findViewById(R.id.e2);
+        last_name=view.findViewById(R.id.e3);
+        house_no =view.findViewById(R.id.e4);
+        city =view.findViewById(R.id.ee);
+        state=view.findViewById(R.id.et);
+        country =view.findViewById(R.id.e5);
+        pin_code =view.findViewById(R.id.e6);
         return view;
     }
 
@@ -112,5 +129,42 @@ public class ProfileFragment extends NetworkBaseFragment implements View.OnClick
     @Override
     public void onClick(View v) {
 
+        switch (v.getId()) {
+
+            case R.id.save:
+
+                String _first_name = first_name.getText().toString();
+                String _last_name = last_name.getText().toString();
+                String _house_no = house_no.getText().toString();
+                String _city = city.getText().toString();
+                String _state = state.getText().toString();
+                String _country = country.getText().toString();
+                String _pin_code = pin_code.getText().toString();
+
+
+                profile = new Profile();
+                profile.first_name=_first_name;
+                profile.last_name =_last_name;
+                profile.house_no =_house_no;
+                profile.city =_city;
+                profile.state =_state;
+                profile.country =_country;
+                profile.pin_code =_pin_code;
+
+
+                HashMap<String, String> parems = new HashMap<>();
+                parems.put("first_name", profile.first_name);
+                parems.put("last_name", profile.last_name);
+                parems.put("house_no", profile.house_no);
+                parems.put("city", profile.city);
+                parems.put("state", profile.state);
+                parems.put("country", profile.country);
+                parems.put("pin_code", profile.pin_code);
+
+
+                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL + "profile.php/createRecord", "create_profile");
+
+                break;
+        }
     }
 }

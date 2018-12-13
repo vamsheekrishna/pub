@@ -38,14 +38,14 @@
                 android:fontFamily="@font/kaushanscriptregular"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/amount"
-                android:textSize="@dimen/pub_item_rs_font"
-                android:text="Sunburn Festival 2018 is a 3ndays festival from the 29th till the 31st of December 2018."
-                android:textColor="@android:color/black"
-                android:layout_marginTop="16dp"/>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/amount"-->
+                <!--android:textSize="@dimen/pub_item_rs_font"-->
+                <!--android:text="Sunburn Festival 2018 is a 3ndays festival from the 29th till the 31st of December 2018."-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:layout_marginTop="16dp"/>-->
 
         </LinearLayout>
 
