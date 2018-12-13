@@ -25,28 +25,138 @@
             android:layout_marginLeft="130dp"
             android:textSize="20dp"
             android:fontFamily="@font/kaushanscriptregular"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
         <TextView
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/event"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/event_name"
-            android:text="Event Name"
-            android:textSize="20dp"
-            android:textColor= "#000"
+            android:id="@+id/event_name1"
+            android:text="Event Name:"
+            android:textSize="15dp"
+            android:textColor= "#AB3D24"
             android:fontFamily="@font/kaushanscriptregular"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/date_time"
+            android:id="@+id/event_name"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:text="Event Date/Time"
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor= "#B5B8B4"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/event_date1"
+            android:text="Event Date:"
             android:textSize="15dp"
             android:layout_below="@+id/ticket_name"
-            android:padding="10dp"
             android:textColor= "#AB3D24"
+            android:fontFamily="@font/kaushanscriptregular"
+
             />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/event_date"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textSize="15dp"
+            android:padding="7dp"
+            android:textColor= "#B5B8B4"
+            />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/date_time"
+                android:text="Event Time:"
+                android:textSize="15dp"
+                android:layout_below="@+id/ticket_name"
+                android:textColor= "#AB3D24"
+                android:fontFamily="@font/kaushanscriptregular"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/date_time1"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:textSize="15dp"
+                android:padding="7dp"
+                android:textColor= "#B5B8B4"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <TextView
+                android:id="@+id/calculate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total amount"
+                android:textColor= "#AB3D24 "
+                android:textSize="15dp"
+                android:fontFamily="@font/kaushanscriptregular"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/totalamount"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:textSize="15dp"
+                android:padding="7dp"
+                android:textColor= "#B5B8B4"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/event_location"
+                android:text="Event Location:"
+                android:textSize="15dp"
+                android:layout_below="@+id/ticket_name"
+                android:textColor= "#AB3D24"
+                android:fontFamily="@font/kaushanscriptregular"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/location"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:textSize="15dp"
+                android:padding="7dp"
+                android:textColor= "#B5B8B4"
+                />
+        </LinearLayout>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:background="@color/white"
@@ -54,7 +164,10 @@
         android:layout_above="@+id/submit"
         android:id="@+id/ticket_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="8dp"/>
+
     <Button
         android:layout_alignParentEnd="true"
         android:id="@+id/submit"

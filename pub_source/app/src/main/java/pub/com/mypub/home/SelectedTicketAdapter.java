@@ -1,5 +1,6 @@
 package pub.com.mypub.home;
 
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,9 +32,11 @@ public class SelectedTicketAdapter extends RecyclerView.Adapter<SelectedTicketOb
     public void onBindViewHolder(@NonNull SelectedTicketObject selectedTicketObject, int i) {
 //        selectedTicketObject.event.setText(tickets.get(i).title);
 //        selectedTicketObject.date_time.setText(String.valueOf(tickets.get(i).price));
+        // res = getResources();
+        String price_details = selectedTicketObject.name.getContext().getResources().getString(R.string.ticket_price_details, tickets.get(i).price,tickets.get(i).mTicketCount+"");
        selectedTicketObject.name.setText(tickets.get(i).ticket_name);
-        selectedTicketObject.type.setText(tickets.get(i).mTicketCount+"");
-        selectedTicketObject.price.setText(tickets.get(i).price);
+        selectedTicketObject.type.setText(price_details);
+        selectedTicketObject.total.setText(tickets.get(i).getTotalAmount()+"");
     }
 
     @Override

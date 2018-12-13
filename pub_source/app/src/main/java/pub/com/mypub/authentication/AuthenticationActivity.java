@@ -7,10 +7,11 @@ import android.widget.Toast;
 import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
 import pub.com.mypub.admin.Admin;
+import pub.com.mypub.admin.models.Event;
 import pub.com.mypub.home.Home;
 
 public class AuthenticationActivity extends NetworkBaseActivity implements OnAuthenticationInteractionListener{
-
+MyProfile mCurrentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +81,16 @@ public class AuthenticationActivity extends NetworkBaseActivity implements OnAut
     public void goToChangePasswordPage(MyProfile myProfile, boolean isForgot) {
         addFragment(ChangePassword.newInstance(myProfile, isForgot), true, true, ChangePassword.class.getName());
 
+    }
+
+    @Override
+    public void setSelectedUser(MyProfile selectedUser) {
+        mCurrentUser = selectedUser;
+    }
+
+    @Override
+    public MyProfile getSelectedUser() {
+        return mCurrentUser;
     }
 
 

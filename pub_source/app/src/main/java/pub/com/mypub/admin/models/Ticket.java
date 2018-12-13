@@ -7,7 +7,8 @@ public class Ticket {
     public String title=null;
     public String description=null;
     boolean isSelected = false;
-    public int mTicketCount;
+    public int mTicketCount =0;
+    public int mTicketTotal =0;
 
 
 
@@ -46,6 +47,11 @@ public class Ticket {
 
     public boolean isSelected() { return isSelected; }
     public void setSelected(boolean selected) { this.isSelected = selected; }
+
+
+    public Float getTotalAmount() {
+        return Float.parseFloat(price) * mTicketCount;
+    }
 
 }
 

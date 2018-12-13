@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,7 +14,7 @@
             android:layout_centerVertical="true"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:id="@+id/total"
+            android:id="@+id/name"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:text="Ticket Name"
@@ -22,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/price"
+            android:id="@+id/total"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:text="Ticket Price"
@@ -41,7 +43,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/price1"
+                android:id="@+id/price"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:text="Ticket Price"
@@ -49,28 +51,9 @@
                 android:textSize="12dp"
                 android:layout_alignParentRight="true"
                 />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/multiply"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:text="X"
-            android:textColor="@android:color/black"
-            android:textSize="12dp"
-            android:layout_below="@+id/price"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/type"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:text="Ticket type"
-            android:textColor="@android:color/black"
-            android:textSize="12dp"
-            android:layout_below="@+id/price"
-            />
         </LinearLayout>
+
+
     </RelativeLayout>
-</LinearLayout>
+
+</RelativeLayout>

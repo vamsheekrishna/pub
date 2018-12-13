@@ -35,7 +35,7 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
 
     private String mParam1;
     private String mParam2;
-    MyProfile myProfile;
+   // MyProfile myProfile;
     EditText mETPhoneNo;
     EditText mETPassword;
     CheckBox saveLoginCheckBox;
@@ -117,8 +117,8 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
         Log.d("response: ","response: "+response);
         Toast.makeText(getActivity(), "login successful", Toast.LENGTH_LONG).show();
         try {
-            myProfile.mProfileID = response.getString("id");
-            mListener.goToHomePage(myProfile);
+            MyProfile.getInstance().mProfileID = response.getString("id");
+            mListener.goToHomePage(MyProfile.getInstance());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -192,13 +192,12 @@ public class LoginFragment extends NetworkBaseFragment implements View.OnClickLi
                 }
 
 
-                myProfile= new MyProfile();
-                myProfile.mPhoneNumber = mETPhoneNo.getText().toString();
-                myProfile.mPassword= mETPassword.getText().toString();
+                MyProfile.getInstance().mPhoneNumber = mETPhoneNo.getText().toString();
+                MyProfile.getInstance().mPassword= mETPassword.getText().toString();
                 //
                 HashMap<String, String> parems = new HashMap<>();
-                parems.put("password", myProfile.mPassword);
-                parems.put("mobile_number", myProfile.mPhoneNumber);
+                parems.put("password", MyProfile.getInstance().mPassword);
+                parems.put("mobile_number", MyProfile.getInstance().mPhoneNumber);
                 stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"login.php/getLoginDetails", "login");
                 break;
         }}

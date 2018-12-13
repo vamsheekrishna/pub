@@ -49,7 +49,21 @@
                 android:orientation="vertical"
 
                 >
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                <TextView
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/first_name"
+                    android:text="First Name:"
+                    android:textSize="15dp"
+                    android:textColor= "#AB3D24"
+                    android:fontFamily="@font/kaushanscriptregular"/>
                 <EditText
                     android:id="@+id/e2"
                     android:layout_width="match_parent"
@@ -61,7 +75,22 @@
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="15dp" />
-
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <TextView
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/last_name"
+                        android:text="Last Name:"
+                        android:textSize="15dp"
+                        android:textColor= "#AB3D24"
+                        android:fontFamily="@font/kaushanscriptregular"/>
                 <EditText
                     android:id="@+id/e3"
                     android:layout_width="match_parent"
@@ -73,7 +102,22 @@
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="15dp" />
-
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <TextView
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/house_no"
+                        android:text="Last Name:"
+                        android:textSize="15dp"
+                        android:textColor= "#AB3D24"
+                        android:fontFamily="@font/kaushanscriptregular"/>
                 <EditText
                     android:id="@+id/e4"
                     android:layout_width="match_parent"
@@ -85,7 +129,7 @@
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="15dp" />
-
+                </LinearLayout>
                 <EditText
                     android:id="@+id/ee"
                     android:layout_width="match_parent"
@@ -135,34 +179,37 @@
                     android:textSize="15dp" />
                 <!---->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
 
-                    <Button
-                        android:id="@+id/b1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="Lat/Long"
-                        android:textColor="@android:color/white"/>
-
-                    <Button
-                        android:id="@+id/b2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="SAVE"
-                        android:textColor="@android:color/white"/>
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_alignParentBottom="true">
 
+            <Button
+                android:id="@+id/b1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Lat/Long"
+                android:textColor="@android:color/white"/>
+
+            <Button
+                android:id="@+id/b2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="SAVE"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
 
     </RelativeLayout>
 </FrameLayout>

@@ -55,5 +55,5 @@
     <string name="start_time">START TIME</string>
     <string name="end_time">END TIME</string>
 
-
+<string name="ticket_price_details">%1$s x %2$s</string>
 </resources>

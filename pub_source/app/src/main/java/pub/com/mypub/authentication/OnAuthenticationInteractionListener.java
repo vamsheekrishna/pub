@@ -1,5 +1,7 @@
 package pub.com.mypub.authentication;
 
+import pub.com.mypub.admin.models.Event;
+
 public interface OnAuthenticationInteractionListener {
     void goToLoginPage();
     void goToRegistrationPage();
@@ -12,6 +14,9 @@ public interface OnAuthenticationInteractionListener {
     void gotoValidateOTP(MyProfile myProfile, boolean isRegistration);
 
     void goToChangePasswordPage(MyProfile myProfile, boolean isForgot);
+
+    void setSelectedUser(MyProfile selectedUser);
+    MyProfile getSelectedUser();
 
 
 }
