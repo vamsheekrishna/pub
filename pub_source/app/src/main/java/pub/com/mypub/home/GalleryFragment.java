@@ -11,9 +11,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -73,8 +78,23 @@ public class GalleryFragment extends NetworkBaseFragment {
 //        gallery.setSpacing(1);
 
         selectedImage=view.findViewById(R.id.img1);
-        Drawable drw =LoadImageFromWebOperations(" http://faithindia.org/vAm/my_events/images/event1/s1.jpeg");
-        selectedImage.setImageDrawable(drw);
+
+        ImageRequest imageRequest = new ImageRequest(" http://faithindia.org/vAm/my_events/images/event1/s2.jpeg", new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(final Bitmap response) {
+                selectedImage.setImageBitmap(response);
+            }
+        }, 0, 0, ImageView.ScaleType.CENTER_INSIDE, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), "error", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(imageRequest);
+//        Drawable drw =LoadImageFromWebOperations(" http://faithindia.org/vAm/my_events/images/event1/s1.jpeg");
+//        selectedImage.setImageDrawable(drw);
 
 //        final GalleryImageAdapter galleryImageAdapter= new GalleryImageAdapter(this.getActivity());
 //        gallery.setAdapter(galleryImageAdapter);

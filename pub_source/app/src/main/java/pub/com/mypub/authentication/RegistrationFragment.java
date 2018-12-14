@@ -13,6 +13,7 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -91,7 +92,14 @@ public class RegistrationFragment extends NetworkBaseFragment implements View.On
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
         Log.d("REQUEST_ID",REQUEST_ID+": "+response.toString());
         Toast.makeText(getContext(),"User already existed.", Toast.LENGTH_LONG).show();
-        //mListener.goToMyProfilePage(myProfile);
+        try {
+            JSONObject data=response.getJSONObject("data");
+            MyProfile.getInstance().mProfileID = data.getString("id");
+            mListener.goToMyProfilePage(myProfile);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -143,7 +151,7 @@ public class RegistrationFragment extends NetworkBaseFragment implements View.On
                 String _password = mETPassword.getText().toString();
                 String _rePassword;
                 if(_password.equals( mETRePassword.getText().toString())) {
-                    myProfile = new MyProfile();
+                    myProfile = MyProfile.getInstance();
                     myProfile.mPhoneNumber = mETPhoneNo.getText().toString();
                     //myProfile.mName = "Vamshee";
                     //myProfile.mEmail = "vamshee@gmail.com";

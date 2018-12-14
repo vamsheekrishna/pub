@@ -1,0 +1,247 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg">
+
+    <RelativeLayout
+        android:background="@drawable/gradient_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="16dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/rr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/yy" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/l"
+                android:layout_margin="8dp"
+                android:background="@drawable/edit"
+                android:orientation="vertical"
+                android:padding="8dp"
+
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:paddingBottom="8dp">
+                    <TextView
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/first_name"
+                        android:text="First Name:"
+                        android:textSize="20dp"
+                        android:textColor= "#AB3D24"
+                        android:fontFamily="@font/kaushanscriptregular"/>
+                    <TextView
+                        android:id="@+id/e2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/kaushanscriptregular"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:paddingBottom="8dp">
+                    <TextView
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/last_name"
+                        android:text="Last Name:"
+                        android:textSize="20dp"
+                        android:textColor= "#AB3D24"
+                        android:fontFamily="@font/kaushanscriptregular"/>
+                    <TextView
+                        android:id="@+id/e3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/kaushanscriptregular"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:paddingBottom="8dp">
+                    <TextView
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/house_no"
+                        android:text="house_no:"
+                        android:textSize="20dp"
+                        android:textColor= "#AB3D24"
+                        android:fontFamily="@font/kaushanscriptregular"/>
+                    <TextView
+                        android:id="@+id/e4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/kaushanscriptregular"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:paddingBottom="8dp">
+                    <TextView
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/city"
+                        android:text="city Name:"
+                        android:textSize="20dp"
+                        android:textColor= "#AB3D24"
+                        android:fontFamily="@font/kaushanscriptregular"/>
+                    <TextView
+                        android:id="@+id/ee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/kaushanscriptregular"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:paddingBottom="8dp">
+                    <TextView
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/state"
+                        android:text="State Name:"
+                        android:textSize="20dp"
+                        android:textColor= "#AB3D24"
+                        android:fontFamily="@font/kaushanscriptregular"/>
+                    <TextView
+                        android:id="@+id/et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/kaushanscriptregular"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:paddingBottom="8dp">
+                    <TextView
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/country"
+                        android:text="Country Name"
+                        android:textSize="20dp"
+                        android:textColor= "#AB3D24"
+                        android:fontFamily="@font/kaushanscriptregular"/>
+                    <TextView
+                        android:id="@+id/e5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/kaushanscriptregular"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:paddingBottom="8dp"sour>
+                    <TextView
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/pin_code"
+                        android:text="pin code:"
+                        android:textSize="20dp"
+                        android:textColor= "#AB3D24"
+                        android:fontFamily="@font/kaushanscriptregular"/>
+                    <TextView
+                        android:id="@+id/e6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/kaushanscriptregular"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp" />
+                </LinearLayout>
+                <!---->
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--<Button-->
+            <!--android:id="@+id/save"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="SAVE"-->
+            <!--android:textColor="@android:color/white"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_alignParentBottom="true"/>-->
+
+
+    </RelativeLayout>
+</FrameLayout>
+
+

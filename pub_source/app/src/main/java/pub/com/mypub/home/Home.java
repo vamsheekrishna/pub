@@ -117,7 +117,7 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
         if (id == R.id.profile) {
 
 
-                addFragment(ProfileFragment.newInstance("", ""), true, true, ProfileFragment.class.getName());
+                addFragment(GetProfileFragment.newInstance("", ""), true, true, ProfileFragment.class.getName());
         }
         else if (id == R.id.event) {
             addFragment(EventsFragment.newInstance("", ""), true, true, EventsFragment.class.getName());

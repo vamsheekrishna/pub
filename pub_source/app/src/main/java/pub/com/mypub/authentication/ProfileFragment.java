@@ -3,11 +3,13 @@ package pub.com.mypub.authentication;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
@@ -28,12 +30,12 @@ public class ProfileFragment extends NetworkBaseFragment implements View.OnClick
     private static final String ARG_PARAM2 = "param2";
      Button save;
     EditText first_name, last_name,house_no, city, state, country, pin_code;
-    Profile profile;
+    //Profile profile;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private OnHomeInteractionListener mListener;
+    MyProfile myProfile;
+    private OnAuthenticationInteractionListener mListener;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -81,11 +83,11 @@ public class ProfileFragment extends NetworkBaseFragment implements View.OnClick
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnHomeInteractionListener) {
-            mListener = (OnHomeInteractionListener) context;
+        if (context instanceof OnAuthenticationInteractionListener) {
+            mListener = (OnAuthenticationInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnHomeInteractionListener");
+                    + " must implement OnAuthenticationInteractionListener");
         }
     }
 
@@ -98,7 +100,9 @@ public class ProfileFragment extends NetworkBaseFragment implements View.OnClick
     @Override
     public void onSuccessResponse(JSONObject response, String REQUEST_ID) {
 
-
+        Log.d("REQUEST_ID",REQUEST_ID+": "+response.toString());
+        Toast.makeText(getContext(),"User already existed.", Toast.LENGTH_LONG).show();
+        mListener.goToLoginPage();
     }
 
     @Override
@@ -142,7 +146,7 @@ public class ProfileFragment extends NetworkBaseFragment implements View.OnClick
                 String _pin_code = pin_code.getText().toString();
 
 
-                profile = new Profile();
+                MyProfile profile = MyProfile.getInstance();
                 profile.first_name=_first_name;
                 profile.last_name =_last_name;
                 profile.house_no =_house_no;
@@ -160,8 +164,7 @@ public class ProfileFragment extends NetworkBaseFragment implements View.OnClick
                 parems.put("state", profile.state);
                 parems.put("country", profile.country);
                 parems.put("pin_code", profile.pin_code);
-
-
+                parems.put("id", profile.mProfileID);
                 stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL + "profile.php/createRecord", "create_profile");
 
                 break;
