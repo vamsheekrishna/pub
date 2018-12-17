@@ -79,7 +79,7 @@ public class GalleryFragment extends NetworkBaseFragment {
 
         selectedImage=view.findViewById(R.id.img1);
 
-        ImageRequest imageRequest = new ImageRequest(" http://faithindia.org/vAm/my_events/images/event1/s2.jpeg", new Response.Listener<Bitmap>() {
+        ImageRequest imageRequest = new ImageRequest("http://faithindia.org/vAm/my_events/images/event1/s2.jpeg", new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(final Bitmap response) {
                 selectedImage.setImageBitmap(response);

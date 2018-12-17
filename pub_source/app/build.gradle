@@ -35,7 +35,7 @@ android {
 
         admin {
             buildConfigField("boolean", "IS_ADMIN", "true")
-            applicationId 'peelabus.com'
+            applicationId 'com.event.admin'
             versionCode 1
             versionName "1.0"
             minSdkVersion 19
@@ -45,7 +45,7 @@ android {
 
         user {
             buildConfigField("boolean", "IS_ADMIN", "false")
-            applicationId 'peelabus.com'
+            applicationId 'com.event.user'
             versionCode 1
             versionName "1.0"
             minSdkVersion 19
@@ -80,32 +80,15 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.android.volley:volley:1.1.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
-
-    //sms autothentication start
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
-    implementation 'com.google.firebase:firebase-auth:16.0.5'
-    implementation 'com.google.gms:google-services:4.0.0'
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'com.google.gms:google-services:4.2.0'
     implementation 'com.google.code.gson:gson:2.8.2'
 
-    implementation 'com.google.firebase:firebase-core:16.0.5'
+    implementation 'com.google.firebase:firebase-core:16.0.6'
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
-    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.google.code.gson:gson:2.8.2'
-
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:28.0.0'
-    compile 'com.android.support:design:28.0.0'
-    compile 'com.android.support:support-v4:28.0.0'
-
-    // RecyclerView
-    compile 'com.android.support:recyclerview-v7:28.0.0'
-
-    // volley
-    implementation 'com.android.volley:volley:1.1.0'
-
-    // Glide
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+    api 'com.github.bumptech.glide:glide:4.2.0'
     //sms autothentication end
 }
 apply plugin: 'com.google.gms.google-services'
