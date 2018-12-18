@@ -67,7 +67,6 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
         setTagName();
         View view = inflater.inflate(R.layout.sample_collapse, container, false);
         ViewPager viewPager = view.findViewById(R.id.pager_container);
-//        Typeface typeface = getResources().getFont(R.font.kaushanscriptregular);
         EventHeaderPageAdapter eventHeaderPageAdapter = new EventHeaderPageAdapter(getContext(),new int[]{R.drawable.s1, R.drawable.s2,R.drawable.s3,R.drawable.s4, R.drawable.s5,R.drawable.s6,R.drawable.s8, R.drawable.s88});
         viewPager.setAdapter(eventHeaderPageAdapter);
         /*NestedScrollView scrollView = view.findViewById (R.id.scroll_view);
@@ -77,7 +76,7 @@ public class EventsDetailsFragment extends NetworkBaseFragment {
         ArrayList<BaseFragment> fragments = new ArrayList<>();
         fragments.add(EventDetailTabFragment.newInstance("",""));
         fragments.add(TAndCFragment.newInstance("",""));
-        fragments.add(GalleryFragment.newInstance("",""));
+
         fragments.add(PersonFragment.newInstance("",""));
         fragments.add(OfflinePromotersFragment.newInstance("",""));
         fragments.add(BookingFragment.newInstance("",""));

@@ -31,8 +31,6 @@ import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
 public class GalleryFragment extends NetworkBaseFragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     ImageView selectedImage;
@@ -93,18 +91,7 @@ public class GalleryFragment extends NetworkBaseFragment {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(imageRequest);
-//        Drawable drw =LoadImageFromWebOperations(" http://faithindia.org/vAm/my_events/images/event1/s1.jpeg");
-//        selectedImage.setImageDrawable(drw);
 
-//        final GalleryImageAdapter galleryImageAdapter= new GalleryImageAdapter(this.getActivity());
-//        gallery.setAdapter(galleryImageAdapter);
-//
-//        gallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-//                // show the selected Image
-//                selectedImage.setImageResource(galleryImageAdapter.mImageIds[position]);
-//            }
-//        });
 
 
         return view;

@@ -73,11 +73,7 @@ public class CategoryFragment extends NetworkBaseFragment implements View.OnClic
     }
 
     private  ArrayList<Category> getCategoryData() {
-        //"Select Language","Comedy","Music","Dance","cinima","Gaming","cultural","Workshop","Food And Drink","Adventure"
-//        mCategoryList.add(new Category(-1, "Select Language",false));
-//        mCategoryList.add(new Category(-1, "Comedy",false));
-//        mCategoryList.add(new Category(-1, "Music",false));
-//        mCategoryList.add(new Category(-1, "Dance",false));
+
         stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL+"category.php/getAllRecords", "get_all_category");
         return mCategoryList;
     }
@@ -112,17 +108,6 @@ public class CategoryFragment extends NetworkBaseFragment implements View.OnClic
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
         recyclerView.setHasFixedSize(false);
 
-//        String [] values = {"Select Language","Comedy","Music","Dance","cinima","Gaming","cultural","Workshop","Food And Drink","Adventure"};
-//        ArrayList<String> categoryNames = new ArrayList<>();
-//        for (Category category:mCategoryList) {
-//            categoryNames.add(category.name);
-//        }
-//        spinner= view.findViewById(R.id.spinner);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, categoryNames);
-//        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-//        spinner.setAdapter(adapter);
-//
-//        spinner.setOnItemSelectedListener(this);
         return view;
     }
 
@@ -155,16 +140,20 @@ public class CategoryFragment extends NetworkBaseFragment implements View.OnClic
             case R.id.add:
                 String _name = category1.getText().toString();
 
+                if (_name.matches("")) {
+                    Toast.makeText(getActivity(), "Plase enter category name", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    category = new Category();
+                    category.name = _name;
 
-                category = new Category();
-                category.name=_name;
+
+                    HashMap<String, String> parems = new HashMap<>();
+                    parems.put("name", category.name);
 
 
-                HashMap<String, String> parems = new HashMap<>();
-                parems.put("name", category.name);
-
-
-                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"category.php/createRecord", "create_category");
+                    stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL + "category.php/createRecord", "create_category");
+                }
                 break;
             case R.id.submit:
                 StringBuffer responseText = new StringBuffer();
@@ -193,25 +182,33 @@ public class CategoryFragment extends NetworkBaseFragment implements View.OnClic
 
             stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL+"category.php/getAllRecords", "get_all_category");
         }
+        else if(REQUEST_ID.equals("delete_category")) {
+            Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
-        /*if(REQUEST_ID.equals("create_category")) {
-            btAddCategory.setVisibility(View.VISIBLE);
-            createCategory.setVisibility(View.GONE);
+        if(REQUEST_ID.equals("delete_category")) {
             Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
-        }*/
+        }
         Gson gson;
         GsonBuilder gsonBuilder = new GsonBuilder();
         gson = gsonBuilder.create();
         List<Category> category = Arrays.asList(gson.fromJson(response.toString(), Category[].class));
 
-        dataAdapter = new CategoryCustomAdapter( new ArrayList<>(category));
+        dataAdapter = new CategoryCustomAdapter( new ArrayList<>(category),this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
         recyclerView.setHasFixedSize(false);
         recyclerView.setAdapter(dataAdapter);
+    }
+
+    public void deleteCategory(int position) {
+        Category category = dataAdapter.mCategoryList.get(position);
+        HashMap<String, String> parm = new HashMap<>();
+        parm.put("id", category.id+"");
+        stringAPIRequest(parm, Request.Method.POST, BuildConfig.BASE_URL + "category.php/deleteRecord", "delete_category");
     }
 
     @Override

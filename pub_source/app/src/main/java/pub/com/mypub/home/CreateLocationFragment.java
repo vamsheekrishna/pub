@@ -39,6 +39,7 @@ import pub.com.mypub.admin.MyEvent;
 import pub.com.mypub.admin.OnAdminInteractionListener;
 import pub.com.mypub.admin.TicketCustomAdapter;
 import pub.com.mypub.admin.models.Category;
+import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.admin.models.Location;
 import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.NetworkBaseFragment;
@@ -165,16 +166,22 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
 
             stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL+"location.php/getAllRecords", "get_all_location");
         }
+        else if(REQUEST_ID.equals("delete_location")) {
+            Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
+        if(REQUEST_ID.equals("delete_location")) {
+            Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
+        }
         Gson gson;
         GsonBuilder gsonBuilder = new GsonBuilder();
         gson = gsonBuilder.create();
         List<Location> location = Arrays.asList(gson.fromJson(response.toString(), Location[].class));
 
-        dataAdapter = new LocationCustomAdapter( new ArrayList<>(location));
+        dataAdapter = new LocationCustomAdapter( new ArrayList<>(location),this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
         recyclerView.setHasFixedSize(false);
@@ -220,29 +227,32 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
                 String _latitude = latitude.getText().toString();
                  String _langetude = langetude.getText().toString();
 
+                if (_city.matches("")|| _country.matches("")|| _state.matches("")|| _landmark.matches("")|| _latitude.matches("")|| _langetude.matches("")) {
+                    Toast.makeText(getActivity(), "Plase fill the empty feild", Toast.LENGTH_SHORT).show();
+                }
+                else {
+
+                    location = new Location();
+                    location.city = _city;
+                    location.country = _country;
+                    location.state = _state;
+                    location.landmark = _landmark;
+                    location.latitude = _latitude;
+                    location.langetude = _langetude;
 
 
-                location = new Location();
-                location.city=_city;
-                location.country=_country;
-                location.state=_state;
-                location.landmark=_landmark;
-                location.latitude=_latitude;
-                location.langetude=_langetude;
+                    HashMap<String, String> parems = new HashMap<>();
+                    parems.put("city", location.city);
+                    parems.put("country", location.country);
+                    parems.put("sate", location.state);
+                    parems.put("landmark", location.landmark);
+                    parems.put("latitude", location.latitude);
+                    parems.put("langtude", location.langetude);
 
 
-
-                HashMap<String, String> parems = new HashMap<>();
-                parems.put("city", location.city);
-                parems.put("country", location.country);
-                parems.put("sate", location.state);
-                parems.put("landmark", location.landmark);
-                parems.put("latitude", location.latitude);
-                parems.put("langtude", location.langetude);
-
-
-                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"location.php/createRecord", "create_location");
-                break;
+                    stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL + "location.php/createRecord", "create_location");
+                    break;
+                }
             case R.id.submit:
                 StringBuffer responseText = new StringBuffer();
                 ArrayList<Location> mLocationList = dataAdapter.mLocationList;
@@ -260,7 +270,12 @@ public class CreateLocationFragment extends NetworkBaseFragment implements View.
 
     }
 
-
+    public void deleteLocation(int position) {
+        Location location = dataAdapter.mLocationList.get(position);
+        HashMap<String, String> parm = new HashMap<>();
+        parm.put("id", location.id+"");
+        stringAPIRequest(parm, Request.Method.POST, BuildConfig.BASE_URL + "location.php/deleteRecord", "delete_location");
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

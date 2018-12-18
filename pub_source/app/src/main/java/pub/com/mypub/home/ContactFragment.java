@@ -36,6 +36,7 @@ import pub.com.mypub.admin.ContactCustomAdapter;
 import pub.com.mypub.admin.MyEvent;
 import pub.com.mypub.admin.OnAdminInteractionListener;
 import pub.com.mypub.admin.models.Contact;
+import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
 
@@ -76,10 +77,6 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
         return fragment;
     }
     private ArrayList<Contact> getContactData() {
-//        mContactList.add(new Contact(0,"HayderAbad","9987263541"));
-//        mContactList.add(new Contact(1,"Chenai","8765290987"));
-//        mContactList.add(new Contact(2,"Delhi","5678920918"));
-//        mContactList.add(new Contact(3,"Noida","9812670000"));
 
         stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL+"contact.php/getAllRecords", "get_all_contact");
         return mContactList;
@@ -123,14 +120,6 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
         view.findViewById(R.id.add).setOnClickListener(this);
         view.findViewById(R.id.create).setOnClickListener(this);
 
-//        String[] values = {"HyderAbad  9987263541", "Chenai  8765290987", "Noida  9812670000", "Delhi  5678920918"};
-//        spinner = view.findViewById(R.id.spinner);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
-//        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-//        spinner.setAdapter(adapter);
-//
-//        spinner.setOnItemSelectedListener(this);
-
         return view;
     }
 
@@ -159,7 +148,10 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
             btAddContact.setVisibility(View.VISIBLE);
             createContact.setVisibility(View.GONE);
             Toast.makeText(getActivity(), "JSONObject Sucsesfully", Toast.LENGTH_LONG).show();
-    }}
+    }
+        else if(REQUEST_ID.equals("delete_contact")) {
+            Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
+        }}
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
@@ -168,11 +160,14 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
             createContact.setVisibility(View.GONE);
             Toast.makeText(getActivity(), "JSONObject Sucsesfully", Toast.LENGTH_LONG).show();
         }
+        else if(REQUEST_ID.equals("delete_contact")) {
+            Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
+        }
         Gson gson;
         GsonBuilder gsonBuilder = new GsonBuilder();
         gson = gsonBuilder.create();
         List<Contact> contact = Arrays.asList(gson.fromJson(response.toString(), Contact[].class));
-        dataAdapter = new ContactCustomAdapter( new ArrayList<>(contact));
+        dataAdapter = new ContactCustomAdapter( new ArrayList<>(contact),this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
         recyclerView.setHasFixedSize(false);
@@ -228,44 +223,40 @@ public class ContactFragment extends NetworkBaseFragment implements View.OnClick
                 String _phone1 = phoneNo1.getText().toString();
                 String _phone2 = phoneNo2.getText().toString();
                 String _emailid = emailId.getText().toString();
+                if (_name.matches("")|| _phone1.matches("")|| _phone2.matches("")|| _emailid.matches("")) {
+                    Toast.makeText(getActivity(), "Plase fill the empty feild", Toast.LENGTH_SHORT).show();
+                }
+                else {
+
+                    contact = new Contact();
+                    contact.name = _name;
+                    contact.phoneNo1 = _phone1;
+                    contact.phoneNo2 = _phone2;
+                    contact.emailId = _emailid;
 
 
-                contact = new Contact();
-                contact.name = _name;
-                contact.phoneNo1 = _phone1;
-                contact.phoneNo2 = _phone2;
-                contact.emailId = _emailid;
+                    HashMap<String, String> parems = new HashMap<>();
+                    parems.put("name", contact.name);
+                    parems.put("phoneNo1", contact.phoneNo1);
+                    parems.put("phoneNo2", contact.phoneNo2);
+                    parems.put("emailId", contact.emailId);
 
 
-                HashMap<String, String> parems = new HashMap<>();
-                parems.put("name", contact.name);
-                parems.put("phoneNo1", contact.phoneNo1);
-                parems.put("phoneNo2", contact.phoneNo2);
-                parems.put("emailId", contact.emailId);
-
-
-                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL + "contact.php/createRecord", "create_contact");
-
+                    stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL + "contact.php/createRecord", "create_contact");
+                }
                 break;
 
         }
-//        switch (v.getId()) {
-//            case R.id.submit:
-//
-//
-//                    String _location = location.getText().toString();
-//                    String _phoneno =phoneno.getText().toString();
-//
-//                txx.setText("Location:\t" + _location + "\nPhone Number:\t" + _phoneno );
-//
-//
-//                break;
-//        }
 
     }
 
 
-
+    public void deleteContact(int position) {
+        Contact contact = dataAdapter.mContactList.get(position);
+        HashMap<String, String> parm = new HashMap<>();
+        parm.put("id", contact.id+"");
+        stringAPIRequest(parm, Request.Method.POST, BuildConfig.BASE_URL + "contact.php/deleteRecord", "delete_contact");
+    }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Contact contact = (Contact) parent.getItemAtPosition(position);

@@ -68,15 +68,6 @@ LanguageCustomAdapter dataAdapter = null;
         return fragment;
     }
     private ArrayList<Language> displayListView() {
-
-        //Array list of countries
-//        ArrayList<Language> countryList = new ArrayList<Language>();
-//        Language language = new Language(1,"Arabic",false);
-//        mLanguageList.add(language);
-//        Language language1 = new Language(2,"English",false);
-//        mLanguageList.add(language1);
-//        Language language3 = new Language(3,"Franch",false);
-//        mLanguageList.add(language3);
         stringAPIRequest(null, Request.Method.POST, BuildConfig.BASE_URL+"language.php/getAllRecords", "get_all_language");
         return mLanguageList;
 
@@ -92,11 +83,6 @@ LanguageCustomAdapter dataAdapter = null;
 
     }
 
-
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -108,26 +94,16 @@ LanguageCustomAdapter dataAdapter = null;
         New=view.findViewById(R.id.create);
         btAddLanguage = view.findViewById(R.id.bt_add_language);
         createLanguage = view.findViewById(R.id.create_language);
-       language1= view.findViewById(R.id.n1);
-       one = view.findViewById(R.id.ch1);
+        language1= view.findViewById(R.id.n1);
+        one = view.findViewById(R.id.ch1);
         create1=view.findViewById(R.id.e1);
         select=view.findViewById(R.id.submit);
-
-       create1.setOnClickListener(this);
+        create1.setOnClickListener(this);
         select.setOnClickListener(this);
         New.setOnClickListener(this);
 
-
-
-
         return view;
     }
-
-
-
-
-
-
 
     @Override
     public void onAttach(Context context) {
@@ -152,20 +128,30 @@ LanguageCustomAdapter dataAdapter = null;
             btAddLanguage.setVisibility(View.VISIBLE);
             createLanguage.setVisibility(View.GONE);
             Toast.makeText(getActivity(), "JSONObject Sucsesfully", Toast.LENGTH_LONG).show();
-    }}
+        } else if(REQUEST_ID.equals("delete_language")) {
+            Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
+        }
+
+
+    }
 
     @Override
     public void onSuccessResponse(JSONArray response, String REQUEST_ID) {
-        if(REQUEST_ID.equals("create_specialist")) {
+        if(REQUEST_ID.equals("create_language")) {
             btAddLanguage.setVisibility(View.VISIBLE);
             createLanguage.setVisibility(View.GONE);
             Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
         }
+        else if(REQUEST_ID.equals("delete_language")) {
+            Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
+        }
+
+
         Gson gson;
         GsonBuilder gsonBuilder = new GsonBuilder();
         gson = gsonBuilder.create();
         List<Language> languages = Arrays.asList(gson.fromJson(response.toString(), Language[].class));
-        dataAdapter = new LanguageCustomAdapter( new ArrayList<>(languages));
+        dataAdapter = new LanguageCustomAdapter( new ArrayList<>(languages), this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
         recyclerView.setHasFixedSize(false);
@@ -201,31 +187,37 @@ LanguageCustomAdapter dataAdapter = null;
                 break;
             case R.id.e1:
                 String _name = language1.getText().toString();
+                if (_name.matches("")) {
+                    Toast.makeText(getActivity(), "Plase enter language name", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    language = new Language();
+                    language.name = _name;
 
+                    HashMap<String, String> parems = new HashMap<>();
+                    parems.put("name", language.name);
 
-                language = new Language();
-                language.name=_name;
-
-
-                HashMap<String, String> parems = new HashMap<>();
-                parems.put("name", language.name);
-
-
-                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"language.php/createRecord", "create_language");
+                    stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL + "language.php/createRecord", "create_language");
+                }
                 break;
             case R.id.submit:
                 StringBuffer responseText = new StringBuffer();
                 ArrayList<Language> mLanguageList = dataAdapter.mLanguageList;
-                for ( Language language:mLanguageList ) {
-                    if( language.isSelected() ){
+                for (Language language : mLanguageList) {
+                    if (language.isSelected()) {
                         mSelectedLanguage.add(language);
                     }
                 }
-
                 mListener.setSelectedLanguage(mSelectedLanguage);
                 getActivity().onBackPressed();
                 break;
         }
+    }
+    public void deleteLanguage(int position) {
+        Language language = dataAdapter.mLanguageList.get(position);
+        HashMap<String, String> parm = new HashMap<>();
+        parm.put("id", language.id+"");
+        stringAPIRequest(parm, Request.Method.POST, BuildConfig.BASE_URL + "language.php/deleteRecord", "delete_language");
     }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

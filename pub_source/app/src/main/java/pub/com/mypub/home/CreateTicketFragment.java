@@ -31,6 +31,7 @@ import pub.com.mypub.BuildConfig;
 import pub.com.mypub.R;
 import pub.com.mypub.admin.OnAdminInteractionListener;
 import pub.com.mypub.admin.TicketCustomAdapter;
+import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.admin.models.Ticket;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 
@@ -164,6 +165,9 @@ CheckBox ch1;
             createTicket.setVisibility(View.GONE);
             Toast.makeText(getActivity(), "JSONObject Sucsesfully", Toast.LENGTH_LONG).show();
         }
+        else if(REQUEST_ID.equals("delete_ticket")) {
+            Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -173,12 +177,15 @@ CheckBox ch1;
             createTicket.setVisibility(View.GONE);
             Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
         }
+        else if(REQUEST_ID.equals("delete_ticket")) {
+            Toast.makeText(getActivity(), "JSONArray Sucsesfully", Toast.LENGTH_LONG).show();
+        }
 
         Gson gson;
         GsonBuilder gsonBuilder = new GsonBuilder();
         gson = gsonBuilder.create();
         List<Ticket> ticketlist = Arrays.asList(gson.fromJson(response.toString(), Ticket[].class));
-        dataAdapter = new TicketCustomAdapter( new ArrayList<>(ticketlist));
+        dataAdapter = new TicketCustomAdapter( new ArrayList<>(ticketlist),this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.VERTICAL, false));
         recyclerView.setHasFixedSize(false);
@@ -220,20 +227,24 @@ CheckBox ch1;
                 String _price = price.getText().toString();
                 String _title = title.getText().toString();
                 String _description = description.getText().toString();
+                if (_name.matches("") || _price.matches("")||_title.matches("")||_description.matches("")) {
+                    Toast.makeText(getActivity(), "Plase enter category name", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    ticket = new Ticket();
+                    ticket.ticket_name = _name;
+                    ticket.price = _price;
+                    ticket.title = _title;
+                    ticket.description = _description;
 
-                ticket=new Ticket();
-                ticket.ticket_name =_name;
-                ticket.price=_price;
-                ticket.title=_title;
-                ticket.description=_description;
+                    HashMap<String, String> parems = new HashMap<>();
+                    parems.put("ticket_name", ticket.ticket_name);
+                    parems.put("price", ticket.price);
+                    parems.put("title", ticket.title);
+                    parems.put("description", ticket.description);
 
-                   HashMap<String, String> parems = new HashMap<>();
-                   parems.put("ticket_name", ticket.ticket_name);
-                   parems.put("price", ticket.price);
-                   parems.put("title", ticket.title);
-                   parems.put("description", ticket.description);
-
-                 stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"ticket.php/createRecord", "create_ticket");
+                    stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL + "ticket.php/createRecord", "create_ticket");
+                }
                 break;
 
 
@@ -253,6 +264,13 @@ CheckBox ch1;
 
 
         }}
+
+    public void deleteTicket(int position) {
+        Ticket ticket = dataAdapter.mTicketList.get(position);
+        HashMap<String, String> parm = new HashMap<>();
+        parm.put("id", ticket.id+"");
+        stringAPIRequest(parm, Request.Method.POST, BuildConfig.BASE_URL + "ticket.php/deleteRecord", "delete_ticket");
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

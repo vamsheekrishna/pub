@@ -16,6 +16,7 @@ import pub.com.mypub.admin.models.Contact;
 import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.admin.models.Specialist;
 import pub.com.mypub.admin.models.Ticket;
+import pub.com.mypub.home.ContactFragment;
 import pub.com.mypub.home.RecycleItemClickListener;
 
 
@@ -23,8 +24,10 @@ public class ContactCustomAdapter extends RecyclerView.Adapter<ContactViewHolder
     RecycleItemClickListener mListener;
     public ArrayList<Contact> mContactList ;
     ArrayList<Contact> contact;
-    public ContactCustomAdapter(ArrayList<Contact> contact) {
+    ContactFragment mContactFragment;
+    public ContactCustomAdapter(ArrayList<Contact> contact, ContactFragment contactFragment) {
         mContactList = contact;
+        mContactFragment=contactFragment;
     }
 
 
@@ -49,7 +52,7 @@ public class ContactCustomAdapter extends RecyclerView.Adapter<ContactViewHolder
     public void onBindViewHolder(@NonNull ContactViewHolder contactViewHolder, int i) {
         Contact contact = mContactList.get(i);
         contactViewHolder.ch1.setText(contact.name);
-        contactViewHolder.ch1.setText(contact.getName());
+        contactViewHolder.delete.setTag(i);
         contactViewHolder.ch1.setChecked(contact.isSelected());
         contactViewHolder.ch1.setTag(contact);
     }
@@ -57,5 +60,9 @@ public class ContactCustomAdapter extends RecyclerView.Adapter<ContactViewHolder
     @Override
     public int getItemCount() {
         return mContactList.size();
+    }
+    public void deleteRecord(int position) {
+        Log.d("position", "position: "+position);
+        mContactFragment.deleteContact(position);
     }
 }

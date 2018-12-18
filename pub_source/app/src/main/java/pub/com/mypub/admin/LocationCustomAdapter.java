@@ -13,7 +13,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import pub.com.mypub.R;
 import pub.com.mypub.admin.models.Category;
+import pub.com.mypub.admin.models.Language;
 import pub.com.mypub.admin.models.Location;
+import pub.com.mypub.home.CreateLocationFragment;
+import pub.com.mypub.home.CreateSpecialistFragment;
 import pub.com.mypub.home.RecycleItemClickListener;
 
 
@@ -21,9 +24,12 @@ public class LocationCustomAdapter extends  RecyclerView.Adapter<LocationViewHol
 
     RecycleItemClickListener mListener;
     public ArrayList<Location> mLocationList;
+    CreateLocationFragment mCreateLocationFragment;
 
-    public LocationCustomAdapter(ArrayList<Location> location) {
+    ArrayList<Location> location;
+    public LocationCustomAdapter(ArrayList<Location> location, CreateLocationFragment createLocationFragment) {
         mLocationList = location;
+        mCreateLocationFragment=createLocationFragment;
     }
 
 
@@ -47,6 +53,7 @@ public class LocationCustomAdapter extends  RecyclerView.Adapter<LocationViewHol
     public void onBindViewHolder(@NonNull LocationViewHolder locationViewHolder, int i) {
         Location location = mLocationList.get(i);
         locationViewHolder.ch1.setText(location.city);
+        locationViewHolder.delete.setTag(i);
         locationViewHolder.ch1.setChecked(location.isSelected());
         locationViewHolder.ch1.setTag(location);
 
@@ -56,52 +63,8 @@ public class LocationCustomAdapter extends  RecyclerView.Adapter<LocationViewHol
     public int getItemCount() {
         return mLocationList.size();
     }
+    public void deleteRecord(int position) {
+        Log.d("position", "position: "+position);
+        mCreateLocationFragment.deleteLocation(position);
+    }
 }
-
-//    private class ViewHolder {
-//        TextView id;
-//        CheckBox name;
-//    }
-//
-//
-//
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//
-//        pub.com.mypub.admin.LocationCustomAdapter .ViewHolder holder = null;
-//        Log.v("ConvertView", String.valueOf(position));
-//
-//        if (convertView == null) {
-//            LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//            convertView = vi.inflate(R.layout.ticket_info, null);
-//
-//            holder = new pub.com.mypub.admin.LocationCustomAdapter .ViewHolder();
-//            holder.id = (TextView) convertView.findViewById(R.id.code);
-//            holder.name = (CheckBox) convertView.findViewById(R.id.ch1);
-//            convertView.setTag(holder);
-//
-//            holder.name.setOnClickListener( new View.OnClickListener() {
-//                public void onClick(View v) {
-//                    CheckBox ch1 = (CheckBox) v ;
-//                    Location location = (Location) ch1.getTag();
-//                    location.setSelected(ch1.isChecked());
-//                }
-//            });
-//        }
-//        else {
-//            holder = (pub.com.mypub.admin.LocationCustomAdapter .ViewHolder) convertView.getTag();
-//        }
-//
-//       Location location = mLocationList.get(position);
-//        holder.id.setText(" (" +  location.getId() + ")");
-//        holder.name.setText(location.getCity());
-//        holder.name.setChecked(location.isSelected());
-//        holder.name.setTag(location);
-//
-//        return convertView;
-//
-//
-//
-//
-//
-//    }}

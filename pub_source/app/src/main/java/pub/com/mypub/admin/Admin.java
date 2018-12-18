@@ -53,6 +53,8 @@ public class Admin extends NetworkBaseActivity implements OnAdminInteractionList
         navigationView.getMenu().findItem(R.id.erate_event).setVisible(true);
         createEventFragment = CreateEventFragment.newInstance("", "");
 
+        navigationView.getMenu().findItem(R.id.event).setVisible(false);
+        addFragment(createEventFragment, false, true, CreateEventFragment.class.getName());
     }
 
     @Override

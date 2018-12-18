@@ -15,21 +15,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:padding="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:orientation="vertical">
+        <!--<LinearLayout-->
+            <!--android:padding="8dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="top"-->
+            <!--android:orientation="horizontal">-->
 
-            <CheckBox android:id="@+id/ch1"
+        <CheckBox
+            android:id="@+id/ch1"
+            android:layout_width="193dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="-1dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:text="checkbox" />
+            <Button
+                android:id="@+id/delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="checkbox"
+                android:text="DELETE"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textColor="#540C0C"/>
 
-                android:focusable="false"
-                android:focusableInTouchMode="false" />
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
     </RelativeLayout>
 </android.support.v7.widget.CardView>

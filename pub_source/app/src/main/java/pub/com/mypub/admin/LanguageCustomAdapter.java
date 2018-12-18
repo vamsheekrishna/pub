@@ -7,8 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import pub.com.mypub.R;
 import pub.com.mypub.admin.models.Language;
@@ -20,9 +23,11 @@ import pub.com.mypub.home.RecycleItemClickListener;
 public class LanguageCustomAdapter extends RecyclerView.Adapter<LanguageViewHolder> {
     RecycleItemClickListener mListener;
     public ArrayList<Language> mLanguageList ;
+    LanguageFragment mLanguageFragment;
     ArrayList<Language> language;
-    public LanguageCustomAdapter(ArrayList<Language> languages) {
+    public LanguageCustomAdapter(ArrayList<Language> languages, LanguageFragment languageFragment) {
         mLanguageList = languages;
+        mLanguageFragment = languageFragment;
     }
     @NonNull
     @Override
@@ -34,9 +39,9 @@ public class LanguageCustomAdapter extends RecyclerView.Adapter<LanguageViewHold
                 CheckBox ch1 = (CheckBox) v ;
                Language language=(Language) ch1.getTag();
                 language.setSelected(ch1.isChecked());
-
             }
         });
+
         return dateobject;
     }
 
@@ -44,7 +49,7 @@ public class LanguageCustomAdapter extends RecyclerView.Adapter<LanguageViewHold
     public void onBindViewHolder(@NonNull LanguageViewHolder languageViewHolder, int i) {
         Language language = mLanguageList.get(i);
         languageViewHolder.ch1.setText(language.name);
-        languageViewHolder.ch1.setText(language.getName());
+        languageViewHolder.delete.setTag(i);
         languageViewHolder.ch1.setChecked(language.isSelected());
         languageViewHolder.ch1.setTag(language);
     }
@@ -52,5 +57,10 @@ public class LanguageCustomAdapter extends RecyclerView.Adapter<LanguageViewHold
     @Override
     public int getItemCount() {
         return mLanguageList.size();
+    }
+
+    public void deleteRecord(int position) {
+        Log.d("position", "position: "+position);
+        mLanguageFragment.deleteLanguage(position);
     }
 }

@@ -64,6 +64,7 @@
                     android:text="Add"
                     android:fontFamily="@font/kaushanscriptregular"
                     />
+
             </LinearLayout>
             </LinearLayout>
             <LinearLayout

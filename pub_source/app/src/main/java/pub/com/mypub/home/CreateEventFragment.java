@@ -211,8 +211,7 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
             if(str2.length()>0) {
                 e1f.setText(str2);
             }}
-//            //Toast.makeText(getActivity(), "location: " + mLocation.city+mLocation.country+mLocation.state+mLocation.landmark+mLocation.latitude+mLocation.langetude, Toast.LENGTH_LONG).show();
-//            location.setText(mLocation.city+" "+mLocation.country+" "+mLocation.state+" "+mLocation.landmark+" "+mLocation.latitude+" "+mLocation.langetude);
+
 
         if (null != mSelectedTicket) {
             String name = "";
@@ -387,47 +386,55 @@ public class CreateEventFragment extends NetworkBaseFragment implements View.OnC
                 String _ticket_id = ticket_id;
                 String _age_limit = age.getText().toString();
 
+                if (_title.matches("")|| _category_id.matches("")|| _start_date.matches("")|| _end_date.matches("")||
+                        _start_time.matches("")|| _end_time.matches("")|| _duration.matches("")
+                        || _location_id.matches("")|| _language_id.matches("")|| _description.matches("")||
+                        _note.matches("")|| _tandc.matches("")|| _start_price.matches("")
+                        || _contact_id.matches("")|| _specialist_id.matches("")|| _ticket_id.matches("")|| _age_limit.matches("")) {
+                    Toast.makeText(getActivity(), "Plase fill the empty feild", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    event = new Event();
+                    event.title = _title;
+                    event.category_id = _category_id;
+                    event.start_date = _start_date;
+                    event.end_date = _end_date;
+                    event.start_time = _start_time;
+                    event.end_time = _end_time;
+                    event.duration = _duration;
+                    event.location_id = _location_id;
+                    event.language_id = _language_id;
+                    event.description = _description;
+                    event.note = _note;
+                    event.tandc = _tandc;
+                    event.start_price = _start_price;
+                    event.contact_id = _contact_id;
+                    event.specialist_id = _specialist_id;
+                    event.ticket_id = _ticket_id;
+                    event.age_limit = _age_limit;
 
-                event = new Event();
-                event.title =_title;
-                event.category_id=_category_id;
-                event.start_date=_start_date;
-                event.end_date=_end_date;
-                event.start_time=_start_time;
-                event.end_time =_end_time;
-                event.duration =_duration;
-                event.location_id=_location_id;
-                event.language_id=_language_id;
-                event.description=_description;
-                event.note=_note;
-                event.tandc=_tandc;
-                event.start_price=_start_price;
-                event.contact_id =_contact_id;
-                event.specialist_id=_specialist_id;
-                event.ticket_id=_ticket_id;
-                event.age_limit=_age_limit;
 
+                    HashMap<String, String> parems = new HashMap<>();
+                    parems.put("title", event.title);
+                    parems.put("category_id", event.category_id);
+                    parems.put("start_date", event.start_date);
+                    parems.put("end_date", event.end_date);
+                    parems.put("start_time", event.start_time);
+                    parems.put("end_time", event.end_time);
+                    parems.put("duration", event.duration);
+                    parems.put("location_id", event.location_id);
+                    parems.put("language_id", event.language_id);
+                    parems.put("description", event.description);
+                    parems.put("note", event.note);
+                    parems.put("tandc", event.tandc);
+                    parems.put("start_price", event.start_price);
+                    parems.put("contact_id", event.contact_id);
+                    parems.put("specialist_id", event.specialist_id);
+                    parems.put("ticket_id", event.ticket_id);
+                    parems.put("age_limit", event.age_limit);
 
-                HashMap<String, String> parems = new HashMap<>();
-                parems.put("title", event.title);
-                parems.put("category_id", event.category_id);
-                parems.put("start_date",event.start_date);
-                parems.put("end_date", event.end_date);
-                parems.put("start_time", event.start_time);
-                parems.put("end_time", event.end_time);
-                parems.put("duration", event.duration);
-                parems.put("location_id", event.location_id);
-                parems.put("language_id",event.language_id);
-                parems.put("description", event.description);
-                parems.put("note", event.note);
-                parems.put("tandc", event.tandc);
-                parems.put("start_price",event.start_price);
-                parems.put("contact_id", event.contact_id);
-                parems.put("specialist_id", event.specialist_id);
-                parems.put("ticket_id", event.ticket_id);
-                parems.put("age_limit", event.age_limit);
-
-                stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL+"events.php/createRecord", "create_event");
+                    stringAPIRequest(parems, Request.Method.POST, BuildConfig.BASE_URL + "events.php/createRecord", "create_event");
+                }
                 break;
             case R.id.n2:
                 mListener.goToLanguageFragment();

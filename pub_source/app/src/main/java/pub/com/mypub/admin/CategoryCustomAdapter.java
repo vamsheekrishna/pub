@@ -21,8 +21,11 @@ import pub.com.mypub.home.RecycleItemClickListener;
 public class CategoryCustomAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
     RecycleItemClickListener mListener;
     public ArrayList<Category> mCategoryList ;
-    public CategoryCustomAdapter(ArrayList<Category> category) {
+    CategoryFragment mCategoryFragment;
+    ArrayList<Category> category;
+    public CategoryCustomAdapter(ArrayList<Category> category, CategoryFragment categoryFragment) {
         mCategoryList = category;
+        mCategoryFragment = categoryFragment;
     }
     @NonNull
     @Override
@@ -44,6 +47,7 @@ public class CategoryCustomAdapter extends RecyclerView.Adapter<CategoryViewHold
     public void onBindViewHolder(@NonNull CategoryViewHolder categoryViewHolder, int i) {
        Category category= mCategoryList.get(i);
         categoryViewHolder.ch1.setText(category.name);
+        categoryViewHolder.delete.setTag(i);
         categoryViewHolder.ch1.setChecked(category.isSelected());
         categoryViewHolder.ch1.setTag(category);
     }
@@ -51,5 +55,10 @@ public class CategoryCustomAdapter extends RecyclerView.Adapter<CategoryViewHold
     @Override
     public int getItemCount() {
         return mCategoryList.size();
+    }
+
+    public void deleteRecord(int position) {
+        Log.d("position", "position: "+position);
+        mCategoryFragment.deleteCategory(position);
     }
 }

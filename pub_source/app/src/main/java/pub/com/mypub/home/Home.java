@@ -26,7 +26,7 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
     MyProfile myProfile;
     Event mCurrentEvent;
     Specialist mCurrentSpecialist;
-    BookingFragment BookingFragment;
+    //BookingFragment BookingFragment;
     private OnHomeInteractionListener mListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +35,15 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        BookingFragment = BookingFragment.newInstance("", "");
-        navigationView.getMenu().setGroupVisible(R.id.erate_event, false);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        //BookingFragment = BookingFragment.newInstance("", "");
+        navigationView.getMenu().findItem(R.id.erate_event).setVisible(false);
         navigationView.setNavigationItemSelectedListener(this);
+        addFragment(EventsFragment.newInstance("", ""), false, false, EventsFragment.class.getName());
     }
 
     @Override
@@ -207,7 +207,7 @@ public class Home extends NetworkBaseActivity implements OnHomeInteractionListen
 
     @Override
     public void setSelectedEventt(ArrayList<Event> evenrt) {
-        BookingFragment.setEvent(evenrt);
+        //BookingFragment.setEvent(evenrt);
     }
 
     @Override

@@ -9,11 +9,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+
 import pub.com.mypub.R;
 
 class EventHeaderPageAdapter extends PagerAdapter {
     Context context;
     int images[];
+    ArrayList<String> mImagePath = new ArrayList<>();
     LayoutInflater layoutInflater;
 
 
@@ -21,11 +26,15 @@ class EventHeaderPageAdapter extends PagerAdapter {
         this.context = context;
         this.images = images;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mImagePath.add("http://faithindia.org/vAm/my_events/images/event1/s1.jpeg");
+        mImagePath.add("http://faithindia.org/vAm/my_events/images/event1/s2.jpeg");
+        mImagePath.add("http://faithindia.org/vAm/my_events/images/event1/s3.jpeg");
+        mImagePath.add("http://faithindia.org/vAm/my_events/images/event1/s4.jpeg");
     }
 
     @Override
     public int getCount() {
-        return images.length;
+        return mImagePath.size();
     }
 
     @Override
@@ -39,7 +48,7 @@ class EventHeaderPageAdapter extends PagerAdapter {
 
         ImageView imageView = itemView.findViewById(R.id.imageView);
         imageView.setImageResource(images[position]);
-
+        Picasso.with(context).load(mImagePath.get(position)).placeholder(R.drawable.beer_image).into(imageView);
         container.addView(itemView);
 
         //listening to image click
