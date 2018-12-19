@@ -1,10 +1,14 @@
 package pub.com.mypub.home;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -14,9 +18,12 @@ import pub.com.mypub.admin.models.Event;
 public class EventListAdapter extends RecyclerView.Adapter<EventObject> {
     RecycleItemClickListener mListener;
     ArrayList<Event> event;
-    EventListAdapter(RecycleItemClickListener listener,  ArrayList<Event> _event) {
+    private Context mContext;
+
+    EventListAdapter(RecycleItemClickListener listener, ArrayList<Event> _event, Context context) {
         mListener = listener;
         event=_event;
+        mContext = context;
     }
 
 
@@ -36,6 +43,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventObject> {
         eventObject.start_date.setText(event.get(i).start_date);
         eventObject.end_date.setText(event.get(i).end_date);
         eventObject.mBook.setTag(i);
+        Picasso.with(mContext).load("http://faithindia.org/vAm/my_events/images/sunburn/s2.jpeg").placeholder(R.drawable.network).into(eventObject.selectedImage);
     }
 
 

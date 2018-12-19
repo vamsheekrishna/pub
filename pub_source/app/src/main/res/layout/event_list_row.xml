@@ -23,6 +23,7 @@
             android:id="@+id/top_view"
             android:src="@drawable/event"
             android:scaleType="centerInside"
+            android:layout_centerHorizontal="true"
             />
         <RelativeLayout
             android:padding="4dp"

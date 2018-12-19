@@ -3,6 +3,7 @@ package pub.com.mypub.home;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import pub.com.mypub.R;
@@ -10,6 +11,7 @@ import pub.com.mypub.R;
 public class EventObject extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     public Button mBook;
+    ImageView selectedImage;
     TextView title, location_id, start_price, start_date, end_date;
     RecycleItemClickListener mListener;
     public EventObject(View view, RecycleItemClickListener listener) {
@@ -17,7 +19,7 @@ public class EventObject extends RecyclerView.ViewHolder implements View.OnClick
         mListener = listener;
         mBook = view.findViewById(R.id.book);
         mBook.setOnClickListener(this);
-
+        selectedImage=view.findViewById(R.id.top_view);
         title = view.findViewById(R.id.event);
         location_id = view.findViewById(R.id.note);
         start_price =view.findViewById(R.id.amount);

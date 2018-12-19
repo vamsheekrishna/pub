@@ -11,6 +11,7 @@ import android.telecom.Call;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -38,6 +39,7 @@ public class EventDetailTabFragment extends NetworkBaseFragment {
     private String mParam1;
     private String mParam2;
     TextView title, category_id,start_date,duration,location_id,language_id,description,note, start_price,age_limit ;
+
     private OnHomeInteractionListener mListener;
     public static EventDetailTabFragment newInstance(String param1, String param2) {
         EventDetailTabFragment fragment = new EventDetailTabFragment();

@@ -17,6 +17,7 @@ public class Event implements Serializable {
     public String location_id=null;
     public String language_id=null;
     public String description =null;
+    public String coverpage_id =null;
     public String note=null;
     public String tandc=null;
     public String start_price=null;
@@ -37,7 +38,7 @@ public class Event implements Serializable {
     public Event () { }
 
     public Event (int _id, String _title, String _category_id, String _start_date, String _end_date, String _start_time,  String _end_time, String _duration, String _location_id,
-                  String _language_id, String _description, String _note, String _tandc, String _start_price, String _contact_id, String _specialist_id,
+                  String _language_id, String _description, String _coverpage_id, String _note, String _tandc, String _start_price, String _contact_id, String _specialist_id,
                   String _ticket_id, String _age_limit,  boolean selected) {
         super();
         this.id = _id;
@@ -51,6 +52,7 @@ public class Event implements Serializable {
         this.location_id = _location_id;
         this.language_id = _language_id;
         this.description = _description;
+        this.coverpage_id = _coverpage_id;
         this.note = _note;
         this.tandc = _tandc;
         this.start_price = _start_price;
@@ -97,6 +99,9 @@ public class Event implements Serializable {
 
     public  String getDescription(){return  description;}
     public  void setDescription(String _description){this.description=_description;}
+
+    public  String getcoverpage_id(){return  coverpage_id;}
+    public  void setcoverpage_id(String _coverpage_id){this.coverpage_id=_coverpage_id;}
 
     public  String getNote(){return  note;}
     public  void setNote(String _note){this.note=_note;}

@@ -26,10 +26,10 @@ class EventHeaderPageAdapter extends PagerAdapter {
         this.context = context;
         this.images = images;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mImagePath.add("http://faithindia.org/vAm/my_events/images/event1/s1.jpeg");
-        mImagePath.add("http://faithindia.org/vAm/my_events/images/event1/s2.jpeg");
-        mImagePath.add("http://faithindia.org/vAm/my_events/images/event1/s3.jpeg");
-        mImagePath.add("http://faithindia.org/vAm/my_events/images/event1/s4.jpeg");
+        mImagePath.add("http://faithindia.org/vAm/my_events/images/sunburn/s1.jpeg");
+        mImagePath.add("http://faithindia.org/vAm/my_events/images/sunburn/s2.jpeg");
+        mImagePath.add("http://faithindia.org/vAm/my_events/images/sunburn/s3.jpeg");
+        mImagePath.add("http://faithindia.org/vAm/my_events/images/sunburn/s4.jpeg");
     }
 
     @Override
@@ -48,7 +48,7 @@ class EventHeaderPageAdapter extends PagerAdapter {
 
         ImageView imageView = itemView.findViewById(R.id.imageView);
         imageView.setImageResource(images[position]);
-        Picasso.with(context).load(mImagePath.get(position)).placeholder(R.drawable.beer_image).into(imageView);
+        Picasso.with(context).load(mImagePath.get(position)).placeholder(R.drawable.network).into(imageView);
         container.addView(itemView);
 
         //listening to image click

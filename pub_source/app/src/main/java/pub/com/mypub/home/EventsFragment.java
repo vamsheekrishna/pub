@@ -158,7 +158,7 @@ public class EventsFragment extends NetworkBaseFragment implements View.OnClickL
         gson = gsonBuilder.create();
         List<Event> event = Arrays.asList(gson.fromJson(response.toString(), Event[].class));
         mEventList = new ArrayList<>(event );
-        mAdapter = new EventListAdapter(this, mEventList);
+        mAdapter = new EventListAdapter(this, mEventList, getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
