@@ -1,6 +1,10 @@
 package pub.com.mypub.admin;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +13,20 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 import pub.com.mypub.R;
 import pub.com.mypub.authentication.NetworkBaseFragment;
 import pub.com.mypub.home.GalleryImageAdapter;
+
+import static android.app.Activity.RESULT_OK;
 
 
 public class CoverPageFragment extends NetworkBaseFragment implements View.OnClickListener {
@@ -30,6 +41,7 @@ public class CoverPageFragment extends NetworkBaseFragment implements View.OnCli
     private String mParam2;
 
     private OnAdminInteractionListener mListener;
+    private int RESULT_LOAD_IMG =19;
 
     public CoverPageFragment() {
         // Required empty public constructor
@@ -135,11 +147,37 @@ return view;
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            try {
+                final Uri imageUri = data.getData();
+                final InputStream imageStream = getContext().getContentResolver().openInputStream(imageUri);
+                final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+
+                
+
+                this.selectedImage.setImageBitmap(selectedImage);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();
+            }
+
+        }else {
+            Toast.makeText(getContext(), "You haven't picked Image",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.add:
                 break;
             case R.id.submit:
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.setType("image/*");
+                startActivityForResult(photoPickerIntent, RESULT_LOAD_IMG);
              
                 break;
         }
