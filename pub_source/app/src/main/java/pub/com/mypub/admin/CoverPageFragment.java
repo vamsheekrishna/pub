@@ -16,11 +16,17 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+
+import net.gotev.uploadservice.MultipartUploadRequest;
+import net.gotev.uploadservice.UploadNotificationConfig;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.UUID;
 
 import pub.com.mypub.R;
 import pub.com.mypub.authentication.NetworkBaseFragment;
@@ -156,7 +162,7 @@ return view;
                 final InputStream imageStream = getContext().getContentResolver().openInputStream(imageUri);
                 final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
 
-                
+                uploadMultipart(imageUri.getPath());
 
                 this.selectedImage.setImageBitmap(selectedImage);
             } catch (FileNotFoundException e) {
@@ -167,6 +173,36 @@ return view;
         }else {
             Toast.makeText(getContext(), "You haven't picked Image",Toast.LENGTH_LONG).show();
         }
+    }
+
+
+    /*
+     * This is the method responsible for image upload
+     * We need the full image path and the name for the image in this method
+     * */
+    public void uploadMultipart(String path) {
+        int i=0;
+        //getting name for the image
+        String name = "image_" + i;
+
+
+
+        //Uploading code
+        try {
+            String uploadId = UUID.randomUUID().toString();
+
+            //Creating a multi part request
+            new MultipartUploadRequest(getContext(), uploadId, Constants.UPLOAD_URL)
+                    .addFileToUpload(path, "image") //Adding file
+                    .addParameter("name", name) //Adding text parameter to the request
+                    .setNotificationConfig(new UploadNotificationConfig())
+                    .setMaxRetries(2)
+                    .startUpload(); //Starting the upload
+
+        } catch (Exception exc) {
+            Toast.makeText(getContext(), exc.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        i++;
     }
 
     @Override
